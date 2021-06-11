@@ -2,7 +2,7 @@ package com.chz.bmf.domain;
 
 import com.chz.bmf.common.BusinessDomainLevelEnum;
 import com.chz.bmf.common.BusinessDomainNameEnum;
-import com.chz.bmf.service.Service4BusinessDomain;
+import com.chz.bmf.service.BusinessService4Domain;
 import lombok.Data;
 
 import java.util.List;
@@ -24,6 +24,6 @@ public class BusinessDomain {
     /**
      * 服务列表
      */
-    private List<Service4BusinessDomain> serviceList;
+    private List<BusinessService4Domain> serviceList;
 
 }

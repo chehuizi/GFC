@@ -3,7 +3,7 @@ package com.chz.bmf.service;
 /**
  * 业务领域服务
  */
-public interface Service4BusinessDomain {
+public interface BusinessService4Domain {
 
     /**
      * 服务触发
