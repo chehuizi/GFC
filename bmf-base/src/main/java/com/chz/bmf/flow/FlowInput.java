@@ -10,6 +10,10 @@ import lombok.Data;
 public class FlowInput<T extends FlowInputDataBase> {
 
     /**
+     * 流程唯一标识
+     */
+    private String flowId;
+    /**
      * 服务流程输入
      */
     private T data;

@@ -1,27 +1,22 @@
 package com.chz.bmf.domain;
 
-import com.chz.bmf.common.BusinessDomainLevelEnum;
-import com.chz.bmf.common.BusinessDomainNameEnum;
 import com.chz.bmf.entity.BusinessEntity4Domain;
+import com.chz.bmf.meta.BusinessDomainMeta;
 import com.chz.bmf.service.BusinessService4Domain;
 import lombok.Data;
 
 import java.util.List;
 
 /**
- * 业务域
+ * 业务领域
  */
 @Data
 public class BusinessDomain {
 
     /**
-     * 等级
+     * 领域元数据
      */
-    private BusinessDomainLevelEnum level;
-    /**
-     * 名称
-     */
-    private BusinessDomainNameEnum  name;
+    private BusinessDomainMeta meta;
     /**
      * 领域实体列表
      */
