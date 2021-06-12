@@ -1,6 +1,5 @@
 package com.chz.bmf.flow;
 
-import com.chz.bmf.service.ServiceRespDataBase;
 import lombok.Data;
 
 /**
@@ -8,18 +7,10 @@ import lombok.Data;
  * @param <T>
  */
 @Data
-public class FlowOutput<T extends ServiceRespDataBase> {
+public class FlowOutput<T extends FlowOutputDataBase> {
 
     /**
-     * 服务结果
-     */
-    private boolean result;
-    /**
-     * 服务描述
-     */
-    private String  msg;
-    /**
-     * 服务响应数据
+     * 服务流程输出
      */
     private T data;
 }

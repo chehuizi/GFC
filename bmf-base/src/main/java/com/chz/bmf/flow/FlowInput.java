@@ -1,17 +1,16 @@
 package com.chz.bmf.flow;
 
-import com.chz.bmf.service.ServiceReqDataBase;
 import lombok.Data;
 
 /**
- * 业务领域服务流程请求参数
+ * 业务领域服务流程输入
  * @param <T>
  */
 @Data
-public class FlowInput<T extends ServiceReqDataBase> {
+public class FlowInput<T extends FlowInputDataBase> {
 
     /**
-     * 服务流程请求数据
+     * 服务流程输入
      */
     private T data;
 }
