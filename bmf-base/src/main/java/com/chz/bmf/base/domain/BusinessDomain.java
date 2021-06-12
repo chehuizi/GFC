@@ -1,8 +1,8 @@
-package com.chz.bmf.domain;
+package com.chz.bmf.base.domain;
 
-import com.chz.bmf.entity.BusinessEntity4Domain;
-import com.chz.bmf.meta.BusinessDomainMeta;
-import com.chz.bmf.service.BusinessService4Domain;
+import com.chz.bmf.base.entity.BusinessEntity4Domain;
+import com.chz.bmf.base.meta.BusinessDomainMeta;
+import com.chz.bmf.base.service.BusinessService4Domain;
 import lombok.Data;
 
 import java.util.List;

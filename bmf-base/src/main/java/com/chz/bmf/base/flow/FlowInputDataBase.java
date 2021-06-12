@@ -1,13 +1,12 @@
-package com.chz.bmf.service;
+package com.chz.bmf.base.flow;
 
 import lombok.Data;
 
 import java.io.Serializable;
 
 @Data
-public class ServiceRespDataBase implements Serializable {
+public class FlowInputDataBase implements Serializable {
 
     private static final long serialVersionUID = -7118088687647791720L;
-
 
 }

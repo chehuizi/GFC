@@ -1,4 +1,4 @@
-package com.chz.bmf.flow;
+package com.chz.bmf.base.flow;
 
 import lombok.Data;
 

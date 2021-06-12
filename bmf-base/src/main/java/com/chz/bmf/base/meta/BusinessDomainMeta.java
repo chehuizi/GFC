@@ -1,7 +1,7 @@
-package com.chz.bmf.meta;
+package com.chz.bmf.base.meta;
 
-import com.chz.bmf.common.BusinessDomainLevelEnum;
-import com.chz.bmf.common.BusinessDomainNameEnum;
+import com.chz.bmf.base.common.BusinessDomainLevelEnum;
+import com.chz.bmf.base.common.BusinessDomainNameEnum;
 import lombok.Data;
 
 /**

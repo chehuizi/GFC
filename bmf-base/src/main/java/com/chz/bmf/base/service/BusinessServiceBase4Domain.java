@@ -1,7 +1,7 @@
-package com.chz.bmf.service;
+package com.chz.bmf.base.service;
 
 
-import com.chz.bmf.common.BusinessDomainNameEnum;
+import com.chz.bmf.base.common.BusinessDomainNameEnum;
 import lombok.Data;
 
 @Data

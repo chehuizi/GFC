@@ -1,8 +1,8 @@
-package com.chz.bmf.flow;
+package com.chz.bmf.base.flow;
 
 
-import com.chz.bmf.common.BusinessDomainNameEnum;
-import com.chz.bmf.service.BusinessService4Domain;
+import com.chz.bmf.base.common.BusinessDomainNameEnum;
+import com.chz.bmf.base.service.BusinessService4Domain;
 import lombok.Data;
 
 @Data

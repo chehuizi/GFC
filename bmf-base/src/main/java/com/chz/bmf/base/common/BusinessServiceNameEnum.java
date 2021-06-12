@@ -1,4 +1,4 @@
-package com.chz.bmf.common;
+package com.chz.bmf.base.common;
 
 /**
  * 业务域服务枚举

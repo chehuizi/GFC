@@ -1,4 +1,4 @@
-package com.chz.bmf.service;
+package com.chz.bmf.base.service;
 
 import lombok.Data;
 

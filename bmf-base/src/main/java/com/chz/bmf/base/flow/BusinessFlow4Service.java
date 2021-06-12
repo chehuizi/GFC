@@ -1,4 +1,4 @@
-package com.chz.bmf.flow;
+package com.chz.bmf.base.flow;
 
 /**
  * 业务领域服务流程

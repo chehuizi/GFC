@@ -1,4 +1,4 @@
-package com.chz.bmf.service;
+package com.chz.bmf.base.service;
 
 /**
  * 业务领域服务
