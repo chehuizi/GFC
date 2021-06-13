@@ -1,9 +1,9 @@
 package com.chz.bmf.base.flow;
 
 /**
- * 业务领域服务流程
+ * 流程引擎
  */
-public interface BusinessFlow4Service {
+public interface FlowEngine {
 
     /**
      * 流程触发
