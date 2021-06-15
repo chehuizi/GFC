@@ -16,10 +16,6 @@ public class NodeBase {
      */
     private String name;
     /**
-     * 节点类型
-     */
-    private String type;
-    /**
      * 线列表
      */
     private List<Line> lineList;
