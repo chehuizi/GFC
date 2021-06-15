@@ -1,6 +1,6 @@
 package com.chz.bmf.base.flow.node;
 
-import com.chz.bmf.base.flow.line.LineBase;
+import com.chz.bmf.base.flow.line.Line;
 import lombok.Data;
 
 import java.util.List;
@@ -22,6 +22,6 @@ public class NodeBase {
     /**
      * 线列表
      */
-    private List<LineBase> lineList;
+    private List<Line> lineList;
 
 }

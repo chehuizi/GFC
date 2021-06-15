@@ -4,7 +4,7 @@ import com.chz.bmf.base.flow.node.NodeBase;
 import lombok.Data;
 
 @Data
-public class LineBase {
+public class Line {
 
     /**
      * 起点
