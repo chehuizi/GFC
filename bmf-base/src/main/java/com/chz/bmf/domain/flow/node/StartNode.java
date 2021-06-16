@@ -6,6 +6,6 @@ import lombok.Data;
  * 起始节点
  */
 @Data
-public class StartNode<T> extends NodeBase<T> {
+public class StartNode extends NodeBase {
 
 }

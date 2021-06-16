@@ -7,8 +7,8 @@ import com.chz.bmf.domain.flow.FlowOutputDataBase;
 /**
  * 处理器
  */
-public interface Processor<S> {
+public interface Processor {
 
-    <R extends FlowInputDataBase, T extends FlowOutputDataBase> S process(FlowContext<R, T> flowContext);
+    <R extends FlowInputDataBase, T extends FlowOutputDataBase, S> S process(FlowContext<R, T> flowContext);
 
 }

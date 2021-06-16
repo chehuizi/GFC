@@ -1,11 +1,11 @@
 package com.chz.bmf.domain.flow.line;
 
-public interface LineCondition<T> {
+public interface LineCondition {
 
     /**
      * 校验条件
      * @param output
      * @return
      */
-    boolean check(T output);
+    <T> boolean check(T output);
 }

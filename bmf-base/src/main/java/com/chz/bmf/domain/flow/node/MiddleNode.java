@@ -6,7 +6,7 @@ import lombok.Data;
  * 过程节点
  */
 @Data
-public class MiddleNode<T> extends NodeBase<T> {
+public class MiddleNode extends NodeBase {
 
     /**
      * 是否暂停

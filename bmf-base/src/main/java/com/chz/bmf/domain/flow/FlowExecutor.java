@@ -1,6 +1,12 @@
 package com.chz.bmf.domain.flow;
 
+import com.chz.bmf.domain.flow.line.Line;
+import com.chz.bmf.domain.flow.node.EndNode;
+import com.chz.bmf.domain.flow.node.NodeBase;
+import com.chz.bmf.domain.flow.node.StartNode;
+
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class FlowExecutor {
@@ -10,7 +16,29 @@ public class FlowExecutor {
 
     public <R extends FlowInputDataBase, T extends FlowOutputDataBase> void execute(FlowContext<R, T> flowContext) {
         FlowDefinition flowDefinition = flowDefinitionMap.get(flowContext.getFlowName());
+        StartNode startNode = flowDefinition.getStartNode();
+        executeNode(flowContext, flowDefinition, startNode);
+    }
 
+    /**
+     * 执行节点原子能力
+     * @param flowContext
+     * @param flowDefinition
+     * @param node
+     * @param <R>
+     * @param <T>
+     */
+    private <R extends FlowInputDataBase, T extends FlowOutputDataBase> void executeNode(FlowContext<R, T> flowContext, FlowDefinition flowDefinition, NodeBase node) {
+        if (node instanceof EndNode) {
+            return;
+        }
+
+        List<Line> lines = flowDefinition.getLineMap().get(node.getName());
+        for (Line line : lines) {
+            if (line.isMatchCondition(node.getProcessor().process(flowContext))) {
+                executeNode(flowContext, flowDefinition, line.getTo());
+            }
+        }
     }
 
 }
