@@ -1,4 +1,4 @@
-package com.chz.bmf.domain.flow;
+package com.chz.bmf.domain.flow.definition;
 
 import com.chz.bmf.domain.flow.line.Line;
 import com.chz.bmf.domain.flow.node.EndNode;

@@ -1,4 +1,9 @@
-package com.chz.bmf.domain.flow;
+package com.chz.bmf.domain.flow.engine;
+
+import com.chz.bmf.domain.flow.context.FlowInput;
+import com.chz.bmf.domain.flow.context.FlowInputDataBase;
+import com.chz.bmf.domain.flow.context.FlowOutput;
+import com.chz.bmf.domain.flow.context.FlowOutputDataBase;
 
 /**
  * 流程引擎
