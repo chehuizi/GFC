@@ -1,11 +1,15 @@
 package com.chz.bmf.domain.common;
 
+import lombok.Getter;
+
 /**
  * 业务域名称枚举
  */
+@Getter
 public enum BusinessDomainNameEnum {
 
-    SUPPLY_CHAIN_MANAGEMENT("supply_chain_management", "SCM", "供应链管理"),
+    SUPPLY_CHAIN_MANAGEMENT("supply_chain_management", "SCM", "供应链域"),
+    INVENTORY_MANAGEMENT_SERVICE("inventory_management_service", "IMS", "仓储平台域"),
     ;
 
     /** 名称 **/
@@ -20,5 +24,4 @@ public enum BusinessDomainNameEnum {
         this.abbr = abbr;
         this.desc = desc;
     }
-
 }

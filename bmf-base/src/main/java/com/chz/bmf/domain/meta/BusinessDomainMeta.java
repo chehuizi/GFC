@@ -8,7 +8,7 @@ import lombok.Data;
  * 业务领域元数据
  */
 @Data
-public class BusinessDomainMeta {
+public abstract class BusinessDomainMeta {
 
     /**
      * 等级
@@ -18,4 +18,9 @@ public class BusinessDomainMeta {
      * 名称
      */
     private BusinessDomainNameEnum name;
+
+    public BusinessDomainMeta(BusinessDomainLevelEnum level, BusinessDomainNameEnum name) {
+        this.level = level;
+        this.name = name;
+    }
 }
