@@ -1,4 +1,4 @@
-package com.chz.bmf.domain.common;
+package com.chz.bmf.domain.base.meta;
 
 /**
  * 业务域服务枚举
