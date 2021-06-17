@@ -1,12 +1,9 @@
-package com.chz.bmf.domain.base.biz.ims.service;
+package com.chz.bmf.domain.biz.ims.service;
 
 import com.chz.bmf.domain.base.service.*;
 import com.chz.bmf.domain.service.*;
 
-/**
- * 仓储平台领域-入库服务
- */
-public class ImsStorageService extends BusinessServiceBase4Domain {
+public class ImsInventoryService extends BusinessServiceBase4Domain {
 
     @Override
     public <R extends ServiceReqDataBase, T extends ServiceRespDataBase> ServiceResp<T> invoke(ServiceReq<R> serviceReq) {

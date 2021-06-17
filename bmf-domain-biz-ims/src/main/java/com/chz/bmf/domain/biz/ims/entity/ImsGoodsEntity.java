@@ -1,4 +1,4 @@
-package com.chz.bmf.domain.base.biz.ims.entity;
+package com.chz.bmf.domain.biz.ims.entity;
 
 import com.chz.bmf.domain.base.entity.BusinessEntity4Domain;
 import lombok.Data;

@@ -1,4 +1,4 @@
-package com.chz.bmf.domain.base.biz.ims.meta;
+package com.chz.bmf.domain.biz.ims.meta;
 
 import com.chz.bmf.domain.base.meta.BusinessDomainMeta;
 import com.chz.bmf.domain.common.BusinessDomainLevelEnum;
