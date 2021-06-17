@@ -1,8 +1,8 @@
 package com.chz.bmf.domain.base.biz.ims.meta;
 
-import com.chz.bmf.domain.base.common.BusinessDomainLevelEnum;
 import com.chz.bmf.domain.base.meta.BusinessDomainMeta;
-import com.chz.bmf.domain.base.common.BusinessDomainNameEnum;
+import com.chz.bmf.domain.common.BusinessDomainLevelEnum;
+import com.chz.bmf.domain.common.BusinessDomainNameEnum;
 
 public class ImsDomainMeta extends BusinessDomainMeta {
 
