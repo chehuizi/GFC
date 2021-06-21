@@ -11,7 +11,7 @@ import java.util.List;
  * 业务领域
  */
 @Data
-public class BusinessDomain {
+public abstract class BusinessDomain {
 
     /**
      * 领域元数据
@@ -26,9 +26,13 @@ public class BusinessDomain {
      */
     private List<BusinessService4Domain> serviceList;
 
-    public BusinessDomain(BusinessDomainMeta domainMeta, List<BusinessEntity4Domain> entityList, List<BusinessService4Domain> serviceList) {
-        this.domainMeta = domainMeta;
-        this.entityList = entityList;
-        this.serviceList = serviceList;
+    public BusinessDomain() {
+        this.domainMeta = buildDomainMeta();
+        this.entityList = buildEntityList();
+        this.serviceList = buildServiceList();
     }
+
+    public abstract BusinessDomainMeta buildDomainMeta();
+    public abstract List<BusinessEntity4Domain> buildEntityList();
+    public abstract List<BusinessService4Domain> buildServiceList();
 }

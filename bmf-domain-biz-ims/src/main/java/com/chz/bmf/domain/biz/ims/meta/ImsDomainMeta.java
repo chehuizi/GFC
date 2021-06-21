@@ -6,7 +6,7 @@ import com.chz.bmf.domain.base.meta.BusinessDomainNameEnum;
 
 public class ImsDomainMeta extends BusinessDomainMeta {
 
-    public ImsDomainMeta(BusinessDomainLevelEnum level, BusinessDomainNameEnum name) {
-        super(level, name);
+    public ImsDomainMeta() {
+        super(BusinessDomainLevelEnum.TWO, BusinessDomainNameEnum.INVENTORY_MANAGEMENT_SERVICE);
     }
 }
