@@ -1,5 +1,8 @@
 package com.chz.bmf.domain.base;
 
+import com.chz.bmf.domain.base.strategy.BusinessDomainInStrategy;
+import com.chz.bmf.domain.base.tactics.BusinessDomainInTactics;
+
 /**
  * DDD业务架构
  */
@@ -7,11 +10,13 @@ public class BusinessArchInDDD implements BusinessArch {
 
     @Override
     public BusinessDomain design4Strategy(Business business) {
-        return null;
+        BusinessDomainInStrategy domainInStrategy = new BusinessDomainInStrategy();
+        return domainInStrategy;
     }
 
     @Override
     public BusinessDomain design4Tactics(Business business) {
-        return null;
+        BusinessDomainInTactics domainInTactics = new BusinessDomainInTactics();
+        return domainInTactics;
     }
 }

@@ -2,7 +2,7 @@ package com.chz.bmf.domain.base.tactics.service;
 
 
 import com.chz.bmf.domain.base.tactics.flow.engine.FlowEngine;
-import com.chz.bmf.domain.base.tactics.meta.BusinessDomainNameEnum;
+import com.chz.bmf.domain.base.meta.BusinessDomainNameEnum;
 import lombok.Data;
 
 @Data

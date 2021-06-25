@@ -1,6 +1,6 @@
 package com.chz.bmf.domain.base.tactics.entity;
 
-import com.chz.bmf.domain.base.tactics.meta.BusinessDomainNameEnum;
+import com.chz.bmf.domain.base.meta.BusinessDomainNameEnum;
 import lombok.Data;
 
 @Data

@@ -1,4 +1,4 @@
-package com.chz.bmf.domain.base.tactics.meta;
+package com.chz.bmf.domain.base.meta;
 
 import lombok.Data;
 
@@ -6,7 +6,7 @@ import lombok.Data;
  * 业务领域元数据
  */
 @Data
-public abstract class BusinessDomainMeta {
+public class BusinessDomainMeta {
 
     /**
      * 等级

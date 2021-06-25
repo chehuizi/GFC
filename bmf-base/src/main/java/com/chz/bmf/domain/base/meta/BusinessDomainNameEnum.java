@@ -1,4 +1,4 @@
-package com.chz.bmf.domain.base.tactics.meta;
+package com.chz.bmf.domain.base.meta;
 
 import lombok.Getter;
 
