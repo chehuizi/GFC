@@ -1,6 +1,6 @@
 package com.chz.bmf.domain.biz.ims.service;
 
-import com.chz.bmf.domain.base.service.*;
+import com.chz.bmf.domain.base.tactics.service.*;
 import com.chz.bmf.domain.service.*;
 
 /**

@@ -1,13 +1,13 @@
 package com.chz.bmf.domain.common.util;
 
-import com.chz.bmf.domain.base.flow.context.FlowInput;
-import com.chz.bmf.domain.base.flow.context.FlowInputDataBase;
-import com.chz.bmf.domain.base.flow.context.FlowOutput;
-import com.chz.bmf.domain.base.flow.context.FlowOutputDataBase;
-import com.chz.bmf.domain.base.service.ServiceReq;
-import com.chz.bmf.domain.base.service.ServiceReqDataBase;
-import com.chz.bmf.domain.base.service.ServiceResp;
-import com.chz.bmf.domain.base.service.ServiceRespDataBase;
+import com.chz.bmf.domain.base.tactics.flow.context.FlowInput;
+import com.chz.bmf.domain.base.tactics.flow.context.FlowInputDataBase;
+import com.chz.bmf.domain.base.tactics.flow.context.FlowOutput;
+import com.chz.bmf.domain.base.tactics.flow.context.FlowOutputDataBase;
+import com.chz.bmf.domain.base.tactics.service.ServiceReq;
+import com.chz.bmf.domain.base.tactics.service.ServiceReqDataBase;
+import com.chz.bmf.domain.base.tactics.service.ServiceResp;
+import com.chz.bmf.domain.base.tactics.service.ServiceRespDataBase;
 
 public class ServiceData2FlowDataUtil {
 

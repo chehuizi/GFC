@@ -1,9 +1,9 @@
 package com.chz.bmf.domain.biz.ims;
 
 import com.chz.bmf.domain.base.BusinessDomain;
-import com.chz.bmf.domain.base.entity.BusinessEntity4Domain;
-import com.chz.bmf.domain.base.meta.BusinessDomainMeta;
-import com.chz.bmf.domain.base.service.BusinessService4Domain;
+import com.chz.bmf.domain.base.tactics.entity.BusinessEntity4Domain;
+import com.chz.bmf.domain.base.tactics.meta.BusinessDomainMeta;
+import com.chz.bmf.domain.base.tactics.service.BusinessService4Domain;
 import com.chz.bmf.domain.biz.ims.meta.ImsDomainMeta;
 
 import java.util.List;
