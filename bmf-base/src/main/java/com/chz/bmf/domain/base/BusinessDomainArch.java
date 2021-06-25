@@ -3,7 +3,7 @@ package com.chz.bmf.domain.base;
 /**
  * 业务架构
  */
-public interface BusinessArch {
+public interface BusinessDomainArch {
 
     /**
      * 战略设计
