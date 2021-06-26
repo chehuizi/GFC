@@ -6,7 +6,7 @@ import com.chz.bmf.domain.base.meta.BusinessDomainNameEnum;
 import lombok.Data;
 
 @Data
-public abstract class BusinessServiceBase4Domain implements BusinessService4Domain {
+public abstract class BusinessBaseService implements BusinessService {
 
     /**
      * 领域

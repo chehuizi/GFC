@@ -4,7 +4,7 @@ import com.chz.bmf.domain.base.meta.BusinessDomainNameEnum;
 import lombok.Data;
 
 @Data
-public abstract class BusinessEntity4Domain {
+public abstract class BusinessEntity {
 
     /**
      * 领域
@@ -15,7 +15,7 @@ public abstract class BusinessEntity4Domain {
      */
     private String businessEntityId;
 
-    public BusinessEntity4Domain() {
+    public BusinessEntity() {
         this.businessEntityId = buildBusinessEntityId();
     }
 

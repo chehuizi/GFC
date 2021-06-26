@@ -3,7 +3,7 @@ package com.chz.bmf.domain.base.tactics.service;
 /**
  * 业务领域服务
  */
-public interface BusinessService4Domain {
+public interface BusinessService {
 
     /**
      * 服务触发
