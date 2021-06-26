@@ -14,6 +14,10 @@ import java.util.List;
 public class BusinessDomainInStrategy extends BusinessDomain {
 
     /**
+     * 子域列表
+     */
+    private List<BusinessDomain> domainList;
+    /**
      * 上下文列表
      */
     private List<BusinessDomainContext> contextList;
