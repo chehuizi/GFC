@@ -1,9 +1,10 @@
 package com.chz.bmf.domain.biz.ims.entity;
 
+import com.chz.bmf.domain.base.tactics.entity.BusinessEntity;
 import lombok.Data;
 
 @Data
-public class ImsGoodsEntity extends BusinessEntity4Domain {
+public class ImsGoodsEntity extends BusinessEntity {
 
     /**
      * 货品SKU
