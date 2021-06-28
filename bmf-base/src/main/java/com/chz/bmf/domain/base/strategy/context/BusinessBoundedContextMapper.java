@@ -1,6 +1,6 @@
 package com.chz.bmf.domain.base.strategy.context;
 
-import com.chz.bmf.domain.base.meta.BusinessDomainContextMapperEnum;
+import com.chz.bmf.domain.base.meta.BusinessBoundedContextMapperEnum;
 import lombok.Data;
 
 /**
@@ -12,7 +12,7 @@ public class BusinessBoundedContextMapper {
     /**
      * 上下文映射
      */
-    private BusinessDomainContextMapperEnum contextMapperEnum;
+    private BusinessBoundedContextMapperEnum contextMapperEnum;
     /**
      * A域
      */

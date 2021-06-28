@@ -3,7 +3,7 @@ package com.chz.bmf.domain.base.meta;
 /**
  * 上下文映射枚举
  */
-public enum BusinessDomainContextMapperEnum {
+public enum BusinessBoundedContextMapperEnum {
 
     PARTNERSHIP("Partnership", "PS", "合作关系"),
     SHARED_KERNEL("Shared Kernel", "SK", "共享内核"),
@@ -27,7 +27,7 @@ public enum BusinessDomainContextMapperEnum {
      */
     private String desc;
 
-    BusinessDomainContextMapperEnum(String name, String abbr, String desc) {
+    BusinessBoundedContextMapperEnum(String name, String abbr, String desc) {
         this.name = name;
         this.abbr = abbr;
         this.desc = desc;
