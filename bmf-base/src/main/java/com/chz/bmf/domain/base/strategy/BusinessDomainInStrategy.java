@@ -1,8 +1,8 @@
 package com.chz.bmf.domain.base.strategy;
 
 import com.chz.bmf.domain.base.BusinessDomain;
-import com.chz.bmf.domain.base.strategy.context.BusinessDomainContext;
-import com.chz.bmf.domain.base.strategy.context.BusinessDomainContextMapper;
+import com.chz.bmf.domain.base.strategy.context.BusinessBoundedContext;
+import com.chz.bmf.domain.base.strategy.context.BusinessBoundedContextMapper;
 import lombok.Data;
 
 import java.util.List;
@@ -14,12 +14,12 @@ import java.util.List;
 public class BusinessDomainInStrategy extends BusinessDomain {
 
     /**
-     * 上下文列表
+     * 界限上下文列表
      */
-    private List<BusinessDomainContext> contextList;
+    private List<BusinessBoundedContext> contextList;
     /**
-     * 上下文映射列表
+     * 界限上下文映射列表
      */
-    private List<BusinessDomainContextMapper> contextMapperList;
+    private List<BusinessBoundedContextMapper> contextMapperList;
 
 }

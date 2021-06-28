@@ -7,7 +7,7 @@ import lombok.Data;
  * 业务领域上下文映射关系
  */
 @Data
-public class BusinessDomainContextMapper {
+public class BusinessBoundedContextMapper {
 
     /**
      * 上下文映射
@@ -16,10 +16,10 @@ public class BusinessDomainContextMapper {
     /**
      * A域
      */
-    private BusinessDomainContext domainA;
+    private BusinessBoundedContext domainA;
     /**
      * B域
      */
-    private BusinessDomainContext domainB;
+    private BusinessBoundedContext domainB;
 
 }
