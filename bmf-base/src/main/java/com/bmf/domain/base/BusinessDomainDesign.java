@@ -8,7 +8,7 @@ public interface BusinessDomainDesign {
     /**
      * 战略设计
      */
-    BusinessDomain design4Strategy(Business business);
+    BusinessDomainMap design4Strategy(Business business);
 
     /**
      * 战术设计

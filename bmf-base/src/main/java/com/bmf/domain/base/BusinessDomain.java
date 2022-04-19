@@ -13,4 +13,10 @@ public class BusinessDomain {
      * @see com.bmf.domain.base.enums.BusinessDomainLevelEnum
      */
     private int domainLevel;
+
+    /**
+     * 业务域类型
+     */
+    private String domainType;
+
 }
