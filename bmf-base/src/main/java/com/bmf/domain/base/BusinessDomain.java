@@ -8,5 +8,9 @@ import lombok.Data;
 @Data
 public class BusinessDomain {
 
-
+    /**
+     * 业务域等级
+     * @see com.bmf.domain.base.enums.BusinessDomainLevelEnum
+     */
+    private int domainLevel;
 }
