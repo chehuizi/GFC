@@ -1,13 +1,12 @@
 package com.bmf.domain.base.strategy.asymmetric;
 
-import com.bmf.domain.base.strategy.BusinessDomainRelationship;
-import com.bmf.domain.base.strategy.role.downstream.DownstreamRole;
-import com.bmf.domain.base.strategy.role.upstream.UpstreamRole;
+import com.bmf.domain.base.strategy.asymmetric.role.downstream.DownstreamRole;
+import com.bmf.domain.base.strategy.asymmetric.role.upstream.UpstreamRole;
 
 /**
  * 非对称关系：上下游关系
  */
-public class UpstreamDownstreamRelationship extends BusinessDomainRelationship {
+public class UpstreamDownstreamRelationship extends AsymmetricRelationship {
 
     /**
      * 上游

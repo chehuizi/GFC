@@ -1,4 +1,4 @@
-package com.bmf.domain.base.strategy.role.downstream;
+package com.bmf.domain.base.strategy.asymmetric.role.downstream;
 
 /**
  * 遵从者

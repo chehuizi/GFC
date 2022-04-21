@@ -8,6 +8,11 @@ import com.bmf.domain.base.BusinessDomain;
 public class BusinessDomainRelationship {
 
     /**
+     * 关系
+     * @see com.bmf.domain.base.enums.RelationshipEnum
+     */
+    private String relationship;
+    /**
      * 领域A
      */
     private BusinessDomain domainA;

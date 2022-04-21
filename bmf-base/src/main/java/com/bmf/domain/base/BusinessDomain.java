@@ -16,7 +16,13 @@ public class BusinessDomain {
 
     /**
      * 业务域类型
+     * @see com.bmf.domain.base.enums.BusinessDomainTypeEnum
      */
     private String domainType;
+
+    /**
+     * 业务域名称
+     */
+    private String domainName;
 
 }
