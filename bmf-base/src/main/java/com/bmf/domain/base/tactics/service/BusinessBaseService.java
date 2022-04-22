@@ -10,7 +10,7 @@ public abstract class BusinessBaseService implements BusinessService {
     /**
      * 领域
      */
-    private BusinessDomainNameEnum domainName;
+    private String domainName;
     /**
      * 流程引擎
      */

@@ -8,7 +8,7 @@ public abstract class BusinessEntity {
     /**
      * 领域
      */
-    private BusinessDomainNameEnum domainName;
+    private String domainName;
     /**
      * 业务实体唯一ID
      */
