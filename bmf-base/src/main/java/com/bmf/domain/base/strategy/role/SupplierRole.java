@@ -1,4 +1,4 @@
-package com.bmf.domain.base.strategy.asymmetric.role;
+package com.bmf.domain.base.strategy.role;
 
 /**
  * 供应商角色

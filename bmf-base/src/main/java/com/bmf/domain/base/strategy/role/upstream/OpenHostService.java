@@ -1,4 +1,4 @@
-package com.bmf.domain.base.strategy.asymmetric.role.upstream;
+package com.bmf.domain.base.strategy.role.upstream;
 
 /**
  * 开放主机服务

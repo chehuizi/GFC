@@ -1,7 +1,7 @@
 package com.bmf.domain.base.strategy.asymmetric;
 
-import com.bmf.domain.base.strategy.asymmetric.role.downstream.DownstreamRole;
-import com.bmf.domain.base.strategy.asymmetric.role.upstream.UpstreamRole;
+import com.bmf.domain.base.strategy.role.downstream.DownstreamRole;
+import com.bmf.domain.base.strategy.role.upstream.UpstreamRole;
 
 /**
  * 非对称关系：上下游关系

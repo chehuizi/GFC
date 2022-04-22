@@ -1,7 +1,7 @@
 package com.bmf.domain.base.strategy.asymmetric;
 
-import com.bmf.domain.base.strategy.asymmetric.role.CustomerRole;
-import com.bmf.domain.base.strategy.asymmetric.role.SupplierRole;
+import com.bmf.domain.base.strategy.role.CustomerRole;
+import com.bmf.domain.base.strategy.role.SupplierRole;
 
 /**
  * 非对称关系：客户/供应商关系

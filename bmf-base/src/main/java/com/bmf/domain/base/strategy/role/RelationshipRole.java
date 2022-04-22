@@ -1,4 +1,4 @@
-package com.bmf.domain.base.strategy.asymmetric.role;
+package com.bmf.domain.base.strategy.role;
 
 import com.bmf.domain.base.BusinessDomain;
 import lombok.Data;
