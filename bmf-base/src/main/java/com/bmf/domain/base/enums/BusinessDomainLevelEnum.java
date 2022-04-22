@@ -1,9 +1,12 @@
 package com.bmf.domain.base.enums;
 
+import lombok.Getter;
+
 /**
  * 业务域等级枚举
  * 目前只支持三级业务域
  */
+@Getter
 public enum BusinessDomainLevelEnum {
 
     ONE(1, "一级业务域"),

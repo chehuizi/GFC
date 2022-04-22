@@ -1,8 +1,11 @@
 package com.bmf.domain.base.enums;
 
+import lombok.Getter;
+
 /**
  * 业务域关系枚举
  */
+@Getter
 public enum RelationshipEnum {
 
     PS("partnership", "合作伙伴"),

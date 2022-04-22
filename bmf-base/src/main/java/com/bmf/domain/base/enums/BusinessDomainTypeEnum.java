@@ -1,9 +1,12 @@
 package com.bmf.domain.base.enums;
 
+import lombok.Getter;
+
 /**
  * 业务域类型枚举
  * 目前只支持三种业务域类型
  */
+@Getter
 public enum BusinessDomainTypeEnum {
 
     CORE("core", "核心域"),

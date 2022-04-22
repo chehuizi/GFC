@@ -1,10 +1,12 @@
 package com.bmf.domain.base.strategy;
 
 import com.bmf.domain.base.BusinessDomain;
+import lombok.Data;
 
 /**
  * 业务域关系
  */
+@Data
 public class BusinessDomainRelationship {
 
     /**
@@ -20,4 +22,13 @@ public class BusinessDomainRelationship {
      * 领域B
      */
     private BusinessDomain domainB;
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"relationship\": \"" + relationship + "\"" +
+                ", \"domainA\": \"" + domainA.getDomainName() + "\"" +
+                ", \"domainB\": \"" + domainB.getDomainName() + "\"" +
+                '}';
+    }
 }

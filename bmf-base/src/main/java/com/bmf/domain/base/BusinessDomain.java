@@ -25,4 +25,21 @@ public class BusinessDomain {
      */
     private String domainName;
 
+    public BusinessDomain(int domainLevel, String domainType, String domainName) {
+        this.domainLevel = domainLevel;
+        this.domainType = domainType;
+        this.domainName = domainName;
+    }
+
+    public BusinessDomain() {
+    }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"domainLevel\": " + domainLevel +
+                ", \"domainType\": \"" + domainType + '\"' +
+                ", \"domainName\": \"" + domainName + '\"' +
+                '}';
+    }
 }
