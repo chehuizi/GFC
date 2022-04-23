@@ -14,4 +14,8 @@ public class RelationshipRole {
      */
     private BusinessDomain domain;
 
+    /**
+     * 角色
+     */
+    private String role;
 }

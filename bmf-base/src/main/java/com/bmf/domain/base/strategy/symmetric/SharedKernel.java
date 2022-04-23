@@ -5,4 +5,8 @@ package com.bmf.domain.base.strategy.symmetric;
  */
 public class SharedKernel extends SymmetricRelationship {
 
+    @Override
+    public String toString() {
+        return super.toString();
+    }
 }
