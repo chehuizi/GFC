@@ -4,10 +4,12 @@ import com.bmf.domain.base.enums.RelationshipEnum;
 import com.bmf.domain.base.strategy.BusinessDomainRelationship;
 import com.bmf.domain.base.strategy.role.inclusion.KernelRole;
 import com.bmf.domain.base.strategy.role.inclusion.ShellRole;
+import lombok.Data;
 
 /**
  * 包含关系
  */
+@Data
 public class InclusionRelationship extends BusinessDomainRelationship {
 
     /**

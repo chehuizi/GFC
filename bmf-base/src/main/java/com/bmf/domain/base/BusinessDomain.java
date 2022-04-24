@@ -9,10 +9,9 @@ import lombok.Data;
 public class BusinessDomain {
 
     /**
-     * 业务域等级
-     * @see com.bmf.domain.base.enums.BusinessDomainLevelEnum
+     * 业务域名称
      */
-    private int domainLevel;
+    private String domainName;
 
     /**
      * 业务域类型
@@ -21,9 +20,10 @@ public class BusinessDomain {
     private String domainType;
 
     /**
-     * 业务域名称
+     * 业务域等级
+     * @see com.bmf.domain.base.enums.BusinessDomainLevelEnum
      */
-    private String domainName;
+    private int domainLevel;
 
     public BusinessDomain(int domainLevel, String domainType, String domainName) {
         this.domainLevel = domainLevel;

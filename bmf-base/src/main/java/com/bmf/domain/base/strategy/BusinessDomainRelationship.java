@@ -10,7 +10,7 @@ import lombok.Data;
 public class BusinessDomainRelationship {
 
     /**
-     * 关系
+     * 领域关系
      * @see com.bmf.domain.base.enums.RelationshipEnum
      */
     private String relationship;
