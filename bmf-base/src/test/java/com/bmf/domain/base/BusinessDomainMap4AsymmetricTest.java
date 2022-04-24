@@ -2,13 +2,10 @@ package com.bmf.domain.base;
 
 import com.bmf.domain.base.enums.BusinessDomainLevelEnum;
 import com.bmf.domain.base.enums.BusinessDomainTypeEnum;
-import com.bmf.domain.base.enums.RelationshipEnum;
 import com.bmf.domain.base.strategy.asymmetric.UpstreamDownstreamRelationship;
 import com.bmf.domain.base.strategy.role.downstream.AnticorruptionLayer;
 import com.bmf.domain.base.strategy.role.downstream.Conformist;
 import com.bmf.domain.base.strategy.role.upstream.OpenHostService;
-import com.bmf.domain.base.strategy.symmetric.Partnership;
-import com.bmf.domain.base.strategy.symmetric.SharedKernel;
 import org.junit.Test;
 
 public class BusinessDomainMap4AsymmetricTest {
