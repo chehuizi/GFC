@@ -1,4 +1,4 @@
-package com.bmf.domain.biz.ims.entity;
+package com.bmf.domain.demo.ims.entity;
 
 import com.bmf.domain.base.tactics.entity.BusinessEntity;
 import lombok.Data;

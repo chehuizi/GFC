@@ -1,4 +1,4 @@
-package com.bmf.domain.biz.ims.service;
+package com.bmf.domain.demo.ims.service;
 
 import com.bmf.domain.base.tactics.service.*;
 
