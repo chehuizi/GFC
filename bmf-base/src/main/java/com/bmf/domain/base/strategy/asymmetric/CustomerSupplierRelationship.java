@@ -25,4 +25,13 @@ public class CustomerSupplierRelationship extends AsymmetricRelationship {
         customer = new CustomerRole();
         supplier = new SupplierRole();
     }
+
+    @Override
+    public String toString() {
+        return "{" +
+                "\"relationship\": \"" + super.getRelationship() + "\"" +
+                ", \"customer\": \"" + customer.getDomain().getDomainName() + "\"" +
+                ", \"supplier\": \"" + supplier.getDomain().getDomainName() + "\"" +
+                "}";
+    }
 }
