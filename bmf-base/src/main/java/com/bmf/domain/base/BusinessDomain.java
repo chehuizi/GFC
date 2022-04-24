@@ -37,9 +37,9 @@ public class BusinessDomain {
     @Override
     public String toString() {
         return "{" +
-                "\"domainLevel\": " + domainLevel +
-                ", \"domainType\": \"" + domainType + '\"' +
-                ", \"domainName\": \"" + domainName + '\"' +
-                '}';
+                "\"domainName\": \"" + domainName + "\"" +
+                ", \"domainType\": \"" + domainType + "\"" +
+                ", \"domainLevel\": " + domainLevel +
+                "}";
     }
 }

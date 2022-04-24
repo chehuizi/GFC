@@ -1,5 +1,6 @@
 package com.bmf.domain.base.strategy.asymmetric;
 
+import com.bmf.domain.base.enums.RelationshipEnum;
 import com.bmf.domain.base.strategy.role.downstream.DownstreamRole;
 import com.bmf.domain.base.strategy.role.upstream.UpstreamRole;
 import lombok.Data;
@@ -20,6 +21,7 @@ public class UpstreamDownstreamRelationship extends AsymmetricRelationship {
     private DownstreamRole downstream;
 
     public UpstreamDownstreamRelationship() {
+        super.setRelationship(RelationshipEnum.UD.getType());
         upstream = new UpstreamRole();
         downstream = new DownstreamRole();
     }
@@ -29,8 +31,9 @@ public class UpstreamDownstreamRelationship extends AsymmetricRelationship {
         return "{" +
                 "\"relationship\": \"" + super.getRelationship() + "\"" +
                 ", \"upstream\": \"" + upstream.getDomain().getDomainName() + "\"" +
-                ", \"upstreamRole\": \"" + upstream + "\"" +
+                ", \"upstreamRole\": \"" + upstream.getRole() + "\"" +
                 ", \"downstream\": \"" + downstream.getDomain().getDomainName() + "\"" +
+                ", \"downstreamRole\": \"" + downstream.getRole() + "\"" +
                 "}";
     }
 }

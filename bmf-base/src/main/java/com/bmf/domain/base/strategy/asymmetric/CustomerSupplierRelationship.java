@@ -1,7 +1,8 @@
 package com.bmf.domain.base.strategy.asymmetric;
 
-import com.bmf.domain.base.strategy.role.CustomerRole;
-import com.bmf.domain.base.strategy.role.SupplierRole;
+import com.bmf.domain.base.enums.RelationshipEnum;
+import com.bmf.domain.base.strategy.role.cs.CustomerRole;
+import com.bmf.domain.base.strategy.role.cs.SupplierRole;
 import lombok.Data;
 
 /**
@@ -18,4 +19,10 @@ public class CustomerSupplierRelationship extends AsymmetricRelationship {
      * 下游
      */
     private SupplierRole supplier;
+
+    public CustomerSupplierRelationship() {
+        super.setRelationship(RelationshipEnum.CS.getType());
+        customer = new CustomerRole();
+        supplier = new SupplierRole();
+    }
 }

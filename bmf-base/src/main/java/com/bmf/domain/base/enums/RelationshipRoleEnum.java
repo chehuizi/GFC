@@ -12,8 +12,10 @@ public enum RelationshipRoleEnum {
     OHS("OHS", "开放主机服务"),
     ACL("ACL", "防腐层"),
     CF("CF", "遵从者"),
-    Customer("Customer", "客户"),
-    Supplier("Supplier", "供应商"),
+    CUSTOMER("CUSTOMER", "客户"),
+    SUPPLIER("SUPPLIER", "供应商"),
+    KERNEL("KERNEL", "被包含"),
+    SHELL("SHELL", "包含"),
     ;
 
     /**
