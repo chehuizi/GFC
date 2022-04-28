@@ -29,7 +29,7 @@
       <scope>test</scope>
     </dependency>
     <dependency>
-      <groupId>com.chz</groupId>
+      <groupId>bmf</groupId>
       <artifactId>bmf-base</artifactId>
       <version>1.0-SNAPSHOT</version>
       <scope>compile</scope>
