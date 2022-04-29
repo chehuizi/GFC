@@ -1,4 +1,4 @@
-package com.bmf.domain.api;
+package com.bmf.api;
 
 import java.io.Serializable;
 
