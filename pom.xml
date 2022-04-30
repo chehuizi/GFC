@@ -14,6 +14,8 @@
         <module>bmf-common</module>
         <module>bmf-demo</module>
         <module>bmf-core</module>
+        <module>bmf-infrastructure</module>
+        <module>bmf-infrastructure</module>
     </modules>
 
     <name>bmf</name>

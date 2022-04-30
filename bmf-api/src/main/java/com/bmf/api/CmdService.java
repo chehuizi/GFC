@@ -11,20 +11,27 @@ public interface CmdService<T extends ReqDTO, R extends RespDTO> {
      * @param req
      * @return
      */
-    Result<R> create(T req);
+    Result<Boolean> create(T req);
 
     /**
      * 更新
      * @param req
      * @return
      */
-    Result<R> update(T req);
+    Result<Boolean> update(T req);
 
     /**
      * 删除
      * @param req
      * @return
      */
-    Result<R> delete(T req);
+    Result<Boolean> delete(T req);
+
+    /**
+     * 查询一个
+     * @param req
+     * @return
+     */
+    Result<R> queryOne(T req);
 
 }

@@ -5,10 +5,10 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>com.bmf</groupId>
-  <artifactId>bmf-core</artifactId>
+  <artifactId>bmf-infrastructure</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-core</name>
+  <name>bmf-infrastructure</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -28,11 +28,6 @@
     <dependency>
       <groupId>com.bmf</groupId>
       <artifactId>bmf-api</artifactId>
-      <version>1.0-SNAPSHOT</version>
-    </dependency>
-    <dependency>
-      <groupId>com.bmf</groupId>
-      <artifactId>bmf-infrastructure</artifactId>
       <version>1.0-SNAPSHOT</version>
     </dependency>
   </dependencies>
