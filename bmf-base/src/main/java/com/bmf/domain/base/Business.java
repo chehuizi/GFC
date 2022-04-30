@@ -5,15 +5,16 @@ import java.util.List;
 /**
  * 业务
  */
-public class Business implements BusinessDomainDesign {
+public class Business {
 
-    @Override
-    public BusinessDomainMap design4Strategy(List<BusinessDomain> domainList) {
-        return null;
-    }
+    /**
+     * 业务名称
+     */
+    private String name;
 
-    @Override
-    public BusinessDomain design4Tactics(BusinessDomain domain) {
-        return null;
-    }
+    /**
+     * 业务域
+     */
+    private List<BusinessDomain> businessDomainList;
+
 }

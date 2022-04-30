@@ -27,14 +27,13 @@ public class Result<T> implements Serializable {
 
     /**
      * 返回成功
-     * @param t
      * @return
      */
-    public Result<T> success(T t) {
-        Result<T> result = new Result<>();
+    public static Result success(Object data) {
+        Result result = new Result<>();
         result.setCode(ResultCodeEnum.SUCCESS.getCode());
         result.setMsg(ResultCodeEnum.SUCCESS.getDesc());
-        result.setData(t);
+        result.setData(data);
         return result;
     }
 }
