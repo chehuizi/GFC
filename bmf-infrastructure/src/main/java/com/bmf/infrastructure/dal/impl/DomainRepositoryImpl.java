@@ -5,9 +5,11 @@ import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.mapper.DomainMapper;
 import com.bmf.infrastructure.dal.po.DomainPO;
 import com.bmf.infrastructure.dal.utils.DomainPOUtil;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 
+@Service
 public class DomainRepositoryImpl implements DomainRepository {
 
     @Resource

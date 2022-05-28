@@ -1,13 +1,20 @@
 package com.bmf;
 
+import org.springframework.boot.WebApplicationType;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.builder.SpringApplicationBuilder;
+
 /**
  * Hello world!
  *
  */
-public class App 
-{
-    public static void main( String[] args )
-    {
-        System.out.println( "Hello World!" );
+@SpringBootApplication
+public class App {
+
+    public static void main( String[] args ) {
+        new SpringApplicationBuilder().sources(App.class)
+                .web(WebApplicationType.NONE)
+                .run(args);
     }
+
 }
