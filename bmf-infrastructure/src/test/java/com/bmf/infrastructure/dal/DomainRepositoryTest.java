@@ -1,9 +1,9 @@
 package com.bmf.infrastructure.dal;
 
 import com.bmf.api.domain.DomainReqDTO;
-import com.bmf.domain.base.BusinessDomain;
-import com.bmf.domain.base.enums.BusinessDomainLevelEnum;
-import com.bmf.domain.base.enums.BusinessDomainTypeEnum;
+import com.bmf.base.BusinessDomain;
+import com.bmf.base.enums.BusinessDomainLevelEnum;
+import com.bmf.base.enums.BusinessDomainTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;

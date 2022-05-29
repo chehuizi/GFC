@@ -1,7 +1,7 @@
 package com.bmf.api.business;
 
 import com.bmf.api.ReqDTO;
-import com.bmf.domain.base.Business;
+import com.bmf.base.Business;
 
 import java.io.Serializable;
 
