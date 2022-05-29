@@ -1,110 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.didi.blackhorse.assets.dal.mapper.AssetCardBaseMapper">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainMapper">
 
     <sql id="Base_Column_List">
+        id, domain_name, domain_type, domain_level
     </sql>
 
     <select id="selectOne" resultType="com.bmf.infrastructure.dal.po.DomainPO">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM asset_card_base
-        <where>
-            <if test="cardId !=null ">
-                and card_id = #{cardId}
-            </if>
-            <if test="outerId !=null ">
-                and outer_id = #{outerId}
-            </if>
-            <if test="isDeleted != null">
-                and is_deleted = #{isDeleted}
-            </if>
-        </where>
+        FROM bmf_domain
     </select>
 
-    <insert id="insert">
-        INSERT INTO asset_card_base
-        <trim prefix="(" suffix=")" suffixOverrides=",">
-            <if test="null != cardId">card_id,</if>
-            <if test="null != cardType">card_type,</if>
-            <if test="null != cardSubType">card_sub_type,</if>
-            <if test="null != cardSpec">card_spec,</if>
-            <if test="null != outerId">outer_id,</if>
-            <if test="null != currentState">current_state,</if>
-            <if test="null != supplierType">supplier_type,</if>
-            <if test="null != supplierId">supplier_id,</if>
-            <if test="null != supplierName">supplier_name,</if>
-            <if test="null != ownerType">owner_type,</if>
-            <if test="null != ownerId">owner_id,</if>
-            <if test="null != ownerName">owner_name,</if>
-            <if test="null != managerRole">manager_role,</if>
-            <if test="null != managerId">manager_id,</if>
-            <if test="null != managerName">manager_name,</if>
-            <if test="null != managerCityId">manager_city_id,</if>
-            <if test="null != managerCityName">manager_city_name,</if>
-            <if test="null != geoProvinceId">geo_province_id,</if>
-            <if test="null != geoProvinceName">geo_province_name,</if>
-            <if test="null != geoCityId">geo_city_id,</if>
-            <if test="null != geoCityName">geo_city_name,</if>
-            <if test="null != geoAreaId">geo_area_id,</if>
-            <if test="null != geoAreaName">geo_area_name,</if>
-            <if test="null != geoAddress">geo_address,</if>
-        </trim>
-        <trim prefix="values (" suffix=")" suffixOverrides=",">
-            <if test="null != cardId">#{cardId},</if>
-            <if test="null != cardType">#{cardType},</if>
-            <if test="null != cardSubType">#{cardSubType},</if>
-            <if test="null != cardSpec">#{cardSpec},</if>
-            <if test="null != outerId">#{outerId},</if>
-            <if test="null != currentState">#{currentState},</if>
-            <if test="null != supplierType">#{supplierType},</if>
-            <if test="null != supplierId">#{supplierId},</if>
-            <if test="null != supplierName">#{supplierName},</if>
-            <if test="null != ownerType">#{ownerType},</if>
-            <if test="null != ownerId">#{ownerId},</if>
-            <if test="null != ownerName">#{ownerName},</if>
-            <if test="null != managerRole">#{managerRole},</if>
-            <if test="null != managerId">#{managerId},</if>
-            <if test="null != managerName">#{managerName},</if>
-            <if test="null != managerCityId">#{managerCityId},</if>
-            <if test="null != managerCityName">#{managerCityName},</if>
-            <if test="null != geoProvinceId">#{geoProvinceId},</if>
-            <if test="null != geoProvinceName">#{geoProvinceName},</if>
-            <if test="null != geoCityId">#{geoCityId},</if>
-            <if test="null != geoCityName">#{geoCityName},</if>
-            <if test="null != geoAreaId">#{geoAreaId},</if>
-            <if test="null != geoAreaName">#{geoAreaName},</if>
-            <if test="null != geoAddress">#{geoAddress},</if>
-        </trim>
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO" >
+        insert into bmf_domain (domain_name, domain_type, domain_level)
+        values (
+            #{domainName,jdbcType=VARCHAR},
+            #{domainType,jdbcType=VARCHAR},
+            #{domainLevel,jdbcType=BIGINT}
+        )
     </insert>
 
-    <update id="update" parameterType="com.didi.blackhorse.assets.dal.po.card.AssetCardBasePO">
-        update asset_card_base
-        <set>
-            <if test="null != cardType">card_type = #{cardType},</if>
-            <if test="null != cardSubType">card_sub_type= #{cardSubType},</if>
-            <if test="null != cardSpec">card_spec= #{cardSpec},</if>
-            <if test="null != outerId">outer_id= #{outerId},</if>
-            <if test="null != currentState">current_state= #{currentState},</if>
-            <if test="null != supplierType">supplier_type = #{supplierType},</if>
-            <if test="null != supplierId">supplier_id = #{supplierId},</if>
-            <if test="null != supplierName">supplier_name = #{supplierName},</if>
-            <if test="null != geoAddress">geo_address = #{geoAddress},</if>
-            <if test="null != ownerType">owner_type= #{ownerType},</if>
-            <if test="null != ownerId">owner_id= #{ownerId},</if>
-            <if test="null != ownerName">owner_name= #{ownerName},</if>
-            <if test="null != managerRole">manager_role= #{managerRole},</if>
-            <if test="null != managerId">manager_id= #{managerId},</if>
-            <if test="null != managerName">manager_name= #{managerName},</if>
-            <if test="null != managerCityId">manager_city_id = #{managerCityId},</if>
-            <if test="null != managerCityName">manager_city_name = #{managerCityName},</if>
-            <if test="null != geoProvinceId">geo_province_id= #{geoProvinceId},</if>
-            <if test="null != geoProvinceName">geo_province_name= #{geoProvinceName},</if>
-            <if test="null != geoCityId">geo_city_id= #{geoCityId},</if>
-            <if test="null != geoCityName">geo_city_name= #{geoCityName},</if>
-            <if test="null != geoAreaId">geo_area_id= #{geoAreaId},</if>
-            <if test="null != geoAreaName">geo_area_name= #{geoAreaName},</if>
-        </set>
-        WHERE card_id = #{cardId}
-    </update>
 </mapper>

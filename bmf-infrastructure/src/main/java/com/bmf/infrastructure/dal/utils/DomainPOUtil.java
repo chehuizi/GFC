@@ -6,6 +6,10 @@ import com.bmf.infrastructure.dal.po.DomainPO;
 public class DomainPOUtil {
 
     public static DomainPO convert(DomainReqDTO domainReqDTO) {
-        return null;
+        DomainPO domainPO = new DomainPO();
+        domainPO.setDomainName(domainReqDTO.getBusinessDomain().getDomainName());
+        domainPO.setDomainType(domainReqDTO.getBusinessDomain().getDomainType());
+        domainPO.setDomainLevel(domainReqDTO.getBusinessDomain().getDomainLevel());
+        return domainPO;
     }
 }
