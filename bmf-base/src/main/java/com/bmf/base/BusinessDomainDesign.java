@@ -1,13 +1,11 @@
 package com.bmf.base;
 
-import com.bmf.base.BusinessDomainMap;
-
 import java.util.List;
 
 /**
  * 业务设计
  */
-public interface BusinessDesign {
+public interface BusinessDomainDesign {
 
     /**
      * 战略设计

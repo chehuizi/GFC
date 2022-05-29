@@ -17,4 +17,9 @@ public class Business {
      */
     private List<BusinessDomain> businessDomainList;
 
+    /**
+     * 业务域映射
+     */
+    private BusinessDomainMap businessDomainMap;
+
 }
