@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-infrastructure</artifactId>
+  <artifactId>bmf-server</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-infrastructure</name>
+  <name>bmf-server</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -29,6 +29,10 @@
       <artifactId>junit</artifactId>
       <version>4.12</version>
       <scope>test</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-core</artifactId>
     </dependency>
     <!-- spring-boot -->
     <dependency>

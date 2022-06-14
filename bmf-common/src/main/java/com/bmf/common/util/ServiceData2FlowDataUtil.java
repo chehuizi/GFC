@@ -1,13 +1,13 @@
 package com.bmf.common.util;
 
-import com.bmf.base.tactics.flow.context.FlowInput;
-import com.bmf.base.tactics.flow.context.FlowInputDataBase;
-import com.bmf.base.tactics.flow.context.FlowOutput;
-import com.bmf.base.tactics.flow.context.FlowOutputDataBase;
-import com.bmf.base.tactics.service.ServiceReq;
-import com.bmf.base.tactics.service.ServiceReqDataBase;
-import com.bmf.base.tactics.service.ServiceResp;
-import com.bmf.base.tactics.service.ServiceRespDataBase;
+import com.bmf.domain.base.tactics.flow.context.FlowInput;
+import com.bmf.domain.base.tactics.flow.context.FlowInputDataBase;
+import com.bmf.domain.base.tactics.flow.context.FlowOutput;
+import com.bmf.domain.base.tactics.flow.context.FlowOutputDataBase;
+import com.bmf.domain.base.tactics.service.ServiceReq;
+import com.bmf.domain.base.tactics.service.ServiceReqDataBase;
+import com.bmf.domain.base.tactics.service.ServiceResp;
+import com.bmf.domain.base.tactics.service.ServiceRespDataBase;
 
 public class ServiceData2FlowDataUtil {
 
