@@ -1,18 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.bmf.infrastructure.dal.mapper.DomainMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="domain_name" jdbcType="VARCHAR" property="domainName"/>
+        <result column="domain_type" jdbcType="VARCHAR" property="domainType"/>
+        <result column="domain_level" jdbcType="INTEGER" property="domainLevel"/>
+    </resultMap>
 
     <sql id="Base_Column_List">
         id, domain_name, domain_type, domain_level
     </sql>
 
-    <select id="selectOne" resultType="com.bmf.infrastructure.dal.po.DomainPO">
+    <select id="selectOne" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain
+        limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO" >
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO">
         insert into bmf_domain (domain_name, domain_type, domain_level)
         values (
             #{domainName,jdbcType=VARCHAR},
