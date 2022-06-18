@@ -31,6 +31,8 @@
         <pagehelper.version>1.2.10</pagehelper.version>
         <druid.version>1.1.10</druid.version>
         <bmf.version>1.0-SNAPSHOT</bmf.version>
+        <junit.version>4.12</junit.version>
+        <lombok.version>1.18.10</lombok.version>
     </properties>
 
     <dependencyManagement>
@@ -104,6 +106,16 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>druid-spring-boot-starter</artifactId>
                 <version>${druid.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <version>${junit.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
