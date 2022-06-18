@@ -7,12 +7,13 @@ import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.core.utils.BusinessUtil;
 import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.po.BusinessPO;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
-
+@Service
 public class BusinessCmdServiceImpl implements BusinessCmdService {
 
-    @Resource
+    @Autowired
     private BusinessRepository businessRepository;
 
     @Override
