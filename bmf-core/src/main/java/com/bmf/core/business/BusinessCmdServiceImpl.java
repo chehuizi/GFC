@@ -4,6 +4,8 @@ import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.api.business.BusinessRespDTO;
+import com.bmf.api.domain.DomainReqDTO;
+import com.bmf.common.validator.ParamValidator;
 import com.bmf.core.utils.BusinessUtil;
 import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.po.BusinessPO;
@@ -39,5 +41,11 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         BusinessPO businessPO = businessRepository.selectOne(req);
         BusinessRespDTO businessRespDTO = BusinessUtil.convert(businessPO);
         return Result.success(businessRespDTO);
+    }
+
+    @Override
+    @ParamValidator
+    public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO, DomainReqDTO domainReqDTO) {
+        return null;
     }
 }

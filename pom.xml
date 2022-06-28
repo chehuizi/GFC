@@ -9,13 +9,13 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>bmf-api</module>
         <module>bmf-base</module>
+        <module>bmf-api</module>
         <module>bmf-common</module>
-        <module>bmf-demo</module>
         <module>bmf-core</module>
         <module>bmf-infrastructure</module>
         <module>bmf-server</module>
+        <module>bmf-demo</module>
     </modules>
 
     <name>bmf</name>
