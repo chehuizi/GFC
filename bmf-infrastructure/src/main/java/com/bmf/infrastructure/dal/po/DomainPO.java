@@ -6,6 +6,10 @@ import lombok.Data;
 public class DomainPO extends BasePO {
 
     /**
+     * 领域编码
+     */
+    private Integer domainCode;
+    /**
      * 域名称
      */
     private String domainName;

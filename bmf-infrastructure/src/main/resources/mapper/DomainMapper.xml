@@ -3,13 +3,14 @@
 <mapper namespace="com.bmf.infrastructure.dal.mapper.DomainMapper">
     <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="domain_code" jdbcType="VARCHAR" property="domainCode"/>
         <result column="domain_name" jdbcType="VARCHAR" property="domainName"/>
         <result column="domain_type" jdbcType="VARCHAR" property="domainType"/>
         <result column="domain_level" jdbcType="INTEGER" property="domainLevel"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, domain_name, domain_type, domain_level
+        id, domain_code, domain_name, domain_type, domain_level
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap">
@@ -20,11 +21,12 @@
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO">
-        insert into bmf_domain (domain_name, domain_type, domain_level)
+        insert into bmf_domain (domain_code, domain_name, domain_type, domain_level)
         values (
+            #{domainCode,jdbcType=INTEGER},
             #{domainName,jdbcType=VARCHAR},
             #{domainType,jdbcType=VARCHAR},
-            #{domainLevel,jdbcType=BIGINT}
+            #{domainLevel,jdbcType=INTEGER}
         )
     </insert>
 

@@ -27,6 +27,7 @@ public class DomainCmdServiceTest {
     public void test_domain_create() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(12);
         businessDomain.setDomainName("test");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
