@@ -21,7 +21,10 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
 
     @Override
     public boolean insert(BusinessReqDTO req) {
-        return businessRelDomainMapper.insert(null) == 1;
+        BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
+        businessRelDomainPO.setBusinessCode(req.getBusiness().getBusinessCode());
+        businessRelDomainPO.setDomainCode(req.getDomain().getDomainCode());
+        return businessRelDomainMapper.insert(businessRelDomainPO) == 1;
     }
 
     @Override

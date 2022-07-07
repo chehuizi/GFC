@@ -7,6 +7,7 @@ import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.common.validator.ParamValidator;
 import com.bmf.core.utils.BusinessUtil;
+import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.po.BusinessPO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +18,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Autowired
     private BusinessRepository businessRepository;
+    @Autowired
+    private BusinessRelDomainRepository businessRelDomainRepository;
 
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
@@ -45,7 +48,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     @ParamValidator
-    public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO, DomainReqDTO domainReqDTO) {
-        return null;
+    public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
+        boolean result = businessRelDomainRepository.insert(businessReqDTO);
+        return Result.success(result);
     }
 }
