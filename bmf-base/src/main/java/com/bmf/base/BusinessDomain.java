@@ -9,6 +9,11 @@ import lombok.Data;
 public class BusinessDomain {
 
     /**
+     * 领域编码
+     */
+    private Integer domainCode;
+
+    /**
      * 业务域名称
      */
     private String domainName;
