@@ -1,7 +1,11 @@
 CREATE TABLE `bmf_business_rel_domain` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `business_code` int(11) NOT NULL COMMENT '业务编码',
-  `domain_code` bigint(20) unsigned NOT NULL COMMENT '领域编码',
+  `domain_relation` varchar(64) NOT NULL COMMENT '领域关系',
+  `domain_a_code` int(11) NOT NULL COMMENT '领域A编码',
+  `domain_b_code` int(11) NOT NULL COMMENT '领域B编码',
+  `domain_a_role` varchar(64) NOT NULL COMMENT '领域A角色',
+  `domain_b_role` varchar(64) NOT NULL COMMENT '领域B角色',
   `gmt_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `gmt_modify` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `is_deleted` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否删除（1:删除 0:正常）',

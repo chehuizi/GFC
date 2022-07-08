@@ -1,4 +1,8 @@
-package com.bmf.base;
+package com.bmf.design;
+
+import com.bmf.base.Business;
+import com.bmf.base.BusinessDomain;
+import com.bmf.base.BusinessDomainMap;
 
 import java.util.List;
 
