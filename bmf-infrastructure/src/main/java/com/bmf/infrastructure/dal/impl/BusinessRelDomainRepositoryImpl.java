@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessRelDomainMapper;
 import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
@@ -15,25 +15,25 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     private BusinessRelDomainMapper businessRelDomainMapper;
 
     @Override
-    public BusinessRelDomainPO selectOne(BusinessReqDTO req) {
+    public BusinessRelDomainPO selectOne(BusinessRelDomainDO req) {
         return businessRelDomainMapper.selectOne(null);
     }
 
     @Override
-    public boolean insert(BusinessReqDTO req) {
+    public boolean insert(BusinessRelDomainDO req) {
         BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
-        businessRelDomainPO.setBusinessCode(req.getBusiness().getBusinessCode());
-        businessRelDomainPO.setDomainCode(req.getDomain().getDomainCode());
+        businessRelDomainPO.setBusinessCode(req.getBusinessCode());
+        businessRelDomainPO.setDomainCode(req.getDomainCode());
         return businessRelDomainMapper.insert(businessRelDomainPO) == 1;
     }
 
     @Override
-    public boolean update(BusinessReqDTO req) {
+    public boolean update(BusinessRelDomainDO req) {
         return false;
     }
 
     @Override
-    public boolean delete(BusinessReqDTO req) {
+    public boolean delete(BusinessRelDomainDO req) {
         return false;
     }
 }

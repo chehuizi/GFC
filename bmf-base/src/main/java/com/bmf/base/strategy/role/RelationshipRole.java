@@ -16,6 +16,7 @@ public class RelationshipRole {
 
     /**
      * 角色
+     * @see com.bmf.base.enums.RelationshipRoleEnum
      */
     private String role;
 }

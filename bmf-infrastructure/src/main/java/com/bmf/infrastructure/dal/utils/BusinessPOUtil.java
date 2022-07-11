@@ -1,9 +1,7 @@
 package com.bmf.infrastructure.dal.utils;
 
-import com.bmf.api.business.BusinessReqDTO;
-import com.bmf.api.domain.DomainReqDTO;
+import com.bmf.base.Business;
 import com.bmf.infrastructure.dal.po.BusinessPO;
-import com.bmf.infrastructure.dal.po.DomainPO;
 
 /**
  * 工具类
@@ -11,14 +9,14 @@ import com.bmf.infrastructure.dal.po.DomainPO;
 public class BusinessPOUtil {
 
     /**
-     * 转换DTO到PO
-     * @param businessReqDTO
+     * 转换DO到PO
+     * @param business
      * @return
      */
-    public static BusinessPO convert(BusinessReqDTO businessReqDTO) {
+    public static BusinessPO convert(Business business) {
         BusinessPO businessPO = new BusinessPO();
-        businessPO.setBusinessCode(businessReqDTO.getBusiness().getBusinessCode());
-        businessPO.setBusinessName(businessReqDTO.getBusiness().getBusinessName());
+        businessPO.setBusinessCode(business.getBusinessCode());
+        businessPO.setBusinessName(business.getBusinessName());
         return businessPO;
     }
 }

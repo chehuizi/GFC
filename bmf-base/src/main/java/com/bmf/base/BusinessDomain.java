@@ -6,7 +6,7 @@ import lombok.Data;
  * 业务领域
  */
 @Data
-public class BusinessDomain {
+public class BusinessDomain extends BaseDO {
 
     /**
      * 领域编码

@@ -1,12 +1,12 @@
 package com.bmf.infrastructure.dal;
 
-import com.bmf.api.ReqDTO;
+import com.bmf.base.BaseDO;
 import com.bmf.infrastructure.dal.po.BasePO;
 
 /**
  * 仓储接口基类
  */
-public interface BaseRepository<T extends ReqDTO, R extends BasePO> {
+public interface BaseRepository<T extends BaseDO, R extends BasePO> {
 
     /**
      * 查询单条记录

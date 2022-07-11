@@ -10,7 +10,7 @@ import java.util.List;
  * 业务域映射
  */
 @Data
-public class BusinessDomainMap {
+public class BusinessDomainMap extends BaseDO {
 
     /**
      * 业务域列表

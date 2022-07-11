@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.base.Business;
 import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessMapper;
 import com.bmf.infrastructure.dal.po.BusinessPO;
@@ -16,22 +16,22 @@ public class BusinessRepositoryImpl implements BusinessRepository {
     private BusinessMapper businessMapper;
 
     @Override
-    public BusinessPO selectOne(BusinessReqDTO req) {
+    public BusinessPO selectOne(Business req) {
         return null;
     }
 
     @Override
-    public boolean insert(BusinessReqDTO req) {
+    public boolean insert(Business req) {
         return businessMapper.insert(BusinessPOUtil.convert(req)) == 1;
     }
 
     @Override
-    public boolean update(BusinessReqDTO req) {
+    public boolean update(Business req) {
         return false;
     }
 
     @Override
-    public boolean delete(BusinessReqDTO req) {
+    public boolean delete(Business req) {
         return false;
     }
 }

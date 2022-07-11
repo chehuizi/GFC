@@ -8,7 +8,7 @@ import java.util.List;
  * 业务
  */
 @Data
-public class Business {
+public class Business extends BaseDO {
 
     /**
      * 业务编码

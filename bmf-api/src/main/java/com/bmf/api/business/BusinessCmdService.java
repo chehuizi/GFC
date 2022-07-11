@@ -15,4 +15,10 @@ public interface BusinessCmdService extends CmdService<BusinessReqDTO, BusinessR
      */
     Result<Boolean> addDomain(BusinessReqDTO businessReqDTO);
 
+    /**
+     * 添加领域关系
+     * @param businessReqDTO
+     * @return
+     */
+    Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO);
 }

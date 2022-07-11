@@ -1,16 +1,16 @@
 package com.bmf.infrastructure.dal.utils;
 
-import com.bmf.api.domain.DomainReqDTO;
+import com.bmf.base.BusinessDomain;
 import com.bmf.infrastructure.dal.po.DomainPO;
 
 public class DomainPOUtil {
 
-    public static DomainPO convert(DomainReqDTO domainReqDTO) {
+    public static DomainPO convert(BusinessDomain businessDomain) {
         DomainPO domainPO = new DomainPO();
-        domainPO.setDomainCode(domainReqDTO.getBusinessDomain().getDomainCode());
-        domainPO.setDomainName(domainReqDTO.getBusinessDomain().getDomainName());
-        domainPO.setDomainType(domainReqDTO.getBusinessDomain().getDomainType());
-        domainPO.setDomainLevel(domainReqDTO.getBusinessDomain().getDomainLevel());
+        domainPO.setDomainCode(businessDomain.getDomainCode());
+        domainPO.setDomainName(businessDomain.getDomainName());
+        domainPO.setDomainType(businessDomain.getDomainType());
+        domainPO.setDomainLevel(businessDomain.getDomainLevel());
         return domainPO;
     }
 }

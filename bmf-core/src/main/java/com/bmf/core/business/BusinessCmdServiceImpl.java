@@ -6,6 +6,7 @@ import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.common.validator.ParamValidator;
 import com.bmf.core.utils.BusinessUtil;
+import com.bmf.design.BusinessDomainDesign4Strategy;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.po.BusinessPO;
@@ -19,6 +20,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     private BusinessRepository businessRepository;
     @Autowired
     private BusinessRelDomainRepository businessRelDomainRepository;
+    @Autowired
+    private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
 
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
@@ -50,5 +53,11 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
         boolean result = businessRelDomainRepository.insert(businessReqDTO);
         return Result.success(result);
+    }
+
+    @Override
+    public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
+        businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getBusiness(), businessReqDTO.getRelationship());
+        return null;
     }
 }

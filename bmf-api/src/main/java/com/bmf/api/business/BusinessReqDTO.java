@@ -3,6 +3,7 @@ package com.bmf.api.business;
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.strategy.BusinessDomainRelationship;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -23,4 +24,8 @@ public class BusinessReqDTO extends ReqDTO implements Serializable {
      * 领域
      */
     private BusinessDomain domain;
+    /**
+     * 领域关系
+     */
+    private BusinessDomainRelationship relationship;
 }
