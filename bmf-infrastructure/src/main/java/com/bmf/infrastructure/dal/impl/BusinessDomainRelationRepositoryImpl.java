@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainRelationMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
@@ -15,29 +15,29 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
     private BusinessDomainRelationMapper businessDomainRelationMapper;
 
     @Override
-    public BusinessDomainRelationPO selectOne(BusinessReqDTO req) {
+    public BusinessDomainRelationPO selectOne(BusinessDomainRelationship req) {
         return null;
     }
 
     @Override
-    public boolean insert(BusinessReqDTO req) {
+    public boolean insert(BusinessDomainRelationship req) {
         BusinessDomainRelationPO businessDomainRelationPO = new BusinessDomainRelationPO();
-        businessDomainRelationPO.setBusinessCode(req.getBusiness().getBusinessCode());
-        businessDomainRelationPO.setDomainRelation(req.getRelationship().getRelationship());
-        businessDomainRelationPO.setDomainACode(req.getRelationship().getRoleA().getDomain().getDomainCode());
-        businessDomainRelationPO.setDomainARole(req.getRelationship().getRoleA().getRole());
-        businessDomainRelationPO.setDomainBCode(req.getRelationship().getRoleB().getDomain().getDomainCode());
-        businessDomainRelationPO.setDomainBRole(req.getRelationship().getRoleB().getRole());
+        businessDomainRelationPO.setBusinessCode(req.getBusinessCode());
+        businessDomainRelationPO.setDomainRelation(req.getRelationship());
+        businessDomainRelationPO.setDomainACode(req.getRoleA().getDomain().getDomainCode());
+        businessDomainRelationPO.setDomainARole(req.getRoleA().getRole());
+        businessDomainRelationPO.setDomainBCode(req.getRoleB().getDomain().getDomainCode());
+        businessDomainRelationPO.setDomainBRole(req.getRoleB().getRole());
         return businessDomainRelationMapper.insert(businessDomainRelationPO) == 1;
     }
 
     @Override
-    public boolean update(BusinessReqDTO req) {
+    public boolean update(BusinessDomainRelationship req) {
         return false;
     }
 
     @Override
-    public boolean delete(BusinessReqDTO req) {
+    public boolean delete(BusinessDomainRelationship req) {
         return false;
     }
 }

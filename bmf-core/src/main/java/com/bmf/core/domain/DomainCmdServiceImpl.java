@@ -4,11 +4,11 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.DomainCmdService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
+import com.bmf.base.BusinessDomain;
+import com.bmf.core.utils.DomainUtil;
 import com.bmf.infrastructure.dal.DomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Service
 public class DomainCmdServiceImpl implements DomainCmdService {
@@ -18,7 +18,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
 
     @Override
     public Result<Boolean> create(DomainReqDTO req) {
-        boolean result = domainRepository.insert(req);
+        BusinessDomain domain = DomainUtil.convert(req);
+        boolean result = domainRepository.insert(domain);
         return Result.success(result);
     }
 

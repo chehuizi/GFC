@@ -1,5 +1,6 @@
 package com.bmf.core.utils;
 
+import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.infrastructure.dal.po.DomainPO;
@@ -22,5 +23,14 @@ public class DomainUtil {
         businessDomain.setDomainLevel(domainPO.getDomainLevel());
         domainRespDTO.setBusinessDomain(businessDomain);
         return domainRespDTO;
+    }
+
+    public static BusinessDomain convert(DomainReqDTO domainReqDTO) {
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(domainReqDTO.getBusinessDomain().getDomainCode());
+        businessDomain.setDomainName(domainReqDTO.getBusinessDomain().getDomainName());
+        businessDomain.setDomainLevel(domainReqDTO.getBusinessDomain().getDomainLevel());
+        businessDomain.setDomainType(domainReqDTO.getBusinessDomain().getDomainType());
+        return businessDomain;
     }
 }

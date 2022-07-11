@@ -4,6 +4,8 @@ import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.api.business.BusinessRespDTO;
+import com.bmf.base.Business;
+import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.common.validator.ParamValidator;
 import com.bmf.core.utils.BusinessUtil;
 import com.bmf.design.BusinessDomainDesign4Strategy;
@@ -25,25 +27,29 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
-        boolean ret = businessRepository.insert(req);
+        Business business = BusinessUtil.convert(req);
+        boolean ret = businessRepository.insert(business);
         return Result.success(ret);
     }
 
     @Override
     public Result<Boolean> update(BusinessReqDTO req) {
-        boolean ret = businessRepository.update(req);
+        Business business = BusinessUtil.convert(req);
+        boolean ret = businessRepository.update(business);
         return Result.success(ret);
     }
 
     @Override
     public Result<Boolean> delete(BusinessReqDTO req) {
-        boolean ret = businessRepository.delete(req);
+        Business business = BusinessUtil.convert(req);
+        boolean ret = businessRepository.delete(business);
         return Result.success(ret);
     }
 
     @Override
     public Result<BusinessRespDTO> queryOne(BusinessReqDTO req) {
-        BusinessPO businessPO = businessRepository.selectOne(req);
+        Business business = BusinessUtil.convert(req);
+        BusinessPO businessPO = businessRepository.selectOne(business);
         BusinessRespDTO businessRespDTO = BusinessUtil.convert(businessPO);
         return Result.success(businessRespDTO);
     }
@@ -51,7 +57,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     @Override
     @ParamValidator
     public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
-        boolean result = businessRelDomainRepository.insert(businessReqDTO);
+        BusinessRelDomainDO businessRelDomainDO = BusinessUtil.convertBusinessRelDomainDO(businessReqDTO);
+        boolean result = businessRelDomainRepository.insert(businessRelDomainDO);
         return Result.success(result);
     }
 
