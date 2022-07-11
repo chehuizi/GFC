@@ -5,6 +5,12 @@ import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.enums.BusinessDomainTypeEnum;
+import com.bmf.base.enums.RelationshipEnum;
+import com.bmf.base.enums.RelationshipRoleEnum;
+import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.strategy.role.partner.PartnerRole;
+import com.bmf.base.strategy.symmetric.Partnership;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -41,6 +47,26 @@ public class BusinessCmdServiceTest {
         businessDomain.setDomainCode(10);
         businessReqDTO.setDomain(businessDomain);
         Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_business_domain_relation_create() {
+        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(11);
+        business.setBusinessName("test_business_1");
+        businessReqDTO.setBusiness(business);
+        Partnership partnership = new Partnership();
+        partnership.setBusinessCode(11);
+        PartnerRole roleA = new PartnerRole();
+        roleA.setDomain(new BusinessDomain(1, "test_domain_1", BusinessDomainTypeEnum.CORE.getType(), 1));
+        partnership.setRoleA(roleA);
+        PartnerRole roleB = new PartnerRole();
+        roleB.setDomain(new BusinessDomain(2, "test_domain_2", BusinessDomainTypeEnum.CORE.getType(), 1));
+        partnership.setRoleB(roleB);
+        businessReqDTO.setRelationship(partnership);
+        Result<Boolean> result = businessCmdService.addDomainRelation(businessReqDTO);
         System.out.println(result);
     }
 }

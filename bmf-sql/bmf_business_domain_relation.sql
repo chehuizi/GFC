@@ -1,4 +1,4 @@
-CREATE TABLE `bmf_business_rel_domain` (
+CREATE TABLE `bmf_business_domain_relation` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `business_code` int(11) NOT NULL COMMENT '业务编码',
   `domain_relation` varchar(64) NOT NULL COMMENT '领域关系',

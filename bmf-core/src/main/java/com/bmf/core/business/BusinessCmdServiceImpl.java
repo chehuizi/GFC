@@ -64,7 +64,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
-        businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getBusiness(), businessReqDTO.getRelationship());
-        return null;
+        boolean result = businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getBusiness(), businessReqDTO.getRelationship());
+        return Result.success(result);
     }
 }
