@@ -1,4 +1,4 @@
-package com.bmf.core.business;
+package com.bmf.api.impl.business;
 
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
@@ -6,6 +6,7 @@ import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.DO.BusinessRelDomainDO;
+import com.bmf.base.tactics.service.BusinessService;
 import com.bmf.common.validator.ParamValidator;
 import com.bmf.core.utils.BusinessUtil;
 import com.bmf.design.BusinessDomainDesign4Strategy;
@@ -19,11 +20,7 @@ import org.springframework.stereotype.Service;
 public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Autowired
-    private BusinessRepository businessRepository;
-    @Autowired
-    private BusinessRelDomainRepository businessRelDomainRepository;
-    @Autowired
-    private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
+    private BusinessService businessService;
 
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
@@ -64,7 +61,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
-        boolean result = businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getBusiness(), businessReqDTO.getRelationship());
+        boolean result = businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getRelationship());
         return Result.success(result);
     }
 }

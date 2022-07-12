@@ -11,5 +11,5 @@ public interface BusinessDomainDesign4Strategy {
     /**
      * 构建领域关系
      */
-    boolean buildBusinessDomainRelationship(Business business, BusinessDomainRelationship relationship);
+    boolean buildBusinessDomainRelationship(BusinessDomainRelationship relationship);
 }

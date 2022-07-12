@@ -5,7 +5,7 @@ import com.bmf.api.domain.DomainCmdService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
-import com.bmf.core.utils.DomainUtil;
+import com.bmf.common.utils.DomainUtil;
 import com.bmf.infrastructure.dal.DomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

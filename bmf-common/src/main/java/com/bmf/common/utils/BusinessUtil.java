@@ -1,16 +1,10 @@
-package com.bmf.core.utils;
+package com.bmf.common.utils;
 
 import com.bmf.api.business.BusinessReqDTO;
-import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.DO.BusinessRelDomainDO;
-import com.bmf.infrastructure.dal.po.BusinessPO;
 
 public class BusinessUtil {
-
-    public static BusinessRespDTO convert(BusinessPO businessPO) {
-        return null;
-    }
 
     public static Business convert(BusinessReqDTO reqDTO) {
         Business business = new Business();

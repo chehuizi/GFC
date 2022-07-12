@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-common</artifactId>
+  <artifactId>bmf-api-impl</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-common</name>
+  <name>bmf-api-impl</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -27,6 +27,10 @@
     <dependency>
       <groupId>com.bmf</groupId>
       <artifactId>bmf-api</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-core</artifactId>
     </dependency>
   </dependencies>
 

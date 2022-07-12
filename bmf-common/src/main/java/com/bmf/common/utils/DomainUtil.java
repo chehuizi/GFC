@@ -1,4 +1,4 @@
-package com.bmf.core.utils;
+package com.bmf.common.utils;
 
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;

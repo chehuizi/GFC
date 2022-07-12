@@ -1,6 +1,5 @@
 package com.bmf.core.design;
 
-import com.bmf.base.Business;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.design.BusinessDomainDesign4Strategy;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
@@ -14,7 +13,7 @@ public class BusinessDomainDesign4StrategyImpl implements BusinessDomainDesign4S
     private BusinessDomainRelationRepository businessDomainRelationRepository;
 
     @Override
-    public boolean buildBusinessDomainRelationship(Business business, BusinessDomainRelationship relationship) {
+    public boolean buildBusinessDomainRelationship(BusinessDomainRelationship relationship) {
         boolean result = businessDomainRelationRepository.insert(relationship);
         return result;
     }
