@@ -32,6 +32,10 @@
       <groupId>com.bmf</groupId>
       <artifactId>bmf-core</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-common</artifactId>
+    </dependency>
   </dependencies>
 
   <build>

@@ -21,6 +21,6 @@ public class DomainQryServiceImpl implements DomainQryService {
     public Result<DomainRespDTO> queryOne(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         DomainPO domainPO = domainRepository.selectOne(domain);
-        return Result.success(DomainUtil.convert(domainPO));
+        return Result.success(null);
     }
 }

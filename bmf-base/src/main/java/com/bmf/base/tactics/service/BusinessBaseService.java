@@ -5,7 +5,7 @@ import com.bmf.base.tactics.flow.engine.FlowEngine;
 import lombok.Data;
 
 @Data
-public abstract class BusinessBaseService implements BusinessService {
+public abstract class BusinessBaseService implements BusinessServiceTmp {
 
     /**
      * 领域

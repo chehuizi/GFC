@@ -1,6 +1,5 @@
 package com.bmf.core.business.impl;
 
-import com.bmf.api.Result;
 import com.bmf.base.Business;
 import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.base.strategy.BusinessDomainRelationship;
@@ -22,20 +21,20 @@ public class BusinessServiceImpl implements BusinessService {
     private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
 
     @Override
-    public Result<Boolean> addBusiness(Business business) {
-        boolean ret = businessRepository.insert(business);
-        return Result.success(ret);
+    public boolean addBusiness(Business business) {
+        boolean result = businessRepository.insert(business);
+        return result;
     }
 
     @Override
-    public Result<Boolean> addDomain(BusinessRelDomainDO businessRelDomainDO) {
+    public boolean addDomain(BusinessRelDomainDO businessRelDomainDO) {
         boolean result = businessRelDomainRepository.insert(businessRelDomainDO);
-        return Result.success(result);
+        return result;
     }
 
     @Override
-    public Result<Boolean> addDomainRelation(BusinessDomainRelationship businessDomainRelationship) {
+    public boolean addDomainRelation(BusinessDomainRelationship businessDomainRelationship) {
         boolean result = businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessDomainRelationship);
-        return Result.success(result);
+        return result;
     }
 }

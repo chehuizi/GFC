@@ -66,6 +66,11 @@
             </dependency>
             <dependency>
                 <groupId>com.bmf</groupId>
+                <artifactId>bmf-api-impl</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
                 <artifactId>bmf-infrastructure</artifactId>
                 <version>${bmf.version}</version>
             </dependency>

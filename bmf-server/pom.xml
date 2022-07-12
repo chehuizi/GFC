@@ -26,7 +26,7 @@
   <dependencies>
     <dependency>
       <groupId>com.bmf</groupId>
-      <artifactId>bmf-core</artifactId>
+      <artifactId>bmf-api-impl</artifactId>
     </dependency>
     <!-- spring-boot -->
     <dependency>

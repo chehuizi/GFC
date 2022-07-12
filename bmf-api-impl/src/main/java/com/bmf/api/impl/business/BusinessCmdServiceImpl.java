@@ -6,13 +6,9 @@ import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.DO.BusinessRelDomainDO;
-import com.bmf.base.tactics.service.BusinessService;
+import com.bmf.common.utils.BusinessUtil;
 import com.bmf.common.validator.ParamValidator;
-import com.bmf.core.utils.BusinessUtil;
-import com.bmf.design.BusinessDomainDesign4Strategy;
-import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
-import com.bmf.infrastructure.dal.BusinessRepository;
-import com.bmf.infrastructure.dal.po.BusinessPO;
+import com.bmf.core.business.BusinessService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,43 +21,36 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
         Business business = BusinessUtil.convert(req);
-        boolean ret = businessRepository.insert(business);
+        boolean ret = businessService.addBusiness(business);
         return Result.success(ret);
     }
 
     @Override
     public Result<Boolean> update(BusinessReqDTO req) {
-        Business business = BusinessUtil.convert(req);
-        boolean ret = businessRepository.update(business);
-        return Result.success(ret);
+        return null;
     }
 
     @Override
     public Result<Boolean> delete(BusinessReqDTO req) {
-        Business business = BusinessUtil.convert(req);
-        boolean ret = businessRepository.delete(business);
-        return Result.success(ret);
+        return null;
     }
 
     @Override
     public Result<BusinessRespDTO> queryOne(BusinessReqDTO req) {
-        Business business = BusinessUtil.convert(req);
-        BusinessPO businessPO = businessRepository.selectOne(business);
-        BusinessRespDTO businessRespDTO = BusinessUtil.convert(businessPO);
-        return Result.success(businessRespDTO);
+        return null;
     }
 
     @Override
     @ParamValidator
     public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
         BusinessRelDomainDO businessRelDomainDO = BusinessUtil.convertBusinessRelDomainDO(businessReqDTO);
-        boolean result = businessRelDomainRepository.insert(businessRelDomainDO);
+        boolean result = businessService.addDomain(businessRelDomainDO);
         return Result.success(result);
     }
 
     @Override
     public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
-        boolean result = businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getRelationship());
+        boolean result = businessService.addDomainRelation(null);
         return Result.success(result);
     }
 }

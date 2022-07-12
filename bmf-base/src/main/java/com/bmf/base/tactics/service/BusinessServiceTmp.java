@@ -3,7 +3,7 @@ package com.bmf.base.tactics.service;
 /**
  * 业务领域服务
  */
-public interface BusinessService {
+public interface BusinessServiceTmp {
 
     /**
      * 服务触发

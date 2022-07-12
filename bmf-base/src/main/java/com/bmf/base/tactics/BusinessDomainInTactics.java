@@ -3,7 +3,7 @@ package com.bmf.base.tactics;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.aggregate.BusinessAggregate;
 import com.bmf.base.tactics.entity.BusinessEntity;
-import com.bmf.base.tactics.service.BusinessService;
+import com.bmf.base.tactics.service.BusinessServiceTmp;
 import com.bmf.base.tactics.valueObject.BusinessValueObject;
 
 import java.util.List;
@@ -20,7 +20,7 @@ public class BusinessDomainInTactics extends BusinessDomain {
     /**
      * 领域服务列表
      */
-    List<BusinessService> serviceList;
+    List<BusinessServiceTmp> serviceList;
     /**
      * 值对象列表
      */
