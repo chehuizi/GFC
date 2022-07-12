@@ -1,4 +1,4 @@
-package com.bmf.core.domain;
+package com.bmf.api.impl.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.DomainCmdService;
@@ -6,7 +6,7 @@ import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.utils.DomainUtil;
-import com.bmf.infrastructure.dal.DomainRepository;
+import com.bmf.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -14,12 +14,12 @@ import org.springframework.stereotype.Service;
 public class DomainCmdServiceImpl implements DomainCmdService {
 
     @Autowired
-    private DomainRepository domainRepository;
+    private DomainService domainService;
 
     @Override
     public Result<Boolean> create(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
-        boolean result = domainRepository.insert(domain);
+        boolean result = domainService.create(domain);
         return Result.success(result);
     }
 

@@ -1,4 +1,4 @@
-package com.bmf.core.domain;
+package com.bmf.api.impl.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.DomainQryService;

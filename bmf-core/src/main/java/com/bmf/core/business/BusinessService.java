@@ -5,7 +5,7 @@ import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 
 /**
- * 业务cmd服务
+ * 业务服务
  */
 public interface BusinessService {
 
