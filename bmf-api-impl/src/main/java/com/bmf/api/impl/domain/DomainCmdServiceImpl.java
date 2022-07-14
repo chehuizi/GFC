@@ -33,8 +33,4 @@ public class DomainCmdServiceImpl implements DomainCmdService {
         return null;
     }
 
-    @Override
-    public Result<DomainRespDTO> queryOne(DomainReqDTO req) {
-        return null;
-    }
 }

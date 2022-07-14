@@ -35,13 +35,6 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
-    public Result<BusinessRespDTO> queryOne(BusinessReqDTO req) {
-        Business business = businessService.queryBusiness(req.getBusiness());
-        BusinessRespDTO respDTO = new BusinessRespDTO(business);
-        return Result.success(respDTO);
-    }
-
-    @Override
     @ParamValidator
     public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
         BusinessRelDomainDO businessRelDomainDO = BusinessUtil.convertBusinessRelDomainDO(businessReqDTO);

@@ -27,11 +27,4 @@ public interface CmdService<T extends ReqDTO, R extends RespDTO> {
      */
     Result<Boolean> delete(T req);
 
-    /**
-     * 查询一个
-     * @param req
-     * @return
-     */
-    Result<R> queryOne(T req);
-
 }
