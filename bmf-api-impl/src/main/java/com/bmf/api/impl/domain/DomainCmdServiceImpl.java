@@ -19,7 +19,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     public Result<Boolean> create(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
-        boolean result = domainService.create(domain);
+        boolean result = domainService.createDomain(domain);
         return Result.success(result);
     }
 

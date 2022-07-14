@@ -5,8 +5,6 @@ import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.enums.BusinessDomainLevelEnum;
-import com.bmf.base.enums.BusinessDomainTypeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -23,12 +21,10 @@ public class DomainQryServiceTest {
     private DomainQryService domainQryService;
 
     @Test
-    public void test_domain_queryOne() {
+    public void test_domain_query_one() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainName("test");
-        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainCode(12);
         domainReqDTO.setBusinessDomain(businessDomain);
         Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
         System.out.println(result);

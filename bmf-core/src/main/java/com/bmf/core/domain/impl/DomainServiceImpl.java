@@ -3,6 +3,8 @@ package com.bmf.core.domain.impl;
 import com.bmf.base.BusinessDomain;
 import com.bmf.core.domain.DomainService;
 import com.bmf.infrastructure.dal.DomainRepository;
+import com.bmf.infrastructure.dal.po.DomainPO;
+import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -13,9 +15,14 @@ public class DomainServiceImpl implements DomainService {
     private DomainRepository domainRepository;
 
     @Override
-    public boolean create(BusinessDomain businessDomain) {
+    public boolean createDomain(BusinessDomain businessDomain) {
         boolean result = domainRepository.insert(businessDomain);
         return result;
     }
 
+    @Override
+    public BusinessDomain queryDomain(BusinessDomain businessDomain) {
+        DomainPO domainPO = domainRepository.selectOne(businessDomain);
+        return DomainPOUtil.convert(domainPO);
+    }
 }

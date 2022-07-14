@@ -23,7 +23,7 @@ public class BusinessServiceImpl implements BusinessService {
     private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
 
     @Override
-    public boolean addBusiness(Business business) {
+    public boolean createBusiness(Business business) {
         boolean result = businessRepository.insert(business);
         return result;
     }

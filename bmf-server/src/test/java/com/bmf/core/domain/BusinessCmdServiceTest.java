@@ -2,7 +2,6 @@ package com.bmf.core.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
-import com.bmf.api.business.BusinessQryService;
 import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.base.Business;
@@ -24,8 +23,6 @@ public class BusinessCmdServiceTest {
 
     @Autowired
     private BusinessCmdService businessCmdService;
-    @Autowired
-    private BusinessQryService businessQryService;
 
     @Test
     public void test_business_create() {
@@ -35,16 +32,6 @@ public class BusinessCmdServiceTest {
         business.setBusinessName("chz");
         businessReqDTO.setBusiness(business);
         Result<Boolean> result = businessCmdService.create(businessReqDTO);
-        System.out.println(result);
-    }
-
-    @Test
-    public void test_business_query_one() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
-        Business business = new Business();
-        business.setBusinessCode(1);
-        businessReqDTO.setBusiness(business);
-        Result<BusinessRespDTO> result = businessQryService.queryOne(businessReqDTO);
         System.out.println(result);
     }
 

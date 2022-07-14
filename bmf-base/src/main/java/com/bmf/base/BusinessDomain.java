@@ -49,6 +49,7 @@ public class BusinessDomain extends BaseDO {
     @Override
     public String toString() {
         return "{" +
+                "\"domainCode\": \"" + domainCode + "\"" +
                 "\"domainName\": \"" + domainName + "\"" +
                 ", \"domainType\": \"" + domainType + "\"" +
                 ", \"domainLevel\": " + domainLevel +

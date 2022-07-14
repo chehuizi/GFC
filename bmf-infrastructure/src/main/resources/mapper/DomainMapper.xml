@@ -17,6 +17,7 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain
+        where domain_code = #{domainCode}
         limit 1
     </select>
 

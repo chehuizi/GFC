@@ -18,7 +18,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
-        boolean ret = businessService.addBusiness(req.getBusiness());
+        boolean ret = businessService.createBusiness(req.getBusiness());
         return Result.success(ret);
     }
 

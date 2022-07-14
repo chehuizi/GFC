@@ -8,9 +8,16 @@ import com.bmf.base.BusinessDomain;
 public interface DomainService {
 
     /**
-     * 创建
+     * 创建领域
      * @param businessDomain
      * @return
      */
-    boolean create(BusinessDomain businessDomain);
+    boolean createDomain(BusinessDomain businessDomain);
+
+    /**
+     * 查询领域
+     * @param businessDomain
+     * @return
+     */
+    BusinessDomain queryDomain(BusinessDomain businessDomain);
 }

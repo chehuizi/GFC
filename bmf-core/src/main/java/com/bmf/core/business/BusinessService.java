@@ -14,7 +14,7 @@ public interface BusinessService {
      * @param business
      * @return
      */
-    boolean addBusiness(Business business);
+    boolean createBusiness(Business business);
 
     /**
      * 查询业务

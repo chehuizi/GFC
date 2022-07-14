@@ -13,4 +13,13 @@ public class DomainPOUtil {
         domainPO.setDomainLevel(businessDomain.getDomainLevel());
         return domainPO;
     }
+
+    public static BusinessDomain convert(DomainPO domainPO) {
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(domainPO.getDomainCode());
+        businessDomain.setDomainName(domainPO.getDomainName());
+        businessDomain.setDomainType(domainPO.getDomainType());
+        businessDomain.setDomainLevel(domainPO.getDomainLevel());
+        return businessDomain;
+    }
 }
