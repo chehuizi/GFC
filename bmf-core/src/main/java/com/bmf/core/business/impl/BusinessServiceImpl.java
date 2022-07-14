@@ -7,6 +7,8 @@ import com.bmf.core.business.BusinessService;
 import com.bmf.design.BusinessDomainDesign4Strategy;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.BusinessRepository;
+import com.bmf.infrastructure.dal.po.BusinessPO;
+import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,6 +26,12 @@ public class BusinessServiceImpl implements BusinessService {
     public boolean addBusiness(Business business) {
         boolean result = businessRepository.insert(business);
         return result;
+    }
+
+    @Override
+    public Business queryBusiness(Business business) {
+        BusinessPO businessPO = businessRepository.selectOne(business);
+        return BusinessPOUtil.convert(businessPO);
     }
 
     @Override

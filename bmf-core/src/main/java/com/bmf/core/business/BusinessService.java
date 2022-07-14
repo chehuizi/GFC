@@ -17,6 +17,13 @@ public interface BusinessService {
     boolean addBusiness(Business business);
 
     /**
+     * 查询业务
+     * @param business
+     * @return
+     */
+    Business queryBusiness(Business business);
+
+    /**
      * 添加领域
      * @param businessRelDomainDO
      * @return

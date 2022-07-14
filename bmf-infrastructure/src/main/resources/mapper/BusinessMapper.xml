@@ -11,10 +11,11 @@
         id, business_code, business_name
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business
+        where business_code = #{businessCode}
         limit 1
     </select>
 

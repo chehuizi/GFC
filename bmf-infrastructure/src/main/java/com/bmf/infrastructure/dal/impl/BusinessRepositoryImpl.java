@@ -17,7 +17,9 @@ public class BusinessRepositoryImpl implements BusinessRepository {
 
     @Override
     public BusinessPO selectOne(Business req) {
-        return null;
+        BusinessPO businessPO = BusinessPOUtil.convert(req);
+        BusinessPO result = businessMapper.selectOne(businessPO);
+        return result;
     }
 
     @Override

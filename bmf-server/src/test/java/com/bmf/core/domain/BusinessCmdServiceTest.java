@@ -3,6 +3,7 @@ package com.bmf.core.domain;
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
@@ -31,6 +32,16 @@ public class BusinessCmdServiceTest {
         business.setBusinessName("chz");
         businessReqDTO.setBusiness(business);
         Result<Boolean> result = businessCmdService.create(businessReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_business_query_one() {
+        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(1);
+        businessReqDTO.setBusiness(business);
+        Result<BusinessRespDTO> result = businessCmdService.queryOne(businessReqDTO);
         System.out.println(result);
     }
 

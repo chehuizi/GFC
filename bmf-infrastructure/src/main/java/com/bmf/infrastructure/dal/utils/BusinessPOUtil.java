@@ -19,4 +19,11 @@ public class BusinessPOUtil {
         businessPO.setBusinessName(business.getBusinessName());
         return businessPO;
     }
+
+    public static Business convert(BusinessPO businessPO) {
+        Business business = new Business();
+        business.setBusinessCode(businessPO.getBusinessCode());
+        business.setBusinessName(businessPO.getBusinessName());
+        return business;
+    }
 }

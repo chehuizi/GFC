@@ -20,8 +20,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
-        Business business = BusinessUtil.convert(req);
-        boolean ret = businessService.addBusiness(business);
+        boolean ret = businessService.addBusiness(req.getBusiness());
         return Result.success(ret);
     }
 
@@ -37,7 +36,9 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<BusinessRespDTO> queryOne(BusinessReqDTO req) {
-        return null;
+        Business business = businessService.queryBusiness(req.getBusiness());
+        BusinessRespDTO respDTO = new BusinessRespDTO(business);
+        return Result.success(respDTO);
     }
 
     @Override
@@ -50,7 +51,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
-        boolean result = businessService.addDomainRelation(null);
+        boolean result = businessService.addDomainRelation(businessReqDTO.getRelationship());
         return Result.success(result);
     }
 }
