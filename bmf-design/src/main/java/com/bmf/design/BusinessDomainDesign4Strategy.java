@@ -1,6 +1,5 @@
 package com.bmf.design;
 
-import com.bmf.base.Business;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 
 /**
