@@ -5,5 +5,4 @@ import com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO;
 
 public interface BusinessDomainEntityAttrRepository extends BaseRepository<DomainEntityAttr, BusinessDomainEntityAttrPO> {
 
-
 }
