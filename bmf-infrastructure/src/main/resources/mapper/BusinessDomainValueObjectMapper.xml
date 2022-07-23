@@ -1,38 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainEntityMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainEntityPO">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
-        <result column="domain_relation" jdbcType="VARCHAR" property="domainRelation"/>
-        <result column="domain_a_code" jdbcType="INTEGER" property="domainACode"/>
-        <result column="domain_b_code" jdbcType="INTEGER" property="domainBCode"/>
-        <result column="domain_a_role" jdbcType="VARCHAR" property="domainARole"/>
-        <result column="domain_b_role" jdbcType="VARCHAR" property="domainBRole"/>
+        <result column="vo_code" jdbcType="INTEGER" property="voCode"/>
+        <result column="vo_name" jdbcType="VARCHAR" property="voName"/>
+        <result column="vo_desc" jdbcType="VARCHAR" property="voDesc"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role, gmt_create, gmt_modify
+        id, vo_code, vo_name, vo_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM bmf_business_domain_relation
+        FROM bmf_business_domain_vo
         limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
-        insert into bmf_business_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO">
+        insert into bmf_business_domain_vo (vo_code, vo_name, vo_desc)
         values (
-            #{businessCode,jdbcType=INTEGER},
-            #{domainRelation,jdbcType=VARCHAR},
-            #{domainACode,jdbcType=INTEGER},
-            #{domainBCode,jdbcType=INTEGER},
-            #{domainARole,jdbcType=VARCHAR},
-            #{domainBRole,jdbcType=VARCHAR}
+            #{voCode,jdbcType=INTEGER},
+            #{voName,jdbcType=VARCHAR},
+            #{voDesc,jdbcType=VARCHAR}
         )
     </insert>
 

@@ -13,6 +13,10 @@ public class BusinessDomainValueObject extends BaseDO {
      */
     private Integer voCode;
     /**
+     * 值对象名称
+     */
+    private String voName;
+    /**
      * 值对象描述
      */
     private String  voDesc;

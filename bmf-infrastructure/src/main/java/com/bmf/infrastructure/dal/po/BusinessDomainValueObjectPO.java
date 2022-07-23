@@ -10,6 +10,10 @@ public class BusinessDomainValueObjectPO extends BasePO {
      */
     private Integer voCode;
     /**
+     * 值对象名称
+     */
+    private String voName;
+    /**
      * 值对象描述
      */
     private String  voDesc;
