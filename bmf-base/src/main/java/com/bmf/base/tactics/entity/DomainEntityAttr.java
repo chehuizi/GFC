@@ -11,6 +11,10 @@ import lombok.Data;
 public class DomainEntityAttr extends BaseDO {
 
     /**
+     * 实体唯一ID编码
+     */
+    private Integer entityIdCode;
+    /**
      * 属性名称
      */
     private String attrName;

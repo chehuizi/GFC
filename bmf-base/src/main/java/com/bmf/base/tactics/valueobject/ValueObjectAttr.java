@@ -11,6 +11,10 @@ import lombok.Data;
 public class ValueObjectAttr extends BaseDO {
 
     /**
+     * 值对象编码
+     */
+    private Integer voCode;
+    /**
      * 属性名称
      */
     private String attrName;
