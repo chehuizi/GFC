@@ -32,4 +32,9 @@ public class DomainCmdServiceImpl implements DomainCmdService {
         return null;
     }
 
+    @Override
+    public Result<Boolean> addEntity(DomainReqDTO domainReqDTO) {
+        boolean result = domainService.addEntity(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEntity());
+        return Result.success(result);
+    }
 }

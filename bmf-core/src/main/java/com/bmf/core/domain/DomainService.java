@@ -1,6 +1,7 @@
 package com.bmf.core.domain;
 
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.tactics.entity.BusinessDomainEntity;
 
 /**
  * 业务领域服务
@@ -20,4 +21,12 @@ public interface DomainService {
      * @return
      */
     BusinessDomain queryDomain(BusinessDomain businessDomain);
+
+    /**
+     * 添加实体
+     * @param businessDomain
+     * @param domainEntity
+     * @return
+     */
+    boolean addEntity(BusinessDomain businessDomain, BusinessDomainEntity domainEntity);
 }

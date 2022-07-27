@@ -6,7 +6,7 @@ import com.bmf.api.Result;
 /**
  * 业务cmd服务
  */
-public interface BusinessCmdService extends CmdService<BusinessReqDTO, BusinessRespDTO> {
+public interface BusinessCmdService extends CmdService<BusinessReqDTO> {
 
     /**
      * 添加领域

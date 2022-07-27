@@ -4,6 +4,7 @@ import com.bmf.base.DO.DomainRelEntityDO;
 import com.bmf.infrastructure.dal.BusinessDomainRelEntityRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainRelEntityMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelEntityPO;
+import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,7 +22,8 @@ public class BusinessDomainRelEntityRepositoryImpl implements BusinessDomainRelE
 
     @Override
     public boolean insert(DomainRelEntityDO req) {
-        return false;
+        BusinessDomainRelEntityPO domainRelEntityPO = DomainPOUtil.convert(req);
+        return businessDomainRelEntityMapper.insert(domainRelEntityPO) == 1;
     }
 
     @Override

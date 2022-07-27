@@ -4,7 +4,7 @@ package com.bmf.api;
  * cmd服务
  * @param <T>
  */
-public interface CmdService<T extends ReqDTO, R extends RespDTO> {
+public interface CmdService<T extends ReqDTO> {
 
     /**
      * 增加

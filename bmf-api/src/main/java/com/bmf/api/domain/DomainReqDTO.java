@@ -2,6 +2,7 @@ package com.bmf.api.domain;
 
 import com.bmf.api.ReqDTO;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.tactics.entity.BusinessDomainEntity;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,4 +19,9 @@ public class DomainReqDTO extends ReqDTO implements Serializable {
      * 业务域
      */
     private BusinessDomain businessDomain;
+
+    /**
+     * 业务实体
+     */
+    private BusinessDomainEntity domainEntity;
 }
