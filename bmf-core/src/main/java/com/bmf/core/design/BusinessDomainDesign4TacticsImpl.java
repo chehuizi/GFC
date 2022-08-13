@@ -10,6 +10,8 @@ import com.bmf.common.utils.DomainUtil;
 import com.bmf.design.BusinessDomainDesign4Tactics;
 import com.bmf.infrastructure.dal.BusinessDomainEntityRepository;
 import com.bmf.infrastructure.dal.BusinessDomainRelEntityRepository;
+import com.bmf.infrastructure.dal.BusinessDomainRelServiceRepository;
+import com.bmf.infrastructure.dal.BusinessDomainServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -20,7 +22,10 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     private BusinessDomainEntityRepository businessDomainEntityRepository;
     @Autowired
     private BusinessDomainRelEntityRepository businessDomainRelEntityRepository;
-
+    @Autowired
+    private BusinessDomainServiceRepository businessDomainServiceRepository;
+    @Autowired
+    private BusinessDomainRelServiceRepository businessDomainRelServiceRepository;
 
     @Override
     public boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity) {

@@ -1,10 +1,9 @@
-package com.bmf.base.tactics.service;
+package com.bmf.infrastructure.dal.po;
 
-import com.bmf.base.BaseDO;
 import lombok.Data;
 
 @Data
-public class BusinessDomainService extends BaseDO {
+public class BusinessDomainServicePO extends BasePO {
 
     /**
      * 服务编码
