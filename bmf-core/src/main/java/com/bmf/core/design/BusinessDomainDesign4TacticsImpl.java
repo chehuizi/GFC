@@ -2,16 +2,15 @@ package com.bmf.core.design;
 
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.DO.DomainRelEntityDO;
+import com.bmf.base.DO.DomainRelServiceDO;
+import com.bmf.base.DO.EntityRelVODO;
 import com.bmf.base.tactics.aggregate.BusinessDomainAggregate;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
 import com.bmf.base.tactics.service.BusinessDomainService;
 import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
 import com.bmf.common.utils.DomainUtil;
 import com.bmf.design.BusinessDomainDesign4Tactics;
-import com.bmf.infrastructure.dal.BusinessDomainEntityRepository;
-import com.bmf.infrastructure.dal.BusinessDomainRelEntityRepository;
-import com.bmf.infrastructure.dal.BusinessDomainRelServiceRepository;
-import com.bmf.infrastructure.dal.BusinessDomainServiceRepository;
+import com.bmf.infrastructure.dal.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +25,10 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     private BusinessDomainServiceRepository businessDomainServiceRepository;
     @Autowired
     private BusinessDomainRelServiceRepository businessDomainRelServiceRepository;
+    @Autowired
+    private BusinessDomainValueObjectRepository businessDomainValueObjectRepository;
+    @Autowired
+    private BusinessDomainEntityRelVORepository businessDomainEntityRelVORepository;
 
     @Override
     public boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity) {
@@ -39,6 +42,11 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
 
     @Override
     public boolean addValueObject(BusinessDomainEntity entity, BusinessDomainValueObject valueObject) {
+        boolean insertOk = businessDomainValueObjectRepository.insert(valueObject);
+        if (insertOk) {
+            EntityRelVODO entityRelVODO = DomainUtil.build(entity, valueObject);
+            return businessDomainEntityRelVORepository.insert(entityRelVODO);
+        }
         return false;
     }
 
@@ -49,6 +57,11 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
 
     @Override
     public boolean addService(BusinessDomain domain, BusinessDomainService service) {
+        boolean insertOk = businessDomainServiceRepository.insert(service);
+        if (insertOk) {
+            DomainRelServiceDO domainRelServiceDO = DomainUtil.build(domain, service);
+            return businessDomainRelServiceRepository.insert(domainRelServiceDO);
+        }
         return false;
     }
 }

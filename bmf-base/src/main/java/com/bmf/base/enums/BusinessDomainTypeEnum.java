@@ -10,8 +10,8 @@ import lombok.Getter;
 public enum BusinessDomainTypeEnum {
 
     CORE("core", "核心域"),
+    GENERIC("generic", "通用域"),
     SUPPORTING("supporting", "支撑域"),
-    GENERIC("generic", "通用域")
     ;
 
     /**
