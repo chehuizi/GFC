@@ -36,19 +36,6 @@ public class BusinessCmdServiceTest {
     }
 
     @Test
-    public void test_business_rel_domain_create() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
-        Business business = new Business();
-        business.setBusinessCode(10);
-        businessReqDTO.setBusiness(business);
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(10);
-        businessReqDTO.setDomain(businessDomain);
-        Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
-        System.out.println(result);
-    }
-
-    @Test
     public void test_business_domain_relation_create() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();

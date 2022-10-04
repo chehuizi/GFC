@@ -3,10 +3,8 @@ package com.bmf.api.impl.business;
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
-import com.bmf.base.DO.BusinessRelDomainDO;
-import com.bmf.common.utils.BusinessUtil;
-import com.bmf.common.validator.ParamValidator;
 import com.bmf.core.business.BusinessService;
+import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +13,12 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Autowired
     private BusinessService businessService;
+    @Autowired
+    private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
 
     @Override
     public Result<Boolean> create(BusinessReqDTO req) {
-        boolean ret = businessService.createBusiness(req.getBusiness());
-        return Result.success(ret);
+        return Result.success(businessService.createBusiness(req.getBusiness()));
     }
 
     @Override
@@ -33,16 +32,12 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
-    @ParamValidator
-    public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
-        BusinessRelDomainDO businessRelDomainDO = BusinessUtil.convertBusinessRelDomainDO(businessReqDTO);
-        boolean result = businessService.addDomain(businessRelDomainDO);
-        return Result.success(result);
+    public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
+        return Result.success(businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getRelationship()));
     }
 
     @Override
-    public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
-        boolean result = businessService.addDomainRelation(businessReqDTO.getRelationship());
-        return Result.success(result);
+    public Result<Boolean> delDomainRelation(BusinessReqDTO businessReqDTO) {
+        return Result.success(businessDomainDesign4Strategy.removeBusinessDomainRelationship(businessReqDTO.getRelationship()));
     }
 }

@@ -22,11 +22,4 @@ public interface DomainService {
      */
     BusinessDomain queryDomain(BusinessDomain businessDomain);
 
-    /**
-     * 添加实体
-     * @param businessDomain
-     * @param domainEntity
-     * @return
-     */
-    boolean addEntity(BusinessDomain businessDomain, BusinessDomainEntity domainEntity);
 }

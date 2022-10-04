@@ -4,6 +4,7 @@ import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainRelationMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
+import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,14 +22,7 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
 
     @Override
     public boolean insert(BusinessDomainRelationship req) {
-        BusinessDomainRelationPO businessDomainRelationPO = new BusinessDomainRelationPO();
-        businessDomainRelationPO.setBusinessCode(req.getBusinessCode());
-        businessDomainRelationPO.setDomainRelation(req.getRelationship());
-        businessDomainRelationPO.setDomainACode(req.getRoleA().getDomain().getDomainCode());
-        businessDomainRelationPO.setDomainARole(req.getRoleA().getRole());
-        businessDomainRelationPO.setDomainBCode(req.getRoleB().getDomain().getDomainCode());
-        businessDomainRelationPO.setDomainBRole(req.getRoleB().getRole());
-        return businessDomainRelationMapper.insert(businessDomainRelationPO) == 1;
+        return businessDomainRelationMapper.insert(BusinessPOUtil.convert(req)) == 1;
     }
 
     @Override
@@ -38,6 +32,6 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
 
     @Override
     public boolean delete(BusinessDomainRelationship req) {
-        return false;
+        return businessDomainRelationMapper.delete(BusinessPOUtil.convert(req)) == 1;
     }
 }

@@ -1,6 +1,8 @@
 package com.bmf.infrastructure.dal.utils;
 
 import com.bmf.base.Business;
+import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
 import com.bmf.infrastructure.dal.po.BusinessPO;
 
 /**
@@ -25,5 +27,16 @@ public class BusinessPOUtil {
         business.setBusinessCode(businessPO.getBusinessCode());
         business.setBusinessName(businessPO.getBusinessName());
         return business;
+    }
+
+    public static BusinessDomainRelationPO convert(BusinessDomainRelationship businessDomainRelationship) {
+        BusinessDomainRelationPO businessDomainRelationPO = new BusinessDomainRelationPO();
+        businessDomainRelationPO.setBusinessCode(businessDomainRelationship.getBusinessCode());
+        businessDomainRelationPO.setDomainRelation(businessDomainRelationship.getRelationship());
+        businessDomainRelationPO.setDomainACode(businessDomainRelationship.getRoleA().getDomain().getDomainCode());
+        businessDomainRelationPO.setDomainARole(businessDomainRelationship.getRoleA().getRole());
+        businessDomainRelationPO.setDomainBCode(businessDomainRelationship.getRoleB().getDomain().getDomainCode());
+        businessDomainRelationPO.setDomainBRole(businessDomainRelationship.getRoleB().getRole());
+        return businessDomainRelationPO;
     }
 }

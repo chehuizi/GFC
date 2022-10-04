@@ -9,16 +9,16 @@ import com.bmf.api.Result;
 public interface BusinessCmdService extends CmdService<BusinessReqDTO> {
 
     /**
-     * 添加领域
-     * @param businessReqDTO
-     * @return
-     */
-    Result<Boolean> addDomain(BusinessReqDTO businessReqDTO);
-
-    /**
      * 添加领域关系
      * @param businessReqDTO
      * @return
      */
     Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO);
+
+    /**
+     * 删除领域关系
+     * @param businessReqDTO
+     * @return
+     */
+    Result<Boolean> delDomainRelation(BusinessReqDTO businessReqDTO);
 }

@@ -53,5 +53,23 @@ public class DomainCmdServiceTest {
         Result<Boolean> result = domainCmdService.addEntity(domainReqDTO);
         System.out.println(result);
     }
+
+    @Test
+    public void test_add_vo() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(14);
+        businessDomain.setDomainName("test");
+        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        domainReqDTO.setBusinessDomain(businessDomain);
+        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setEntityIdCode(1011);
+        domainEntity.setEntityIdName("test");
+        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
+        domainReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.addEntity(domainReqDTO);
+        System.out.println(result);
+    }
 }
 

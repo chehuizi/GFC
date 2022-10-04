@@ -1,8 +1,7 @@
 package com.bmf.core.business;
 
 import com.bmf.base.Business;
-import com.bmf.base.DO.BusinessRelDomainDO;
-import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.BusinessDomain;
 
 /**
  * 业务服务
@@ -25,15 +24,17 @@ public interface BusinessService {
 
     /**
      * 添加领域
-     * @param businessRelDomainDO
+     * @param business
+     * @param domain
      * @return
      */
-    boolean addDomain(BusinessRelDomainDO businessRelDomainDO);
+    boolean addDomain(Business business, BusinessDomain domain);
 
     /**
-     * 添加领域关系
-     * @param businessDomainRelationship
+     * 删除领域
+     * @param business
+     * @param domain
      * @return
      */
-    boolean addDomainRelation(BusinessDomainRelationship businessDomainRelationship);
+    boolean delDomain(Business business, BusinessDomain domain);
 }

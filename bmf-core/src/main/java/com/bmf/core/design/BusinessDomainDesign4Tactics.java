@@ -1,8 +1,9 @@
-package com.bmf.design;
+package com.bmf.core.design;
 
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.aggregate.BusinessDomainAggregate;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
+import com.bmf.base.tactics.event.BusinessDomainEvent;
 import com.bmf.base.tactics.service.BusinessDomainService;
 import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
 
@@ -21,11 +22,19 @@ public interface BusinessDomainDesign4Tactics {
 
     /**
      * 添加值对象
+     * @param domain
+     * @param valueObject
+     * @return
+     */
+    boolean addValueObject(BusinessDomain domain, BusinessDomainValueObject valueObject);
+
+    /**
+     * 构建实体和值对象关系
      * @param entity
      * @param valueObject
      * @return
      */
-    boolean addValueObject(BusinessDomainEntity entity, BusinessDomainValueObject valueObject);
+    boolean addEntityRelVO(BusinessDomainEntity entity, BusinessDomainValueObject valueObject);
 
     /**
      * 添加聚合根
@@ -42,4 +51,12 @@ public interface BusinessDomainDesign4Tactics {
      * @return
      */
     boolean addService(BusinessDomain domain, BusinessDomainService service);
+
+    /**
+     * 添加领域事件
+     * @param domain
+     * @param domainEvent
+     * @return
+     */
+    boolean addDomainEvent(BusinessDomain domain, BusinessDomainEvent domainEvent);
 }

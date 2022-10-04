@@ -4,6 +4,7 @@ import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
 import com.bmf.infrastructure.dal.BusinessDomainValueObjectRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO;
+import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,6 +22,7 @@ public class BusinessDomainValueObjectRepositoryImpl implements BusinessDomainVa
 
     @Override
     public boolean insert(BusinessDomainValueObject req) {
+        businessDomainValueObjectMapper.insert(DomainPOUtil.convert(req));
         return false;
     }
 

@@ -21,10 +21,12 @@ public class BusinessDomainRelationship extends BaseDO {
     private String relationship;
     /**
      * 角色A
+     * @see com.bmf.base.strategy.role.RelationshipRole
      */
     private RelationshipRole roleA;
     /**
      * 角色B
+     * @see com.bmf.base.strategy.role.RelationshipRole
      */
     private RelationshipRole roleB;
 

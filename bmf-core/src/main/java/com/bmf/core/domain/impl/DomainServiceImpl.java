@@ -1,9 +1,8 @@
 package com.bmf.core.domain.impl;
 
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
 import com.bmf.core.domain.DomainService;
-import com.bmf.design.BusinessDomainDesign4Tactics;
+import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.po.DomainPO;
 import com.bmf.infrastructure.dal.utils.DomainPOUtil;
@@ -30,8 +29,4 @@ public class DomainServiceImpl implements DomainService {
         return DomainPOUtil.convert(domainPO);
     }
 
-    @Override
-    public boolean addEntity(BusinessDomain businessDomain, BusinessDomainEntity domainEntity) {
-        return businessDomainDesign4Tactics.addEntity(businessDomain, domainEntity);
-    }
 }

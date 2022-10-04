@@ -30,10 +30,6 @@
     </dependency>
     <dependency>
       <groupId>com.bmf</groupId>
-      <artifactId>bmf-design</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>com.bmf</groupId>
       <artifactId>bmf-common</artifactId>
     </dependency>
     <dependency>

@@ -4,10 +4,8 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.DO.DomainRelEntityDO;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
-import com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO;
-import com.bmf.infrastructure.dal.po.BusinessDomainEntityPO;
-import com.bmf.infrastructure.dal.po.BusinessDomainRelEntityPO;
-import com.bmf.infrastructure.dal.po.DomainPO;
+import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
+import com.bmf.infrastructure.dal.po.*;
 
 public class DomainPOUtil {
 
@@ -51,5 +49,9 @@ public class DomainPOUtil {
         domainRelEntityPO.setDomainCode(domainRelEntityDO.getDomainCode());
         domainRelEntityPO.setEntityIdCode(domainRelEntityDO.getEntityIdCode());
         return domainRelEntityPO;
+    }
+
+    public static BusinessDomainValueObjectPO convert(BusinessDomainValueObject businessDomainValueObject) {
+        return null;
     }
 }

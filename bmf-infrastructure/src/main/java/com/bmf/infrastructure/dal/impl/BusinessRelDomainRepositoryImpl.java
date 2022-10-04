@@ -34,6 +34,9 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
 
     @Override
     public boolean delete(BusinessRelDomainDO req) {
-        return false;
+        BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
+        businessRelDomainPO.setBusinessCode(req.getBusinessCode());
+        businessRelDomainPO.setDomainCode(req.getDomainCode());
+        return businessRelDomainMapper.delete(businessRelDomainPO) == 1;
     }
 }

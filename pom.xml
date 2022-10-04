@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>bmf-base</module>
-        <module>bmf-design</module>
         <module>bmf-api</module>
         <module>bmf-common</module>
         <module>bmf-core</module>
@@ -47,11 +46,6 @@
             <dependency>
                 <groupId>com.bmf</groupId>
                 <artifactId>bmf-api</artifactId>
-                <version>${bmf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.bmf</groupId>
-                <artifactId>bmf-design</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <dependency>

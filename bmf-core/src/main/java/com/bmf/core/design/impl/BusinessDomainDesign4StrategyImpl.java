@@ -1,7 +1,7 @@
-package com.bmf.core.design;
+package com.bmf.core.design.impl;
 
 import com.bmf.base.strategy.BusinessDomainRelationship;
-import com.bmf.design.BusinessDomainDesign4Strategy;
+import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,5 +16,11 @@ public class BusinessDomainDesign4StrategyImpl implements BusinessDomainDesign4S
     public boolean buildBusinessDomainRelationship(BusinessDomainRelationship relationship) {
         boolean result = businessDomainRelationRepository.insert(relationship);
         return result;
+    }
+
+    @Override
+    public boolean removeBusinessDomainRelationship(BusinessDomainRelationship relationship) {
+        businessDomainRelationRepository.delete(relationship);
+        return false;
     }
 }
