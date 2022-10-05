@@ -36,7 +36,29 @@ public class BusinessCmdServiceTest {
     }
 
     @Test
-    public void test_business_domain_relation_create() {
+    public void test_business_add_domain() {
+        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(1011);
+        business.setBusinessName("chz");
+        businessReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_business_del_domain() {
+        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(1011);
+        business.setBusinessName("chz");
+        businessReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.delDomain(businessReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_business_build_domain_relation() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();
         business.setBusinessCode(11);
@@ -51,7 +73,27 @@ public class BusinessCmdServiceTest {
         roleB.setDomain(new BusinessDomain(2, "test_domain_2", BusinessDomainTypeEnum.CORE.getType(), 1));
         partnership.setRoleB(roleB);
         businessReqDTO.setRelationship(partnership);
-        Result<Boolean> result = businessCmdService.addDomainRelation(businessReqDTO);
+        Result<Boolean> result = businessCmdService.buildDomainRelation(businessReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_business_remove_domain_relation() {
+        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(11);
+        business.setBusinessName("test_business_1");
+        businessReqDTO.setBusiness(business);
+        Partnership partnership = new Partnership();
+        partnership.setBusinessCode(11);
+        PartnerRole roleA = new PartnerRole();
+        roleA.setDomain(new BusinessDomain(1, "test_domain_1", BusinessDomainTypeEnum.CORE.getType(), 1));
+        partnership.setRoleA(roleA);
+        PartnerRole roleB = new PartnerRole();
+        roleB.setDomain(new BusinessDomain(2, "test_domain_2", BusinessDomainTypeEnum.CORE.getType(), 1));
+        partnership.setRoleB(roleB);
+        businessReqDTO.setRelationship(partnership);
+        Result<Boolean> result = businessCmdService.removeDomainRelation(businessReqDTO);
         System.out.println(result);
     }
 }

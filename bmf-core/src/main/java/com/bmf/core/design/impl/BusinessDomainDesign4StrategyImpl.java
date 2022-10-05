@@ -14,13 +14,11 @@ public class BusinessDomainDesign4StrategyImpl implements BusinessDomainDesign4S
 
     @Override
     public boolean buildBusinessDomainRelationship(BusinessDomainRelationship relationship) {
-        boolean result = businessDomainRelationRepository.insert(relationship);
-        return result;
+        return businessDomainRelationRepository.insert(relationship);
     }
 
     @Override
     public boolean removeBusinessDomainRelationship(BusinessDomainRelationship relationship) {
-        businessDomainRelationRepository.delete(relationship);
-        return false;
+        return businessDomainRelationRepository.delete(relationship);
     }
 }

@@ -3,10 +3,13 @@ package com.bmf.api.impl.business;
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.base.Business;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class BusinessCmdServiceImpl implements BusinessCmdService {
@@ -32,12 +35,26 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
-    public Result<Boolean> addDomainRelation(BusinessReqDTO businessReqDTO) {
+    public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
+        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+        if (Objects.isNull(business)) {
+
+        }
+        return Result.success(businessService.addDomain(businessReqDTO.getBusiness(), businessReqDTO.getDomain()));
+    }
+
+    @Override
+    public Result<Boolean> delDomain(BusinessReqDTO businessReqDTO) {
+        return Result.success(businessService.delDomain(businessReqDTO.getBusiness(), businessReqDTO.getDomain()));
+    }
+
+    @Override
+    public Result<Boolean> buildDomainRelation(BusinessReqDTO businessReqDTO) {
         return Result.success(businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getRelationship()));
     }
 
     @Override
-    public Result<Boolean> delDomainRelation(BusinessReqDTO businessReqDTO) {
+    public Result<Boolean> removeDomainRelation(BusinessReqDTO businessReqDTO) {
         return Result.success(businessDomainDesign4Strategy.removeBusinessDomainRelationship(businessReqDTO.getRelationship()));
     }
 }

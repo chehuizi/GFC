@@ -24,7 +24,7 @@ public class DomainCmdServiceTest {
     private DomainCmdService domainCmdService;
 
     @Test
-    public void test_create_domain() {
+    public void test_domain_create() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(12);
@@ -37,7 +37,7 @@ public class DomainCmdServiceTest {
     }
 
     @Test
-    public void test_add_entity() {
+    public void test_domain_add_entity() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(14);
@@ -55,7 +55,7 @@ public class DomainCmdServiceTest {
     }
 
     @Test
-    public void test_add_vo() {
+    public void test_domain_add_vo() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(14);
@@ -68,7 +68,79 @@ public class DomainCmdServiceTest {
         domainEntity.setEntityIdName("test");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
         domainReqDTO.setDomainEntity(domainEntity);
-        Result<Boolean> result = domainCmdService.addEntity(domainReqDTO);
+        Result<Boolean> result = domainCmdService.addValueObject(domainReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_domain_add_entity_rel_vo() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(14);
+        businessDomain.setDomainName("test");
+        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        domainReqDTO.setBusinessDomain(businessDomain);
+        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setEntityIdCode(1011);
+        domainEntity.setEntityIdName("test");
+        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
+        domainReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.addEntityRelVO(domainReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_domain_add_aggregate() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(14);
+        businessDomain.setDomainName("test");
+        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        domainReqDTO.setBusinessDomain(businessDomain);
+        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setEntityIdCode(1011);
+        domainEntity.setEntityIdName("test");
+        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
+        domainReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.addAggregate(domainReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_domain_add_service() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(14);
+        businessDomain.setDomainName("test");
+        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        domainReqDTO.setBusinessDomain(businessDomain);
+        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setEntityIdCode(1011);
+        domainEntity.setEntityIdName("test");
+        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
+        domainReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.addService(domainReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_domain_add_domain_event() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(14);
+        businessDomain.setDomainName("test");
+        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        domainReqDTO.setBusinessDomain(businessDomain);
+        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setEntityIdCode(1011);
+        domainEntity.setEntityIdName("test");
+        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
+        domainReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.addDomainEvent(domainReqDTO);
         System.out.println(result);
     }
 }
