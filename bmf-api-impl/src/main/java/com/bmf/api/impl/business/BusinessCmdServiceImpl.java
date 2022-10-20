@@ -3,6 +3,8 @@ package com.bmf.api.impl.business;
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.api.enums.BizCodeEnum;
+import com.bmf.api.exception.BizException;
 import com.bmf.base.Business;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.design.BusinessDomainDesign4Strategy;
@@ -38,7 +40,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
         Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
         if (Objects.isNull(business)) {
-
+            throw new BizException(BizCodeEnum.BUSINESS_NOT_EXIST);
         }
         return Result.success(businessService.addDomain(businessReqDTO.getBusiness(), businessReqDTO.getDomain()));
     }
