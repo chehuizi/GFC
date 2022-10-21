@@ -1,6 +1,6 @@
-package com.bmf.api.exception;
+package com.bmf.common.exception;
 
-import com.bmf.api.enums.BizCodeEnum;
+import com.bmf.common.enums.BizCodeEnum;
 
 /**
  * 业务异常

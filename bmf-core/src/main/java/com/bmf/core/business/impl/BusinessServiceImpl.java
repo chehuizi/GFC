@@ -1,5 +1,7 @@
 package com.bmf.core.business.impl;
 
+import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.DO.BusinessRelDomainDO;
@@ -11,6 +13,8 @@ import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service
 public class BusinessServiceImpl implements BusinessService {
 
@@ -21,6 +25,9 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public boolean createBusiness(Business business) {
+        if (Objects.isNull(business)) {
+            throw new BizException(BizCodeEnum.BUSINESS_NOT_EXIST);
+        }
         return businessRepository.insert(business);
     }
 
