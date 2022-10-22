@@ -1,4 +1,4 @@
-package com.bmf.api.enums;
+package com.bmf.common.enums;
 
 import lombok.Getter;
 

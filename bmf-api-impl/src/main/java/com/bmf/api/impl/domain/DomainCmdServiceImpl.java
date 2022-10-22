@@ -5,6 +5,7 @@ import com.bmf.api.domain.DomainCmdService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.utils.DomainUtil;
+import com.bmf.common.utils.ResultUtil;
 import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +22,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     public Result<Boolean> create(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
-        return Result.success(domainService.createDomain(domain));
+        return ResultUtil.success(domainService.createDomain(domain));
     }
 
     @Override
@@ -36,31 +37,31 @@ public class DomainCmdServiceImpl implements DomainCmdService {
 
     @Override
     public Result<Boolean> addEntity(DomainReqDTO domainReqDTO) {
-        return Result.success(businessDomainDesign4Tactics.addEntity(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEntity()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addEntity(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEntity()));
     }
 
     @Override
     public Result<Boolean> addValueObject(DomainReqDTO domainReqDTO) {
-        return Result.success(businessDomainDesign4Tactics.addValueObject(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainValueObject()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addValueObject(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainValueObject()));
     }
 
     @Override
     public Result<Boolean> addEntityRelVO(DomainReqDTO domainReqDTO) {
-        return Result.success(businessDomainDesign4Tactics.addEntityRelVO(domainReqDTO.getDomainEntity(), domainReqDTO.getDomainValueObject()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addEntityRelVO(domainReqDTO.getDomainEntity(), domainReqDTO.getDomainValueObject()));
     }
 
     @Override
     public Result<Boolean> addAggregate(DomainReqDTO domainReqDTO) {
-        return Result.success(businessDomainDesign4Tactics.addAggregate(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainAggregate()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addAggregate(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainAggregate()));
     }
 
     @Override
     public Result<Boolean> addService(DomainReqDTO domainReqDTO) {
-        return Result.success(businessDomainDesign4Tactics.addService(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainService()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addService(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainService()));
     }
 
     @Override
     public Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO) {
-        return Result.success(businessDomainDesign4Tactics.addDomainEvent(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEvent()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEvent()));
     }
 }

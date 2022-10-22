@@ -6,6 +6,7 @@ import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.utils.DomainUtil;
+import com.bmf.common.utils.ResultUtil;
 import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.po.DomainPO;
 import com.bmf.infrastructure.dal.utils.DomainPOUtil;
@@ -22,6 +23,6 @@ public class DomainQryServiceImpl implements DomainQryService {
     public Result<DomainRespDTO> queryOne(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         DomainPO domainPO = domainRepository.selectOne(domain);
-        return Result.success(DomainPOUtil.convert(domainPO));
+        return ResultUtil.success(DomainPOUtil.convert(domainPO));
     }
 }
