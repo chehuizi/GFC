@@ -9,6 +9,7 @@ import lombok.Getter;
 public enum BizCodeEnum {
     /******************** api层错误码 start ********************/
     BUSINESS_NOT_EXIST(100001, "业务不存在"),
+    DOMAIN_NOT_EXIST(100002, "领域不存在"),
     /******************** api层错误码 end   ********************/
 
     /******************** core层错误码 start ********************/

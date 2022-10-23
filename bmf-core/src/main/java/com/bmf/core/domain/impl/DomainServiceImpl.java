@@ -2,7 +2,6 @@ package com.bmf.core.domain.impl;
 
 import com.bmf.base.BusinessDomain;
 import com.bmf.core.domain.DomainService;
-import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.po.DomainPO;
 import com.bmf.infrastructure.dal.utils.DomainPOUtil;
@@ -14,8 +13,6 @@ public class DomainServiceImpl implements DomainService {
 
     @Autowired
     private DomainRepository domainRepository;
-    @Autowired
-    private BusinessDomainDesign4Tactics businessDomainDesign4Tactics;
 
     @Override
     public boolean createDomain(BusinessDomain businessDomain) {
