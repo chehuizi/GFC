@@ -26,7 +26,11 @@
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.2.13.RELEASE</spring-boot.version>
-        <spring-jdbc.version>5.2.12.RELEASE</spring-jdbc.version>
+        <spring.version>5.2.12.RELEASE</spring.version>
+        <aspectj.tools.version>1.9.5</aspectj.tools.version>
+        <aopalliance.version>1.0</aopalliance.version>
+        <aspectj.weaver.verson>1.9.0</aspectj.weaver.verson>
+        <cglib.version>3.3.0</cglib.version>
         <mybatis.version>2.2.2</mybatis.version>
         <mysql-connector.version>8.0.13</mysql-connector.version>
         <pagehelper.version>1.2.10</pagehelper.version>
@@ -94,7 +98,44 @@
             <dependency>
                 <groupId>org.springframework</groupId>
                 <artifactId>spring-jdbc</artifactId>
-                <version>${spring-jdbc.version}</version>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-context</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <!--AspectJ 开始-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aspects</artifactId>
+                <version>${spring.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjtools</artifactId>
+                <version>${aspectj.tools.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>aopalliance</groupId>
+                <artifactId>aopalliance</artifactId>
+                <version>${aopalliance.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.aspectj</groupId>
+                <artifactId>aspectjweaver</artifactId>
+                <version>${aspectj.weaver.verson}</version>
+            </dependency>
+            <dependency>
+                <groupId>cglib</groupId>
+                <artifactId>cglib</artifactId>
+                <version>${cglib.version}</version>
+            </dependency>
+            <!--AspectJ 结束-->
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-aop</artifactId>
+                <version>${spring.version}</version>
             </dependency>
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
