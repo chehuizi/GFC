@@ -1,11 +1,18 @@
 package com.bmf.common.exception;
 
 import com.bmf.common.enums.BizCodeEnum;
+import lombok.Data;
 
 /**
  * 业务异常
  */
+@Data
 public class BizException extends RuntimeException {
+
+    /**
+     * 错误码
+     */
+    private int code;
 
     /**
      * 业务异常
@@ -14,6 +21,7 @@ public class BizException extends RuntimeException {
      */
     public BizException(BizCodeEnum bizCodeEnum, Exception ex) {
         super(bizCodeEnum.getDesc(), ex);
+        this.setCode(bizCodeEnum.getCode());
     }
 
     /**
@@ -22,5 +30,6 @@ public class BizException extends RuntimeException {
      */
     public BizException(BizCodeEnum bizCodeEnum) {
         super(bizCodeEnum.getDesc());
+        this.setCode(bizCodeEnum.getCode());
     }
 }

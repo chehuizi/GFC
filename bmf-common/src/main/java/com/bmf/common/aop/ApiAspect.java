@@ -1,5 +1,7 @@
 package com.bmf.common.aop;
 
+import com.bmf.common.exception.BizException;
+import com.bmf.common.utils.ResultUtil;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -20,7 +22,14 @@ public class ApiAspect {
 
     @Around("pointCut()")
     public Object invoke(ProceedingJoinPoint proceedingJoinPoint) {
-        String text = "";
-        return null;
+        try {
+            return proceedingJoinPoint.proceed();
+        } catch (BizException be) {
+            return ResultUtil.fail(be.getCode(), be.getMessage());
+        } catch (Exception ex) {
+            return ResultUtil.fail(ex.getMessage());
+        } catch (Throwable th) {
+            return ResultUtil.fail(th.getMessage());
+        }
     }
 }
