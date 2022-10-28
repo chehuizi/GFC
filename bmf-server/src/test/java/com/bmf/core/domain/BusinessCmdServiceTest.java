@@ -36,15 +36,17 @@ public class BusinessCmdServiceTest {
     }
 
     @Test
-    public void test_business_add_domain() {
+    public void test_business_add_domain_exp_1() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();
-        business.setBusinessCode(1011);
+        business.setBusinessCode(5);
         business.setBusinessName("chz");
         businessReqDTO.setBusiness(business);
         Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
         System.out.println(result);
     }
+
+
 
     @Test
     public void test_business_del_domain() {

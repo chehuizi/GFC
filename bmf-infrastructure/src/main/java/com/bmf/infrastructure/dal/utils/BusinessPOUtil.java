@@ -5,6 +5,8 @@ import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
 import com.bmf.infrastructure.dal.po.BusinessPO;
 
+import java.util.Objects;
+
 /**
  * 工具类
  */
@@ -23,6 +25,9 @@ public class BusinessPOUtil {
     }
 
     public static Business convert(BusinessPO businessPO) {
+        if (Objects.isNull(businessPO)) {
+            return null;
+        }
         Business business = new Business();
         business.setBusinessCode(businessPO.getBusinessCode());
         business.setBusinessName(businessPO.getBusinessName());
