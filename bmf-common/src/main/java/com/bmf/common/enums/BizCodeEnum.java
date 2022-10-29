@@ -7,6 +7,11 @@ import lombok.Getter;
  */
 @Getter
 public enum BizCodeEnum {
+    /******************** 系统错误码 start *********************/
+    PARAM_ERROR(80001, "参数错误"),
+    VALIDATOR_ERROR(90001, "校验器异常"),
+    /******************** 系统错误码 end   *********************/
+
     /******************** api层错误码 start ********************/
     BUSINESS_NOT_EXIST(100001, "业务不存在"),
     DOMAIN_NOT_EXIST(100002, "领域不存在"),

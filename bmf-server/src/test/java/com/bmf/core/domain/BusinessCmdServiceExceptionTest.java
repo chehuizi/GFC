@@ -20,6 +20,14 @@ public class BusinessCmdServiceExceptionTest {
     private BusinessCmdService businessCmdService;
 
     @Test
+    public void test_business_create_exp_1() {
+        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        businessReqDTO.setBusiness(null);
+        Result<Boolean> result = businessCmdService.create(businessReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
     public void test_business_add_domain_exp_1() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();

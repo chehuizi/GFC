@@ -8,6 +8,7 @@ import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
 import com.bmf.common.utils.ResultUtil;
+import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import com.bmf.core.domain.DomainService;
@@ -27,6 +28,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
 
     @Override
+    @Validator(beanName = "businessReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(BusinessReqDTO req) {
         return ResultUtil.success(businessService.createBusiness(req.getBusiness()));
     }
@@ -56,16 +58,48 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> delDomain(BusinessReqDTO businessReqDTO) {
+        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+        if (Objects.isNull(business)) {
+            throw new BizException(BizCodeEnum.BUSINESS_NOT_EXIST);
+        }
+        BusinessDomain domain = domainService.queryDomain(businessReqDTO.getDomain());
+        if (Objects.isNull(domain)) {
+            throw new BizException(BizCodeEnum.DOMAIN_NOT_EXIST);
+        }
         return ResultUtil.success(businessService.delDomain(businessReqDTO.getBusiness(), businessReqDTO.getDomain()));
     }
 
     @Override
     public Result<Boolean> buildDomainRelation(BusinessReqDTO businessReqDTO) {
+        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+        if (Objects.isNull(business)) {
+            throw new BizException(BizCodeEnum.BUSINESS_NOT_EXIST);
+        }
+        BusinessDomain domainA = domainService.queryDomain(businessReqDTO.getRelationship().getRoleA().getDomain());
+        if (Objects.isNull(domainA)) {
+            throw new BizException(BizCodeEnum.DOMAIN_NOT_EXIST);
+        }
+        BusinessDomain domainB = domainService.queryDomain(businessReqDTO.getRelationship().getRoleB().getDomain());
+        if (Objects.isNull(domainB)) {
+            throw new BizException(BizCodeEnum.DOMAIN_NOT_EXIST);
+        }
         return ResultUtil.success(businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getRelationship()));
     }
 
     @Override
     public Result<Boolean> removeDomainRelation(BusinessReqDTO businessReqDTO) {
+        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+        if (Objects.isNull(business)) {
+            throw new BizException(BizCodeEnum.BUSINESS_NOT_EXIST);
+        }
+        BusinessDomain domainA = domainService.queryDomain(businessReqDTO.getRelationship().getRoleA().getDomain());
+        if (Objects.isNull(domainA)) {
+            throw new BizException(BizCodeEnum.DOMAIN_NOT_EXIST);
+        }
+        BusinessDomain domainB = domainService.queryDomain(businessReqDTO.getRelationship().getRoleB().getDomain());
+        if (Objects.isNull(domainB)) {
+            throw new BizException(BizCodeEnum.DOMAIN_NOT_EXIST);
+        }
         return ResultUtil.success(businessDomainDesign4Strategy.removeBusinessDomainRelationship(businessReqDTO.getRelationship()));
     }
 }
