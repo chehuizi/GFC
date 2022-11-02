@@ -14,6 +14,7 @@ import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.Objects;
 
@@ -25,7 +26,7 @@ import java.util.Objects;
 @Order(1)
 public class ApiAspect {
 
-    @Pointcut(value = "execution(* com.bmf.api..*.*(..))")
+    @Pointcut(value = "execution(* com.bmf.api.impl..*.*(..))")
     public void pointCut() {
 
     }
@@ -55,7 +56,7 @@ public class ApiAspect {
      * @param validator
      * @param params
      */
-    private void validate(Validator validator, Object[] params) {
+    private void validate(Validator validator, Object[] params) throws Throwable {
         try {
             Class<? extends Object>[] paramsClass = null;
             if (Objects.nonNull(params)) {
@@ -71,6 +72,8 @@ public class ApiAspect {
             method.invoke(bean, params);
         } catch (BizException be) {
             throw be;
+        } catch (InvocationTargetException ite) {
+            throw ite.getTargetException();
         } catch (Exception ex) {
             throw new BizException(BizCodeEnum.VALIDATOR_ERROR);
         }

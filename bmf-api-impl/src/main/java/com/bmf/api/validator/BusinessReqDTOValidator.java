@@ -1,4 +1,4 @@
-package com.bmf.api.impl.validator;
+package com.bmf.api.validator;
 
 import com.bmf.api.business.BusinessReqDTO;
 import com.bmf.common.enums.BizCodeEnum;
