@@ -10,8 +10,27 @@ import java.util.Objects;
 @Service("businessReqDTOValidator")
 public class BusinessReqDTOValidator {
 
+    /**
+     * 校验create方法
+     * @param businessReqDTO
+     * @return
+     */
     public boolean v4Create(BusinessReqDTO businessReqDTO) {
-        if (Objects.isNull(businessReqDTO) || Objects.isNull(businessReqDTO.getBusiness())) {
+        if (Objects.isNull(businessReqDTO)) {
+            throw new BizException(BizCodeEnum.PARAM_ERROR);
+        } else if (Objects.isNull(businessReqDTO.getBusiness())) {
+            throw new BizException(BizCodeEnum.PARAM_ERROR, "business is null");
+        }
+        return true;
+    }
+
+    /**
+     * 校验addDomain方法
+     * @param businessReqDTO
+     * @return
+     */
+    public boolean v4AddDomain(BusinessReqDTO businessReqDTO) {
+        if (Objects.isNull(businessReqDTO)) {
             throw new BizException(BizCodeEnum.PARAM_ERROR);
         }
         return true;

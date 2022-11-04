@@ -32,4 +32,9 @@ public class BizException extends RuntimeException {
         super(bizCodeEnum.getDesc());
         this.setCode(bizCodeEnum.getCode());
     }
+
+    public BizException(BizCodeEnum bizCodeEnum, String extInfo) {
+        super(bizCodeEnum.getDesc() + "[" + extInfo + "]");
+        this.setCode(bizCodeEnum.getCode());
+    }
 }

@@ -44,6 +44,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
+    @Validator(beanName = "businessReqDTOValidator", method = "v4AddDomain")
     public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
         Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
         if (Objects.isNull(business)) {
