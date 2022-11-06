@@ -37,9 +37,10 @@ public class ApiAspect {
             MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
             Method method = signature.getMethod();
             Validator validator = method.getAnnotation(Validator.class);
+            Class<? extends Object>[] paramsClass = method.getParameterTypes();
             if (Objects.nonNull(validator)) {
                 Object[] params = proceedingJoinPoint.getArgs();
-                validate(validator, params);
+                validate(validator, params, paramsClass);
             }
             return proceedingJoinPoint.proceed();
         } catch (BizException be) {
@@ -56,16 +57,8 @@ public class ApiAspect {
      * @param validator
      * @param params
      */
-    private void validate(Validator validator, Object[] params) throws Throwable {
+    private void validate(Validator validator, Object[] params, Class<? extends Object>[] paramsClass) throws Throwable {
         try {
-            Class<? extends Object>[] paramsClass = null;
-            if (Objects.nonNull(params)) {
-                int paramsLength = params.length;
-                paramsClass = new Class[paramsLength];
-                for (int i=0; i<paramsLength; i++) {
-                    paramsClass[i] = params[i].getClass();
-                }
-            }
             Object bean = SpringUtil.getBean(validator.beanName());
             String methodName = validator.method();
             Method method = ReflectionUtils.findMethod(bean.getClass(), methodName, paramsClass);
