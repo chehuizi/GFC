@@ -8,12 +8,12 @@ import com.bmf.infrastructure.dal.po.BusinessPO;
 import java.util.Objects;
 
 /**
- * 工具类
+ * PO工具类
  */
 public class BusinessPOUtil {
 
     /**
-     * 转换DO到PO
+     * DO转PO
      * @param business
      * @return
      */
@@ -24,6 +24,11 @@ public class BusinessPOUtil {
         return businessPO;
     }
 
+    /**
+     * PO转DO
+     * @param businessPO
+     * @return
+     */
     public static Business convert(BusinessPO businessPO) {
         if (Objects.isNull(businessPO)) {
             return null;
@@ -34,6 +39,11 @@ public class BusinessPOUtil {
         return business;
     }
 
+    /**
+     * DO转PO
+     * @param businessDomainRelationship
+     * @return
+     */
     public static BusinessDomainRelationPO convert(BusinessDomainRelationship businessDomainRelationship) {
         BusinessDomainRelationPO businessDomainRelationPO = new BusinessDomainRelationPO();
         businessDomainRelationPO.setBusinessCode(businessDomainRelationship.getBusinessCode());

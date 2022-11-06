@@ -62,5 +62,12 @@ public class BusinessCmdServiceExceptionTest {
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
+
+    @Test
+    public void test_business_del_domain_exp_80001_1() {
+        Result<Boolean> result = businessCmdService.delDomain(null);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
 }
 

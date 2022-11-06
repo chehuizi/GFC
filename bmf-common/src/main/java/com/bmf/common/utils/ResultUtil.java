@@ -1,9 +1,14 @@
 package com.bmf.common.utils;
 
 import com.bmf.api.Result;
+import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.enums.ResultCodeEnum;
 
+/**
+ * 结果工具类
+ */
 public class ResultUtil {
+
     /**
      * 成功
      * @return
@@ -26,6 +31,18 @@ public class ResultUtil {
         result.setCode(ResultCodeEnum.FAIL_SYSTEM_ERROR.getCode());
         result.setMsg(ResultCodeEnum.FAIL_SYSTEM_ERROR.getDesc());
         result.setData(data);
+        return result;
+    }
+
+    /**
+     * 失败
+     * @param bizCodeEnum
+     * @return
+     */
+    public static Result fail(BizCodeEnum bizCodeEnum) {
+        Result result = new Result<>();
+        result.setCode(bizCodeEnum.getCode());
+        result.setMsg(bizCodeEnum.getDesc());
         return result;
     }
 

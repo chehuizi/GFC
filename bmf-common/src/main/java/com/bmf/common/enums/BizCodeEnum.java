@@ -8,6 +8,7 @@ import lombok.Getter;
 @Getter
 public enum BizCodeEnum {
     /******************** 系统错误码 start *********************/
+    FUNCTION_NOT_SUPPORT(70001, "功能不支持"),
     PARAM_ERROR(80001, "参数错误"),
     VALIDATOR_ERROR(90001, "校验器异常"),
     VALIDATOR_METHOD_NOT_FOUND(90002, "校验器方法不存在"),
@@ -16,6 +17,7 @@ public enum BizCodeEnum {
     /******************** api层错误码 start ********************/
     BUSINESS_NOT_EXIST(100001, "业务不存在"),
     DOMAIN_NOT_EXIST(100002, "领域不存在"),
+    BUSINESS_IS_EXISTED(100003, "业务已存在"),
     /******************** api层错误码 end   ********************/
 
     /******************** core层错误码 start ********************/

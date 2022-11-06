@@ -1,15 +1,15 @@
 package com.bmf.api;
 
-import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessReqDTO;
-import com.bmf.api.business.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.strategy.role.partner.PartnerRole;
 import com.bmf.base.strategy.symmetric.Partnership;
+import com.bmf.common.enums.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,22 +28,40 @@ public class BusinessCmdServiceTest {
     public void test_business_create() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();
-        business.setBusinessCode(1011);
-        business.setBusinessName("chz");
+        business.setBusinessCode(10);
+        business.setBusinessName("chz_test");
         businessReqDTO.setBusiness(business);
         Result<Boolean> result = businessCmdService.create(businessReqDTO);
         System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_business_add_domain() {
+        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(10);
+        businessReqDTO.setBusiness(business);
+        BusinessDomain domain = new BusinessDomain();
+        domain.setDomainCode(10);
+        businessReqDTO.setDomain(domain);
+        Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
     @Test
     public void test_business_del_domain() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();
-        business.setBusinessCode(1011);
-        business.setBusinessName("chz");
+        business.setBusinessCode(10);
         businessReqDTO.setBusiness(business);
+        BusinessDomain domain = new BusinessDomain();
+        domain.setDomainCode(10);
+        businessReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.delDomain(businessReqDTO);
         System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
     @Test

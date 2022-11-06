@@ -26,4 +26,9 @@
         )
     </insert>
 
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+        delete from bmf_business_rel_domain
+        where business_code = #{businessCode,jdbcType=INTEGER}
+        and domain_code = #{domainCode,jdbcType=INTEGER}
+    </delete>
 </mapper>

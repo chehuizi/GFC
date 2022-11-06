@@ -29,4 +29,15 @@ public class BusinessReqDTOValidator {
         ParamCheckUtil.checkNull(businessReqDTO.getDomain(), "domain is null");
         return true;
     }
+
+    /**
+     * 校验delDomain方法
+     * @return
+     */
+    public boolean v4DelDomain(BusinessReqDTO businessReqDTO) {
+        ParamCheckUtil.checkNull(businessReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(businessReqDTO.getDomain(), "domain is null");
+        return true;
+    }
 }
