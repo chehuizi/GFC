@@ -62,6 +62,9 @@ public class ApiAspect {
             Object bean = SpringUtil.getBean(validator.beanName());
             String methodName = validator.method();
             Method method = ReflectionUtils.findMethod(bean.getClass(), methodName, paramsClass);
+            if (Objects.isNull(method)) {
+                throw new BizException(BizCodeEnum.VALIDATOR_METHOD_NOT_FOUND);
+            }
             method.invoke(bean, params);
         } catch (BizException be) {
             throw be;

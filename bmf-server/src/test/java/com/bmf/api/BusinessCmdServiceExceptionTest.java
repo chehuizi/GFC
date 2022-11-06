@@ -1,4 +1,4 @@
-package com.bmf.core.domain;
+package com.bmf.api;
 
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
@@ -22,11 +22,19 @@ public class BusinessCmdServiceExceptionTest {
     private BusinessCmdService businessCmdService;
 
     @Test
-    public void test_business_create_exp_1() {
+    public void test_business_create_exp_80001_1() {
+        Result<Boolean> result = businessCmdService.create(null);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_business_create_exp_80001_2() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         businessReqDTO.setBusiness(null);
         Result<Boolean> result = businessCmdService.create(businessReqDTO);
         System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
