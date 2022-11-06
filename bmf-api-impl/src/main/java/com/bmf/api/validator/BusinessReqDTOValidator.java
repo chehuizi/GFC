@@ -40,4 +40,23 @@ public class BusinessReqDTOValidator {
         ParamCheckUtil.checkNull(businessReqDTO.getDomain(), "domain is null");
         return true;
     }
+
+    /**
+     * 校验buildDomainRelation方法
+     * @param businessReqDTO
+     * @return
+     */
+    public boolean v4BuildDomainRelation(BusinessReqDTO businessReqDTO) {
+        ParamCheckUtil.checkNull(businessReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessReqDTO.getRelationship(), "relationship is null");
+        ParamCheckUtil.checkNull(businessReqDTO.getRelationship().getBusinessCode(), "business code is null");
+        ParamCheckUtil.checkBlank(businessReqDTO.getRelationship().getRelationship(), "relationship is blank");
+        ParamCheckUtil.checkNull(businessReqDTO.getRelationship().getRoleA(), "roleA is null");
+        ParamCheckUtil.checkNull(businessReqDTO.getRelationship().getRoleB(), "roleB is null");
+        ParamCheckUtil.checkNull(businessReqDTO.getRelationship().getRoleA().getDomain(), "roleA's domain is null");
+        ParamCheckUtil.checkBlank(businessReqDTO.getRelationship().getRoleA().getRole(), "roleA's role is blank");
+        ParamCheckUtil.checkNull(businessReqDTO.getRelationship().getRoleB().getDomain(), "roleB's domain is null");
+        ParamCheckUtil.checkBlank(businessReqDTO.getRelationship().getRoleB().getRole(), "roleB's role is blank");
+        return true;
+    }
 }

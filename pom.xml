@@ -38,6 +38,7 @@
         <bmf.version>1.0-SNAPSHOT</bmf.version>
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.10</lombok.version>
+        <commons.lang.version>3.12.0</commons.lang.version>
     </properties>
 
     <dependencyManagement>
@@ -163,6 +164,12 @@
                 <groupId>org.projectlombok</groupId>
                 <artifactId>lombok</artifactId>
                 <version>${lombok.version}</version>
+            </dependency>
+            <!-- apache commons util -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons.lang.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
