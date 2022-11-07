@@ -76,6 +76,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
+    @Validator(beanName = "businessReqDTOValidator", method = "v4RemoveDomainRelation")
     public Result<Boolean> removeDomainRelation(BusinessReqDTO businessReqDTO) {
         Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
