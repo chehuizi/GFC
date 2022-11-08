@@ -12,11 +12,15 @@ import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import com.bmf.core.domain.DomainService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
 public class BusinessCmdServiceImpl implements BusinessCmdService {
+
+    private static final Logger logger = LoggerFactory.getLogger(BusinessCmdServiceImpl.class);
 
     @Autowired
     private BusinessService businessService;
