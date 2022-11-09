@@ -10,6 +10,8 @@ import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Pointcut;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
@@ -26,6 +28,8 @@ import java.util.Objects;
 @Order(1)
 public class ApiAspect {
 
+    private static final Logger logger = LoggerFactory.getLogger(ApiAspect.class);
+
     @Pointcut(value = "execution(* com.bmf.api.impl..*.*(..))")
     public void pointCut() {
 
@@ -37,11 +41,12 @@ public class ApiAspect {
             MethodSignature signature = (MethodSignature) proceedingJoinPoint.getSignature();
             Method method = signature.getMethod();
             Validator validator = method.getAnnotation(Validator.class);
+            Object[] params = proceedingJoinPoint.getArgs();
             Class<? extends Object>[] paramsClass = method.getParameterTypes();
             if (Objects.nonNull(validator)) {
-                Object[] params = proceedingJoinPoint.getArgs();
                 validate(validator, params, paramsClass);
             }
+            logger.info("api request : " + params.toString());
             return proceedingJoinPoint.proceed();
         } catch (BizException be) {
             return ResultUtil.fail(be.getCode(), be.getMessage());

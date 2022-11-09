@@ -39,6 +39,8 @@
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.10</lombok.version>
         <commons.lang.version>3.12.0</commons.lang.version>
+        <logback.version>1.4.4</logback.version>
+        <slf4j-api.version>1.7.28</slf4j-api.version>
     </properties>
 
     <dependencyManagement>
@@ -171,7 +173,23 @@
                 <artifactId>commons-lang3</artifactId>
                 <version>${commons.lang.version}</version>
             </dependency>
-
+            <!-- slf4j-api -->
+            <dependency>
+                <groupId>org.slf4j</groupId>
+                <artifactId>slf4j-api</artifactId>
+                <version>${slf4j-api.version}</version>
+            </dependency>
+            <!-- logback -->
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-core</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>ch.qos.logback</groupId>
+                <artifactId>logback-classic</artifactId>
+                <version>${logback.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 
