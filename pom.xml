@@ -39,8 +39,8 @@
         <junit.version>4.12</junit.version>
         <lombok.version>1.18.10</lombok.version>
         <commons.lang.version>3.12.0</commons.lang.version>
-        <logback.version>1.4.4</logback.version>
         <slf4j-api.version>1.7.28</slf4j-api.version>
+        <logback.version>1.4.4</logback.version>
     </properties>
 
     <dependencyManagement>
@@ -95,6 +95,14 @@
                     <exclusion>
                         <groupId>org.springframework.boot</groupId>
                         <artifactId>spring-boot-starter-jdbc</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>ch.qos.logback</groupId>
+                        <artifactId>logback-classic</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.apache.logging.log4j</groupId>
+                        <artifactId>log4j-to-slf4j</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
