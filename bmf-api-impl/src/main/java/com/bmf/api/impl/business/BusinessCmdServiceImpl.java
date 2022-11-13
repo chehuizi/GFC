@@ -32,6 +32,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     @Override
     @Validator(beanName = "businessReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(BusinessReqDTO req) {
+        logger.info("test");
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNonNull(business, BizCodeEnum.BUSINESS_IS_EXISTED);
         return ResultUtil.success(businessService.createBusiness(req.getBusiness()));
