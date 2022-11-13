@@ -1,5 +1,6 @@
 package com.bmf.common.aop;
 
+import com.alibaba.fastjson.JSON;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.exception.BizException;
 import com.bmf.common.utils.ResultUtil;
@@ -46,7 +47,7 @@ public class ApiAspect {
             if (Objects.nonNull(validator)) {
                 validate(validator, params, paramsClass);
             }
-            logger.info("api request : " + params.toString());
+            logger.info("api request : " + JSON.toJSONString(params));
             return proceedingJoinPoint.proceed();
         } catch (BizException be) {
             return ResultUtil.fail(be.getCode(), be.getMessage());

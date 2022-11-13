@@ -41,6 +41,7 @@
         <commons.lang.version>3.12.0</commons.lang.version>
         <logback.version>1.2.1</logback.version>
         <jcl-over-slf4j.version>1.7.25</jcl-over-slf4j.version>
+        <fastjson.version>2.0.19</fastjson.version>
     </properties>
 
     <dependencyManagement>
@@ -211,6 +212,11 @@
                 <groupId>org.slf4j</groupId>
                 <artifactId>jcl-over-slf4j</artifactId>
                 <version>${jcl-over-slf4j.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
