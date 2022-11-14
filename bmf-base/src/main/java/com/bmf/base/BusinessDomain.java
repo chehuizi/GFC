@@ -14,25 +14,31 @@ public class BusinessDomain extends BaseDO {
     private Integer domainCode;
 
     /**
-     * 业务域名称
+     * 领域名称
      */
     private String domainName;
 
     /**
-     * 业务域类型
+     * 领域别名
+     */
+    private String domainAlias;
+
+    /**
+     * 领域类型
      * @see com.bmf.base.enums.BusinessDomainTypeEnum
      */
     private String domainType;
 
     /**
-     * 业务域等级
+     * 领域等级
      * @see com.bmf.base.enums.BusinessDomainLevelEnum
      */
     private int domainLevel;
 
-    public BusinessDomain(Integer domainCode, String domainName, String domainType, int domainLevel) {
+    public BusinessDomain(Integer domainCode, String domainName, String domainAlias, String domainType, int domainLevel) {
         this.domainCode = domainCode;
         this.domainName = domainName;
+        this.domainAlias = domainAlias;
         this.domainType = domainType;
         this.domainLevel = domainLevel;
     }
@@ -50,7 +56,8 @@ public class BusinessDomain extends BaseDO {
     public String toString() {
         return "{" +
                 "\"domainCode\": \"" + domainCode + "\"" +
-                "\"domainName\": \"" + domainName + "\"" +
+                ", \"domainName\": \"" + domainName + "\"" +
+                ", \"domainAlias\": \"" + domainAlias + "\"" +
                 ", \"domainType\": \"" + domainType + "\"" +
                 ", \"domainLevel\": " + domainLevel +
                 "}";
