@@ -1,6 +1,5 @@
 package com.bmf.api;
 
-import com.bmf.api.Result;
 import com.bmf.api.domain.DomainCmdService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.base.BusinessDomain;

@@ -43,10 +43,11 @@ public class BusinessDomain extends BaseDO {
         this.domainLevel = domainLevel;
     }
 
-    public BusinessDomain(int domainLevel, String domainType, String domainName) {
+    public BusinessDomain(int domainLevel, String domainType, String domainName, String domainAlias) {
         this.domainLevel = domainLevel;
         this.domainType = domainType;
         this.domainName = domainName;
+        this.domainAlias = domainAlias;
     }
 
     public BusinessDomain() {

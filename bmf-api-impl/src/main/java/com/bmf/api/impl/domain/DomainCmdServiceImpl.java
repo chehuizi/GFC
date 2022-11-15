@@ -6,6 +6,7 @@ import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.utils.DomainUtil;
 import com.bmf.common.utils.ResultUtil;
+import com.bmf.common.validator.Validator;
 import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     private BusinessDomainDesign4Tactics businessDomainDesign4Tactics;
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         return ResultUtil.success(domainService.createDomain(domain));

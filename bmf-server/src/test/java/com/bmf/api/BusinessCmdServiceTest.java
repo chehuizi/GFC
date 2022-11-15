@@ -74,10 +74,10 @@ public class BusinessCmdServiceTest {
         Partnership partnership = new Partnership();
         partnership.setBusinessCode(11);
         PartnerRole roleA = new PartnerRole();
-        roleA.setDomain(new BusinessDomain(1, "test_domain_1", BusinessDomainTypeEnum.CORE.getType(), 1));
+        roleA.setDomain(new BusinessDomain(1, "test_domain_1", "test_domain_1", BusinessDomainTypeEnum.CORE.getType(), 1));
         partnership.setRoleA(roleA);
         PartnerRole roleB = new PartnerRole();
-        roleB.setDomain(new BusinessDomain(2, "test_domain_2", BusinessDomainTypeEnum.CORE.getType(), 1));
+        roleB.setDomain(new BusinessDomain(2, "test_domain_2", "test_domain_2", BusinessDomainTypeEnum.CORE.getType(), 1));
         partnership.setRoleB(roleB);
         businessReqDTO.setRelationship(partnership);
         Result<Boolean> result = businessCmdService.buildDomainRelation(businessReqDTO);
@@ -94,10 +94,10 @@ public class BusinessCmdServiceTest {
         Partnership partnership = new Partnership();
         partnership.setBusinessCode(11);
         PartnerRole roleA = new PartnerRole();
-        roleA.setDomain(new BusinessDomain(1, "test_domain_1", BusinessDomainTypeEnum.CORE.getType(), 1));
+        roleA.setDomain(new BusinessDomain(1, "test_domain_1", "test_domain_1", BusinessDomainTypeEnum.CORE.getType(), 1));
         partnership.setRoleA(roleA);
         PartnerRole roleB = new PartnerRole();
-        roleB.setDomain(new BusinessDomain(2, "test_domain_2", BusinessDomainTypeEnum.CORE.getType(), 1));
+        roleB.setDomain(new BusinessDomain(2, "test_domain_2", "test_domain_2", BusinessDomainTypeEnum.CORE.getType(), 1));
         partnership.setRoleB(roleB);
         businessReqDTO.setRelationship(partnership);
         Result<Boolean> result = businessCmdService.removeDomainRelation(businessReqDTO);
