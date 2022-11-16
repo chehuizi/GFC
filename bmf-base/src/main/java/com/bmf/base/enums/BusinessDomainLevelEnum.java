@@ -22,4 +22,17 @@ public enum BusinessDomainLevelEnum {
         this.desc = desc;
     }
 
+    /**
+     * 是否包含
+     * @param level
+     * @return
+     */
+    public static boolean contain(int level) {
+        for (BusinessDomainLevelEnum item : BusinessDomainLevelEnum.values()) {
+            if (item.getValue() == level) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

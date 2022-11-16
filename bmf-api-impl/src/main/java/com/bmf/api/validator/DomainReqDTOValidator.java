@@ -15,6 +15,10 @@ public class DomainReqDTOValidator {
     public boolean v4Create(DomainReqDTO domainReqDTO) {
         ParamCheckUtil.checkNull(domainReqDTO, "param is null");
         ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkBlank(domainReqDTO.getBusinessDomain().getDomainName(), "domain name is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getBusinessDomain().getDomainAlias(), "domain alias is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getBusinessDomain().getDomainType(), "domain type is blank");
         return true;
     }
 
