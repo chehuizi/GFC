@@ -44,11 +44,13 @@ public class ApiAspect {
             Validator validator = method.getAnnotation(Validator.class);
             Object[] params = proceedingJoinPoint.getArgs();
             Class<? extends Object>[] paramsClass = method.getParameterTypes();
+            logger.info("api request : " + JSON.toJSONString(params));
             if (Objects.nonNull(validator)) {
                 validate(validator, params, paramsClass);
             }
-            logger.info("api request : " + JSON.toJSONString(params));
-            return proceedingJoinPoint.proceed();
+            Object result = proceedingJoinPoint.proceed();
+            logger.info("api response : " + JSON.toJSONString(result));
+            return result;
         } catch (BizException be) {
             return ResultUtil.fail(be.getCode(), be.getMessage());
         } catch (Exception ex) {

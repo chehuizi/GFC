@@ -25,8 +25,17 @@ public class DomainCmdServiceExceptionTest {
     private DomainCmdService domainCmdService;
 
     @Test
-    public void test_domain_create_exp_80001() {
+    public void test_domain_create_exp_80001_1() {
         Result<Boolean> result = domainCmdService.create(null);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_domain_create_exp_80001_2() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        domainReqDTO.setBusinessDomain(null);
+        Result<Boolean> result = domainCmdService.create(domainReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
