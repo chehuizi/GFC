@@ -13,6 +13,7 @@ public class DomainPOUtil {
         DomainPO domainPO = new DomainPO();
         domainPO.setDomainCode(businessDomain.getDomainCode());
         domainPO.setDomainName(businessDomain.getDomainName());
+        domainPO.setDomainAlias(businessDomain.getDomainAlias());
         domainPO.setDomainType(businessDomain.getDomainType());
         domainPO.setDomainLevel(businessDomain.getDomainLevel());
         return domainPO;

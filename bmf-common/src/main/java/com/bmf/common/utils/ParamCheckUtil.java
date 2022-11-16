@@ -12,7 +12,7 @@ import java.util.Objects;
 public class ParamCheckUtil {
 
     /**
-     * 为空校验
+     * null校验
      * @param param
      */
     public static void checkNull(Object param) {
@@ -22,7 +22,7 @@ public class ParamCheckUtil {
     }
 
     /**
-     * 为空校验，同时返回信息
+     * null校验，同时返回信息
      * @param param
      * @param message
      */
@@ -32,8 +32,24 @@ public class ParamCheckUtil {
         }
     }
 
+    /**
+     * 空校验
+     * @param param
+     * @param message
+     */
     public static void checkBlank(String param, String message) {
         if (StringUtils.isBlank(param)) {
+            throw new BizException(BizCodeEnum.PARAM_ERROR, message);
+        }
+    }
+
+    /**
+     * TRUE校验
+     * @param param
+     * @param message
+     */
+    public static void checkTrue(boolean param, String message) {
+        if (!param) {
             throw new BizException(BizCodeEnum.PARAM_ERROR, message);
         }
     }

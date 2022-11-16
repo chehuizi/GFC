@@ -28,4 +28,17 @@ public enum BusinessDomainTypeEnum {
         this.desc = desc;
     }
 
+    /**
+     * 是否包含
+     * @param type
+     * @return
+     */
+    public static boolean contain(String type) {
+        for (BusinessDomainTypeEnum item : BusinessDomainTypeEnum.values()) {
+            if (item.getType().equalsIgnoreCase(type)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }

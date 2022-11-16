@@ -14,6 +14,10 @@ public class DomainPO extends BasePO {
      */
     private String domainName;
     /**
+     * 领域别名
+     */
+    private String domainAlias;
+    /**
      * 域类型
      */
     private String domainType;

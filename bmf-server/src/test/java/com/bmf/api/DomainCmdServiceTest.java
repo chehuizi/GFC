@@ -7,7 +7,10 @@ import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
+import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.common.enums.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,13 +29,15 @@ public class DomainCmdServiceTest {
     public void test_domain_create() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(12);
-        businessDomain.setDomainName("test");
+        businessDomain.setDomainCode(10);
+        businessDomain.setDomainName("仓库管理系统");
+        businessDomain.setDomainAlias("wms");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainReqDTO);
         System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
     @Test
