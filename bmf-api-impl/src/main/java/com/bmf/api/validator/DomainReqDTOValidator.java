@@ -14,6 +14,7 @@ public class DomainReqDTOValidator {
      */
     public boolean v4Create(DomainReqDTO domainReqDTO) {
         ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
         return true;
     }
 

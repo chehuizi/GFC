@@ -14,10 +14,16 @@ import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
  */
 public class DomainUtil {
 
+    /**
+     * 转换对象
+     * @param domainReqDTO
+     * @return
+     */
     public static BusinessDomain convert(DomainReqDTO domainReqDTO) {
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(domainReqDTO.getBusinessDomain().getDomainCode());
         businessDomain.setDomainName(domainReqDTO.getBusinessDomain().getDomainName());
+        businessDomain.setDomainAlias(domainReqDTO.getBusinessDomain().getDomainAlias());
         businessDomain.setDomainLevel(domainReqDTO.getBusinessDomain().getDomainLevel());
         businessDomain.setDomainType(domainReqDTO.getBusinessDomain().getDomainType());
         return businessDomain;
