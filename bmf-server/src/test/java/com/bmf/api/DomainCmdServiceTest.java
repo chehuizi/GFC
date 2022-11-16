@@ -7,7 +7,6 @@ import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
-import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.enums.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
