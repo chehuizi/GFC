@@ -1,11 +1,12 @@
 package com.bmf.api;
 
-import com.bmf.api.Result;
 import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
+import com.bmf.common.enums.BizCodeEnum;
 import lombok.extern.slf4j.Slf4j;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,13 +22,25 @@ public class DomainQryServiceTest {
     private DomainQryService domainQryService;
 
     @Test
-    public void test_domain_query_one() {
+    public void test_domain_query_one_1() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(12);
+        businessDomain.setDomainCode(10);
         domainReqDTO.setBusinessDomain(businessDomain);
         Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
         System.out.println(result);
+        Assert.assertTrue(10 == result.getData().getBusinessDomain().getDomainCode());
+    }
+
+    @Test
+    public void test_domain_query_one_2() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainAlias("wms");
+        domainReqDTO.setBusinessDomain(businessDomain);
+        Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(10 == result.getData().getBusinessDomain().getDomainCode());
     }
 
 }

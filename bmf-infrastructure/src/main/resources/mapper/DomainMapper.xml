@@ -15,10 +15,13 @@
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap">
-        SELECT
+        select
         <include refid="Base_Column_List"/>
         FROM bmf_domain
-        where domain_code = #{domainCode}
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="domainAlias != null">and domain_alias = #{domainAlias}</if>
+        </trim>
         limit 1
     </select>
 

@@ -24,4 +24,11 @@ public class DomainRespDTO extends RespDTO implements Serializable {
      * 业务领域列表
      */
     private List<BusinessDomain> businessDomainList;
+
+    public DomainRespDTO(BusinessDomain businessDomain) {
+        this.businessDomain = businessDomain;
+    }
+
+    public DomainRespDTO() {
+    }
 }

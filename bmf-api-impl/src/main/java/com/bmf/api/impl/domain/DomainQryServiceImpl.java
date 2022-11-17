@@ -7,9 +7,7 @@ import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.utils.DomainUtil;
 import com.bmf.common.utils.ResultUtil;
-import com.bmf.infrastructure.dal.DomainRepository;
-import com.bmf.infrastructure.dal.po.DomainPO;
-import com.bmf.infrastructure.dal.utils.DomainPOUtil;
+import com.bmf.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,12 +15,13 @@ import org.springframework.stereotype.Service;
 public class DomainQryServiceImpl implements DomainQryService {
 
     @Autowired
-    private DomainRepository domainRepository;
+    private DomainService domainService;
 
     @Override
     public Result<DomainRespDTO> queryOne(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
-        DomainPO domainPO = domainRepository.selectOne(domain);
-        return ResultUtil.success(DomainPOUtil.convert(domainPO));
+        BusinessDomain result = domainService.queryDomain(domain);
+        DomainRespDTO respDTO = new DomainRespDTO(result);
+        return ResultUtil.success(respDTO);
     }
 }
