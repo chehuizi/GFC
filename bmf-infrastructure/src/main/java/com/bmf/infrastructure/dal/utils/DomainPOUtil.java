@@ -19,6 +19,11 @@ public class DomainPOUtil {
         return domainPO;
     }
 
+    /**
+     * 转换对象
+     * @param domainPO
+     * @return
+     */
     public static BusinessDomain convert(DomainPO domainPO) {
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(domainPO.getDomainCode());

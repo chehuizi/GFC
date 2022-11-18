@@ -4,6 +4,8 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.DomainCmdService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
+import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.common.utils.DomainUtil;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
@@ -24,6 +26,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Validator(beanName = "domainReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
+        BusinessDomain queryResult = domainService.queryDomain(domain);
+        BusinessCheckUtil.checkNonNull(queryResult, BizCodeEnum.DOMAIN_IS_EXISTED);
         return ResultUtil.success(domainService.createDomain(domain));
     }
 
@@ -33,6 +37,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4Delete")
     public Result<Boolean> delete(DomainReqDTO req) {
         return null;
     }

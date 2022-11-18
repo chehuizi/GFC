@@ -6,6 +6,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.common.enums.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
@@ -126,6 +127,21 @@ public class DomainCmdServiceExceptionTest {
         Result<Boolean> result = domainCmdService.create(domainReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_domain_create_exp_100004() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(10);
+        businessDomain.setDomainName("仓库管理系统");
+        businessDomain.setDomainAlias("wms");
+        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        domainReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.DOMAIN_IS_EXISTED.getCode() == result.getCode());
     }
 }
 
