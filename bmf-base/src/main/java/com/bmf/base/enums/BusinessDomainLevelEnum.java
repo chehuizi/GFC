@@ -9,9 +9,9 @@ import lombok.Getter;
 @Getter
 public enum BusinessDomainLevelEnum {
 
-    ONE(1, "一级业务域"),
-    TWO(2, "二级业务域"),
-    Three(3, "三级业务域")
+    ONE(1, "一级域"),
+    TWO(2, "二级域"),
+    Three(3, "三级域")
     ;
 
     private int value;
