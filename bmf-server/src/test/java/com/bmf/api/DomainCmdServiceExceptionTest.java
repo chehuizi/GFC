@@ -6,7 +6,6 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.common.enums.BizCodeEnum;
-import com.bmf.common.enums.ResultCodeEnum;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;

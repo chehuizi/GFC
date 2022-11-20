@@ -4,7 +4,10 @@ import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.common.utils.ParamCheckUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service("domainReqDTOValidator")
 public class DomainReqDTOValidator {
@@ -23,6 +26,20 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkBlank(domainReqDTO.getBusinessDomain().getDomainType(), "domain type is blank");
         ParamCheckUtil.checkTrue(BusinessDomainTypeEnum.contain(domainReqDTO.getBusinessDomain().getDomainType()), "domain type is illegal");
         ParamCheckUtil.checkTrue(BusinessDomainLevelEnum.contain(domainReqDTO.getBusinessDomain().getDomainLevel()), "domain level is illegal");
+        return true;
+    }
+
+    /**
+     * 校验update方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4Update(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
+        ParamCheckUtil.checkTrue(Objects.nonNull(domainReqDTO.getBusinessDomain().getDomainCode()) ||
+                StringUtils.isNotBlank(domainReqDTO.getBusinessDomain().getDomainAlias()),
+                "domain code is null && domain alias is blank");
         return true;
     }
 

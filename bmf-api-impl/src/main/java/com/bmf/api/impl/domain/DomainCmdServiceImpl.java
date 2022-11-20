@@ -32,8 +32,12 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4Update")
     public Result<Boolean> update(DomainReqDTO req) {
-        return null;
+        BusinessDomain domain = DomainUtil.convert(req);
+        BusinessDomain queryResult = domainService.queryDomain(domain);
+        BusinessCheckUtil.checkNull(queryResult, BizCodeEnum.DOMAIN_NOT_EXIST);
+        return ResultUtil.success(domainService.updateDomain(domain));
     }
 
     @Override

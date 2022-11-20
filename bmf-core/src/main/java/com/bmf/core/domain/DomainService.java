@@ -9,6 +9,13 @@ import com.bmf.base.tactics.entity.BusinessDomainEntity;
 public interface DomainService {
 
     /**
+     * 查询领域
+     * @param businessDomain
+     * @return
+     */
+    BusinessDomain queryDomain(BusinessDomain businessDomain);
+
+    /**
      * 创建领域
      * @param businessDomain
      * @return
@@ -16,11 +23,11 @@ public interface DomainService {
     boolean createDomain(BusinessDomain businessDomain);
 
     /**
-     * 查询领域
+     * 更新领域
      * @param businessDomain
      * @return
      */
-    BusinessDomain queryDomain(BusinessDomain businessDomain);
+    boolean updateDomain(BusinessDomain businessDomain);
 
     /**
      * 删除领域

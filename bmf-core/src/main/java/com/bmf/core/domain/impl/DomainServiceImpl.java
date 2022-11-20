@@ -15,15 +15,20 @@ public class DomainServiceImpl implements DomainService {
     private DomainRepository domainRepository;
 
     @Override
+    public BusinessDomain queryDomain(BusinessDomain businessDomain) {
+        DomainPO domainPO = domainRepository.selectOne(businessDomain);
+        return DomainPOUtil.convert(domainPO);
+    }
+
+    @Override
     public boolean createDomain(BusinessDomain businessDomain) {
         boolean result = domainRepository.insert(businessDomain);
         return result;
     }
 
     @Override
-    public BusinessDomain queryDomain(BusinessDomain businessDomain) {
-        DomainPO domainPO = domainRepository.selectOne(businessDomain);
-        return DomainPOUtil.convert(domainPO);
+    public boolean updateDomain(BusinessDomain businessDomain) {
+        return true;
     }
 
     @Override
