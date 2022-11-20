@@ -52,10 +52,13 @@ public class ApiAspect {
             logger.info("api response : " + JSON.toJSONString(result));
             return result;
         } catch (BizException be) {
+            logger.error("api biz exception", be);
             return ResultUtil.fail(be.getCode(), be.getMessage());
         } catch (Exception ex) {
+            logger.error("api exception", ex);
             return ResultUtil.fail(ex.getMessage());
         } catch (Throwable th) {
+            logger.error("api throwable", th);
             return ResultUtil.fail(th.getMessage());
         }
     }

@@ -7,6 +7,8 @@ import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
 import com.bmf.infrastructure.dal.po.*;
 
+import java.util.Objects;
+
 /**
  * PO工具类
  */
@@ -18,6 +20,9 @@ public class DomainPOUtil {
      * @return
      */
     public static DomainPO convert(BusinessDomain businessDomain) {
+        if (Objects.isNull(businessDomain)) {
+            return null;
+        }
         DomainPO domainPO = new DomainPO();
         domainPO.setDomainCode(businessDomain.getDomainCode());
         domainPO.setDomainName(businessDomain.getDomainName());
@@ -33,6 +38,9 @@ public class DomainPOUtil {
      * @return
      */
     public static BusinessDomain convert(DomainPO domainPO) {
+        if (Objects.isNull(domainPO)) {
+            return null;
+        }
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(domainPO.getDomainCode());
         businessDomain.setDomainName(domainPO.getDomainName());
