@@ -36,4 +36,11 @@
         )
     </insert>
 
+    <delete id="delete">
+        delete from bmf_domain
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="domainAlias != null">and domain_alias = #{domainAlias}</if>
+        </trim>
+    </delete>
 </mapper>

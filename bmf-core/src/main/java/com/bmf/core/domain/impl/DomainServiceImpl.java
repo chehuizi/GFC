@@ -26,4 +26,8 @@ public class DomainServiceImpl implements DomainService {
         return DomainPOUtil.convert(domainPO);
     }
 
+    @Override
+    public boolean deleteDomain(BusinessDomain businessDomain) {
+        return domainRepository.delete(businessDomain);
+    }
 }

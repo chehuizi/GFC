@@ -22,4 +22,10 @@ public interface DomainService {
      */
     BusinessDomain queryDomain(BusinessDomain businessDomain);
 
+    /**
+     * 删除领域
+     * @param businessDomain
+     * @return
+     */
+    boolean deleteDomain(BusinessDomain businessDomain);
 }

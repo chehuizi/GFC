@@ -39,7 +39,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainReqDTOValidator", method = "v4Delete")
     public Result<Boolean> delete(DomainReqDTO req) {
-        return null;
+        BusinessDomain domain = DomainUtil.convert(req);
+        return ResultUtil.success(domainService.deleteDomain(domain));
     }
 
     @Override

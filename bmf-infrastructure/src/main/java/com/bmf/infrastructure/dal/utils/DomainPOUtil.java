@@ -7,8 +7,16 @@ import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
 import com.bmf.infrastructure.dal.po.*;
 
+/**
+ * PO工具类
+ */
 public class DomainPOUtil {
 
+    /**
+     * 转换对象
+     * @param businessDomain
+     * @return
+     */
     public static DomainPO convert(BusinessDomain businessDomain) {
         DomainPO domainPO = new DomainPO();
         domainPO.setDomainCode(businessDomain.getDomainCode());
