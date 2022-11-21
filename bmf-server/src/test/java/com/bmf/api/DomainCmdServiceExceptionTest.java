@@ -142,5 +142,32 @@ public class DomainCmdServiceExceptionTest {
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.DOMAIN_IS_EXISTED.getCode() == result.getCode());
     }
+
+    @Test
+    public void test_domain_update_exp_80001_1() {
+        Result<Boolean> result = domainCmdService.update(null);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_domain_update_exp_80001_2() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        domainReqDTO.setBusinessDomain(null);
+        Result<Boolean> result = domainCmdService.update(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_domain_update_exp_80001_3() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainName("仓库管理系统");
+        domainReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.update(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
 }
 
