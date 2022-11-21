@@ -40,6 +40,18 @@ public class DomainCmdServiceTest {
     }
 
     @Test
+    public void test_domain_update() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(10);
+        businessDomain.setDomainName("仓库管理系统-2");
+        domainReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.update(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
+
+    @Test
     public void test_domain_delete_1() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();

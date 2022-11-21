@@ -28,7 +28,8 @@ public class DomainServiceImpl implements DomainService {
 
     @Override
     public boolean updateDomain(BusinessDomain businessDomain) {
-        return true;
+        boolean result = domainRepository.update(businessDomain);
+        return result;
     }
 
     @Override
