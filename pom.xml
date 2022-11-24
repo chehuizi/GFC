@@ -27,7 +27,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <spring-boot.version>2.2.13.RELEASE</spring-boot.version>
         <spring-boot-web.version>2.7.5</spring-boot-web.version>
-        <spring.version>5.2.12.RELEASE</spring.version>
+        <spring.version>5.3.23</spring.version>
         <aspectj.tools.version>1.9.5</aspectj.tools.version>
         <aopalliance.version>1.0</aopalliance.version>
         <aspectj.weaver.verson>1.9.0</aspectj.weaver.verson>
@@ -78,6 +78,7 @@
                 <version>${bmf.version}</version>
             </dependency>
             <!-- spring-boot -->
+            <!--
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter</artifactId>
@@ -89,6 +90,7 @@
                     </exclusion>
                 </exclusions>
             </dependency>
+            -->
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
@@ -97,6 +99,14 @@
                     <exclusion>
                         <groupId>ch.qos.logback</groupId>
                         <artifactId>logback-classic</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -108,6 +118,14 @@
                     <exclusion>
                         <groupId>ch.qos.logback</groupId>
                         <artifactId>logback-classic</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-core</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -124,6 +142,14 @@
                     <exclusion>
                         <groupId>ch.qos.logback</groupId>
                         <artifactId>logback-classic</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework</groupId>
+                        <artifactId>spring-context</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter</artifactId>
                     </exclusion>
                 </exclusions>
             </dependency>
@@ -169,6 +195,7 @@
                 <artifactId>spring-aop</artifactId>
                 <version>${spring.version}</version>
             </dependency>
+            <!--
             <dependency>
                 <groupId>com.github.pagehelper</groupId>
                 <artifactId>pagehelper-spring-boot-starter</artifactId>
@@ -178,8 +205,21 @@
                         <groupId>ch.qos.logback</groupId>
                         <artifactId>logback-classic</artifactId>
                     </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.mybatis.spring.boot</groupId>
+                        <artifactId>mybatis-spring-boot-starter</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-autoconfigure</artifactId>
+                    </exclusion>
                 </exclusions>
             </dependency>
+            -->
             <!-- mysql -->
             <dependency>
                 <groupId>mysql</groupId>
