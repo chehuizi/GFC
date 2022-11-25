@@ -22,6 +22,19 @@
         </rollingPolicy>
     </appender>
 
+    <appender name="CONTROLLER" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${appName}/controller.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %X{sessionTokenId} %-5level %logger{36}.%M - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/controller_%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
     <appender name="API" class="ch.qos.logback.core.rolling.RollingFileAppender">
         <file>${LOG_PATH}/${appName}/api.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
@@ -48,6 +61,9 @@
         </rollingPolicy>
     </appender>
 
+    <logger name="com.bmf.controller" additivity="false" level="INFO">
+        <appender-ref ref="CONTROLLER"/>
+    </logger>
     <logger name="com.bmf.api" additivity="false" level="INFO">
         <appender-ref ref="API"/>
     </logger>
