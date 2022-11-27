@@ -1,6 +1,7 @@
 package com.bmf.api.domain;
 
 import com.bmf.api.ReqDTO;
+import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.aggregate.BusinessDomainAggregate;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
@@ -19,6 +20,10 @@ public class DomainReqDTO extends ReqDTO implements Serializable {
 
     private static final long serialVersionUID = -8692914722346528072L;
 
+    /**
+     * 业务
+     */
+    private Business business;
     /**
      * 业务域
      */

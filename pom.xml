@@ -25,8 +25,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <spring-boot.version>2.2.13.RELEASE</spring-boot.version>
-        <spring-boot-web.version>2.7.5</spring-boot-web.version>
+        <spring-boot.version>2.7.5</spring-boot.version>
         <spring.version>5.3.23</spring.version>
         <aspectj.tools.version>1.9.5</aspectj.tools.version>
         <aopalliance.version>1.0</aopalliance.version>
@@ -94,7 +93,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-web</artifactId>
-                <version>${spring-boot-web.version}</version>
+                <version>${spring-boot.version}</version>
                 <exclusions>
                     <exclusion>
                         <groupId>ch.qos.logback</groupId>

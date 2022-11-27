@@ -13,6 +13,18 @@ import java.util.Objects;
 public class DomainReqDTOValidator {
 
     /**
+     * 校验queryOne方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4QueryOne(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusiness().getBusinessCode(), "business code is null");
+        return true;
+    }
+
+    /**
      * 校验create方法
      * @param domainReqDTO
      * @return

@@ -7,6 +7,7 @@ import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.utils.DomainUtil;
 import com.bmf.common.utils.ResultUtil;
+import com.bmf.common.validator.Validator;
 import com.bmf.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -18,10 +19,16 @@ public class DomainQryServiceImpl implements DomainQryService {
     private DomainService domainService;
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4QueryOne")
     public Result<DomainRespDTO> queryOne(DomainReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         BusinessDomain result = domainService.queryDomain(domain);
         DomainRespDTO respDTO = new DomainRespDTO(result);
         return ResultUtil.success(respDTO);
+    }
+
+    @Override
+    public Result<DomainRespDTO> queryByBusiness(DomainReqDTO domainReqDTO) {
+        return null;
     }
 }
