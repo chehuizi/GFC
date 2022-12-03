@@ -8,7 +8,6 @@ import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.strategy.role.partner.PartnerRole;
 import com.bmf.base.strategy.symmetric.Partnership;
 import com.bmf.common.enums.ResultCodeEnum;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -42,7 +41,7 @@ public class BusinessCmdServiceTest {
         business.setBusinessCode(10);
         businessReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(10);
+        domain.setDomainCode(20);
         businessReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
         System.out.println(result);
