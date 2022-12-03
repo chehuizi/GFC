@@ -4,9 +4,11 @@ import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessRelDomainMapper;
 import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
+import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainRepository {
@@ -17,6 +19,12 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     @Override
     public BusinessRelDomainPO selectOne(BusinessRelDomainDO req) {
         return businessRelDomainMapper.selectOne(null);
+    }
+
+    @Override
+    public List<BusinessRelDomainPO> selectList(BusinessRelDomainDO req) {
+        BusinessRelDomainPO businessRelDomainPO = BusinessPOUtil.convert(req);
+        return businessRelDomainMapper.selectList(businessRelDomainPO);
     }
 
     @Override

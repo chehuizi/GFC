@@ -8,6 +8,8 @@ import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class DomainServiceImpl implements DomainService {
 
@@ -18,6 +20,12 @@ public class DomainServiceImpl implements DomainService {
     public BusinessDomain queryDomain(BusinessDomain businessDomain) {
         DomainPO domainPO = domainRepository.selectOne(businessDomain);
         return DomainPOUtil.convert(domainPO);
+    }
+
+    @Override
+    public List<BusinessDomain> queryDomainList(List<Integer> domainCodeList) {
+        List<DomainPO> domainPOList = domainRepository.selectList(domainCodeList);
+        return DomainPOUtil.convert(domainPOList);
     }
 
     @Override

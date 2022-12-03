@@ -25,6 +25,16 @@
         limit 1
     </select>
 
+    <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.List">
+        select
+        <include refid="Base_Column_List"/>
+        FROM bmf_domain
+        where domain_code in
+        <foreach collection="list" open="(" close=")" item="domainCode" separator=",">
+            #{domainCode}
+        </foreach>
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO">
         insert into bmf_domain (domain_code, domain_name, domain_alias, domain_type, domain_level)
         values (

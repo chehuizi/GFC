@@ -8,6 +8,7 @@ import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DomainRepositoryImpl implements DomainRepository {
@@ -18,6 +19,11 @@ public class DomainRepositoryImpl implements DomainRepository {
     @Override
     public DomainPO selectOne(BusinessDomain req) {
         return domainMapper.selectOne(DomainPOUtil.convert(req));
+    }
+
+    @Override
+    public List<DomainPO> selectList(List<Integer> domainCodeList) {
+        return domainMapper.selectList(domainCodeList);
     }
 
     @Override

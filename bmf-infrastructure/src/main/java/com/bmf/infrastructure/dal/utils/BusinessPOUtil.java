@@ -1,10 +1,14 @@
 package com.bmf.infrastructure.dal.utils;
 
 import com.bmf.base.Business;
+import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
 import com.bmf.infrastructure.dal.po.BusinessPO;
+import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -53,5 +57,45 @@ public class BusinessPOUtil {
         businessDomainRelationPO.setDomainBCode(businessDomainRelationship.getRoleB().getDomain().getDomainCode());
         businessDomainRelationPO.setDomainBRole(businessDomainRelationship.getRoleB().getRole());
         return businessDomainRelationPO;
+    }
+
+    /**
+     * DO转PO
+     * @param businessRelDomainDO
+     * @return
+     */
+    public static BusinessRelDomainPO convert(BusinessRelDomainDO businessRelDomainDO) {
+        BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
+        businessRelDomainPO.setBusinessCode(businessRelDomainDO.getBusinessCode());
+        businessRelDomainPO.setDomainCode(businessRelDomainDO.getDomainCode());
+        return businessRelDomainPO;
+    }
+
+    /**
+     * PO转DO
+     * @param businessRelDomainPO
+     * @return
+     */
+    public static BusinessRelDomainDO convert(BusinessRelDomainPO businessRelDomainPO) {
+        BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
+        businessRelDomainDO.setBusinessCode(businessRelDomainPO.getBusinessCode());
+        businessRelDomainDO.setDomainCode(businessRelDomainPO.getDomainCode());
+        return businessRelDomainDO;
+    }
+
+    /**
+     * PO列表转DO列表
+     * @param businessRelDomainPOList
+     * @return
+     */
+    public static List<BusinessRelDomainDO> convert(List<BusinessRelDomainPO> businessRelDomainPOList) {
+        if (Objects.isNull(businessRelDomainPOList) || businessRelDomainPOList.size() <= 0) {
+            return null;
+        }
+        List<BusinessRelDomainDO> businessRelDomainDOList = new ArrayList<>();
+        for (BusinessRelDomainPO item : businessRelDomainPOList) {
+            businessRelDomainDOList.add(convert(item));
+        }
+        return businessRelDomainDOList;
     }
 }

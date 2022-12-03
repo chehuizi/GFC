@@ -7,6 +7,8 @@ import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
 import com.bmf.infrastructure.dal.po.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 /**
@@ -48,6 +50,22 @@ public class DomainPOUtil {
         businessDomain.setDomainType(domainPO.getDomainType());
         businessDomain.setDomainLevel(domainPO.getDomainLevel());
         return businessDomain;
+    }
+
+    /**
+     * 转换对象
+     * @param domainPOList
+     * @return
+     */
+    public static List<BusinessDomain> convert(List<DomainPO> domainPOList) {
+        if (Objects.isNull(domainPOList) || domainPOList.size() <= 0) {
+            return null;
+        }
+        List<BusinessDomain> businessDomainList = new ArrayList<>();
+        for (DomainPO item : domainPOList) {
+            businessDomainList.add(convert(item));
+        }
+        return businessDomainList;
     }
 
     public static BusinessDomainEntityPO convert(BusinessDomainEntity businessDomainEntity) {

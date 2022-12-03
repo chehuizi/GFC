@@ -28,4 +28,8 @@ public class BusinessReqDTO extends ReqDTO implements Serializable {
      * 领域关系
      */
     private BusinessDomainRelationship relationship;
+    /**
+     * 包含领域
+     */
+    private boolean includeDomain;
 }

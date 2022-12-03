@@ -22,8 +22,9 @@ public class BusinessQryServiceTest {
     public void test_business_query_one() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();
-        business.setBusinessCode(1);
+        business.setBusinessCode(10);
         businessReqDTO.setBusiness(business);
+        businessReqDTO.setIncludeDomain(true);
         Result<BusinessRespDTO> result = businessQryService.queryOne(businessReqDTO);
         System.out.println(result);
     }

@@ -5,14 +5,17 @@ import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.DO.BusinessRelDomainDO;
+import com.bmf.common.utils.BusinessUtil;
 import com.bmf.core.business.BusinessService;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.po.BusinessPO;
+import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
 import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Objects;
 
 @Service
@@ -35,6 +38,13 @@ public class BusinessServiceImpl implements BusinessService {
     public Business queryBusiness(Business business) {
         BusinessPO businessPO = businessRepository.selectOne(business);
         return BusinessPOUtil.convert(businessPO);
+    }
+
+    @Override
+    public List<BusinessRelDomainDO> queryBusinessRelDomain(Business business) {
+        BusinessRelDomainDO businessRelDomainDO = BusinessUtil.convert(business);
+        List<BusinessRelDomainPO> businessRelDomainPOList = businessRelDomainRepository.selectList(businessRelDomainDO);
+        return BusinessPOUtil.convert(businessRelDomainPOList);
     }
 
     @Override

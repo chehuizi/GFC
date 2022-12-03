@@ -19,4 +19,15 @@ public class BusinessUtil {
         businessRelDomainDO.setDomainCode(businessReqDTO.getDomain().getDomainCode());
         return businessRelDomainDO;
     }
+
+    /**
+     * 转换对象
+     * @param business
+     * @return
+     */
+    public static BusinessRelDomainDO convert(Business business) {
+        BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
+        businessRelDomainDO.setBusinessCode(business.getBusinessCode());
+        return businessRelDomainDO;
+    }
 }
