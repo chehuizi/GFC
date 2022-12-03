@@ -26,6 +26,16 @@ public class UpstreamDownstreamRelationship extends AsymmetricRelationship {
         downstream = new DownstreamRole();
     }
 
+    public void setUpstream(UpstreamRole upstream) {
+        this.upstream = upstream;
+        this.setRoleA(upstream);
+    }
+
+    public void setDownstream(DownstreamRole downstream) {
+        this.downstream = downstream;
+        this.setRoleB(downstream);
+    }
+
     @Override
     public String toString() {
         return "{" +

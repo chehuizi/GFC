@@ -28,7 +28,11 @@ public class BusinessQryServiceImpl implements BusinessQryService {
     @Override
     public Result<BusinessRespDTO> queryOne(BusinessReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
-        if (req.isIncludeDomain() && Objects.nonNull(business)) {
+        if (Objects.isNull(business)) {
+            return ResultUtil.success(new BusinessRespDTO(null));
+        }
+
+        if (req.isIncludeDomain()) {
             List<BusinessRelDomainDO> businessRelDomainDOList =  businessService.queryBusinessRelDomain(business);
             if (Objects.nonNull(businessRelDomainDOList) && businessRelDomainDOList.size() > 0) {
                 List<BusinessDomain> businessDomainList = domainService.queryDomainList(fetchDomainCode(businessRelDomainDOList));
