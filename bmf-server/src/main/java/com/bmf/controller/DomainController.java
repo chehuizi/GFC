@@ -25,8 +25,8 @@ public class DomainController {
     @Autowired
     private DomainCmdService domainCmdService;
 
-    @GetMapping("list")
-    public String list() {
+    @GetMapping("detail")
+    public String detail() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(10);
@@ -35,8 +35,4 @@ public class DomainController {
         return JSON.toJSONString(result);
     }
 
-    @GetMapping("detail")
-    public String detail() {
-        return JSON.toJSONString(null);
-    }
 }

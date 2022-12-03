@@ -25,23 +25,13 @@ public class BusinessController {
     @Autowired
     private BusinessCmdService businessCmdService;
 
-    @GetMapping("list")
-    public String list() {
-        logger.info("test controller log");
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
-        Business business = new Business();
-        business.setBusinessCode(10);
-        businessReqDTO.setBusiness(business);
-        Result<BusinessRespDTO> result = businessQryService.queryOne(businessReqDTO);
-        return JSON.toJSONString(result);
-    }
-
     @GetMapping("detail")
     public String detail() {
         BusinessReqDTO businessReqDTO = new BusinessReqDTO();
         Business business = new Business();
         business.setBusinessCode(10);
         businessReqDTO.setBusiness(business);
+        businessReqDTO.setIncludeDomain(true);
         Result<BusinessRespDTO> result = businessQryService.queryOne(businessReqDTO);
         return JSON.toJSONString(result);
     }
