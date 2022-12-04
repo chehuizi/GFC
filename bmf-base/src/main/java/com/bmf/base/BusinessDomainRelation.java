@@ -1,12 +1,9 @@
-package com.bmf.base.DO;
+package com.bmf.base;
 
-import com.bmf.base.BaseDO;
 import lombok.Data;
 
-import java.util.Date;
-
 @Data
-public class BusinessDomainRelationDO extends BaseDO {
+public class BusinessDomainRelation extends BaseDO {
 
     /**
      * 业务编码
@@ -14,6 +11,7 @@ public class BusinessDomainRelationDO extends BaseDO {
     private Integer businessCode;
     /**
      * 领域关系
+     * @see com.bmf.base.enums.RelationshipEnum
      */
     private String domainRelation;
     /**
