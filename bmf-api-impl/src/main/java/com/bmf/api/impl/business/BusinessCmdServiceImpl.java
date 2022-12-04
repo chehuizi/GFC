@@ -2,7 +2,7 @@ package com.bmf.api.impl.business;
 
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
-import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;

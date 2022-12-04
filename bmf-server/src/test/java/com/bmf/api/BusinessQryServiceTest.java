@@ -1,10 +1,10 @@
 package com.bmf.api;
 
 import com.bmf.api.business.BusinessQryService;
-import com.bmf.api.business.BusinessReqDTO;
-import com.bmf.api.business.BusinessRespDTO;
+import com.bmf.api.business.dto.BusinessQryReqDTO;
+import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessRespDTO;
 import com.bmf.base.Business;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,12 +20,12 @@ public class BusinessQryServiceTest {
 
     @Test
     public void test_business_query_one() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        BusinessQryReqDTO businessQryReqDTO = new BusinessQryReqDTO();
         Business business = new Business();
         business.setBusinessCode(10);
-        businessReqDTO.setBusiness(business);
-        businessReqDTO.setIncludeDomain(true);
-        Result<BusinessRespDTO> result = businessQryService.queryOne(businessReqDTO);
+        businessQryReqDTO.setBusiness(business);
+        businessQryReqDTO.setIncludeDomain(true);
+        Result<BusinessRespDTO> result = businessQryService.queryOne(businessQryReqDTO);
         System.out.println(result);
     }
 

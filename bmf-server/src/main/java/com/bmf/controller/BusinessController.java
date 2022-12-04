@@ -4,8 +4,9 @@ import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessQryService;
-import com.bmf.api.business.BusinessReqDTO;
-import com.bmf.api.business.BusinessRespDTO;
+import com.bmf.api.business.dto.BusinessQryReqDTO;
+import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessRespDTO;
 import com.bmf.base.Business;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,12 +28,12 @@ public class BusinessController {
 
     @GetMapping("detail")
     public String detail() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        BusinessQryReqDTO businessQryReqDTO = new BusinessQryReqDTO();
         Business business = new Business();
         business.setBusinessCode(10);
-        businessReqDTO.setBusiness(business);
-        businessReqDTO.setIncludeDomain(true);
-        Result<BusinessRespDTO> result = businessQryService.queryOne(businessReqDTO);
+        businessQryReqDTO.setBusiness(business);
+        businessQryReqDTO.setIncludeDomain(true);
+        Result<BusinessRespDTO> result = businessQryService.queryOne(businessQryReqDTO);
         return JSON.toJSONString(result);
     }
 }

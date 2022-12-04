@@ -1,7 +1,7 @@
 package com.bmf.api;
 
 import com.bmf.api.business.BusinessCmdService;
-import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessReqDTO;
 import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;

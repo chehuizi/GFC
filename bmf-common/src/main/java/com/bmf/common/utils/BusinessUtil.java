@@ -1,6 +1,6 @@
 package com.bmf.common.utils;
 
-import com.bmf.api.business.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.DO.BusinessRelDomainDO;
 

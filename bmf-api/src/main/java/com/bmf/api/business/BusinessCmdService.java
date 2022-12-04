@@ -2,6 +2,7 @@ package com.bmf.api.business;
 
 import com.bmf.api.CmdService;
 import com.bmf.api.Result;
+import com.bmf.api.business.dto.BusinessReqDTO;
 
 /**
  * 业务cmd服务

@@ -2,8 +2,9 @@ package com.bmf.api.impl.business;
 
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessQryService;
-import com.bmf.api.business.BusinessReqDTO;
-import com.bmf.api.business.BusinessRespDTO;
+import com.bmf.api.business.dto.BusinessQryReqDTO;
+import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.DO.BusinessRelDomainDO;
@@ -26,7 +27,7 @@ public class BusinessQryServiceImpl implements BusinessQryService {
     private DomainService domainService;
 
     @Override
-    public Result<BusinessRespDTO> queryOne(BusinessReqDTO req) {
+    public Result<BusinessRespDTO> queryOne(BusinessQryReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         if (Objects.isNull(business)) {
             return ResultUtil.success(new BusinessRespDTO(null));

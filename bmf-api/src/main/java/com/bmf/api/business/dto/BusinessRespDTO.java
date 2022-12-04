@@ -1,4 +1,4 @@
-package com.bmf.api.business;
+package com.bmf.api.business.dto;
 
 import com.bmf.api.RespDTO;
 import com.bmf.base.Business;
