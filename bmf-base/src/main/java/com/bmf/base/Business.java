@@ -1,5 +1,6 @@
 package com.bmf.base;
 
+import com.bmf.base.strategy.BusinessDomainRelationship;
 import lombok.Data;
 
 import java.util.List;
@@ -21,13 +22,13 @@ public class Business extends BaseDO {
     private String businessName;
 
     /**
-     * 业务域
+     * 业务域列表
      */
     private List<BusinessDomain> businessDomainList;
 
     /**
-     * 业务域映射
+     * 业务域关系列表
      */
-    private BusinessDomainMap businessDomainMap;
+    private List<BusinessDomainRelationship> domainRelationshipList;
 
 }
