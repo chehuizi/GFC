@@ -7,7 +7,7 @@ import com.bmf.base.strategy.role.upstream.UpstreamRole;
 import lombok.Data;
 
 /**
- * 非对称关系：上下游关系
+ * 非对称关系：普通上下游关系
  */
 @Data
 public class UpstreamDownstreamRelationship<T extends UpstreamRole, R extends DownstreamRole> extends BusinessDomainRelationship<T, R> {

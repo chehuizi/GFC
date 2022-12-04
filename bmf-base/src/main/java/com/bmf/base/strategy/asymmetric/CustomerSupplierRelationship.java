@@ -10,7 +10,7 @@ import lombok.Data;
  * 非对称关系：客户/供应商关系
  */
 @Data
-public class CustomerSupplierRelationship extends BusinessDomainRelationship<SupplierRole, CustomerRole> {
+public class CustomerSupplierRelationship extends UpstreamDownstreamRelationship<SupplierRole, CustomerRole> {
 
     public CustomerSupplierRelationship() {
         super.setRelationship(RelationshipEnum.CS.getType());
