@@ -17,6 +17,7 @@ public enum RelationshipRoleEnum {
     KERNEL("KERNEL", "被包含"),
     SHELL("SHELL", "包含"),
     PARTNER("partner", "合作伙伴"),
+    SHARED_KERNEL("SK", "共享内核"),
     ;
 
     /**

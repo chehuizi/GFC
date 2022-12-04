@@ -1,16 +1,13 @@
 package com.bmf.base.strategy.symmetric;
 
 import com.bmf.base.enums.RelationshipEnum;
+import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.strategy.role.partner.SharedKernelRole;
 
 /**
  * 对称关系：共享内核
  */
-public class SharedKernel extends SymmetricRelationship {
-
-    @Override
-    public String toString() {
-        return super.toString();
-    }
+public class SharedKernel extends BusinessDomainRelationship<SharedKernelRole, SharedKernelRole> {
 
     public SharedKernel() {
         super.setRelationship(RelationshipEnum.SK.getType());

@@ -19,8 +19,8 @@ public class BusinessDomainMap4InclusionTest {
         domainMap.addBusinessDomain(domain_ofc);
 
         InclusionRelationship inclusionRelationship = new InclusionRelationship();
-        inclusionRelationship.setShell(new ShellRole(domain_scm));
-        inclusionRelationship.setKernel(new KernelRole(domain_ofc));
+        inclusionRelationship.setRoleA(new KernelRole(domain_ofc));
+        inclusionRelationship.setRoleB(new ShellRole(domain_scm));
         domainMap.addBusinessDomainRelationship(inclusionRelationship);
 
         System.out.println(domainMap);

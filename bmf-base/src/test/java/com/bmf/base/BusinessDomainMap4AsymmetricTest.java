@@ -24,8 +24,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_wms);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setUpstream(new OpenHostService(domain_ims));
-        upstreamDownstreamRelationship.setDownstream(new Conformist(domain_wms));
+        upstreamDownstreamRelationship.setRoleA(new OpenHostService(domain_ims));
+        upstreamDownstreamRelationship.setRoleB(new Conformist(domain_wms));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);
@@ -41,8 +41,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_lc);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setUpstream(new OpenHostService(domain_tms));
-        upstreamDownstreamRelationship.setDownstream(new AnticorruptionLayer(domain_lc));
+        upstreamDownstreamRelationship.setRoleA(new OpenHostService(domain_tms));
+        upstreamDownstreamRelationship.setRoleB(new AnticorruptionLayer(domain_lc));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);
@@ -58,8 +58,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_wms);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setUpstream(new PublishedLanguage(domain_ims));
-        upstreamDownstreamRelationship.setDownstream(new Conformist(domain_wms));
+        upstreamDownstreamRelationship.setRoleA(new PublishedLanguage(domain_ims));
+        upstreamDownstreamRelationship.setRoleB(new Conformist(domain_wms));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);
@@ -75,8 +75,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_lc);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setUpstream(new PublishedLanguage(domain_tms));
-        upstreamDownstreamRelationship.setDownstream(new AnticorruptionLayer(domain_lc));
+        upstreamDownstreamRelationship.setRoleA(new PublishedLanguage(domain_tms));
+        upstreamDownstreamRelationship.setRoleB(new AnticorruptionLayer(domain_lc));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);
@@ -92,8 +92,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_lc);
 
         CustomerSupplierRelationship customerSupplierRelationship = new CustomerSupplierRelationship();
-        customerSupplierRelationship.setCustomer(new CustomerRole(domain_lc));
-        customerSupplierRelationship.setSupplier(new SupplierRole(domain_tms));
+        customerSupplierRelationship.setRoleA(new SupplierRole(domain_tms));
+        customerSupplierRelationship.setRoleB(new CustomerRole(domain_lc));
         domainMap.addBusinessDomainRelationship(customerSupplierRelationship);
 
         System.out.println(domainMap);

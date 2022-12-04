@@ -9,7 +9,7 @@ import lombok.Getter;
 public enum RelationshipEnum {
 
     PS("partnership", "合作伙伴"),
-    SK("sharedKernel", "共享内核"),
+    SK("shared-Kernel", "共享内核"),
     UD("upstream-downstream", "上下游"),
     CS("customer-supplier", "客户/供应商"),
     KS("kernel-shell", "被包含/包含"),

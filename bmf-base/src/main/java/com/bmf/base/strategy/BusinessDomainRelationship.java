@@ -8,7 +8,7 @@ import lombok.Data;
  * 业务域关系
  */
 @Data
-public class BusinessDomainRelationship extends BaseDO {
+public class BusinessDomainRelationship<T extends RelationshipRole, S extends RelationshipRole> extends BaseDO {
 
     /**
      * 业务编码
@@ -20,19 +20,18 @@ public class BusinessDomainRelationship extends BaseDO {
      */
     private String relationship;
     /**
-     * 角色A
-     * @see com.bmf.base.strategy.role.RelationshipRole
+     * @see RelationshipRole
      */
-    private RelationshipRole roleA;
+    private T roleA;
     /**
-     * 角色B
-     * @see com.bmf.base.strategy.role.RelationshipRole
+     * @see RelationshipRole
      */
-    private RelationshipRole roleB;
+    private S roleB;
 
     @Override
     public String toString() {
         return "{" +
+                "\"businessCode\": \"" + businessCode + "\"" +
                 "\"relationship\": \"" + relationship + "\"" +
                 '}';
     }

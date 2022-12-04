@@ -10,29 +10,9 @@ import lombok.Data;
  * 包含关系
  */
 @Data
-public class InclusionRelationship extends BusinessDomainRelationship {
-
-    /**
-     * 包含角色
-     */
-    private ShellRole shell;
-    /**
-     * 被包含角色
-     */
-    private KernelRole kernel;
-
-    @Override
-    public String toString() {
-        return "{" +
-                "\"relationship\": \"" + super.getRelationship() + "\"" +
-                ", \"shell\": \"" + shell.getDomain().getDomainName() + "\"" +
-                ", \"kernel\": \"" + kernel.getDomain().getDomainName() + "\"" +
-                '}';
-    }
+public class InclusionRelationship extends BusinessDomainRelationship<KernelRole, ShellRole> {
 
     public InclusionRelationship() {
         super.setRelationship(RelationshipEnum.KS.getType());
-        shell = new ShellRole();
-        kernel = new KernelRole();
     }
 }
