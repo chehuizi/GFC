@@ -9,12 +9,12 @@ import com.bmf.base.strategy.role.partner.PartnerRole;
  */
 public class Partnership extends BusinessDomainRelationship<PartnerRole, PartnerRole> {
 
+    public Partnership() {
+        super.setRelationship(RelationshipEnum.PS.getType());
+    }
+
     @Override
     public String toString() {
         return super.toString();
-    }
-
-    public Partnership() {
-        super.setRelationship(RelationshipEnum.PS.getType());
     }
 }

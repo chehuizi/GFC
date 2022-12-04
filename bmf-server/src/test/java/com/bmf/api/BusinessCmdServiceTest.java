@@ -9,9 +9,9 @@ import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.strategy.asymmetric.UpstreamDownstreamRelationship;
-import com.bmf.base.strategy.role.downstream.Conformist;
+import com.bmf.base.strategy.role.downstream.ConformistRole;
 import com.bmf.base.strategy.role.partner.PartnerRole;
-import com.bmf.base.strategy.role.upstream.OpenHostService;
+import com.bmf.base.strategy.role.upstream.OpenHostServiceRole;
 import com.bmf.base.strategy.symmetric.Partnership;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
@@ -49,7 +49,7 @@ public class BusinessCmdServiceTest {
         business.setBusinessCode(10);
         businessReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(40);
+        domain.setDomainCode(50);
         businessReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
         System.out.println(result);
@@ -78,7 +78,7 @@ public class BusinessCmdServiceTest {
         businessReqDTO.setBusiness(business);
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
         upstreamDownstreamRelationship.setBusinessCode(10);
-        OpenHostService ohs = new OpenHostService();
+        OpenHostServiceRole ohs = new OpenHostServiceRole();
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain domain = new BusinessDomain();
         domain.setDomainCode(30);
@@ -86,7 +86,7 @@ public class BusinessCmdServiceTest {
         Result<DomainRespDTO> result1 = domainQryService.queryOne(domainReqDTO);
         ohs.setDomain(result1.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleA(ohs);
-        Conformist cf = new Conformist();
+        ConformistRole cf = new ConformistRole();
         domain.setDomainCode(40);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainReqDTO);
         cf.setDomain(result2.getData().getBusinessDomain());

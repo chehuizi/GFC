@@ -6,13 +6,13 @@ import com.bmf.base.enums.RelationshipRoleEnum;
 /**
  * 发布语言
  */
-public class PublishedLanguage extends UpstreamRole {
+public class PublishedLanguageRole extends UpstreamRole {
 
-    public PublishedLanguage() {
+    public PublishedLanguageRole() {
         super.setRole(RelationshipRoleEnum.PL.getRole());
     }
 
-    public PublishedLanguage(BusinessDomain domain) {
+    public PublishedLanguageRole(BusinessDomain domain) {
         super.setDomain(domain);
         super.setRole(RelationshipRoleEnum.PL.getRole());
     }

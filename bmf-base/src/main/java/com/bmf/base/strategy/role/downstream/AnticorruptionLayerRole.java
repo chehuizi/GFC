@@ -6,13 +6,13 @@ import com.bmf.base.enums.RelationshipRoleEnum;
 /**
  * 防腐层
  */
-public class AnticorruptionLayer extends DownstreamRole {
+public class AnticorruptionLayerRole extends DownstreamRole {
 
-    public AnticorruptionLayer() {
+    public AnticorruptionLayerRole() {
         super.setRole(RelationshipRoleEnum.ACL.getRole());
     }
 
-    public AnticorruptionLayer(BusinessDomain domain) {
+    public AnticorruptionLayerRole(BusinessDomain domain) {
         super.setDomain(domain);
         super.setRole(RelationshipRoleEnum.ACL.getRole());
     }

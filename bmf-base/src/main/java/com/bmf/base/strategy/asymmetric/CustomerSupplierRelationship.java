@@ -2,8 +2,8 @@ package com.bmf.base.strategy.asymmetric;
 
 import com.bmf.base.enums.RelationshipEnum;
 import com.bmf.base.strategy.BusinessDomainRelationship;
-import com.bmf.base.strategy.role.cs.CustomerRole;
-import com.bmf.base.strategy.role.cs.SupplierRole;
+import com.bmf.base.strategy.role.downstream.CustomerRole;
+import com.bmf.base.strategy.role.upstream.SupplierRole;
 import lombok.Data;
 
 /**

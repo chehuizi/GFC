@@ -26,9 +26,9 @@ public class DomainCmdServiceTest {
     public void test_domain_create() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(40);
-        businessDomain.setDomainName("履约系统");
-        businessDomain.setDomainAlias("ofc");
+        businessDomain.setDomainCode(50);
+        businessDomain.setDomainName("库存管理系统");
+        businessDomain.setDomainAlias("ims");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainReqDTO.setBusinessDomain(businessDomain);

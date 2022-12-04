@@ -6,13 +6,13 @@ import com.bmf.base.enums.RelationshipRoleEnum;
 /**
  * 遵从者
  */
-public class Conformist extends DownstreamRole {
+public class ConformistRole extends DownstreamRole {
 
-    public Conformist() {
+    public ConformistRole() {
         super.setRole(RelationshipRoleEnum.CF.getRole());
     }
 
-    public Conformist(BusinessDomain domain) {
+    public ConformistRole(BusinessDomain domain) {
         super.setDomain(domain);
         super.setRole(RelationshipRoleEnum.CF.getRole());
     }

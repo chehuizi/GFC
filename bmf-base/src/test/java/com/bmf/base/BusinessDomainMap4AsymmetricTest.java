@@ -4,12 +4,12 @@ import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.strategy.asymmetric.CustomerSupplierRelationship;
 import com.bmf.base.strategy.asymmetric.UpstreamDownstreamRelationship;
-import com.bmf.base.strategy.role.cs.CustomerRole;
-import com.bmf.base.strategy.role.cs.SupplierRole;
-import com.bmf.base.strategy.role.downstream.AnticorruptionLayer;
-import com.bmf.base.strategy.role.downstream.Conformist;
-import com.bmf.base.strategy.role.upstream.OpenHostService;
-import com.bmf.base.strategy.role.upstream.PublishedLanguage;
+import com.bmf.base.strategy.role.downstream.CustomerRole;
+import com.bmf.base.strategy.role.upstream.SupplierRole;
+import com.bmf.base.strategy.role.downstream.AnticorruptionLayerRole;
+import com.bmf.base.strategy.role.downstream.ConformistRole;
+import com.bmf.base.strategy.role.upstream.OpenHostServiceRole;
+import com.bmf.base.strategy.role.upstream.PublishedLanguageRole;
 import org.junit.Test;
 
 public class BusinessDomainMap4AsymmetricTest {
@@ -24,8 +24,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_wms);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setRoleA(new OpenHostService(domain_ims));
-        upstreamDownstreamRelationship.setRoleB(new Conformist(domain_wms));
+        upstreamDownstreamRelationship.setRoleA(new OpenHostServiceRole(domain_ims));
+        upstreamDownstreamRelationship.setRoleB(new ConformistRole(domain_wms));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);
@@ -41,8 +41,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_lc);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setRoleA(new OpenHostService(domain_tms));
-        upstreamDownstreamRelationship.setRoleB(new AnticorruptionLayer(domain_lc));
+        upstreamDownstreamRelationship.setRoleA(new OpenHostServiceRole(domain_tms));
+        upstreamDownstreamRelationship.setRoleB(new AnticorruptionLayerRole(domain_lc));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);
@@ -58,8 +58,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_wms);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setRoleA(new PublishedLanguage(domain_ims));
-        upstreamDownstreamRelationship.setRoleB(new Conformist(domain_wms));
+        upstreamDownstreamRelationship.setRoleA(new PublishedLanguageRole(domain_ims));
+        upstreamDownstreamRelationship.setRoleB(new ConformistRole(domain_wms));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);
@@ -75,8 +75,8 @@ public class BusinessDomainMap4AsymmetricTest {
         domainMap.addBusinessDomain(domain_lc);
 
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setRoleA(new PublishedLanguage(domain_tms));
-        upstreamDownstreamRelationship.setRoleB(new AnticorruptionLayer(domain_lc));
+        upstreamDownstreamRelationship.setRoleA(new PublishedLanguageRole(domain_tms));
+        upstreamDownstreamRelationship.setRoleB(new AnticorruptionLayerRole(domain_lc));
         domainMap.addBusinessDomainRelationship(upstreamDownstreamRelationship);
 
         System.out.println(domainMap);

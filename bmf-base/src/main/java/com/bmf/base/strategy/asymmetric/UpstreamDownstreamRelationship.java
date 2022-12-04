@@ -10,7 +10,7 @@ import lombok.Data;
  * 非对称关系：上下游关系
  */
 @Data
-public class UpstreamDownstreamRelationship extends BusinessDomainRelationship<UpstreamRole, DownstreamRole> {
+public class UpstreamDownstreamRelationship<T extends UpstreamRole, R extends DownstreamRole> extends BusinessDomainRelationship<T, R> {
 
     public UpstreamDownstreamRelationship() {
         super.setRelationship(RelationshipEnum.UD.getType());

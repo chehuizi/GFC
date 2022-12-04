@@ -6,13 +6,13 @@ import com.bmf.base.enums.RelationshipRoleEnum;
 /**
  * 开放主机服务
  */
-public class OpenHostService extends UpstreamRole {
+public class OpenHostServiceRole extends UpstreamRole {
 
-    public OpenHostService() {
+    public OpenHostServiceRole() {
         super.setRole(RelationshipRoleEnum.OHS.getRole());
     }
 
-    public OpenHostService(BusinessDomain domain) {
+    public OpenHostServiceRole(BusinessDomain domain) {
         super.setDomain(domain);
         super.setRole(RelationshipRoleEnum.OHS.getRole());
     }

@@ -1,13 +1,14 @@
-package com.bmf.base.strategy.role.cs;
+package com.bmf.base.strategy.role.upstream;
 
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.RelationshipRoleEnum;
 import com.bmf.base.strategy.role.RelationshipRole;
+import com.bmf.base.strategy.role.upstream.UpstreamRole;
 
 /**
  * 供应商角色
  */
-public class SupplierRole extends RelationshipRole {
+public class SupplierRole extends UpstreamRole {
 
     public SupplierRole() {
         super.setRole(RelationshipRoleEnum.SUPPLIER.getRole());

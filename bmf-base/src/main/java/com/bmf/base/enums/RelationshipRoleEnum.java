@@ -10,14 +10,16 @@ public enum RelationshipRoleEnum {
 
     PL("PL", "发布语言"),
     OHS("OHS", "开放主机服务"),
+    SUPPLIER("SUPPLIER", "供应商"),
+    
     ACL("ACL", "防腐层"),
     CF("CF", "遵从者"),
     CUSTOMER("CUSTOMER", "客户"),
-    SUPPLIER("SUPPLIER", "供应商"),
+
+    PARTNER("partner", "合作伙伴"),
+
     KERNEL("KERNEL", "被包含"),
     SHELL("SHELL", "包含"),
-    PARTNER("partner", "合作伙伴"),
-    SHARED_KERNEL("SK", "共享内核"),
     ;
 
     /**
