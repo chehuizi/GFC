@@ -16,6 +16,8 @@ public class BusinessCmdReqDTOValidator {
     public boolean v4Create(BusinessCmdReqDTO businessCmdReqDTO) {
         ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
         ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
+        ParamCheckUtil.checkBlank(businessCmdReqDTO.getBusiness().getBusinessName(), "business name is blank");
         return true;
     }
 

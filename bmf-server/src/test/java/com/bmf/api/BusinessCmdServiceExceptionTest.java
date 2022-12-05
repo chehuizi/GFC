@@ -36,6 +36,27 @@ public class BusinessCmdServiceExceptionTest {
     }
 
     @Test
+    public void test_business_create_exp_80001_3() {
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        Business business = new Business();
+        businessCmdReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_business_create_exp_80001_4() {
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(10);
+        businessCmdReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
+    }
+
+    @Test
     public void test_business_create_exp_100003() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
