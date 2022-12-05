@@ -1,12 +1,12 @@
 package com.bmf.base.tactics.valueobject;
 
-import com.bmf.base.BaseDO;
+import com.bmf.base.BaseModel;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class BusinessDomainValueObject extends BaseDO {
+public class BusinessDomainValueObject extends BaseModel {
 
     /**
      * 值对象编码

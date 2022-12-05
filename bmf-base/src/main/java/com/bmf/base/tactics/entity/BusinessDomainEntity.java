@@ -1,13 +1,13 @@
 package com.bmf.base.tactics.entity;
 
-import com.bmf.base.BaseDO;
+import com.bmf.base.BaseModel;
 import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class BusinessDomainEntity extends BaseDO {
+public class BusinessDomainEntity extends BaseModel {
 
     /**
      * 实体唯一ID编码

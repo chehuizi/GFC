@@ -1,6 +1,6 @@
 package com.bmf.base.strategy;
 
-import com.bmf.base.BaseDO;
+import com.bmf.base.BaseModel;
 import com.bmf.base.strategy.role.RelationshipRole;
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
  * 业务域关系
  */
 @Data
-public class BusinessDomainRelationship<T extends RelationshipRole, R extends RelationshipRole> extends BaseDO {
+public class BusinessDomainRelationship<T extends RelationshipRole, R extends RelationshipRole> extends BaseModel {
 
     /**
      * 业务编码

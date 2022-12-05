@@ -1,10 +1,10 @@
 package com.bmf.base.tactics;
 
-import com.bmf.base.BaseDO;
+import com.bmf.base.BaseModel;
 import lombok.Data;
 
 @Data
-public class EntityRelVO extends BaseDO {
+public class EntityRelVO extends BaseModel {
 
     /**
      * 实体唯一ID编码

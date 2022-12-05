@@ -3,7 +3,7 @@ package com.bmf.base;
 import lombok.Data;
 
 @Data
-public class BusinessDomainRelation extends BaseDO {
+public class BusinessDomainRelation extends BaseModel {
 
     /**
      * 业务编码

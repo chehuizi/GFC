@@ -1,13 +1,13 @@
 package com.bmf.base.tactics.event;
 
-import com.bmf.base.BaseDO;
+import com.bmf.base.BaseModel;
 import lombok.Data;
 
 /**
  * 业务领域事件
  */
 @Data
-public class BusinessDomainEvent extends BaseDO {
+public class BusinessDomainEvent extends BaseModel {
 
     /**
      * 事件编码

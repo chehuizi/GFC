@@ -1,6 +1,6 @@
 package com.bmf.base.tactics.entity;
 
-import com.bmf.base.BaseDO;
+import com.bmf.base.BaseModel;
 import com.bmf.base.enums.AttrTypeEnum;
 import lombok.Data;
 
@@ -8,7 +8,7 @@ import lombok.Data;
  * 领域实体属性
  */
 @Data
-public class DomainEntityAttr extends BaseDO {
+public class DomainEntityAttr extends BaseModel {
 
     /**
      * 实体唯一ID编码
