@@ -1,7 +1,7 @@
 package com.bmf.api;
 
 import com.bmf.api.business.BusinessCmdService;
-import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.enums.BizCodeEnum;
@@ -28,21 +28,21 @@ public class BusinessCmdServiceExceptionTest {
 
     @Test
     public void test_business_create_exp_80001_2() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
-        businessReqDTO.setBusiness(null);
-        Result<Boolean> result = businessCmdService.create(businessReqDTO);
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        businessCmdReqDTO.setBusiness(null);
+        Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_business_create_exp_100003() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
         business.setBusinessCode(10);
         business.setBusinessName("chz_test");
-        businessReqDTO.setBusiness(business);
-        Result<Boolean> result = businessCmdService.create(businessReqDTO);
+        businessCmdReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.BUSINESS_IS_EXISTED.getCode() == result.getCode());
     }
@@ -56,33 +56,33 @@ public class BusinessCmdServiceExceptionTest {
 
     @Test
     public void test_business_add_domain_exp_80001_2() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
-        businessReqDTO.setBusiness(null);
-        Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        businessCmdReqDTO.setBusiness(null);
+        Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_business_add_domain_exp_80001_3() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        businessReqDTO.setBusiness(business);
-        Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
+        businessCmdReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_business_add_domain_exp_100001() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
         business.setBusinessCode(11);
-        businessReqDTO.setBusiness(business);
+        businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
         domain.setDomainCode(10);
-        businessReqDTO.setDomain(domain);
-        Result<Boolean> result = businessCmdService.addDomain(businessReqDTO);
+        businessCmdReqDTO.setDomain(domain);
+        Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.BUSINESS_NOT_EXIST.getCode() == result.getCode());
     }

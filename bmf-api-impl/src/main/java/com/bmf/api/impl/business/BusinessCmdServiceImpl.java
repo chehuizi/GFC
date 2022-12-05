@@ -2,7 +2,7 @@ package com.bmf.api.impl.business;
 
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
-import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;
@@ -31,63 +31,63 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     @Validator(beanName = "businessReqDTOValidator", method = "v4Create")
-    public Result<Boolean> create(BusinessReqDTO req) {
+    public Result<Boolean> create(BusinessCmdReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNonNull(business, BizCodeEnum.BUSINESS_IS_EXISTED);
         return ResultUtil.success(businessService.createBusiness(req.getBusiness()));
     }
 
     @Override
-    public Result<Boolean> update(BusinessReqDTO req) {
+    public Result<Boolean> update(BusinessCmdReqDTO req) {
         return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
     }
 
     @Override
-    public Result<Boolean> delete(BusinessReqDTO req) {
+    public Result<Boolean> delete(BusinessCmdReqDTO req) {
         return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
     }
 
     @Override
     @Validator(beanName = "businessReqDTOValidator", method = "v4AddDomain")
-    public Result<Boolean> addDomain(BusinessReqDTO businessReqDTO) {
-        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+    public Result<Boolean> addDomain(BusinessCmdReqDTO businessCmdReqDTO) {
+        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domain = domainService.queryDomain(businessReqDTO.getDomain());
+        BusinessDomain domain = domainService.queryDomain(businessCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
-        return ResultUtil.success(businessService.addDomain(businessReqDTO.getBusiness(), businessReqDTO.getDomain()));
+        return ResultUtil.success(businessService.addDomain(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getDomain()));
     }
 
     @Override
     @Validator(beanName = "businessReqDTOValidator", method = "v4DelDomain")
-    public Result<Boolean> delDomain(BusinessReqDTO businessReqDTO) {
-        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+    public Result<Boolean> delDomain(BusinessCmdReqDTO businessCmdReqDTO) {
+        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domain = domainService.queryDomain(businessReqDTO.getDomain());
+        BusinessDomain domain = domainService.queryDomain(businessCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
-        return ResultUtil.success(businessService.delDomain(businessReqDTO.getBusiness(), businessReqDTO.getDomain()));
+        return ResultUtil.success(businessService.delDomain(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getDomain()));
     }
 
     @Override
     @Validator(beanName = "businessReqDTOValidator", method = "v4BuildDomainRelation")
-    public Result<Boolean> buildDomainRelation(BusinessReqDTO businessReqDTO) {
-        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+    public Result<Boolean> buildDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
+        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domainA = domainService.queryDomain(businessReqDTO.getRelationship().getRoleA().getDomain());
+        BusinessDomain domainA = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleA().getDomain());
         BusinessCheckUtil.checkNull(domainA, BizCodeEnum.DOMAIN_NOT_EXIST);
-        BusinessDomain domainB = domainService.queryDomain(businessReqDTO.getRelationship().getRoleB().getDomain());
+        BusinessDomain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
         BusinessCheckUtil.checkNull(domainB, BizCodeEnum.DOMAIN_NOT_EXIST);
-        return ResultUtil.success(businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessReqDTO.getRelationship()));
+        return ResultUtil.success(businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessCmdReqDTO.getRelationship()));
     }
 
     @Override
     @Validator(beanName = "businessReqDTOValidator", method = "v4RemoveDomainRelation")
-    public Result<Boolean> removeDomainRelation(BusinessReqDTO businessReqDTO) {
-        Business business = businessService.queryBusiness(businessReqDTO.getBusiness());
+    public Result<Boolean> removeDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
+        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domainA = domainService.queryDomain(businessReqDTO.getRelationship().getRoleA().getDomain());
+        BusinessDomain domainA = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleA().getDomain());
         BusinessCheckUtil.checkNull(domainA, BizCodeEnum.DOMAIN_NOT_EXIST);
-        BusinessDomain domainB = domainService.queryDomain(businessReqDTO.getRelationship().getRoleB().getDomain());
+        BusinessDomain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
         BusinessCheckUtil.checkNull(domainB, BizCodeEnum.DOMAIN_NOT_EXIST);
-        return ResultUtil.success(businessDomainDesign4Strategy.removeBusinessDomainRelationship(businessReqDTO.getRelationship()));
+        return ResultUtil.success(businessDomainDesign4Strategy.removeBusinessDomainRelationship(businessCmdReqDTO.getRelationship()));
     }
 }

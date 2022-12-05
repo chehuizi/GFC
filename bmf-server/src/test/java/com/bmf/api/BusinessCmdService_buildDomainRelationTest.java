@@ -1,7 +1,7 @@
 package com.bmf.api;
 
 import com.bmf.api.business.BusinessCmdService;
-import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.api.domain.DomainRespDTO;
@@ -29,10 +29,10 @@ public class BusinessCmdService_buildDomainRelationTest {
 
     @Test
     public void test_business_build_domain_relation_cf() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
         business.setBusinessCode(10);
-        businessReqDTO.setBusiness(business);
+        businessCmdReqDTO.setBusiness(business);
         UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
         upstreamDownstreamRelationship.setBusinessCode(10);
         OpenHostServiceRole ohs = new OpenHostServiceRole();
@@ -48,34 +48,34 @@ public class BusinessCmdService_buildDomainRelationTest {
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainReqDTO);
         cf.setDomain(result2.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleB(cf);
-        businessReqDTO.setRelationship(upstreamDownstreamRelationship);
-        Result<Boolean> result = businessCmdService.buildDomainRelation(businessReqDTO);
+        businessCmdReqDTO.setRelationship(upstreamDownstreamRelationship);
+        Result<Boolean> result = businessCmdService.buildDomainRelation(businessCmdReqDTO);
         System.out.println(result);
     }
 
     @Test
     public void test_business_build_domain_relation_ps() {
-        BusinessReqDTO businessReqDTO = new BusinessReqDTO();
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
         business.setBusinessCode(10);
-        businessReqDTO.setBusiness(business);
+        businessCmdReqDTO.setBusiness(business);
         Partnership partnership = new Partnership();
         partnership.setBusinessCode(10);
         PartnerRole partnerA = new PartnerRole();
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(10);
+        domain.setDomainCode(20);
         domainReqDTO.setBusinessDomain(domain);
         Result<DomainRespDTO> result1 = domainQryService.queryOne(domainReqDTO);
         partnerA.setDomain(result1.getData().getBusinessDomain());
         partnership.setRoleA(partnerA);
         PartnerRole partnerB = new PartnerRole();
-        domain.setDomainCode(20);
+        domain.setDomainCode(40);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainReqDTO);
         partnerB.setDomain(result2.getData().getBusinessDomain());
         partnership.setRoleB(partnerB);
-        businessReqDTO.setRelationship(partnership);
-        Result<Boolean> result = businessCmdService.buildDomainRelation(businessReqDTO);
+        businessCmdReqDTO.setRelationship(partnership);
+        Result<Boolean> result = businessCmdService.buildDomainRelation(businessCmdReqDTO);
         System.out.println(result);
     }
 

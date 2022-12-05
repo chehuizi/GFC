@@ -2,38 +2,38 @@ package com.bmf.api.business;
 
 import com.bmf.api.CmdService;
 import com.bmf.api.Result;
-import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessCmdReqDTO;
 
 /**
  * 业务cmd服务
  */
-public interface BusinessCmdService extends CmdService<BusinessReqDTO> {
+public interface BusinessCmdService extends CmdService<BusinessCmdReqDTO> {
 
     /**
      * 添加领域
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    Result<Boolean> addDomain(BusinessReqDTO businessReqDTO);
+    Result<Boolean> addDomain(BusinessCmdReqDTO businessCmdReqDTO);
 
     /**
      * 删除领域
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    Result<Boolean> delDomain(BusinessReqDTO businessReqDTO);
+    Result<Boolean> delDomain(BusinessCmdReqDTO businessCmdReqDTO);
 
     /**
      * 构建领域关系
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    Result<Boolean> buildDomainRelation(BusinessReqDTO businessReqDTO);
+    Result<Boolean> buildDomainRelation(BusinessCmdReqDTO businessCmdReqDTO);
 
     /**
      * 移除领域关系
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    Result<Boolean> removeDomainRelation(BusinessReqDTO businessReqDTO);
+    Result<Boolean> removeDomainRelation(BusinessCmdReqDTO businessCmdReqDTO);
 }

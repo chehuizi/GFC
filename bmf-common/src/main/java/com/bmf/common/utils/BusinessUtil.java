@@ -1,6 +1,6 @@
 package com.bmf.common.utils;
 
-import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.DO.BusinessRelDomainDO;
@@ -8,17 +8,17 @@ import com.bmf.base.strategy.BusinessDomainRelationship;
 
 public class BusinessUtil {
 
-    public static Business convert(BusinessReqDTO reqDTO) {
+    public static Business convert(BusinessCmdReqDTO reqDTO) {
         Business business = new Business();
         business.setBusinessCode(reqDTO.getBusiness().getBusinessCode());
         business.setBusinessName(reqDTO.getBusiness().getBusinessName());
         return business;
     }
 
-    public static BusinessRelDomainDO convertBusinessRelDomainDO(BusinessReqDTO businessReqDTO) {
+    public static BusinessRelDomainDO convertBusinessRelDomainDO(BusinessCmdReqDTO businessCmdReqDTO) {
         BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
-        businessRelDomainDO.setBusinessCode(businessReqDTO.getBusiness().getBusinessCode());
-        businessRelDomainDO.setDomainCode(businessReqDTO.getDomain().getDomainCode());
+        businessRelDomainDO.setBusinessCode(businessCmdReqDTO.getBusiness().getBusinessCode());
+        businessRelDomainDO.setDomainCode(businessCmdReqDTO.getDomain().getDomainCode());
         return businessRelDomainDO;
     }
 

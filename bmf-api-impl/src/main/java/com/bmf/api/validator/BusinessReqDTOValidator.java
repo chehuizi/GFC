@@ -1,6 +1,6 @@
 package com.bmf.api.validator;
 
-import com.bmf.api.business.dto.BusinessReqDTO;
+import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.springframework.stereotype.Service;
@@ -10,24 +10,24 @@ public class BusinessReqDTOValidator {
 
     /**
      * 校验create方法
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    public boolean v4Create(BusinessReqDTO businessReqDTO) {
-        ParamCheckUtil.checkNull(businessReqDTO, "param is null");
-        ParamCheckUtil.checkNull(businessReqDTO.getBusiness(), "business is null");
+    public boolean v4Create(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
         return true;
     }
 
     /**
      * 校验addDomain方法
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    public boolean v4AddDomain(BusinessReqDTO businessReqDTO) {
-        ParamCheckUtil.checkNull(businessReqDTO, "param is null");
-        ParamCheckUtil.checkNull(businessReqDTO.getBusiness(), "business is null");
-        ParamCheckUtil.checkNull(businessReqDTO.getDomain(), "domain is null");
+    public boolean v4AddDomain(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getDomain(), "domain is null");
         return true;
     }
 
@@ -35,32 +35,32 @@ public class BusinessReqDTOValidator {
      * 校验delDomain方法
      * @return
      */
-    public boolean v4DelDomain(BusinessReqDTO businessReqDTO) {
-        ParamCheckUtil.checkNull(businessReqDTO, "param is null");
-        ParamCheckUtil.checkNull(businessReqDTO.getBusiness(), "business is null");
-        ParamCheckUtil.checkNull(businessReqDTO.getDomain(), "domain is null");
+    public boolean v4DelDomain(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getDomain(), "domain is null");
         return true;
     }
 
     /**
      * 校验buildDomainRelation方法
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    public boolean v4BuildDomainRelation(BusinessReqDTO businessReqDTO) {
-        ParamCheckUtil.checkNull(businessReqDTO, "param is null");
-        checkDomainRelation(businessReqDTO.getRelationship());
+    public boolean v4BuildDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        checkDomainRelation(businessCmdReqDTO.getRelationship());
         return true;
     }
 
     /**
      * 校验removeDomainRelation方法
-     * @param businessReqDTO
+     * @param businessCmdReqDTO
      * @return
      */
-    public boolean v4RemoveDomainRelation(BusinessReqDTO businessReqDTO) {
-        ParamCheckUtil.checkNull(businessReqDTO, "param is null");
-        checkDomainRelation(businessReqDTO.getRelationship());
+    public boolean v4RemoveDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        checkDomainRelation(businessCmdReqDTO.getRelationship());
         return true;
     }
 

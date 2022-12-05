@@ -12,7 +12,7 @@ import java.io.Serializable;
  * 业务请求对象
  */
 @Data
-public class BusinessReqDTO extends ReqDTO implements Serializable {
+public class BusinessCmdReqDTO extends ReqDTO implements Serializable {
 
     private static final long serialVersionUID = 1324200904629702741L;
 
@@ -28,8 +28,4 @@ public class BusinessReqDTO extends ReqDTO implements Serializable {
      * 领域关系
      */
     private BusinessDomainRelationship relationship;
-    /**
-     * 包含领域
-     */
-    private boolean includeDomain;
 }
