@@ -2,9 +2,9 @@ package com.bmf.common.utils;
 
 import com.bmf.api.domain.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.DO.DomainRelEntityDO;
-import com.bmf.base.DO.DomainRelServiceDO;
-import com.bmf.base.DO.EntityRelVODO;
+import com.bmf.base.tactics.DomainRelEntity;
+import com.bmf.base.tactics.DomainRelService;
+import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
 import com.bmf.base.tactics.service.BusinessDomainService;
 import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
@@ -29,24 +29,24 @@ public class DomainUtil {
         return businessDomain;
     }
 
-    public static DomainRelEntityDO build(BusinessDomain domain, BusinessDomainEntity entity) {
-        DomainRelEntityDO domainRelEntityDO = new DomainRelEntityDO();
-        domainRelEntityDO.setDomainCode(domain.getDomainCode());
-        domainRelEntityDO.setEntityIdCode(entity.getEntityIdCode());
-        return domainRelEntityDO;
+    public static DomainRelEntity build(BusinessDomain domain, BusinessDomainEntity entity) {
+        DomainRelEntity domainRelEntity = new DomainRelEntity();
+        domainRelEntity.setDomainCode(domain.getDomainCode());
+        domainRelEntity.setEntityIdCode(entity.getEntityIdCode());
+        return domainRelEntity;
     }
 
-    public static DomainRelServiceDO build(BusinessDomain domain, BusinessDomainService service) {
-        DomainRelServiceDO domainRelServiceDO = new DomainRelServiceDO();
-        domainRelServiceDO.setDomainCode(domain.getDomainCode());
-        domainRelServiceDO.setServiceCode(service.getServiceCode());
-        return domainRelServiceDO;
+    public static DomainRelService build(BusinessDomain domain, BusinessDomainService service) {
+        DomainRelService domainRelService = new DomainRelService();
+        domainRelService.setDomainCode(domain.getDomainCode());
+        domainRelService.setServiceCode(service.getServiceCode());
+        return domainRelService;
     }
 
-    public static EntityRelVODO build(BusinessDomainEntity entity, BusinessDomainValueObject valueObject) {
-        EntityRelVODO entityRelVODO = new EntityRelVODO();
-        entityRelVODO.setEntityIdCode(entity.getEntityIdCode());
-        entityRelVODO.setVoCode(valueObject.getVoCode());
-        return entityRelVODO;
+    public static EntityRelVO build(BusinessDomainEntity entity, BusinessDomainValueObject valueObject) {
+        EntityRelVO entityRelVO = new EntityRelVO();
+        entityRelVO.setEntityIdCode(entity.getEntityIdCode());
+        entityRelVO.setVoCode(valueObject.getVoCode());
+        return entityRelVO;
     }
 }

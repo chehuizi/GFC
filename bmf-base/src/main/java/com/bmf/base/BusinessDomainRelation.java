@@ -15,19 +15,19 @@ public class BusinessDomainRelation extends BaseDO {
      */
     private String domainRelation;
     /**
-     * 领域A编码
-     */
-    private Integer domainACode;
-    /**
-     * 领域B编码
-     */
-    private Integer domainBCode;
-    /**
      * 领域A角色
      */
     private String domainARole;
     /**
+     * 领域A编码
+     */
+    private Integer domainACode;
+    /**
      * 领域B角色
      */
     private String domainBRole;
+    /**
+     * 领域B编码
+     */
+    private Integer domainBCode;
 }

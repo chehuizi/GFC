@@ -5,7 +5,7 @@ import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.DO.BusinessRelDomainDO;
+import com.bmf.base.BusinessRelDomain;
 import com.bmf.common.utils.BusinessUtil;
 import com.bmf.core.business.BusinessService;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
@@ -46,9 +46,9 @@ public class BusinessServiceImpl implements BusinessService {
     }
 
     @Override
-    public List<BusinessRelDomainDO> queryBusinessRelDomain(Business business) {
-        BusinessRelDomainDO businessRelDomainDO = BusinessUtil.convert(business);
-        List<BusinessRelDomainPO> businessRelDomainPOList = businessRelDomainRepository.selectList(businessRelDomainDO);
+    public List<BusinessRelDomain> queryBusinessRelDomain(Business business) {
+        BusinessRelDomain businessRelDomain = BusinessUtil.convert(business);
+        List<BusinessRelDomainPO> businessRelDomainPOList = businessRelDomainRepository.selectList(businessRelDomain);
         return BusinessPOUtil.convert(businessRelDomainPOList);
     }
 
@@ -61,17 +61,17 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public boolean addDomain(Business business, BusinessDomain domain) {
-        BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
-        businessRelDomainDO.setBusinessCode(business.getBusinessCode());
-        businessRelDomainDO.setDomainCode(domain.getDomainCode());
-        return businessRelDomainRepository.insert(businessRelDomainDO);
+        BusinessRelDomain businessRelDomain = new BusinessRelDomain();
+        businessRelDomain.setBusinessCode(business.getBusinessCode());
+        businessRelDomain.setDomainCode(domain.getDomainCode());
+        return businessRelDomainRepository.insert(businessRelDomain);
     }
 
     @Override
     public boolean delDomain(Business business, BusinessDomain domain) {
-        BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
-        businessRelDomainDO.setBusinessCode(business.getBusinessCode());
-        businessRelDomainDO.setDomainCode(domain.getDomainCode());
-        return businessRelDomainRepository.delete(businessRelDomainDO);
+        BusinessRelDomain businessRelDomain = new BusinessRelDomain();
+        businessRelDomain.setBusinessCode(business.getBusinessCode());
+        businessRelDomain.setDomainCode(domain.getDomainCode());
+        return businessRelDomainRepository.delete(businessRelDomain);
     }
 }

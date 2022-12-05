@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.DO.DomainRelServiceDO;
+import com.bmf.base.tactics.DomainRelService;
 import com.bmf.infrastructure.dal.BusinessDomainRelServiceRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainRelServiceMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelServicePO;
@@ -15,24 +15,24 @@ public class BusinessDomainRelServiceRepositoryImpl implements BusinessDomainRel
     private BusinessDomainRelServiceMapper businessDomainRelServiceMapper;
 
     @Override
-    public BusinessDomainRelServicePO selectOne(DomainRelServiceDO req) {
+    public BusinessDomainRelServicePO selectOne(DomainRelService req) {
         BusinessDomainRelServicePO domainRelServicePO = new BusinessDomainRelServicePO();
         return businessDomainRelServiceMapper.selectOne(domainRelServicePO);
     }
 
     @Override
-    public boolean insert(DomainRelServiceDO req) {
+    public boolean insert(DomainRelService req) {
         BusinessDomainRelServicePO domainRelServicePO = new BusinessDomainRelServicePO();
         return businessDomainRelServiceMapper.insert(domainRelServicePO) == 1;
     }
 
     @Override
-    public boolean update(DomainRelServiceDO req) {
+    public boolean update(DomainRelService req) {
         return false;
     }
 
     @Override
-    public boolean delete(DomainRelServiceDO req) {
+    public boolean delete(DomainRelService req) {
         return false;
     }
 }

@@ -1,10 +1,9 @@
-package com.bmf.base.DO;
+package com.bmf.base;
 
-import com.bmf.base.BaseDO;
 import lombok.Data;
 
 @Data
-public class BusinessRelDomainDO extends BaseDO {
+public class BusinessRelDomain extends BaseDO {
 
     /**
      * 业务编码

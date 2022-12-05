@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.DO.BusinessRelDomainDO;
+import com.bmf.base.BusinessRelDomain;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessRelDomainMapper;
 import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
@@ -17,18 +17,18 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     private BusinessRelDomainMapper businessRelDomainMapper;
 
     @Override
-    public BusinessRelDomainPO selectOne(BusinessRelDomainDO req) {
+    public BusinessRelDomainPO selectOne(BusinessRelDomain req) {
         return businessRelDomainMapper.selectOne(null);
     }
 
     @Override
-    public List<BusinessRelDomainPO> selectList(BusinessRelDomainDO req) {
+    public List<BusinessRelDomainPO> selectList(BusinessRelDomain req) {
         BusinessRelDomainPO businessRelDomainPO = BusinessPOUtil.convert(req);
         return businessRelDomainMapper.selectList(businessRelDomainPO);
     }
 
     @Override
-    public boolean insert(BusinessRelDomainDO req) {
+    public boolean insert(BusinessRelDomain req) {
         BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
         businessRelDomainPO.setBusinessCode(req.getBusinessCode());
         businessRelDomainPO.setDomainCode(req.getDomainCode());
@@ -36,12 +36,12 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     }
 
     @Override
-    public boolean update(BusinessRelDomainDO req) {
+    public boolean update(BusinessRelDomain req) {
         return false;
     }
 
     @Override
-    public boolean delete(BusinessRelDomainDO req) {
+    public boolean delete(BusinessRelDomain req) {
         BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
         businessRelDomainPO.setBusinessCode(req.getBusinessCode());
         businessRelDomainPO.setDomainCode(req.getDomainCode());

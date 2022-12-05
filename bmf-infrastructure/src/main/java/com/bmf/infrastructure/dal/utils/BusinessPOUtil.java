@@ -2,8 +2,7 @@ package com.bmf.infrastructure.dal.utils;
 
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomainRelation;
-import com.bmf.base.DO.BusinessRelDomainDO;
-import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.BusinessRelDomain;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
 import com.bmf.infrastructure.dal.po.BusinessPO;
 import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
@@ -62,13 +61,13 @@ public class BusinessPOUtil {
 
     /**
      * DO转PO
-     * @param businessRelDomainDO
+     * @param businessRelDomain
      * @return
      */
-    public static BusinessRelDomainPO convert(BusinessRelDomainDO businessRelDomainDO) {
+    public static BusinessRelDomainPO convert(BusinessRelDomain businessRelDomain) {
         BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
-        businessRelDomainPO.setBusinessCode(businessRelDomainDO.getBusinessCode());
-        businessRelDomainPO.setDomainCode(businessRelDomainDO.getDomainCode());
+        businessRelDomainPO.setBusinessCode(businessRelDomain.getBusinessCode());
+        businessRelDomainPO.setDomainCode(businessRelDomain.getDomainCode());
         return businessRelDomainPO;
     }
 
@@ -77,11 +76,11 @@ public class BusinessPOUtil {
      * @param businessRelDomainPO
      * @return
      */
-    public static BusinessRelDomainDO convert(BusinessRelDomainPO businessRelDomainPO) {
-        BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
-        businessRelDomainDO.setBusinessCode(businessRelDomainPO.getBusinessCode());
-        businessRelDomainDO.setDomainCode(businessRelDomainPO.getDomainCode());
-        return businessRelDomainDO;
+    public static BusinessRelDomain convert(BusinessRelDomainPO businessRelDomainPO) {
+        BusinessRelDomain businessRelDomain = new BusinessRelDomain();
+        businessRelDomain.setBusinessCode(businessRelDomainPO.getBusinessCode());
+        businessRelDomain.setDomainCode(businessRelDomainPO.getDomainCode());
+        return businessRelDomain;
     }
 
     /**
@@ -89,15 +88,15 @@ public class BusinessPOUtil {
      * @param businessRelDomainPOList
      * @return
      */
-    public static List<BusinessRelDomainDO> convert(List<BusinessRelDomainPO> businessRelDomainPOList) {
+    public static List<BusinessRelDomain> convert(List<BusinessRelDomainPO> businessRelDomainPOList) {
         if (Objects.isNull(businessRelDomainPOList) || businessRelDomainPOList.size() <= 0) {
             return null;
         }
-        List<BusinessRelDomainDO> businessRelDomainDOList = new ArrayList<>();
+        List<BusinessRelDomain> businessRelDomainList = new ArrayList<>();
         for (BusinessRelDomainPO item : businessRelDomainPOList) {
-            businessRelDomainDOList.add(convert(item));
+            businessRelDomainList.add(convert(item));
         }
-        return businessRelDomainDOList;
+        return businessRelDomainList;
     }
 
     /**

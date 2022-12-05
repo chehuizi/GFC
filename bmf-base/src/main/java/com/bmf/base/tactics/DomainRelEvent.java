@@ -1,10 +1,10 @@
-package com.bmf.base.DO;
+package com.bmf.base.tactics;
 
 import com.bmf.base.BaseDO;
 import lombok.Data;
 
 @Data
-public class DomainRelEventDO extends BaseDO {
+public class DomainRelEvent extends BaseDO {
 
     /**
      * 领域编码

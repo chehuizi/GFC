@@ -1,9 +1,9 @@
 package com.bmf.core.design.impl;
 
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.DO.DomainRelEntityDO;
-import com.bmf.base.DO.DomainRelServiceDO;
-import com.bmf.base.DO.EntityRelVODO;
+import com.bmf.base.tactics.DomainRelEntity;
+import com.bmf.base.tactics.DomainRelService;
+import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.base.tactics.aggregate.BusinessDomainAggregate;
 import com.bmf.base.tactics.entity.BusinessDomainEntity;
 import com.bmf.base.tactics.event.BusinessDomainEvent;
@@ -37,8 +37,8 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     public boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity) {
         boolean insertOk = businessDomainEntityRepository.insert(entity);
         if (insertOk) {
-            DomainRelEntityDO domainRelEntityDO = DomainUtil.build(domain, entity);
-            return businessDomainRelEntityRepository.insert(domainRelEntityDO);
+            DomainRelEntity domainRelEntity = DomainUtil.build(domain, entity);
+            return businessDomainRelEntityRepository.insert(domainRelEntity);
         }
         return false;
     }
@@ -50,8 +50,8 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
 
     @Override
     public boolean addEntityRelVO(BusinessDomainEntity entity, BusinessDomainValueObject valueObject) {
-        EntityRelVODO entityRelVODO = DomainUtil.build(entity, valueObject);
-        return businessDomainEntityRelVORepository.insert(entityRelVODO);
+        EntityRelVO entityRelVO = DomainUtil.build(entity, valueObject);
+        return businessDomainEntityRelVORepository.insert(entityRelVO);
     }
 
     @Override
@@ -63,8 +63,8 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     public boolean addService(BusinessDomain domain, BusinessDomainService service) {
         boolean insertOk = businessDomainServiceRepository.insert(service);
         if (insertOk) {
-            DomainRelServiceDO domainRelServiceDO = DomainUtil.build(domain, service);
-            return businessDomainRelServiceRepository.insert(domainRelServiceDO);
+            DomainRelService domainRelService = DomainUtil.build(domain, service);
+            return businessDomainRelServiceRepository.insert(domainRelService);
         }
         return false;
     }

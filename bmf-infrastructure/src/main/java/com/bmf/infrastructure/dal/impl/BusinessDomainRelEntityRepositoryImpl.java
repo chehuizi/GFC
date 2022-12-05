@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.DO.DomainRelEntityDO;
+import com.bmf.base.tactics.DomainRelEntity;
 import com.bmf.infrastructure.dal.BusinessDomainRelEntityRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainRelEntityMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelEntityPO;
@@ -16,23 +16,23 @@ public class BusinessDomainRelEntityRepositoryImpl implements BusinessDomainRelE
     private BusinessDomainRelEntityMapper businessDomainRelEntityMapper;
 
     @Override
-    public BusinessDomainRelEntityPO selectOne(DomainRelEntityDO req) {
+    public BusinessDomainRelEntityPO selectOne(DomainRelEntity req) {
         return null;
     }
 
     @Override
-    public boolean insert(DomainRelEntityDO req) {
+    public boolean insert(DomainRelEntity req) {
         BusinessDomainRelEntityPO domainRelEntityPO = DomainPOUtil.convert(req);
         return businessDomainRelEntityMapper.insert(domainRelEntityPO) == 1;
     }
 
     @Override
-    public boolean update(DomainRelEntityDO req) {
+    public boolean update(DomainRelEntity req) {
         return false;
     }
 
     @Override
-    public boolean delete(DomainRelEntityDO req) {
+    public boolean delete(DomainRelEntity req) {
         return false;
     }
 }

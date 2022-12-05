@@ -7,7 +7,7 @@ import com.bmf.api.business.dto.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
-import com.bmf.base.DO.BusinessRelDomainDO;
+import com.bmf.base.BusinessRelDomain;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
@@ -36,9 +36,9 @@ public class BusinessQryServiceImpl implements BusinessQryService {
         }
 
         if (req.isIncludeDomain()) {
-            List<BusinessRelDomainDO> businessRelDomainDOList =  businessService.queryBusinessRelDomain(business);
-            if (Objects.nonNull(businessRelDomainDOList) && businessRelDomainDOList.size() > 0) {
-                List<BusinessDomain> businessDomainList = domainService.queryDomainList(fetchDomainCode(businessRelDomainDOList));
+            List<BusinessRelDomain> businessRelDomainList =  businessService.queryBusinessRelDomain(business);
+            if (Objects.nonNull(businessRelDomainList) && businessRelDomainList.size() > 0) {
+                List<BusinessDomain> businessDomainList = domainService.queryDomainList(fetchDomainCode(businessRelDomainList));
                 business.setBusinessDomainList(businessDomainList);
             }
         }
@@ -53,12 +53,12 @@ public class BusinessQryServiceImpl implements BusinessQryService {
 
     /**
      * 提取domainCode
-     * @param businessRelDomainDOList
+     * @param businessRelDomainList
      * @return
      */
-    private List<Integer> fetchDomainCode(List<BusinessRelDomainDO> businessRelDomainDOList) {
+    private List<Integer> fetchDomainCode(List<BusinessRelDomain> businessRelDomainList) {
         List<Integer> domainCodeList = new ArrayList<>();
-        for (BusinessRelDomainDO item : businessRelDomainDOList) {
+        for (BusinessRelDomain item : businessRelDomainList) {
             domainCodeList.add(item.getDomainCode());
         }
         return domainCodeList;

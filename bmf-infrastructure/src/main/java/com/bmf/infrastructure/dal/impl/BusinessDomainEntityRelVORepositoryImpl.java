@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.DO.EntityRelVODO;
+import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.infrastructure.dal.BusinessDomainEntityRelVORepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityRelVOMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityRelVOPO;
@@ -15,22 +15,22 @@ public class BusinessDomainEntityRelVORepositoryImpl implements BusinessDomainEn
     private BusinessDomainEntityRelVOMapper businessDomainEntityRelVOMapper;
 
     @Override
-    public BusinessDomainEntityRelVOPO selectOne(EntityRelVODO req) {
+    public BusinessDomainEntityRelVOPO selectOne(EntityRelVO req) {
         return null;
     }
 
     @Override
-    public boolean insert(EntityRelVODO req) {
+    public boolean insert(EntityRelVO req) {
         return false;
     }
 
     @Override
-    public boolean update(EntityRelVODO req) {
+    public boolean update(EntityRelVO req) {
         return false;
     }
 
     @Override
-    public boolean delete(EntityRelVODO req) {
+    public boolean delete(EntityRelVO req) {
         return false;
     }
 }

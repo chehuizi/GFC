@@ -3,7 +3,7 @@ package com.bmf.common.utils;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomainRelation;
-import com.bmf.base.DO.BusinessRelDomainDO;
+import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 
 public class BusinessUtil {
@@ -15,11 +15,11 @@ public class BusinessUtil {
         return business;
     }
 
-    public static BusinessRelDomainDO convertBusinessRelDomainDO(BusinessCmdReqDTO businessCmdReqDTO) {
-        BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
-        businessRelDomainDO.setBusinessCode(businessCmdReqDTO.getBusiness().getBusinessCode());
-        businessRelDomainDO.setDomainCode(businessCmdReqDTO.getDomain().getDomainCode());
-        return businessRelDomainDO;
+    public static BusinessRelDomain convertBusinessRelDomainDO(BusinessCmdReqDTO businessCmdReqDTO) {
+        BusinessRelDomain businessRelDomain = new BusinessRelDomain();
+        businessRelDomain.setBusinessCode(businessCmdReqDTO.getBusiness().getBusinessCode());
+        businessRelDomain.setDomainCode(businessCmdReqDTO.getDomain().getDomainCode());
+        return businessRelDomain;
     }
 
     /**
@@ -27,10 +27,10 @@ public class BusinessUtil {
      * @param business
      * @return
      */
-    public static BusinessRelDomainDO convert(Business business) {
-        BusinessRelDomainDO businessRelDomainDO = new BusinessRelDomainDO();
-        businessRelDomainDO.setBusinessCode(business.getBusinessCode());
-        return businessRelDomainDO;
+    public static BusinessRelDomain convert(Business business) {
+        BusinessRelDomain businessRelDomain = new BusinessRelDomain();
+        businessRelDomain.setBusinessCode(business.getBusinessCode());
+        return businessRelDomain;
     }
 
     /**
