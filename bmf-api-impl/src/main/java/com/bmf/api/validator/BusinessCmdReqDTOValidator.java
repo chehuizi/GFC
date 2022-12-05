@@ -5,8 +5,8 @@ import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.springframework.stereotype.Service;
 
-@Service("businessReqDTOValidator")
-public class BusinessReqDTOValidator {
+@Service("businessCmdReqDTOValidator")
+public class BusinessCmdReqDTOValidator {
 
     /**
      * 校验create方法

@@ -9,6 +9,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.common.utils.ResultUtil;
+import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ public class BusinessQryServiceImpl implements BusinessQryService {
     private DomainService domainService;
 
     @Override
+    @Validator(beanName = "businessQryReqDTOValidator", method = "v4QueryOne")
     public Result<BusinessRespDTO> queryOne(BusinessQryReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         if (Objects.isNull(business)) {

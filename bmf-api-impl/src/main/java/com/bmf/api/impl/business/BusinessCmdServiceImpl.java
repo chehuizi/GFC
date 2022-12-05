@@ -30,7 +30,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
 
     @Override
-    @Validator(beanName = "businessReqDTOValidator", method = "v4Create")
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(BusinessCmdReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNonNull(business, BizCodeEnum.BUSINESS_IS_EXISTED);
@@ -48,7 +48,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
-    @Validator(beanName = "businessReqDTOValidator", method = "v4AddDomain")
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4AddDomain")
     public Result<Boolean> addDomain(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
@@ -58,7 +58,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
-    @Validator(beanName = "businessReqDTOValidator", method = "v4DelDomain")
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4DelDomain")
     public Result<Boolean> delDomain(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
@@ -68,7 +68,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
-    @Validator(beanName = "businessReqDTOValidator", method = "v4BuildDomainRelation")
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4BuildDomainRelation")
     public Result<Boolean> buildDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
@@ -80,7 +80,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
-    @Validator(beanName = "businessReqDTOValidator", method = "v4RemoveDomainRelation")
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4RemoveDomainRelation")
     public Result<Boolean> removeDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
