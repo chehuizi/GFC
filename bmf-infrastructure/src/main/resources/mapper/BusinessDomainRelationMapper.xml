@@ -24,6 +24,13 @@
         limit 1
     </select>
 
+    <select id="selectList" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_relation
+        where business_code = #{businessCode,jdbcType=INTEGER}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
         insert into bmf_business_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
         values (

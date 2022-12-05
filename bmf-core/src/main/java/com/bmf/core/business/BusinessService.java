@@ -2,6 +2,7 @@ package com.bmf.core.business;
 
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.DO.BusinessRelDomainDO;
 
 import java.util.List;
@@ -31,6 +32,13 @@ public interface BusinessService {
      * @return
      */
     List<BusinessRelDomainDO> queryBusinessRelDomain(Business business);
+
+    /**
+     * 查询业务关联领域关系
+     * @param business
+     * @return
+     */
+    List<BusinessDomainRelation> queryBusinessDomainRelation(Business business);
 
     /**
      * 添加领域

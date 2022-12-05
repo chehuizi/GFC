@@ -1,5 +1,6 @@
 package com.bmf.core.business.impl;
 
+import com.bmf.base.BusinessDomainRelation;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
@@ -7,8 +8,10 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.common.utils.BusinessUtil;
 import com.bmf.core.business.BusinessService;
+import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.BusinessRepository;
+import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
 import com.bmf.infrastructure.dal.po.BusinessPO;
 import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
 import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
@@ -25,6 +28,8 @@ public class BusinessServiceImpl implements BusinessService {
     private BusinessRepository businessRepository;
     @Autowired
     private BusinessRelDomainRepository businessRelDomainRepository;
+    @Autowired
+    private BusinessDomainRelationRepository businessDomainRelationRepository;
 
     @Override
     public boolean createBusiness(Business business) {
@@ -45,6 +50,13 @@ public class BusinessServiceImpl implements BusinessService {
         BusinessRelDomainDO businessRelDomainDO = BusinessUtil.convert(business);
         List<BusinessRelDomainPO> businessRelDomainPOList = businessRelDomainRepository.selectList(businessRelDomainDO);
         return BusinessPOUtil.convert(businessRelDomainPOList);
+    }
+
+    @Override
+    public List<BusinessDomainRelation> queryBusinessDomainRelation(Business business) {
+        BusinessDomainRelation businessDomainRelation = BusinessUtil.convertDR(business);
+        List<BusinessDomainRelationPO> businessDomainRelationPOList = businessDomainRelationRepository.selectList(businessDomainRelation);
+        return BusinessPOUtil.convertDR(businessDomainRelationPOList);
     }
 
     @Override

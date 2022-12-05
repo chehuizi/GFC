@@ -7,6 +7,7 @@ import com.bmf.api.business.dto.BusinessReqDTO;
 import com.bmf.api.business.dto.BusinessRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.core.business.BusinessService;
@@ -39,6 +40,11 @@ public class BusinessQryServiceImpl implements BusinessQryService {
                 List<BusinessDomain> businessDomainList = domainService.queryDomainList(fetchDomainCode(businessRelDomainDOList));
                 business.setBusinessDomainList(businessDomainList);
             }
+        }
+
+        if (req.isIncludeDomainRelation()) {
+            List<BusinessDomainRelation> businessDomainRelationList = businessService.queryBusinessDomainRelation(business);
+            business.setBusinessDomainRelationList(businessDomainRelationList);
         }
         BusinessRespDTO respDTO = new BusinessRespDTO(business);
         return ResultUtil.success(respDTO);

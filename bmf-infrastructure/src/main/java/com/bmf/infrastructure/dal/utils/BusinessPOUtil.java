@@ -1,6 +1,7 @@
 package com.bmf.infrastructure.dal.utils;
 
 import com.bmf.base.Business;
+import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.DO.BusinessRelDomainDO;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
@@ -45,17 +46,17 @@ public class BusinessPOUtil {
 
     /**
      * DO转PO
-     * @param businessDomainRelationship
+     * @param businessDomainRelation
      * @return
      */
-    public static BusinessDomainRelationPO convert(BusinessDomainRelationship businessDomainRelationship) {
+    public static BusinessDomainRelationPO convert(BusinessDomainRelation businessDomainRelation) {
         BusinessDomainRelationPO businessDomainRelationPO = new BusinessDomainRelationPO();
-        businessDomainRelationPO.setBusinessCode(businessDomainRelationship.getBusinessCode());
-        businessDomainRelationPO.setDomainRelation(businessDomainRelationship.getRelationship());
-        businessDomainRelationPO.setDomainACode(businessDomainRelationship.getRoleA().getDomain().getDomainCode());
-        businessDomainRelationPO.setDomainARole(businessDomainRelationship.getRoleA().getRole());
-        businessDomainRelationPO.setDomainBCode(businessDomainRelationship.getRoleB().getDomain().getDomainCode());
-        businessDomainRelationPO.setDomainBRole(businessDomainRelationship.getRoleB().getRole());
+        businessDomainRelationPO.setBusinessCode(businessDomainRelation.getBusinessCode());
+        businessDomainRelationPO.setDomainRelation(businessDomainRelation.getDomainRelation());
+        businessDomainRelationPO.setDomainACode(businessDomainRelation.getDomainACode());
+        businessDomainRelationPO.setDomainARole(businessDomainRelation.getDomainARole());
+        businessDomainRelationPO.setDomainBCode(businessDomainRelation.getDomainBCode());
+        businessDomainRelationPO.setDomainBRole(businessDomainRelation.getDomainBRole());
         return businessDomainRelationPO;
     }
 
@@ -97,5 +98,37 @@ public class BusinessPOUtil {
             businessRelDomainDOList.add(convert(item));
         }
         return businessRelDomainDOList;
+    }
+
+    /**
+     * PO列表转DO列表
+     * @param businessDomainRelationPOList
+     * @return
+     */
+    public static List<BusinessDomainRelation> convertDR(List<BusinessDomainRelationPO> businessDomainRelationPOList) {
+        if (Objects.isNull(businessDomainRelationPOList) || businessDomainRelationPOList.size() <= 0) {
+            return null;
+        }
+        List<BusinessDomainRelation> businessDomainRelationList = new ArrayList<>();
+        for (BusinessDomainRelationPO item : businessDomainRelationPOList) {
+            businessDomainRelationList.add(convert(item));
+        }
+        return businessDomainRelationList;
+    }
+
+    /**
+     * PO转DO
+     * @param businessDomainRelationPO
+     * @return
+     */
+    public static BusinessDomainRelation convert(BusinessDomainRelationPO businessDomainRelationPO) {
+        BusinessDomainRelation businessDomainRelation = new BusinessDomainRelation();
+        businessDomainRelation.setBusinessCode(businessDomainRelationPO.getBusinessCode());
+        businessDomainRelation.setDomainRelation(businessDomainRelationPO.getDomainRelation());
+        businessDomainRelation.setDomainACode(businessDomainRelationPO.getDomainACode());
+        businessDomainRelation.setDomainARole(businessDomainRelationPO.getDomainARole());
+        businessDomainRelation.setDomainBCode(businessDomainRelationPO.getDomainBCode());
+        businessDomainRelation.setDomainBRole(businessDomainRelationPO.getDomainBRole());
+        return businessDomainRelation;
     }
 }

@@ -33,6 +33,7 @@ public class BusinessController {
         business.setBusinessCode(10);
         businessQryReqDTO.setBusiness(business);
         businessQryReqDTO.setIncludeDomain(true);
+        businessQryReqDTO.setIncludeDomainRelation(true);
         Result<BusinessRespDTO> result = businessQryService.queryOne(businessQryReqDTO);
         return JSON.toJSONString(result);
     }

@@ -19,7 +19,17 @@ public class BusinessQryServiceTest {
     private BusinessQryService businessQryService;
 
     @Test
-    public void test_business_query_one() {
+    public void test_business_query_one_1() {
+        BusinessQryReqDTO businessQryReqDTO = new BusinessQryReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(10);
+        businessQryReqDTO.setBusiness(business);
+        Result<BusinessRespDTO> result = businessQryService.queryOne(businessQryReqDTO);
+        System.out.println(result);
+    }
+
+    @Test
+    public void test_business_query_one_2() {
         BusinessQryReqDTO businessQryReqDTO = new BusinessQryReqDTO();
         Business business = new Business();
         business.setBusinessCode(10);
@@ -29,5 +39,16 @@ public class BusinessQryServiceTest {
         System.out.println(result);
     }
 
+    @Test
+    public void test_business_query_one_3() {
+        BusinessQryReqDTO businessQryReqDTO = new BusinessQryReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(10);
+        businessQryReqDTO.setBusiness(business);
+        businessQryReqDTO.setIncludeDomain(true);
+        businessQryReqDTO.setIncludeDomainRelation(true);
+        Result<BusinessRespDTO> result = businessQryService.queryOne(businessQryReqDTO);
+        System.out.println(result);
+    }
 }
 

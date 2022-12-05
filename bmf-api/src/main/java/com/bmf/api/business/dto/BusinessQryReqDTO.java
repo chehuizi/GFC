@@ -24,4 +24,8 @@ public class BusinessQryReqDTO extends ReqDTO implements Serializable {
      * 包含领域
      */
     private boolean includeDomain;
+    /**
+     * 包含领域关系
+     */
+    private boolean includeDomainRelation;
 }
