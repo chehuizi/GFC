@@ -19,6 +19,7 @@ public enum BizCodeEnum {
     DOMAIN_NOT_EXIST(100002, "领域不存在"),
     BUSINESS_IS_EXISTED(100003, "业务已存在"),
     DOMAIN_IS_EXISTED(100004, "领域已存在"),
+    DOMAIN_HAS_RELATION(100005, "领域有关系"),
     /******************** api层错误码 end   ********************/
 
     /******************** core层错误码 start ********************/

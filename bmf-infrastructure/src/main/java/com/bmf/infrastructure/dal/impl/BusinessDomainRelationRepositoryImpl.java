@@ -29,6 +29,12 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
     }
 
     @Override
+    public List<BusinessDomainRelationPO> selectByDomain(BusinessDomainRelation req) {
+        BusinessDomainRelationPO businessDomainRelationPO = BusinessPOUtil.convert(req);
+        return businessDomainRelationMapper.selectByDomain(businessDomainRelationPO);
+    }
+
+    @Override
     public boolean insert(BusinessDomainRelation req) {
         return businessDomainRelationMapper.insert(BusinessPOUtil.convert(req)) == 1;
     }

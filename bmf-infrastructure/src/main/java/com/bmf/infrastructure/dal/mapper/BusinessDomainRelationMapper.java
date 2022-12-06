@@ -10,6 +10,8 @@ public interface BusinessDomainRelationMapper {
 
     List<BusinessDomainRelationPO> selectList(BusinessDomainRelationPO businessDomainRelationPO);
 
+    List<BusinessDomainRelationPO> selectByDomain(BusinessDomainRelationPO businessDomainRelationPO);
+
     int insert(BusinessDomainRelationPO businessDomainRelationPO);
 
     int update(BusinessDomainRelationPO businessDomainRelationPO);

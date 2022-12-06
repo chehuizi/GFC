@@ -4,6 +4,7 @@ import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.BusinessDomainRelation;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;
 import com.bmf.common.utils.BusinessCheckUtil;
@@ -16,6 +17,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class BusinessCmdServiceImpl implements BusinessCmdService {
@@ -64,6 +67,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
         BusinessDomain domain = domainService.queryDomain(businessCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
+        List<BusinessDomainRelation> businessDomainRelationList = businessService.queryBusinessDomainRelation(business, domain);
+        BusinessCheckUtil.checkNonNull(businessDomainRelationList, BizCodeEnum.DOMAIN_HAS_RELATION);
         return ResultUtil.success(businessService.delDomain(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getDomain()));
     }
 

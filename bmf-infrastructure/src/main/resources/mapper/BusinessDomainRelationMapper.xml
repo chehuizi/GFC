@@ -31,6 +31,18 @@
         where business_code = #{businessCode,jdbcType=INTEGER}
     </select>
 
+    <select id="selectByDomain" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_relation
+        where business_code = #{businessCode,jdbcType=INTEGER}
+        and (
+            domain_a_code = #{domainACode,jdbcType=INTEGER}
+            or
+            domain_b_code = #{domainBCode,jdbcType=INTEGER}
+        )
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
         insert into bmf_business_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
         values (

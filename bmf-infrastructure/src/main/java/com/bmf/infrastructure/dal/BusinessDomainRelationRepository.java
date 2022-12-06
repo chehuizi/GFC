@@ -9,4 +9,5 @@ public interface BusinessDomainRelationRepository extends BaseRepository<Busines
 
     List<BusinessDomainRelationPO> selectList(BusinessDomainRelation req);
 
+    List<BusinessDomainRelationPO> selectByDomain(BusinessDomainRelation req);
 }

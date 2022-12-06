@@ -41,6 +41,14 @@ public interface BusinessService {
     List<BusinessDomainRelation> queryBusinessDomainRelation(Business business);
 
     /**
+     * 查询业务关联领域关系
+     * @param business
+     * @param domain
+     * @return
+     */
+    List<BusinessDomainRelation> queryBusinessDomainRelation(Business business, BusinessDomain domain);
+
+    /**
      * 添加领域
      * @param business
      * @param domain
