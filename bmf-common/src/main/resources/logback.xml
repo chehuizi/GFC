@@ -61,6 +61,19 @@
         </rollingPolicy>
     </appender>
 
+    <appender name="INFRASTRUCTURE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>${LOG_PATH}/${appName}/infrastructure.log</file>
+        <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+            <Pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %X{sessionTokenId} - %msg%n</Pattern>
+        </encoder>
+        <rollingPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedRollingPolicy">
+            <fileNamePattern>${LOG_PATH}/archived/infrastructure_%d{yyyy-MM-dd}_%i.log</fileNamePattern>
+            <maxFileSize>10MB</maxFileSize>
+            <maxHistory>10</maxHistory>
+            <totalSizeCap>100MB</totalSizeCap>
+        </rollingPolicy>
+    </appender>
+
     <logger name="com.bmf.controller" additivity="false" level="INFO">
         <appender-ref ref="CONTROLLER"/>
     </logger>
@@ -70,7 +83,10 @@
     <logger name="com.bmf.common" additivity="false" level="INFO">
         <appender-ref ref="API"/>
     </logger>
-    <logger name="com.bmf.infrastructure" additivity="false" level="debug">
+    <logger name="com.bmf.infrastructure" additivity="false" level="INFO">
+        <appender-ref ref="INFRASTRUCTURE"/>
+    </logger>
+    <logger name="com.bmf.infrastructure.dal" additivity="false" level="DEBUG">
         <appender-ref ref="SQL"/>
     </logger>
 
