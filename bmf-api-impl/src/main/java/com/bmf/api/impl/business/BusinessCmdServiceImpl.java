@@ -5,6 +5,7 @@ import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;
 import com.bmf.common.utils.BusinessCheckUtil;
@@ -13,6 +14,7 @@ import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import com.bmf.core.domain.DomainService;
+import com.bmf.infrastructure.generator.CodeSeqGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,13 +33,24 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     private DomainService domainService;
     @Autowired
     private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
+    @Autowired
+    private CodeSeqGenerator codeSeqGenerator;
 
     @Override
     @Validator(beanName = "businessCmdReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(BusinessCmdReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNonNull(business, BizCodeEnum.BUSINESS_IS_EXISTED);
+        fillBusinessInfo(req.getBusiness());
         return ResultUtil.success(businessService.createBusiness(req.getBusiness()));
+    }
+
+    /**
+     * 填充业务信息
+     * @param business
+     */
+    private void fillBusinessInfo(Business business) {
+        business.setBusinessCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_BUSINESS.getKey()));
     }
 
     @Override

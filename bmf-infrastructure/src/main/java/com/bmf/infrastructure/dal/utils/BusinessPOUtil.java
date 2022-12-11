@@ -23,8 +23,11 @@ public class BusinessPOUtil {
      */
     public static BusinessPO convert(Business business) {
         BusinessPO businessPO = new BusinessPO();
+        businessPO.setBusinessPrefix(business.getBusinessPrefix());
         businessPO.setBusinessCode(business.getBusinessCode());
         businessPO.setBusinessName(business.getBusinessName());
+        businessPO.setBusinessAlias(business.getBusinessAlias());
+        businessPO.setBusinessDesc(business.getBusinessDesc());
         return businessPO;
     }
 
@@ -38,8 +41,11 @@ public class BusinessPOUtil {
             return null;
         }
         Business business = new Business();
+        business.setBusinessPrefix(businessPO.getBusinessPrefix());
         business.setBusinessCode(businessPO.getBusinessCode());
         business.setBusinessName(businessPO.getBusinessName());
+        business.setBusinessAlias(businessPO.getBusinessAlias());
+        business.setBusinessDesc(businessPO.getBusinessDesc());
         return business;
     }
 

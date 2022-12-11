@@ -8,6 +8,7 @@ import com.bmf.api.domain.DomainRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
+import com.bmf.base.enums.BusinessPrefixEnum;
 import com.bmf.base.strategy.asymmetric.UpstreamDownstreamRelationship;
 import com.bmf.base.strategy.role.downstream.ConformistRole;
 import com.bmf.base.strategy.role.partner.PartnerRole;
@@ -34,8 +35,10 @@ public class BusinessCmdServiceTest {
     public void test_business_create() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10);
-        business.setBusinessName("chz_test");
+        business.setBusinessPrefix(BusinessPrefixEnum.B.getPrefix());
+        business.setBusinessName("电商业务");
+        business.setBusinessAlias("eco");
+        business.setBusinessDesc("新业务");
         businessCmdReqDTO.setBusiness(business);
         Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
         System.out.println(result);
