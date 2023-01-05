@@ -36,9 +36,9 @@ public class BusinessCmdServiceTest {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
         business.setBusinessPrefix(BusinessPrefixEnum.B.getPrefix());
-        business.setBusinessName("电商业务");
-        business.setBusinessAlias("eco");
-        business.setBusinessDesc("新业务");
+        business.setBusinessName("外卖业务");
+        business.setBusinessAlias("food");
+        business.setBusinessDesc("外卖业务");
         businessCmdReqDTO.setBusiness(business);
         Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
         System.out.println(result);
