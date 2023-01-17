@@ -1,6 +1,6 @@
 package com.bmf.common.utils;
 
-import com.bmf.api.domain.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.DomainRelEntity;
 import com.bmf.base.tactics.DomainRelService;

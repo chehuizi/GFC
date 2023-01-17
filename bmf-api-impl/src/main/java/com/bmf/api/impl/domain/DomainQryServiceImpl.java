@@ -2,8 +2,8 @@ package com.bmf.api.impl.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.DomainQryService;
-import com.bmf.api.domain.DomainReqDTO;
-import com.bmf.api.domain.DomainRespDTO;
+import com.bmf.api.domain.dto.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.utils.DomainUtil;
 import com.bmf.common.utils.ResultUtil;

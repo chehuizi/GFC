@@ -1,12 +1,11 @@
 package com.bmf.api;
 
 import com.bmf.api.domain.DomainCmdService;
-import com.bmf.api.domain.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.common.enums.BizCodeEnum;
-import lombok.extern.slf4j.Slf4j;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

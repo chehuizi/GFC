@@ -2,6 +2,7 @@ package com.bmf.api.domain;
 
 import com.bmf.api.CmdService;
 import com.bmf.api.Result;
+import com.bmf.api.domain.dto.DomainReqDTO;
 
 /**
  * 业务域cmd服务

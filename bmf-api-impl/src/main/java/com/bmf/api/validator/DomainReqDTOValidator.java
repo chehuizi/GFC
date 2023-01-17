@@ -1,6 +1,6 @@
 package com.bmf.api.validator;
 
-import com.bmf.api.domain.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.common.utils.ParamCheckUtil;

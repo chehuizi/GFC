@@ -1,4 +1,4 @@
-package com.bmf.api.domain;
+package com.bmf.api.domain.dto;
 
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
