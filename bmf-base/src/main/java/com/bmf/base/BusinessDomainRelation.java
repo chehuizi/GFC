@@ -16,6 +16,7 @@ public class BusinessDomainRelation extends BaseModel {
     private String domainRelation;
     /**
      * 领域A角色
+     * @see com.bmf.base.enums.RelationshipRoleEnum
      */
     private String domainARole;
     /**
@@ -24,6 +25,7 @@ public class BusinessDomainRelation extends BaseModel {
     private Integer domainACode;
     /**
      * 领域B角色
+     * @see com.bmf.base.enums.RelationshipRoleEnum
      */
     private String domainBRole;
     /**
