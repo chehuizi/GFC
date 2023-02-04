@@ -4,6 +4,7 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.DomainCmdService;
 import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.common.utils.DomainUtil;
@@ -11,6 +12,7 @@ import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
 import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.core.domain.DomainService;
+import com.bmf.infrastructure.generator.CodeSeqGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +23,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     private DomainService domainService;
     @Autowired
     private BusinessDomainDesign4Tactics businessDomainDesign4Tactics;
+    @Autowired
+    private CodeSeqGenerator codeSeqGenerator;
 
     @Override
     @Validator(beanName = "domainReqDTOValidator", method = "v4Create")
@@ -28,7 +32,16 @@ public class DomainCmdServiceImpl implements DomainCmdService {
         BusinessDomain domain = DomainUtil.convert(req);
         BusinessDomain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNonNull(queryResult, BizCodeEnum.DOMAIN_IS_EXISTED);
+        fillDomainInfo(domain);
         return ResultUtil.success(domainService.createDomain(domain));
+    }
+
+    /**
+     * 填充领域信息
+     * @param businessDomain
+     */
+    private void fillDomainInfo(BusinessDomain businessDomain) {
+        businessDomain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
     }
 
     @Override

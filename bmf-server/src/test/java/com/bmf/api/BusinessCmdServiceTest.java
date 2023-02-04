@@ -49,10 +49,10 @@ public class BusinessCmdServiceTest {
     public void test_business_add_domain() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10);
+        business.setBusinessCode(10003);
         businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(50);
+        domain.setDomainCode(102);
         businessCmdReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);
         System.out.println(result);
