@@ -63,10 +63,10 @@ public class BusinessCmdServiceTest {
     public void test_business_del_domain() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10);
+        business.setBusinessCode(10003);
         businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(10);
+        domain.setDomainCode(102);
         businessCmdReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.delDomain(businessCmdReqDTO);
         System.out.println(result);
@@ -77,20 +77,20 @@ public class BusinessCmdServiceTest {
     public void test_business_build_domain_relation() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10);
+        business.setBusinessCode(10003);
         businessCmdReqDTO.setBusiness(business);
         UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setBusinessCode(10);
+        upstreamDownstreamRelationship.setBusinessCode(10003);
         OpenHostServiceRole ohs = new OpenHostServiceRole();
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(30);
+        domain.setDomainCode(103);
         domainReqDTO.setBusinessDomain(domain);
         Result<DomainRespDTO> result1 = domainQryService.queryOne(domainReqDTO);
         ohs.setDomain(result1.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleA(ohs);
         ConformistRole cf = new ConformistRole();
-        domain.setDomainCode(40);
+        domain.setDomainCode(102);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainReqDTO);
         cf.setDomain(result2.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleB(cf);
