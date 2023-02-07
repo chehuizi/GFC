@@ -29,6 +29,14 @@ public interface BusinessService {
     /**
      * 查询业务关联领域
      * @param business
+     * @param domain
+     * @return
+     */
+    BusinessRelDomain queryBusinessRelDomain(Business business, BusinessDomain domain);
+
+    /**
+     * 查询业务关联领域
+     * @param business
      * @return
      */
     List<BusinessRelDomain> queryBusinessRelDomain(Business business);

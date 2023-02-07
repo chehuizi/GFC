@@ -53,6 +53,16 @@ public class BusinessServiceImpl implements BusinessService {
     }
 
     @Override
+    public BusinessRelDomain queryBusinessRelDomain(Business business, BusinessDomain domain) {
+        BusinessRelDomain businessRelDomain = BusinessUtil.convert(business, domain);
+        BusinessRelDomainPO businessRelDomainPO = businessRelDomainRepository.selectOne(businessRelDomain);
+        if (Objects.isNull(businessRelDomainPO)) {
+            return null;
+        }
+        return BusinessPOUtil.convert(businessRelDomainPO);
+    }
+
+    @Override
     public List<BusinessDomainRelation> queryBusinessDomainRelation(Business business) {
         BusinessDomainRelation businessDomainRelation = BusinessUtil.convertDR(business);
         List<BusinessDomainRelationPO> businessDomainRelationPOList = businessDomainRelationRepository.selectList(businessDomainRelation);

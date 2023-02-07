@@ -5,6 +5,7 @@ import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;
@@ -94,6 +95,10 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         BusinessCheckUtil.checkNull(domainA, BizCodeEnum.DOMAIN_NOT_EXIST);
         BusinessDomain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
         BusinessCheckUtil.checkNull(domainB, BizCodeEnum.DOMAIN_NOT_EXIST);
+        BusinessRelDomain businessRelDomain = businessService.queryBusinessRelDomain(business, domainA);
+        BusinessCheckUtil.checkNull(businessRelDomain, BizCodeEnum.BUSINESS_REL_DOMAIN_NOT_EXIST);
+        businessRelDomain = businessService.queryBusinessRelDomain(business, domainB);
+        BusinessCheckUtil.checkNull(businessRelDomain, BizCodeEnum.BUSINESS_REL_DOMAIN_NOT_EXIST);
         return ResultUtil.success(businessDomainDesign4Strategy.buildBusinessDomainRelationship(businessCmdReqDTO.getRelationship()));
     }
 

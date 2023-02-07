@@ -37,6 +37,19 @@ public class BusinessUtil {
     /**
      * 转换对象
      * @param business
+     * @param domain
+     * @return
+     */
+    public static BusinessRelDomain convert(Business business, BusinessDomain domain) {
+        BusinessRelDomain businessRelDomain = new BusinessRelDomain();
+        businessRelDomain.setBusinessCode(business.getBusinessCode());
+        businessRelDomain.setDomainCode(domain.getDomainCode());
+        return businessRelDomain;
+    }
+
+    /**
+     * 转换对象
+     * @param business
      * @return
      */
     public static BusinessDomainRelation convertDR(Business business) {

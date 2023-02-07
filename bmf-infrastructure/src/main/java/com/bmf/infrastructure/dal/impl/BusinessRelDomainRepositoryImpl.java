@@ -18,7 +18,8 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
 
     @Override
     public BusinessRelDomainPO selectOne(BusinessRelDomain req) {
-        return businessRelDomainMapper.selectOne(null);
+        BusinessRelDomainPO businessRelDomainPO = BusinessPOUtil.convert(req);
+        return businessRelDomainMapper.selectOne(businessRelDomainPO);
     }
 
     @Override
