@@ -55,4 +55,27 @@
         )
     </insert>
 
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+        delete from bmf_business_domain_relation
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="businessCode != null">
+                and business_code = #{businessCode}
+            </if>
+            <if test="domainRelation != null">
+                and domain_relation = #{domainRelation}
+            </if>
+            <if test="domainACode != null">
+                and domain_a_code = #{domainACode}
+            </if>
+            <if test="domainBCode != null">
+                and domain_b_code = #{domainBCode}
+            </if>
+            <if test="domainARole != null">
+                and domain_a_role = #{domainARole}
+            </if>
+            <if test="domainBRole != null">
+                and domain_b_role = #{domainBRole}
+            </if>
+        </trim>
+    </delete>
 </mapper>

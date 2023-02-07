@@ -53,6 +53,10 @@ public class BusinessDomain extends BaseModel {
     public BusinessDomain() {
     }
 
+    public BusinessDomain(Integer domainCode) {
+        this.domainCode = domainCode;
+    }
+
     @Override
     public String toString() {
         return "{" +
