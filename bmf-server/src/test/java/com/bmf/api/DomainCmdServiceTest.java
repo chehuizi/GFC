@@ -41,8 +41,8 @@ public class DomainCmdServiceTest {
     public void test_domain_update() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(10);
-        businessDomain.setDomainName("仓库管理系统-2");
+        businessDomain.setDomainCode(102);
+        businessDomain.setDomainName("库存管理域");
         domainReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.update(domainReqDTO);
         System.out.println(result);
