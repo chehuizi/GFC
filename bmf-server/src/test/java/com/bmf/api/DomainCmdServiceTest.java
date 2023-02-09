@@ -27,7 +27,7 @@ public class DomainCmdServiceTest {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(50);
-        businessDomain.setDomainName("仓库管理系统");
+        businessDomain.setDomainName("仓库管理域");
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
