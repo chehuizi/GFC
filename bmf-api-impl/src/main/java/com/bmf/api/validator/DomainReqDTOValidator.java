@@ -80,6 +80,9 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
         ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkTrue(domainReqDTO.getBusinessDomain().getDomainCode().equals(
+                domainReqDTO.getDomainEntity().getDomainCode()), "domain code is not equal");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityIdAlias(), "domain entity id alias is blank");
         ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityIdName(), "domain entity id name is blank");
         ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityIdType(), "domain entity id type is blank");
         ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityDesc(), "domain entity desc is blank");

@@ -31,7 +31,6 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     @Override
     @Transactional
     public boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity) {
-        entity.setDomainCode(domain.getDomainCode());
         return businessDomainEntityRepository.insert(entity);
     }
 

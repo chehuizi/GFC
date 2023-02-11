@@ -17,7 +17,8 @@ public class BusinessDomainEntityRepositoryImpl implements BusinessDomainEntityR
 
     @Override
     public BusinessDomainEntityPO selectOne(BusinessDomainEntity req) {
-        return null;
+        BusinessDomainEntityPO domainEntityPO = DomainPOUtil.convert(req);
+        return businessDomainEntityMapper.selectOne(domainEntityPO);
     }
 
     @Override

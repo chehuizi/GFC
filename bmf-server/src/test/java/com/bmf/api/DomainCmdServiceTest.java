@@ -79,6 +79,8 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainCode(103);
         domainReqDTO.setBusinessDomain(businessDomain);
         BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setDomainCode(103);
+        domainEntity.setEntityIdAlias("whSn");
         domainEntity.setEntityIdName("仓库编号");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
         domainEntity.setEntityDesc("仓库");
@@ -93,7 +95,7 @@ public class DomainCmdServiceTest {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomainEntity domainEntity = new BusinessDomainEntity();
         domainEntity.setDomainCode(103);
-        domainEntity.setEntityIdCode(100004);
+        domainEntity.setEntityIdCode(100006);
         domainReqDTO.setDomainEntity(domainEntity);
         Result<Boolean> result = domainCmdService.delEntity(domainReqDTO);
         System.out.println(result);

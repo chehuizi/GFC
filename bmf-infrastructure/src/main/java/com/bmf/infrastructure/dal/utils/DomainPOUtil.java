@@ -72,10 +72,22 @@ public class DomainPOUtil {
         BusinessDomainEntityPO domainEntityPO = new BusinessDomainEntityPO();
         domainEntityPO.setDomainCode(businessDomainEntity.getDomainCode());
         domainEntityPO.setEntityIdCode(businessDomainEntity.getEntityIdCode());
+        domainEntityPO.setEntityIdAlias(businessDomainEntity.getEntityIdAlias());
         domainEntityPO.setEntityIdName(businessDomainEntity.getEntityIdName());
         domainEntityPO.setEntityIdType(businessDomainEntity.getEntityIdType());
         domainEntityPO.setEntityDesc(businessDomainEntity.getEntityDesc());
         return domainEntityPO;
+    }
+
+    public static BusinessDomainEntity convert(BusinessDomainEntityPO domainEntityPO) {
+        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setDomainCode(domainEntityPO.getDomainCode());
+        domainEntity.setEntityIdCode(domainEntityPO.getEntityIdCode());
+        domainEntity.setEntityIdAlias(domainEntityPO.getEntityIdAlias());
+        domainEntity.setEntityIdName(domainEntityPO.getEntityIdName());
+        domainEntity.setEntityIdType(domainEntityPO.getEntityIdType());
+        domainEntity.setEntityDesc(domainEntityPO.getEntityDesc());
+        return domainEntity;
     }
 
     public static BusinessDomainEntityAttrPO convert(DomainEntityAttr domainEntityAttr) {

@@ -18,7 +18,11 @@ public class BusinessDomainEntity extends BaseModel {
      */
     private Integer entityIdCode;
     /**
-     * 实体唯一ID名称
+     * 实体唯一ID别名（英文）
+     */
+    private String entityIdAlias;
+    /**
+     * 实体唯一ID名称（中文）
      */
     private String entityIdName;
     /**
