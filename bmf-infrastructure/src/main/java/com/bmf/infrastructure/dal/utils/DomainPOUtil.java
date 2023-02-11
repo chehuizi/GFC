@@ -70,9 +70,11 @@ public class DomainPOUtil {
 
     public static BusinessDomainEntityPO convert(BusinessDomainEntity businessDomainEntity) {
         BusinessDomainEntityPO domainEntityPO = new BusinessDomainEntityPO();
+        domainEntityPO.setDomainCode(businessDomainEntity.getDomainCode());
         domainEntityPO.setEntityIdCode(businessDomainEntity.getEntityIdCode());
         domainEntityPO.setEntityIdName(businessDomainEntity.getEntityIdName());
         domainEntityPO.setEntityIdType(businessDomainEntity.getEntityIdType());
+        domainEntityPO.setEntityDesc(businessDomainEntity.getEntityDesc());
         return domainEntityPO;
     }
 

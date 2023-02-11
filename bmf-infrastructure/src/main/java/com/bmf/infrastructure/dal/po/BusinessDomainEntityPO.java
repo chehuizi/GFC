@@ -6,6 +6,10 @@ import lombok.Data;
 public class BusinessDomainEntityPO extends BasePO {
 
     /**
+     * 领域编码
+     */
+    private Integer domainCode;
+    /**
      * 实体唯一ID编码
      */
     private Integer entityIdCode;
@@ -18,5 +22,8 @@ public class BusinessDomainEntityPO extends BasePO {
      * @see com.bmf.base.enums.AttrTypeEnum
      */
     private String entityIdType;
-
+    /**
+     * 实体描述
+     */
+    private String entityDesc;
 }

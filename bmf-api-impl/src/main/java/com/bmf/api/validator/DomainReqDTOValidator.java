@@ -69,4 +69,20 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkBlank(domainReqDTO.getBusinessDomain().getDomainAlias(), "domain alias is blank");
         return true;
     }
+
+    /**
+     * 校验addEntity方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4AddEntity(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityIdName(), "domain entity id name is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityIdType(), "domain entity id type is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityDesc(), "domain entity desc is blank");
+        return true;
+    }
 }

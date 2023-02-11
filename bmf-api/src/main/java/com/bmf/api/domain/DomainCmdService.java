@@ -17,6 +17,13 @@ public interface DomainCmdService extends CmdService<DomainReqDTO> {
     Result<Boolean> addEntity(DomainReqDTO domainReqDTO);
 
     /**
+     * 删除业务实体
+     * @param domainReqDTO
+     * @return
+     */
+    Result<Boolean> delEntity(DomainReqDTO domainReqDTO);
+
+    /**
      * 添加值对象
      * @param domainReqDTO
      * @return

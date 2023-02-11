@@ -22,11 +22,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     @Autowired
     private BusinessDomainEntityRepository businessDomainEntityRepository;
     @Autowired
-    private BusinessDomainRelEntityRepository businessDomainRelEntityRepository;
-    @Autowired
     private BusinessDomainServiceRepository businessDomainServiceRepository;
-    @Autowired
-    private BusinessDomainRelServiceRepository businessDomainRelServiceRepository;
     @Autowired
     private BusinessDomainValueObjectRepository businessDomainValueObjectRepository;
     @Autowired
@@ -35,12 +31,13 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     @Override
     @Transactional
     public boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity) {
-        boolean insertOk = businessDomainEntityRepository.insert(entity);
-        if (insertOk) {
-            DomainRelEntity domainRelEntity = DomainUtil.build(domain, entity);
-            return businessDomainRelEntityRepository.insert(domainRelEntity);
-        }
-        return false;
+        entity.setDomainCode(domain.getDomainCode());
+        return businessDomainEntityRepository.insert(entity);
+    }
+
+    @Override
+    public boolean delEntity(BusinessDomainEntity entity) {
+        return businessDomainEntityRepository.delete(entity);
     }
 
     @Override
@@ -61,12 +58,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
 
     @Override
     public boolean addService(BusinessDomain domain, BusinessDomainService service) {
-        boolean insertOk = businessDomainServiceRepository.insert(service);
-        if (insertOk) {
-            DomainRelService domainRelService = DomainUtil.build(domain, service);
-            return businessDomainRelServiceRepository.insert(domainRelService);
-        }
-        return false;
+        return businessDomainServiceRepository.insert(service);
     }
 
     @Override

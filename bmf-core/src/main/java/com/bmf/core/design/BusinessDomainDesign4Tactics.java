@@ -21,6 +21,13 @@ public interface BusinessDomainDesign4Tactics {
     boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity);
 
     /**
+     * 删除实体
+     * @param entity
+     * @return
+     */
+    boolean delEntity(BusinessDomainEntity entity);
+
+    /**
      * 添加值对象
      * @param domain
      * @param valueObject

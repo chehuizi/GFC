@@ -76,18 +76,28 @@ public class DomainCmdServiceTest {
     public void test_domain_add_entity() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(14);
-        businessDomain.setDomainName("test");
-        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainCode(103);
         domainReqDTO.setBusinessDomain(businessDomain);
         BusinessDomainEntity domainEntity = new BusinessDomainEntity();
-        domainEntity.setEntityIdCode(1011);
-        domainEntity.setEntityIdName("test");
+        domainEntity.setEntityIdName("仓库编号");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
+        domainEntity.setEntityDesc("仓库");
         domainReqDTO.setDomainEntity(domainEntity);
         Result<Boolean> result = domainCmdService.addEntity(domainReqDTO);
         System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
+
+    @Test
+    public void test_domain_del_entity() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        domainEntity.setDomainCode(103);
+        domainEntity.setEntityIdCode(100004);
+        domainReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.delEntity(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
     }
 
     @Test

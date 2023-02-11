@@ -11,6 +11,7 @@ import lombok.Getter;
 public enum CodeKeyEnum {
     CODE_KEY_BUSINESS("business", "业务"),
     CODE_KEY_DOMAIN("domain", "领域"),
+    CODE_KEY_ENTITY("entity", "实体"),
     ;
 
     /**

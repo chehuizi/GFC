@@ -33,6 +33,7 @@ public class BusinessDomainEntityRepositoryImpl implements BusinessDomainEntityR
 
     @Override
     public boolean delete(BusinessDomainEntity req) {
-        return false;
+        BusinessDomainEntityPO domainEntityPO = DomainPOUtil.convert(req);
+        return businessDomainEntityMapper.delete(domainEntityPO) == 1;
     }
 }

@@ -3,16 +3,18 @@
 <mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainEntityMapper">
     <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainEntityPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
         <result column="entity_id_code" jdbcType="INTEGER" property="entityIdCode"/>
         <result column="entity_id_name" jdbcType="VARCHAR" property="entityIdName"/>
         <result column="entity_id_type" jdbcType="VARCHAR" property="entityIdType"/>
+        <result column="entity_desc" jdbcType="VARCHAR" property="entityDesc"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, entity_id_code, entity_id_name, entity_id_type, gmt_create, gmt_modify, is_deleted
+        id, domain_code, entity_id_code, entity_id_name, entity_id_type, entity_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap">
@@ -23,12 +25,22 @@
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityPO">
-        insert into bmf_business_domain_entity (entity_id_code, entity_id_name, entity_id_type)
+        insert into bmf_business_domain_entity (domain_code, entity_id_code,
+        entity_id_name, entity_id_type, entity_desc)
         values (
+            #{domainCode,jdbcType=INTEGER},
             #{entityIdCode,jdbcType=INTEGER},
             #{entityIdName,jdbcType=VARCHAR},
-            #{entityIdType,jdbcType=VARCHAR}
+            #{entityIdType,jdbcType=VARCHAR},
+            #{entityDesc,jdbcType=VARCHAR}
         )
     </insert>
 
+    <delete id="delete">
+        delete from bmf_business_domain_entity
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="entityIdCode != null">and entity_id_code = #{entityIdCode}</if>
+        </trim>
+    </delete>
 </mapper>
