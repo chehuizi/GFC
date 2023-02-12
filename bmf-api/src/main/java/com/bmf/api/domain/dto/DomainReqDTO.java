@@ -3,11 +3,11 @@ package com.bmf.api.domain.dto;
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.aggregate.BusinessDomainAggregate;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
-import com.bmf.base.tactics.event.BusinessDomainEvent;
-import com.bmf.base.tactics.service.BusinessDomainService;
-import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
+import com.bmf.base.tactics.aggregate.DomainAggregate;
+import com.bmf.base.tactics.entity.DomainEntity;
+import com.bmf.base.tactics.event.DomainEvent;
+import com.bmf.base.tactics.service.DomainService;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -31,21 +31,21 @@ public class DomainReqDTO extends ReqDTO implements Serializable {
     /**
      * 业务实体
      */
-    private BusinessDomainEntity domainEntity;
+    private DomainEntity domainEntity;
     /**
      * 值对象
      */
-    private BusinessDomainValueObject domainValueObject;
+    private DomainValueObject domainValueObject;
     /**
      * 聚合根
      */
-    private BusinessDomainAggregate domainAggregate;
+    private DomainAggregate domainAggregate;
     /**
      * 领域服务
      */
-    private BusinessDomainService domainService;
+    private DomainService domainService;
     /**
      * 领域事件
      */
-    private BusinessDomainEvent domainEvent;
+    private DomainEvent domainEvent;
 }

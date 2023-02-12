@@ -1,13 +1,13 @@
 package com.bmf.base.tactics.entity;
 
 import com.bmf.base.BaseModel;
-import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 import lombok.Data;
 
 import java.util.List;
 
 @Data
-public class BusinessDomainEntity extends BaseModel {
+public class DomainEntity extends BaseModel {
 
     /**
      * 领域编码
@@ -41,6 +41,6 @@ public class BusinessDomainEntity extends BaseModel {
     /**
      * 值对象列表
      */
-    private List<BusinessDomainValueObject> valueObjectList;
+    private List<DomainValueObject> valueObjectList;
 
 }

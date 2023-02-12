@@ -1,7 +1,7 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.tactics.service.BusinessDomainService;
-import com.bmf.infrastructure.dal.BusinessDomainServiceRepository;
+import com.bmf.base.tactics.service.DomainService;
+import com.bmf.infrastructure.dal.DomainServiceRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainServiceMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainServicePO;
 import org.springframework.stereotype.Service;
@@ -9,30 +9,30 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class BusinessDomainServiceRepositoryImpl implements BusinessDomainServiceRepository {
+public class DomainServiceRepositoryImpl implements DomainServiceRepository {
 
     @Resource
     private BusinessDomainServiceMapper businessDomainServiceMapper;
 
     @Override
-    public BusinessDomainServicePO selectOne(BusinessDomainService req) {
+    public BusinessDomainServicePO selectOne(DomainService req) {
         BusinessDomainServicePO domainServicePO = new BusinessDomainServicePO();
         return businessDomainServiceMapper.selectOne(domainServicePO);
     }
 
     @Override
-    public boolean insert(BusinessDomainService req) {
+    public boolean insert(DomainService req) {
         BusinessDomainServicePO domainServicePO = new BusinessDomainServicePO();
         return businessDomainServiceMapper.insert(domainServicePO) == 1;
     }
 
     @Override
-    public boolean update(BusinessDomainService req) {
+    public boolean update(DomainService req) {
         return false;
     }
 
     @Override
-    public boolean delete(BusinessDomainService req) {
+    public boolean delete(DomainService req) {
         return false;
     }
 }

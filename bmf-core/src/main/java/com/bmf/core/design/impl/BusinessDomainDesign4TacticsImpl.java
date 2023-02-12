@@ -1,14 +1,12 @@
 package com.bmf.core.design.impl;
 
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.DomainRelEntity;
-import com.bmf.base.tactics.DomainRelService;
 import com.bmf.base.tactics.EntityRelVO;
-import com.bmf.base.tactics.aggregate.BusinessDomainAggregate;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
-import com.bmf.base.tactics.event.BusinessDomainEvent;
-import com.bmf.base.tactics.service.BusinessDomainService;
-import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
+import com.bmf.base.tactics.aggregate.DomainAggregate;
+import com.bmf.base.tactics.entity.DomainEntity;
+import com.bmf.base.tactics.event.DomainEvent;
+import com.bmf.base.tactics.service.DomainService;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.common.utils.DomainUtil;
 import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.infrastructure.dal.*;
@@ -20,48 +18,48 @@ import org.springframework.transaction.annotation.Transactional;
 public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Tactics {
 
     @Autowired
-    private BusinessDomainEntityRepository businessDomainEntityRepository;
+    private DomainEntityRepository domainEntityRepository;
     @Autowired
-    private BusinessDomainServiceRepository businessDomainServiceRepository;
+    private DomainServiceRepository domainServiceRepository;
     @Autowired
-    private BusinessDomainValueObjectRepository businessDomainValueObjectRepository;
+    private DomainValueObjectRepository domainValueObjectRepository;
     @Autowired
-    private BusinessDomainEntityRelVORepository businessDomainEntityRelVORepository;
+    private DomainEntityRelVORepository domainEntityRelVORepository;
 
     @Override
     @Transactional
-    public boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity) {
-        return businessDomainEntityRepository.insert(entity);
+    public boolean addEntity(BusinessDomain domain, DomainEntity entity) {
+        return domainEntityRepository.insert(entity);
     }
 
     @Override
-    public boolean delEntity(BusinessDomainEntity entity) {
-        return businessDomainEntityRepository.delete(entity);
+    public boolean delEntity(DomainEntity entity) {
+        return domainEntityRepository.delete(entity);
     }
 
     @Override
-    public boolean addValueObject(BusinessDomain domain, BusinessDomainValueObject valueObject) {
-        return businessDomainValueObjectRepository.insert(valueObject);
+    public boolean addValueObject(BusinessDomain domain, DomainValueObject valueObject) {
+        return domainValueObjectRepository.insert(valueObject);
     }
 
     @Override
-    public boolean addEntityRelVO(BusinessDomainEntity entity, BusinessDomainValueObject valueObject) {
+    public boolean addEntityRelVO(DomainEntity entity, DomainValueObject valueObject) {
         EntityRelVO entityRelVO = DomainUtil.build(entity, valueObject);
-        return businessDomainEntityRelVORepository.insert(entityRelVO);
+        return domainEntityRelVORepository.insert(entityRelVO);
     }
 
     @Override
-    public boolean addAggregate(BusinessDomain domain, BusinessDomainAggregate aggregate) {
+    public boolean addAggregate(BusinessDomain domain, DomainAggregate aggregate) {
         return false;
     }
 
     @Override
-    public boolean addService(BusinessDomain domain, BusinessDomainService service) {
-        return businessDomainServiceRepository.insert(service);
+    public boolean addService(BusinessDomain domain, DomainService service) {
+        return domainServiceRepository.insert(service);
     }
 
     @Override
-    public boolean addDomainEvent(BusinessDomain domain, BusinessDomainEvent domainEvent) {
+    public boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent) {
         return false;
     }
 }

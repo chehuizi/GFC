@@ -5,7 +5,7 @@ import com.bmf.api.domain.DomainCmdService;
 import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.CodeKeyEnum;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
+import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.common.utils.DomainUtil;
@@ -69,7 +69,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     public Result<Boolean> addEntity(DomainReqDTO domainReqDTO) {
         BusinessDomain domain = domainService.queryDomain(domainReqDTO.getBusinessDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
-        BusinessDomainEntity domainEntity = domainEntityService.queryDomainEntity(domainReqDTO.getDomainEntity());
+        DomainEntity domainEntity = domainEntityService.queryDomainEntity(domainReqDTO.getDomainEntity());
         BusinessCheckUtil.checkNonNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_IS_EXISTED);
         domainReqDTO.getDomainEntity().setEntityIdCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_ENTITY.getKey()));
         return ResultUtil.success(businessDomainDesign4Tactics.addEntity(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEntity()));

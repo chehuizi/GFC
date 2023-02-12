@@ -1,7 +1,6 @@
 package com.bmf.core.domain;
 
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
+import com.bmf.base.tactics.entity.DomainEntity;
 
 /**
  * 领域实体服务
@@ -13,6 +12,6 @@ public interface DomainEntityService {
      * @param domainEntity
      * @return
      */
-    BusinessDomainEntity queryDomainEntity(BusinessDomainEntity domainEntity);
+    DomainEntity queryDomainEntity(DomainEntity domainEntity);
 
 }

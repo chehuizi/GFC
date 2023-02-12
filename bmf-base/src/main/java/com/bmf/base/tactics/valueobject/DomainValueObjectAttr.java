@@ -8,7 +8,7 @@ import lombok.Data;
  * 值对象属性
  */
 @Data
-public class ValueObjectAttr extends BaseModel {
+public class DomainValueObjectAttr extends BaseModel {
 
     /**
      * 值对象编码

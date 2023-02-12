@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class BusinessDomainValueObject extends BaseModel {
+public class DomainValueObject extends BaseModel {
 
     /**
      * 值对象编码
@@ -23,5 +23,5 @@ public class BusinessDomainValueObject extends BaseModel {
     /**
      * 值对象属性列表
      */
-    private List<ValueObjectAttr> valueObjectAttrList;
+    private List<DomainValueObjectAttr> domainValueObjectAttrList;
 }

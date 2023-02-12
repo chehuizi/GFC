@@ -1,7 +1,6 @@
 package com.bmf.core.domain;
 
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
 
 import java.util.List;
 

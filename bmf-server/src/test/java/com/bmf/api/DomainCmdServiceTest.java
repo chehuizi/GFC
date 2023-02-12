@@ -6,7 +6,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
+import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -78,7 +78,7 @@ public class DomainCmdServiceTest {
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(103);
         domainReqDTO.setBusinessDomain(businessDomain);
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(103);
         domainEntity.setEntityIdAlias("whSn");
         domainEntity.setEntityIdName("仓库编号");
@@ -93,7 +93,7 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_del_entity() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(103);
         domainEntity.setEntityIdCode(100006);
         domainReqDTO.setDomainEntity(domainEntity);
@@ -111,7 +111,7 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainReqDTO.setBusinessDomain(businessDomain);
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);
         domainEntity.setEntityIdName("test");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
@@ -129,7 +129,7 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainReqDTO.setBusinessDomain(businessDomain);
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);
         domainEntity.setEntityIdName("test");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
@@ -147,7 +147,7 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainReqDTO.setBusinessDomain(businessDomain);
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);
         domainEntity.setEntityIdName("test");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
@@ -165,7 +165,7 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainReqDTO.setBusinessDomain(businessDomain);
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);
         domainEntity.setEntityIdName("test");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
@@ -183,7 +183,7 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainReqDTO.setBusinessDomain(businessDomain);
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);
         domainEntity.setEntityIdName("test");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());

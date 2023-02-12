@@ -1,7 +1,7 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
-import com.bmf.infrastructure.dal.BusinessDomainValueObjectRepository;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
+import com.bmf.infrastructure.dal.DomainValueObjectRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO;
 import com.bmf.infrastructure.dal.utils.DomainPOUtil;
@@ -10,29 +10,29 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 @Service
-public class BusinessDomainValueObjectRepositoryImpl implements BusinessDomainValueObjectRepository {
+public class DomainValueObjectRepositoryImpl implements DomainValueObjectRepository {
 
     @Resource
     private BusinessDomainValueObjectMapper businessDomainValueObjectMapper;
 
     @Override
-    public BusinessDomainValueObjectPO selectOne(BusinessDomainValueObject req) {
+    public BusinessDomainValueObjectPO selectOne(DomainValueObject req) {
         return null;
     }
 
     @Override
-    public boolean insert(BusinessDomainValueObject req) {
+    public boolean insert(DomainValueObject req) {
         businessDomainValueObjectMapper.insert(DomainPOUtil.convert(req));
         return false;
     }
 
     @Override
-    public boolean update(BusinessDomainValueObject req) {
+    public boolean update(DomainValueObject req) {
         return false;
     }
 
     @Override
-    public boolean delete(BusinessDomainValueObject req) {
+    public boolean delete(DomainValueObject req) {
         return false;
     }
 }

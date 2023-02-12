@@ -7,7 +7,7 @@ import lombok.Data;
  * 业务领域事件
  */
 @Data
-public class BusinessDomainEvent extends BaseModel {
+public class DomainEvent extends BaseModel {
 
     /**
      * 事件编码

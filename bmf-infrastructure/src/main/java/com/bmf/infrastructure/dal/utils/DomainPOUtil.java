@@ -1,10 +1,9 @@
 package com.bmf.infrastructure.dal.utils;
 
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.DomainRelEntity;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
+import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
-import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.infrastructure.dal.po.*;
 
 import java.util.ArrayList;
@@ -68,19 +67,19 @@ public class DomainPOUtil {
         return businessDomainList;
     }
 
-    public static BusinessDomainEntityPO convert(BusinessDomainEntity businessDomainEntity) {
+    public static BusinessDomainEntityPO convert(DomainEntity domainEntity) {
         BusinessDomainEntityPO domainEntityPO = new BusinessDomainEntityPO();
-        domainEntityPO.setDomainCode(businessDomainEntity.getDomainCode());
-        domainEntityPO.setEntityIdCode(businessDomainEntity.getEntityIdCode());
-        domainEntityPO.setEntityIdAlias(businessDomainEntity.getEntityIdAlias());
-        domainEntityPO.setEntityIdName(businessDomainEntity.getEntityIdName());
-        domainEntityPO.setEntityIdType(businessDomainEntity.getEntityIdType());
-        domainEntityPO.setEntityDesc(businessDomainEntity.getEntityDesc());
+        domainEntityPO.setDomainCode(domainEntity.getDomainCode());
+        domainEntityPO.setEntityIdCode(domainEntity.getEntityIdCode());
+        domainEntityPO.setEntityIdAlias(domainEntity.getEntityIdAlias());
+        domainEntityPO.setEntityIdName(domainEntity.getEntityIdName());
+        domainEntityPO.setEntityIdType(domainEntity.getEntityIdType());
+        domainEntityPO.setEntityDesc(domainEntity.getEntityDesc());
         return domainEntityPO;
     }
 
-    public static BusinessDomainEntity convert(BusinessDomainEntityPO domainEntityPO) {
-        BusinessDomainEntity domainEntity = new BusinessDomainEntity();
+    public static DomainEntity convert(BusinessDomainEntityPO domainEntityPO) {
+        DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(domainEntityPO.getDomainCode());
         domainEntity.setEntityIdCode(domainEntityPO.getEntityIdCode());
         domainEntity.setEntityIdAlias(domainEntityPO.getEntityIdAlias());
@@ -99,14 +98,7 @@ public class DomainPOUtil {
         return domainEntityAttrPO;
     }
 
-    public static BusinessDomainRelEntityPO convert(DomainRelEntity domainRelEntity) {
-        BusinessDomainRelEntityPO domainRelEntityPO = new BusinessDomainRelEntityPO();
-        domainRelEntityPO.setDomainCode(domainRelEntity.getDomainCode());
-        domainRelEntityPO.setEntityIdCode(domainRelEntity.getEntityIdCode());
-        return domainRelEntityPO;
-    }
-
-    public static BusinessDomainValueObjectPO convert(BusinessDomainValueObject businessDomainValueObject) {
+    public static BusinessDomainValueObjectPO convert(DomainValueObject domainValueObject) {
         return null;
     }
 }

@@ -1,11 +1,11 @@
 package com.bmf.core.design;
 
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.aggregate.BusinessDomainAggregate;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
-import com.bmf.base.tactics.event.BusinessDomainEvent;
-import com.bmf.base.tactics.service.BusinessDomainService;
-import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
+import com.bmf.base.tactics.aggregate.DomainAggregate;
+import com.bmf.base.tactics.entity.DomainEntity;
+import com.bmf.base.tactics.event.DomainEvent;
+import com.bmf.base.tactics.service.DomainService;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 
 /**
  * 业务设计
@@ -18,14 +18,14 @@ public interface BusinessDomainDesign4Tactics {
      * @param entity
      * @return
      */
-    boolean addEntity(BusinessDomain domain, BusinessDomainEntity entity);
+    boolean addEntity(BusinessDomain domain, DomainEntity entity);
 
     /**
      * 删除实体
      * @param entity
      * @return
      */
-    boolean delEntity(BusinessDomainEntity entity);
+    boolean delEntity(DomainEntity entity);
 
     /**
      * 添加值对象
@@ -33,7 +33,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param valueObject
      * @return
      */
-    boolean addValueObject(BusinessDomain domain, BusinessDomainValueObject valueObject);
+    boolean addValueObject(BusinessDomain domain, DomainValueObject valueObject);
 
     /**
      * 构建实体和值对象关系
@@ -41,7 +41,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param valueObject
      * @return
      */
-    boolean addEntityRelVO(BusinessDomainEntity entity, BusinessDomainValueObject valueObject);
+    boolean addEntityRelVO(DomainEntity entity, DomainValueObject valueObject);
 
     /**
      * 添加聚合根
@@ -49,7 +49,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param aggregate
      * @return
      */
-    boolean addAggregate(BusinessDomain domain, BusinessDomainAggregate aggregate);
+    boolean addAggregate(BusinessDomain domain, DomainAggregate aggregate);
 
     /**
      * 添加领域服务
@@ -57,7 +57,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param service
      * @return
      */
-    boolean addService(BusinessDomain domain, BusinessDomainService service);
+    boolean addService(BusinessDomain domain, DomainService service);
 
     /**
      * 添加领域事件
@@ -65,5 +65,5 @@ public interface BusinessDomainDesign4Tactics {
      * @param domainEvent
      * @return
      */
-    boolean addDomainEvent(BusinessDomain domain, BusinessDomainEvent domainEvent);
+    boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent);
 }

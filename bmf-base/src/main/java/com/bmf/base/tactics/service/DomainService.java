@@ -4,7 +4,7 @@ import com.bmf.base.BaseModel;
 import lombok.Data;
 
 @Data
-public class BusinessDomainService extends BaseModel {
+public class DomainService extends BaseModel {
 
     /**
      * 服务编码

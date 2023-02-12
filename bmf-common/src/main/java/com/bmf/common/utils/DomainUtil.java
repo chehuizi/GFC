@@ -2,12 +2,9 @@ package com.bmf.common.utils;
 
 import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.DomainRelEntity;
-import com.bmf.base.tactics.DomainRelService;
 import com.bmf.base.tactics.EntityRelVO;
-import com.bmf.base.tactics.entity.BusinessDomainEntity;
-import com.bmf.base.tactics.service.BusinessDomainService;
-import com.bmf.base.tactics.valueobject.BusinessDomainValueObject;
+import com.bmf.base.tactics.entity.DomainEntity;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 
 /**
  * 领域工具类
@@ -29,21 +26,7 @@ public class DomainUtil {
         return businessDomain;
     }
 
-    public static DomainRelEntity build(BusinessDomain domain, BusinessDomainEntity entity) {
-        DomainRelEntity domainRelEntity = new DomainRelEntity();
-        domainRelEntity.setDomainCode(domain.getDomainCode());
-        domainRelEntity.setEntityIdCode(entity.getEntityIdCode());
-        return domainRelEntity;
-    }
-
-    public static DomainRelService build(BusinessDomain domain, BusinessDomainService service) {
-        DomainRelService domainRelService = new DomainRelService();
-        domainRelService.setDomainCode(domain.getDomainCode());
-        domainRelService.setServiceCode(service.getServiceCode());
-        return domainRelService;
-    }
-
-    public static EntityRelVO build(BusinessDomainEntity entity, BusinessDomainValueObject valueObject) {
+    public static EntityRelVO build(DomainEntity entity, DomainValueObject valueObject) {
         EntityRelVO entityRelVO = new EntityRelVO();
         entityRelVO.setEntityIdCode(entity.getEntityIdCode());
         entityRelVO.setVoCode(valueObject.getVoCode());
