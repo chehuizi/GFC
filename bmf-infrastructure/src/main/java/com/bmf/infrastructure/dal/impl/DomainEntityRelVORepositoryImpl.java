@@ -2,7 +2,7 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.infrastructure.dal.DomainEntityRelVORepository;
-import com.bmf.infrastructure.dal.mapper.DomainEntityRelVOMapper;
+import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityRelVOMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityRelVOPO;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ import javax.annotation.Resource;
 public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVORepository {
 
     @Resource
-    private DomainEntityRelVOMapper domainEntityRelVOMapper;
+    private BusinessDomainEntityRelVOMapper domainEntityRelVOMapper;
 
     @Override
     public BusinessDomainEntityRelVOPO selectOne(EntityRelVO req) {

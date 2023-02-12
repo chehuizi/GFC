@@ -2,7 +2,7 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.infrastructure.dal.DomainEntityAttrRepository;
-import com.bmf.infrastructure.dal.mapper.DomainEntityAttrMapper;
+import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityAttrMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO;
 import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.stereotype.Service;
@@ -13,7 +13,7 @@ import javax.annotation.Resource;
 public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepository {
 
     @Resource
-    private DomainEntityAttrMapper domainEntityAttrMapper;
+    private BusinessDomainEntityAttrMapper domainEntityAttrMapper;
 
     @Override
     public BusinessDomainEntityAttrPO selectOne(DomainEntityAttr req) {

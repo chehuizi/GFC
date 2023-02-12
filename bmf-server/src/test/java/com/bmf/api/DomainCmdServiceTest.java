@@ -95,7 +95,7 @@ public class DomainCmdServiceTest {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(103);
-        domainEntity.setEntityIdCode(100006);
+        domainEntity.setEntityIdCode(100009);
         domainReqDTO.setDomainEntity(domainEntity);
         Result<Boolean> result = domainCmdService.delEntity(domainReqDTO);
         System.out.println(result);
