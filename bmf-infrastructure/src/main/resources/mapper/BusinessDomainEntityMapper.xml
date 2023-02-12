@@ -45,9 +45,7 @@
 
     <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityPO">
         delete from bmf_business_domain_entity
-        <trim prefix="where" prefixOverrides="and|or">
-            <if test="domainCode != null">and domain_code = #{domainCode}</if>
-            <if test="entityIdCode != null">and entity_id_code = #{entityIdCode}</if>
-        </trim>
+        where domain_code = #{domainCode,jdbcType=INTEGER}
+        and entity_id_code = #{entityIdCode,jdbcType=INTEGER}
     </delete>
 </mapper>

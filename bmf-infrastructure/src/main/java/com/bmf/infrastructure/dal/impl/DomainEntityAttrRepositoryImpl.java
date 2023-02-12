@@ -13,17 +13,18 @@ import javax.annotation.Resource;
 public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepository {
 
     @Resource
-    private BusinessDomainEntityAttrMapper domainEntityAttrMapper;
+    private BusinessDomainEntityAttrMapper businessDomainEntityAttrMapper;
 
     @Override
     public BusinessDomainEntityAttrPO selectOne(DomainEntityAttr req) {
-        return domainEntityAttrMapper.selectOne(null);
+        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req);
+        return businessDomainEntityAttrMapper.selectOne(domainEntityAttrPO);
     }
 
     @Override
     public boolean insert(DomainEntityAttr req) {
         BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req);
-        return domainEntityAttrMapper.insert(domainEntityAttrPO) == 1;
+        return businessDomainEntityAttrMapper.insert(domainEntityAttrPO) == 1;
     }
 
     @Override
@@ -33,6 +34,7 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
 
     @Override
     public boolean delete(DomainEntityAttr req) {
-        return false;
+        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req);
+        return businessDomainEntityAttrMapper.delete(domainEntityAttrPO) == 1;
     }
 }

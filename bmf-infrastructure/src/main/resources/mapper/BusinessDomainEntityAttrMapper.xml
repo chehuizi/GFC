@@ -16,10 +16,12 @@
         id, entity_id_code, attr_name, attr_type, attr_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_domain_entity_attr
+        where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
+        and attr_name = #{attrName,jdbcType=VARCHAR}
         limit 1
     </select>
 
@@ -33,4 +35,9 @@
         )
     </insert>
 
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO">
+        delete from bmf_business_domain_entity_attr
+        where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
+        and attr_name = #{attrName,jdbcType=VARCHAR}
+    </delete>
 </mapper>

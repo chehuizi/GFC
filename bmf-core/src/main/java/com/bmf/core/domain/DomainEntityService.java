@@ -21,4 +21,11 @@ public interface DomainEntityService {
      * @return
      */
     Boolean addEntityAttr(DomainEntityAttr entityAttr);
+
+    /**
+     * 删除实体属性
+     * @param entityAttr
+     * @return
+     */
+    Boolean delEntityAttr(DomainEntityAttr entityAttr);
 }

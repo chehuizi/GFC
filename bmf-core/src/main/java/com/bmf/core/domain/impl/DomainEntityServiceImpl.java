@@ -33,4 +33,9 @@ public class DomainEntityServiceImpl implements DomainEntityService {
     public Boolean addEntityAttr(DomainEntityAttr entityAttr) {
         return domainEntityAttrRepository.insert(entityAttr);
     }
+
+    @Override
+    public Boolean delEntityAttr(DomainEntityAttr entityAttr) {
+        return domainEntityAttrRepository.delete(entityAttr);
+    }
 }
