@@ -1,7 +1,9 @@
 package com.bmf.core.domain.impl;
 
 import com.bmf.base.tactics.entity.DomainEntity;
+import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.core.domain.DomainEntityService;
+import com.bmf.infrastructure.dal.DomainEntityAttrRepository;
 import com.bmf.infrastructure.dal.DomainEntityRepository;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityPO;
 import com.bmf.infrastructure.dal.utils.DomainPOUtil;
@@ -15,6 +17,8 @@ public class DomainEntityServiceImpl implements DomainEntityService {
 
     @Autowired
     private DomainEntityRepository domainEntityRepository;
+    @Autowired
+    private DomainEntityAttrRepository domainEntityAttrRepository;
 
     @Override
     public DomainEntity queryDomainEntity(DomainEntity domainEntity) {
@@ -25,4 +29,8 @@ public class DomainEntityServiceImpl implements DomainEntityService {
         return DomainPOUtil.convert(domainEntityPO);
     }
 
+    @Override
+    public Boolean addEntityAttr(DomainEntityAttr entityAttr) {
+        return domainEntityAttrRepository.insert(entityAttr);
+    }
 }

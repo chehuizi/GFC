@@ -22,6 +22,8 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     @Autowired
     private DomainServiceRepository domainServiceRepository;
     @Autowired
+    private DomainEventRepository domainEventRepository;
+    @Autowired
     private DomainValueObjectRepository domainValueObjectRepository;
     @Autowired
     private DomainEntityRelVORepository domainEntityRelVORepository;

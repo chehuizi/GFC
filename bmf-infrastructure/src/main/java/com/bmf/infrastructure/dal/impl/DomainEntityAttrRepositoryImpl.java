@@ -23,8 +23,7 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
     @Override
     public boolean insert(DomainEntityAttr req) {
         BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req);
-        domainEntityAttrMapper.insert(null);
-        return false;
+        return domainEntityAttrMapper.insert(domainEntityAttrPO) == 1;
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.dto.DomainReqDTO;
 
 /**
- * 业务域cmd服务
+ * 业务领域cmd服务
  */
 public interface DomainCmdService extends CmdService<DomainReqDTO> {
 
