@@ -10,39 +10,18 @@ import com.bmf.api.domain.dto.DomainReqDTO;
 public interface DomainCmdService extends CmdService<DomainReqDTO> {
 
     /**
-     * 添加业务实体
+     * 添加领域实体
      * @param domainReqDTO
      * @return
      */
     Result<Boolean> addEntity(DomainReqDTO domainReqDTO);
 
     /**
-     * 删除业务实体
+     * 删除领域实体
      * @param domainReqDTO
      * @return
      */
     Result<Boolean> delEntity(DomainReqDTO domainReqDTO);
-
-    /**
-     * 添加值对象
-     * @param domainReqDTO
-     * @return
-     */
-    Result<Boolean> addValueObject(DomainReqDTO domainReqDTO);
-
-    /**
-     * 添加实体和值对象关系
-     * @param domainReqDTO
-     * @return
-     */
-    Result<Boolean> addEntityRelVO(DomainReqDTO domainReqDTO);
-
-    /**
-     * 添加聚合根
-     * @param domainReqDTO
-     * @return
-     */
-    Result<Boolean> addAggregate(DomainReqDTO domainReqDTO);
 
     /**
      * 添加领域服务
@@ -57,4 +36,26 @@ public interface DomainCmdService extends CmdService<DomainReqDTO> {
      * @return
      */
     Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO);
+
+    /**
+     * 添加领域值对象
+     * @param domainReqDTO
+     * @return
+     */
+    Result<Boolean> addValueObject(DomainReqDTO domainReqDTO);
+
+    /**
+     * 领域实体添加值对象
+     * @param domainReqDTO
+     * @return
+     */
+    Result<Boolean> addEntityRelVO(DomainReqDTO domainReqDTO);
+
+    /**
+     * 添加聚合根
+     * @param domainReqDTO
+     * @return
+     */
+    Result<Boolean> addAggregate(DomainReqDTO domainReqDTO);
+
 }

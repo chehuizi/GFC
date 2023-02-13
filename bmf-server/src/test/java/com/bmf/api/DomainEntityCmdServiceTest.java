@@ -39,6 +39,9 @@ public class DomainEntityCmdServiceTest {
     @Test
     public void testDelEntityAttr() {
         DomainEntityReqDTO domainEntityReqDTO = new DomainEntityReqDTO();
+        DomainEntity domainEntity = new DomainEntity();
+        domainEntity.setEntityIdCode(100010);
+        domainEntityReqDTO.setDomainEntity(domainEntity);
         DomainEntityAttr domainEntityAttr = new DomainEntityAttr();
         domainEntityAttr.setEntityIdCode(100010);
         domainEntityAttr.setAttrName("address");

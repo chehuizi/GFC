@@ -81,6 +81,18 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
+    public Result<Boolean> addService(DomainReqDTO domainReqDTO) {
+        BusinessDomain domain = domainService.queryDomain(domainReqDTO.getBusinessDomain());
+        BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
+        return ResultUtil.success(businessDomainDesign4Tactics.addService(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainService()));
+    }
+
+    @Override
+    public Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO) {
+        return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEvent()));
+    }
+
+    @Override
     public Result<Boolean> addValueObject(DomainReqDTO domainReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.addValueObject(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainValueObject()));
     }
@@ -95,13 +107,4 @@ public class DomainCmdServiceImpl implements DomainCmdService {
         return ResultUtil.success(businessDomainDesign4Tactics.addAggregate(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainAggregate()));
     }
 
-    @Override
-    public Result<Boolean> addService(DomainReqDTO domainReqDTO) {
-        return ResultUtil.success(businessDomainDesign4Tactics.addService(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainService()));
-    }
-
-    @Override
-    public Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO) {
-        return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEvent()));
-    }
 }

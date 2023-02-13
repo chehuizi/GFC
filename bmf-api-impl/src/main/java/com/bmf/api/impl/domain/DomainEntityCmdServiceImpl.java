@@ -30,6 +30,8 @@ public class DomainEntityCmdServiceImpl implements DomainEntityCmdService {
     @Override
     @Validator(beanName = "domainEntityReqDTOValidator", method = "v4DelEntityAttr")
     public Result<Boolean> delEntityAttr(DomainEntityReqDTO domainEntityReqDTO) {
+        DomainEntity domainEntity = domainEntityService.queryDomainEntity(domainEntityReqDTO.getDomainEntity());
+        BusinessCheckUtil.checkNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_NOT_EXIST);
         return ResultUtil.success(domainEntityService.delEntityAttr(domainEntityReqDTO.getEntityAttr()));
     }
 
