@@ -15,7 +15,8 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, domain_code, entity_id_code, entity_id_name, entity_id_type, entity_desc, gmt_create, gmt_modify, is_deleted
+        id, domain_code, entity_id_code, entity_id_alias, entity_id_name, entity_id_type,
+        entity_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap">

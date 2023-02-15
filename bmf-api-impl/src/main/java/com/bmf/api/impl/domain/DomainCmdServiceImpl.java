@@ -76,14 +76,17 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4DelEntity")
     public Result<Boolean> delEntity(DomainReqDTO domainReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.delEntity(domainReqDTO.getDomainEntity()));
     }
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4AddService")
     public Result<Boolean> addService(DomainReqDTO domainReqDTO) {
         BusinessDomain domain = domainService.queryDomain(domainReqDTO.getBusinessDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
+        domainReqDTO.getDomainService().setServiceCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_SERVICE.getKey()));
         return ResultUtil.success(businessDomainDesign4Tactics.addService(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainService()));
     }
 

@@ -4,6 +4,7 @@ import com.bmf.base.tactics.service.DomainService;
 import com.bmf.infrastructure.dal.DomainServiceRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainServiceMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainServicePO;
+import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -22,7 +23,7 @@ public class DomainServiceRepositoryImpl implements DomainServiceRepository {
 
     @Override
     public boolean insert(DomainService req) {
-        BusinessDomainServicePO domainServicePO = new BusinessDomainServicePO();
+        BusinessDomainServicePO domainServicePO = DomainPOUtil.convert(req);
         return businessDomainServiceMapper.insert(domainServicePO) == 1;
     }
 

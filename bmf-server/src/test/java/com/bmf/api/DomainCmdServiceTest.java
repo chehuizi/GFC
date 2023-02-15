@@ -7,6 +7,7 @@ import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.tactics.entity.DomainEntity;
+import com.bmf.base.tactics.service.DomainService;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -103,6 +104,23 @@ public class DomainCmdServiceTest {
     }
 
     @Test
+    public void test_domain_add_service() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(103);
+        domainReqDTO.setBusinessDomain(businessDomain);
+        DomainService domainService = new DomainService();
+        domainService.setDomainCode(103);
+        domainService.setServiceAlias("outbound_service");
+        domainService.setServiceName("出库服务");
+        domainService.setServiceDesc("支持存货和固资出库服务");
+        domainReqDTO.setDomainService(domainService);
+        Result<Boolean> result = domainCmdService.addService(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
+
+    @Test
     public void test_domain_add_vo() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
@@ -153,24 +171,6 @@ public class DomainCmdServiceTest {
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
         domainReqDTO.setDomainEntity(domainEntity);
         Result<Boolean> result = domainCmdService.addAggregate(domainReqDTO);
-        System.out.println(result);
-    }
-
-    @Test
-    public void test_domain_add_service() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(14);
-        businessDomain.setDomainName("test");
-        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
-        domainReqDTO.setBusinessDomain(businessDomain);
-        DomainEntity domainEntity = new DomainEntity();
-        domainEntity.setEntityIdCode(1011);
-        domainEntity.setEntityIdName("test");
-        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
-        domainReqDTO.setDomainEntity(domainEntity);
-        Result<Boolean> result = domainCmdService.addService(domainReqDTO);
         System.out.println(result);
     }
 

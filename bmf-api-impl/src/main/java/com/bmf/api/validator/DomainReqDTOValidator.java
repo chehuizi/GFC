@@ -88,4 +88,35 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkBlank(domainReqDTO.getDomainEntity().getEntityDesc(), "domain entity desc is blank");
         return true;
     }
+
+    /**
+     * 校验delEntity方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4DelEntity(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity().getEntityIdCode(), "domain entity id code is null");
+        return true;
+    }
+
+    /**
+     * 校验addService方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4AddService(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainService(), "domain service is null");
+        ParamCheckUtil.checkTrue(domainReqDTO.getBusinessDomain().getDomainCode().equals(
+                domainReqDTO.getDomainService().getDomainCode()), "domain code is not equal");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainService().getServiceAlias(), "domain service alias is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainService().getServiceName(), "domain service name is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainService().getServiceDesc(), "domain service desc is blank");
+        return true;
+    }
 }
