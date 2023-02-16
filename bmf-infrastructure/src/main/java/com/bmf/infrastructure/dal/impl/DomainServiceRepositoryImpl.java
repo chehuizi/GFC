@@ -34,6 +34,7 @@ public class DomainServiceRepositoryImpl implements DomainServiceRepository {
 
     @Override
     public boolean delete(DomainService req) {
-        return false;
+        BusinessDomainServicePO domainServicePO = DomainPOUtil.convert(req);
+        return businessDomainServiceMapper.delete(domainServicePO) == 1;
     }
 }

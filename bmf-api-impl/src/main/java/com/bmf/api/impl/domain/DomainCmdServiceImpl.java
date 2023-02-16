@@ -36,16 +36,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
         BusinessDomain domain = DomainUtil.convert(req);
         BusinessDomain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNonNull(queryResult, BizCodeEnum.DOMAIN_IS_EXISTED);
-        fillDomainInfo(domain);
+        domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
         return ResultUtil.success(domainService.createDomain(domain));
-    }
-
-    /**
-     * 填充领域信息
-     * @param businessDomain
-     */
-    private void fillDomainInfo(BusinessDomain businessDomain) {
-        businessDomain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
     }
 
     @Override
@@ -88,6 +80,12 @@ public class DomainCmdServiceImpl implements DomainCmdService {
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         domainReqDTO.getDomainService().setServiceCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_SERVICE.getKey()));
         return ResultUtil.success(businessDomainDesign4Tactics.addService(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainService()));
+    }
+
+    @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4DelService")
+    public Result<Boolean> delService(DomainReqDTO domainReqDTO) {
+        return ResultUtil.success(businessDomainDesign4Tactics.delService(domainReqDTO.getDomainService()));
     }
 
     @Override

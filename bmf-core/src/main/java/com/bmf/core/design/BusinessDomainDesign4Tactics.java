@@ -13,7 +13,7 @@ import com.bmf.base.tactics.valueobject.DomainValueObject;
 public interface BusinessDomainDesign4Tactics {
 
     /**
-     * 添加实体
+     * 添加领域实体
      * @param domain
      * @param entity
      * @return
@@ -21,11 +21,26 @@ public interface BusinessDomainDesign4Tactics {
     boolean addEntity(BusinessDomain domain, DomainEntity entity);
 
     /**
-     * 删除实体
+     * 删除领域实体
      * @param entity
      * @return
      */
     boolean delEntity(DomainEntity entity);
+
+    /**
+     * 添加领域服务
+     * @param domain
+     * @param service
+     * @return
+     */
+    boolean addService(BusinessDomain domain, DomainService service);
+
+    /**
+     * 删除领域服务
+     * @param service
+     * @return
+     */
+    boolean delService(DomainService service);
 
     /**
      * 添加值对象
@@ -50,14 +65,6 @@ public interface BusinessDomainDesign4Tactics {
      * @return
      */
     boolean addAggregate(BusinessDomain domain, DomainAggregate aggregate);
-
-    /**
-     * 添加领域服务
-     * @param domain
-     * @param service
-     * @return
-     */
-    boolean addService(BusinessDomain domain, DomainService service);
 
     /**
      * 添加领域事件

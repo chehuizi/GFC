@@ -119,4 +119,17 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkBlank(domainReqDTO.getDomainService().getServiceDesc(), "domain service desc is blank");
         return true;
     }
+
+    /**
+     * 校验delService方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4DelService(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainService(), "domain service is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainService().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainService().getServiceCode(), "domain service code is null");
+        return true;
+    }
 }

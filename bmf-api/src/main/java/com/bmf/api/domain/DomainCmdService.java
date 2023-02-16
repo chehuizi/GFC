@@ -31,6 +31,13 @@ public interface DomainCmdService extends CmdService<DomainReqDTO> {
     Result<Boolean> addService(DomainReqDTO domainReqDTO);
 
     /**
+     * 删除领域服务
+     * @param domainReqDTO
+     * @return
+     */
+    Result<Boolean> delService(DomainReqDTO domainReqDTO);
+
+    /**
      * 添加领域事件
      * @param domainReqDTO
      * @return

@@ -51,19 +51,7 @@ public class DomainCmdServiceTest {
     }
 
     @Test
-    public void test_domain_delete_1() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(10);
-        businessDomain.setDomainAlias("wms");
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.delete(domainReqDTO);
-        System.out.println(result);
-        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
-    }
-
-    @Test
-    public void test_domain_delete_2() {
+    public void test_domain_delete() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(10);
@@ -116,6 +104,18 @@ public class DomainCmdServiceTest {
         domainService.setServiceDesc("支持存货和固资出库服务");
         domainReqDTO.setDomainService(domainService);
         Result<Boolean> result = domainCmdService.addService(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
+
+    @Test
+    public void test_domain_del_service() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainService domainService = new DomainService();
+        domainService.setDomainCode(103);
+        domainService.setServiceCode(100001);
+        domainReqDTO.setDomainService(domainService);
+        Result<Boolean> result = domainCmdService.delService(domainReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }

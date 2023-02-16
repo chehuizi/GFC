@@ -40,6 +40,16 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
+    public boolean addService(BusinessDomain domain, DomainService service) {
+        return domainServiceRepository.insert(service);
+    }
+
+    @Override
+    public boolean delService(DomainService service) {
+        return domainServiceRepository.delete(service);
+    }
+
+    @Override
     public boolean addValueObject(BusinessDomain domain, DomainValueObject valueObject) {
         return domainValueObjectRepository.insert(valueObject);
     }
@@ -53,11 +63,6 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     @Override
     public boolean addAggregate(BusinessDomain domain, DomainAggregate aggregate) {
         return false;
-    }
-
-    @Override
-    public boolean addService(BusinessDomain domain, DomainService service) {
-        return domainServiceRepository.insert(service);
     }
 
     @Override
