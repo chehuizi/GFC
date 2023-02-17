@@ -17,7 +17,7 @@ public class DomainServiceServiceImpl implements DomainServiceService {
 
     @Override
     public Boolean addServiceAttr(DomainServiceAttr serviceAttr) {
-        return null;
+        return domainServiceAttrRepository.insert(serviceAttr);
     }
 
     @Override
