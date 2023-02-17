@@ -17,7 +17,7 @@ public class DomainServiceCmdServiceImpl implements DomainServiceCmdService {
 
     @Override
     public Result<Boolean> addServiceAttr(DomainServiceReqDTO domainServiceReqDTO) {
-        return null;
+        return ResultUtil.success(domainServiceService.addServiceAttr(domainServiceReqDTO.getServiceAttr()));
     }
 
     @Override
