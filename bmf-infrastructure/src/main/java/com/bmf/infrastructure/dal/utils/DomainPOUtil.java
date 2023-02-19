@@ -4,6 +4,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.service.DomainService;
+import com.bmf.base.tactics.service.DomainServiceAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.infrastructure.dal.po.*;
 
@@ -90,6 +91,15 @@ public class DomainPOUtil {
         return domainEntity;
     }
 
+    public static BusinessDomainEntityAttrPO convert(DomainEntityAttr domainEntityAttr) {
+        BusinessDomainEntityAttrPO domainEntityAttrPO = new BusinessDomainEntityAttrPO();
+        domainEntityAttrPO.setEntityIdCode(domainEntityAttr.getEntityIdCode());
+        domainEntityAttrPO.setAttrName(domainEntityAttr.getAttrName());
+        domainEntityAttrPO.setAttrType(domainEntityAttr.getAttrType());
+        domainEntityAttrPO.setAttrDesc(domainEntityAttr.getAttrDesc());
+        return domainEntityAttrPO;
+    }
+
     public static BusinessDomainServicePO convert(DomainService domainService) {
         BusinessDomainServicePO domainServicePO = new BusinessDomainServicePO();
         domainServicePO.setDomainCode(domainService.getDomainCode());
@@ -100,13 +110,13 @@ public class DomainPOUtil {
         return domainServicePO;
     }
 
-    public static BusinessDomainEntityAttrPO convert(DomainEntityAttr domainEntityAttr) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = new BusinessDomainEntityAttrPO();
-        domainEntityAttrPO.setEntityIdCode(domainEntityAttr.getEntityIdCode());
-        domainEntityAttrPO.setAttrName(domainEntityAttr.getAttrName());
-        domainEntityAttrPO.setAttrType(domainEntityAttr.getAttrType());
-        domainEntityAttrPO.setAttrDesc(domainEntityAttr.getAttrDesc());
-        return domainEntityAttrPO;
+    public static BusinessDomainServiceAttrPO convert(DomainServiceAttr domainServiceAttr) {
+        BusinessDomainServiceAttrPO serviceAttrPO = new BusinessDomainServiceAttrPO();
+        serviceAttrPO.setServiceCode(domainServiceAttr.getServiceCode());
+        serviceAttrPO.setAttrName(domainServiceAttr.getAttrName());
+        serviceAttrPO.setAttrType(domainServiceAttr.getAttrType());
+        serviceAttrPO.setAttrDesc(domainServiceAttr.getAttrDesc());
+        return serviceAttrPO;
     }
 
     public static BusinessDomainValueObjectPO convert(DomainValueObject domainValueObject) {
