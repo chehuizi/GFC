@@ -33,6 +33,7 @@ public class DomainServiceAttrRepositoryImpl implements DomainServiceAttrReposit
 
     @Override
     public boolean delete(DomainServiceAttr req) {
-        return false;
+        BusinessDomainServiceAttrPO serviceAttrPO = DomainPOUtil.convert(req);
+        return businessDomainServiceAttrMapper.delete(serviceAttrPO) == 1;
     }
 }

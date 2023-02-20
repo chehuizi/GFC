@@ -36,5 +36,16 @@ public class DomainServiceCmdServiceTest {
         Assert.assertTrue(result.getData());
     }
 
+    @Test
+    public void testDelServiceAttr() {
+        DomainServiceReqDTO serviceReqDTO = new DomainServiceReqDTO();
+        DomainServiceAttr serviceAttr = new DomainServiceAttr();
+        serviceAttr.setServiceCode(100002);
+        serviceAttr.setAttrName("outboundType");
+        serviceReqDTO.setServiceAttr(serviceAttr);
+        Result<Boolean> result = domainServiceCmdService.delServiceAttr(serviceReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
 }
 

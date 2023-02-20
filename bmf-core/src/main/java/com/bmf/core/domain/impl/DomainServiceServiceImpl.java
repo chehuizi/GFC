@@ -22,6 +22,6 @@ public class DomainServiceServiceImpl implements DomainServiceService {
 
     @Override
     public Boolean delServiceAttr(DomainServiceAttr serviceAttr) {
-        return null;
+        return domainServiceAttrRepository.delete(serviceAttr);
     }
 }
