@@ -3,7 +3,9 @@
 <mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectMapper">
     <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
         <result column="vo_code" jdbcType="INTEGER" property="voCode"/>
+        <result column="vo_alias" jdbcType="VARCHAR" property="voAlias"/>
         <result column="vo_name" jdbcType="VARCHAR" property="voName"/>
         <result column="vo_desc" jdbcType="VARCHAR" property="voDesc"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
@@ -12,7 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, vo_code, vo_name, vo_desc, gmt_create, gmt_modify, is_deleted
+        id, domain_code, vo_code, vo_alias, vo_name, vo_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap">
@@ -23,9 +25,11 @@
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO">
-        insert into bmf_business_domain_vo (vo_code, vo_name, vo_desc)
+        insert into bmf_business_domain_vo (domain_code, vo_code, vo_alias, vo_name, vo_desc)
         values (
+            #{domainCode,jdbcType=INTEGER},
             #{voCode,jdbcType=INTEGER},
+            #{voAlias,jdbcType=VARCHAR},
             #{voName,jdbcType=VARCHAR},
             #{voDesc,jdbcType=VARCHAR}
         )

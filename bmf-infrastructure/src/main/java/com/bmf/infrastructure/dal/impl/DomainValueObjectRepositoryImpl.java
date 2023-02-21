@@ -22,8 +22,7 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
 
     @Override
     public boolean insert(DomainValueObject req) {
-        businessDomainValueObjectMapper.insert(DomainPOUtil.convert(req));
-        return false;
+        return businessDomainValueObjectMapper.insert(DomainPOUtil.convert(req)) == 1;
     }
 
     @Override

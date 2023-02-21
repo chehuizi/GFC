@@ -9,11 +9,19 @@ import java.util.List;
 public class DomainValueObject extends BaseModel {
 
     /**
+     * 领域编码
+     */
+    private Integer domainCode;
+    /**
      * 值对象编码
      */
     private Integer voCode;
     /**
-     * 值对象名称
+     * 值对象别名（英文）
+     */
+    private String voAlias;
+    /**
+     * 值对象名称（中文）
      */
     private String voName;
     /**

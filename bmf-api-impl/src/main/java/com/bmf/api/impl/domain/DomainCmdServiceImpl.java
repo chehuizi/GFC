@@ -89,13 +89,22 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    public Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO) {
-        return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEvent()));
+    @Validator(beanName = "domainReqDTOValidator", method = "v4AddValueObject")
+    public Result<Boolean> addValueObject(DomainReqDTO domainReqDTO) {
+        BusinessDomain domain = domainService.queryDomain(domainReqDTO.getBusinessDomain());
+        BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
+        domainReqDTO.getDomainValueObject().setVoCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_VALUE_OBJECT.getKey()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addValueObject(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainValueObject()));
     }
 
     @Override
-    public Result<Boolean> addValueObject(DomainReqDTO domainReqDTO) {
-        return ResultUtil.success(businessDomainDesign4Tactics.addValueObject(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainValueObject()));
+    public Result<Boolean> delValueObject(DomainReqDTO domainReqDTO) {
+        return null;
+    }
+
+    @Override
+    public Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO) {
+        return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEvent()));
     }
 
     @Override

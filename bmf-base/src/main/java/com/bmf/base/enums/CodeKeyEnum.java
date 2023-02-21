@@ -13,6 +13,7 @@ public enum CodeKeyEnum {
     CODE_KEY_DOMAIN("domain", "领域"),
     CODE_KEY_ENTITY("entity", "实体"),
     CODE_KEY_SERVICE("service", "服务"),
+    CODE_KEY_VALUE_OBJECT("valueObject", "值对象"),
     ;
 
     /**

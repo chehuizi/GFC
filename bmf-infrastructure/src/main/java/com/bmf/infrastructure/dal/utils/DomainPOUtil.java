@@ -70,6 +70,9 @@ public class DomainPOUtil {
     }
 
     public static BusinessDomainEntityPO convert(DomainEntity domainEntity) {
+        if (Objects.isNull(domainEntity)) {
+            return null;
+        }
         BusinessDomainEntityPO domainEntityPO = new BusinessDomainEntityPO();
         domainEntityPO.setDomainCode(domainEntity.getDomainCode());
         domainEntityPO.setEntityIdCode(domainEntity.getEntityIdCode());
@@ -81,6 +84,9 @@ public class DomainPOUtil {
     }
 
     public static DomainEntity convert(BusinessDomainEntityPO domainEntityPO) {
+        if (Objects.isNull(domainEntityPO)) {
+            return null;
+        }
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(domainEntityPO.getDomainCode());
         domainEntity.setEntityIdCode(domainEntityPO.getEntityIdCode());
@@ -92,6 +98,9 @@ public class DomainPOUtil {
     }
 
     public static BusinessDomainEntityAttrPO convert(DomainEntityAttr domainEntityAttr) {
+        if (Objects.isNull(domainEntityAttr)) {
+            return null;
+        }
         BusinessDomainEntityAttrPO domainEntityAttrPO = new BusinessDomainEntityAttrPO();
         domainEntityAttrPO.setEntityIdCode(domainEntityAttr.getEntityIdCode());
         domainEntityAttrPO.setAttrName(domainEntityAttr.getAttrName());
@@ -101,6 +110,9 @@ public class DomainPOUtil {
     }
 
     public static BusinessDomainServicePO convert(DomainService domainService) {
+        if (Objects.isNull(domainService)) {
+            return null;
+        }
         BusinessDomainServicePO domainServicePO = new BusinessDomainServicePO();
         domainServicePO.setDomainCode(domainService.getDomainCode());
         domainServicePO.setServiceCode(domainService.getServiceCode());
@@ -111,6 +123,9 @@ public class DomainPOUtil {
     }
 
     public static BusinessDomainServiceAttrPO convert(DomainServiceAttr domainServiceAttr) {
+        if (Objects.isNull(domainServiceAttr)) {
+            return null;
+        }
         BusinessDomainServiceAttrPO serviceAttrPO = new BusinessDomainServiceAttrPO();
         serviceAttrPO.setServiceCode(domainServiceAttr.getServiceCode());
         serviceAttrPO.setAttrName(domainServiceAttr.getAttrName());
@@ -120,6 +135,15 @@ public class DomainPOUtil {
     }
 
     public static BusinessDomainValueObjectPO convert(DomainValueObject domainValueObject) {
-        return null;
+        if (Objects.isNull(domainValueObject)) {
+            return null;
+        }
+        BusinessDomainValueObjectPO domainValueObjectPO = new BusinessDomainValueObjectPO();
+        domainValueObjectPO.setDomainCode(domainValueObject.getDomainCode());
+        domainValueObjectPO.setVoCode(domainValueObject.getVoCode());
+        domainValueObjectPO.setVoAlias(domainValueObject.getVoAlias());
+        domainValueObjectPO.setVoName(domainValueObject.getVoName());
+        domainValueObjectPO.setVoDesc(domainValueObject.getVoDesc());
+        return domainValueObjectPO;
     }
 }

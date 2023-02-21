@@ -8,6 +8,7 @@ import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.service.DomainService;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -124,18 +125,17 @@ public class DomainCmdServiceTest {
     public void test_domain_add_vo() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(14);
-        businessDomain.setDomainName("test");
-        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainCode(103);
         domainReqDTO.setBusinessDomain(businessDomain);
-        DomainEntity domainEntity = new DomainEntity();
-        domainEntity.setEntityIdCode(1011);
-        domainEntity.setEntityIdName("test");
-        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
-        domainReqDTO.setDomainEntity(domainEntity);
+        DomainValueObject valueObject = new DomainValueObject();
+        valueObject.setDomainCode(103);
+        valueObject.setVoAlias("zone");
+        valueObject.setVoName("行政区划");
+        valueObject.setVoDesc("国家行政区划（国标）");
+        domainReqDTO.setDomainValueObject(valueObject);
         Result<Boolean> result = domainCmdService.addValueObject(domainReqDTO);
         System.out.println(result);
+        Assert.assertTrue(result.getData());
     }
 
     @Test

@@ -132,4 +132,20 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkNull(domainReqDTO.getDomainService().getServiceCode(), "domain service code is null");
         return true;
     }
+
+    /**
+     * 校验addValueObject方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4AddValueObject(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject(), "domain value object is null");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoAlias(), "domain value object alias is null");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoName(), "domain value object name is null");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoDesc(), "domain value object desc is null");
+        return true;
+    }
 }
