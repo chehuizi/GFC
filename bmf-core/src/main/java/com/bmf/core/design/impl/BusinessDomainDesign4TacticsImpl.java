@@ -55,6 +55,11 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
+    public boolean delValueObject(DomainValueObject valueObject) {
+        return domainValueObjectRepository.delete(valueObject);
+    }
+
+    @Override
     public boolean addEntityRelVO(DomainEntity entity, DomainValueObject valueObject) {
         EntityRelVO entityRelVO = DomainUtil.build(entity, valueObject);
         return domainEntityRelVORepository.insert(entityRelVO);

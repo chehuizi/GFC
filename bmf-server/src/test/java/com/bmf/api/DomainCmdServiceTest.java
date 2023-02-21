@@ -139,6 +139,18 @@ public class DomainCmdServiceTest {
     }
 
     @Test
+    public void test_domain_del_vo() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainValueObject valueObject = new DomainValueObject();
+        valueObject.setDomainCode(103);
+        valueObject.setVoCode(102);
+        domainReqDTO.setDomainValueObject(valueObject);
+        Result<Boolean> result = domainCmdService.delValueObject(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
+
+    @Test
     public void test_domain_add_entity_rel_vo() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();

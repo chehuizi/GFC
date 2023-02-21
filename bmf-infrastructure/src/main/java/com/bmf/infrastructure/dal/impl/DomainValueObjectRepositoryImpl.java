@@ -22,7 +22,8 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
 
     @Override
     public boolean insert(DomainValueObject req) {
-        return businessDomainValueObjectMapper.insert(DomainPOUtil.convert(req)) == 1;
+        BusinessDomainValueObjectPO domainValueObjectPO = DomainPOUtil.convert(req);
+        return businessDomainValueObjectMapper.insert(domainValueObjectPO) == 1;
     }
 
     @Override
@@ -32,6 +33,7 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
 
     @Override
     public boolean delete(DomainValueObject req) {
-        return false;
+        BusinessDomainValueObjectPO domainValueObjectPO = DomainPOUtil.convert(req);
+        return businessDomainValueObjectMapper.delete(domainValueObjectPO) == 1;
     }
 }

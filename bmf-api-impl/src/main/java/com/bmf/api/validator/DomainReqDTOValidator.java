@@ -148,4 +148,17 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoDesc(), "domain value object desc is null");
         return true;
     }
+
+    /**
+     * 校验delValueObject方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4DelValueObject(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject(), "domain value object is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject().getVoCode(), "domain value object code is null");
+        return true;
+    }
 }
