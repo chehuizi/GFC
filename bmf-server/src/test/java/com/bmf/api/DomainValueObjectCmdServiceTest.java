@@ -1,11 +1,8 @@
 package com.bmf.api;
 
 import com.bmf.api.domain.DomainValueObjectCmdService;
-import com.bmf.api.domain.dto.DomainServiceReqDTO;
 import com.bmf.api.domain.dto.DomainValueObjectReqDTO;
 import com.bmf.base.enums.AttrTypeEnum;
-import com.bmf.base.tactics.service.DomainService;
-import com.bmf.base.tactics.service.DomainServiceAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.base.tactics.valueobject.DomainValueObjectAttr;
 import org.junit.Assert;
