@@ -6,6 +6,7 @@ import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.service.DomainService;
 import com.bmf.base.tactics.service.DomainServiceAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
+import com.bmf.base.tactics.valueobject.DomainValueObjectAttr;
 import com.bmf.infrastructure.dal.po.*;
 
 import java.util.ArrayList;
@@ -145,5 +146,14 @@ public class DomainPOUtil {
         domainValueObjectPO.setVoName(domainValueObject.getVoName());
         domainValueObjectPO.setVoDesc(domainValueObject.getVoDesc());
         return domainValueObjectPO;
+    }
+
+    public static BusinessDomainValueObjectAttrPO convert(DomainValueObjectAttr domainValueObjectAttr) {
+        BusinessDomainValueObjectAttrPO valueObjectAttrPO = new BusinessDomainValueObjectAttrPO();
+        valueObjectAttrPO.setVoCode(domainValueObjectAttr.getVoCode());
+        valueObjectAttrPO.setAttrName(domainValueObjectAttr.getAttrName());
+        valueObjectAttrPO.setAttrType(domainValueObjectAttr.getAttrType());
+        valueObjectAttrPO.setAttrDesc(domainValueObjectAttr.getAttrDesc());
+        return valueObjectAttrPO;
     }
 }

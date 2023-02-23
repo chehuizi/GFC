@@ -33,4 +33,9 @@
         )
     </insert>
 
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainValueObjectAttrPO">
+        delete from bmf_business_domain_vo_attr
+        where vo_code = #{voCode,jdbcType=INTEGER}
+        and attr_name = #{attrName,jdbcType=VARCHAR}
+    </delete>
 </mapper>
