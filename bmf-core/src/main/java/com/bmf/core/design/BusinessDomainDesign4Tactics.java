@@ -58,20 +58,20 @@ public interface BusinessDomainDesign4Tactics {
     boolean delValueObject(DomainValueObject valueObject);
 
     /**
-     * 构建实体和值对象关系
-     * @param entity
-     * @param valueObject
-     * @return
-     */
-    boolean addEntityRelVO(DomainEntity entity, DomainValueObject valueObject);
-
-    /**
      * 添加领域事件
      * @param domain
      * @param domainEvent
      * @return
      */
     boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent);
+
+    /**
+     * 构建实体和值对象关系
+     * @param entity
+     * @param valueObject
+     * @return
+     */
+    boolean addEntityRelVO(DomainEntity entity, DomainValueObject valueObject);
 
     /**
      * 添加聚合根

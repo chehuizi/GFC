@@ -60,6 +60,11 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
+    public boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent) {
+        return domainEventRepository.insert(domainEvent);
+    }
+
+    @Override
     public boolean addEntityRelVO(DomainEntity entity, DomainValueObject valueObject) {
         EntityRelVO entityRelVO = DomainUtil.build(entity, valueObject);
         return domainEntityRelVORepository.insert(entityRelVO);
@@ -70,8 +75,4 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
         return false;
     }
 
-    @Override
-    public boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent) {
-        return false;
-    }
 }

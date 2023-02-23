@@ -4,6 +4,7 @@ import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.infrastructure.dal.DomainEventRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainEventMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEventPO;
+import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,13 +17,13 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
 
     @Override
     public BusinessDomainEventPO selectOne(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = new BusinessDomainEventPO();
+        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req);
         return domainEventMapper.selectOne(domainEventPO);
     }
 
     @Override
     public boolean insert(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = new BusinessDomainEventPO();
+        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req);
         return domainEventMapper.insert(domainEventPO) == 1;
     }
 
@@ -33,6 +34,7 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
 
     @Override
     public boolean delete(DomainEvent req) {
-        return false;
+        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req);
+        return domainEventMapper.delete(domainEventPO) == 1;
     }
 }

@@ -3,6 +3,7 @@ package com.bmf.infrastructure.dal.utils;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
+import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.base.tactics.service.DomainService;
 import com.bmf.base.tactics.service.DomainServiceAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
@@ -155,5 +156,15 @@ public class DomainPOUtil {
         valueObjectAttrPO.setAttrType(domainValueObjectAttr.getAttrType());
         valueObjectAttrPO.setAttrDesc(domainValueObjectAttr.getAttrDesc());
         return valueObjectAttrPO;
+    }
+
+    public static BusinessDomainEventPO convert(DomainEvent domainEvent) {
+        BusinessDomainEventPO domainEventPO = new BusinessDomainEventPO();
+        domainEventPO.setDomainCode(domainEvent.getDomainCode());
+        domainEventPO.setEventCode(domainEvent.getEventCode());
+        domainEventPO.setEventAlias(domainEvent.getEventAlias());
+        domainEventPO.setEventName(domainEvent.getEventName());
+        domainEventPO.setEventDesc(domainEvent.getEventDesc());
+        return domainEventPO;
     }
 }

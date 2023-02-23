@@ -104,7 +104,11 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4AddDomainEvent")
     public Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO) {
+        BusinessDomain domain = domainService.queryDomain(domainReqDTO.getBusinessDomain());
+        BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
+        domainReqDTO.getDomainEvent().setEventCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_EVENT.getKey()));
         return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainReqDTO.getBusinessDomain(), domainReqDTO.getDomainEvent()));
     }
 

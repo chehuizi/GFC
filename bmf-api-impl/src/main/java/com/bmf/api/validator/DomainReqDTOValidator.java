@@ -143,9 +143,11 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
         ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject(), "domain value object is null");
-        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoAlias(), "domain value object alias is null");
-        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoName(), "domain value object name is null");
-        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoDesc(), "domain value object desc is null");
+        ParamCheckUtil.checkTrue(domainReqDTO.getBusinessDomain().getDomainCode().equals(
+                domainReqDTO.getDomainValueObject().getDomainCode()), "domain code is not equal");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoAlias(), "domain value object alias is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoName(), "domain value object name is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainValueObject().getVoDesc(), "domain value object desc is blank");
         return true;
     }
 
@@ -159,6 +161,24 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject(), "domain value object is null");
         ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject().getVoCode(), "domain value object code is null");
+        return true;
+    }
+
+    /**
+     * 校验addDomainEvent方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4AddDomainEvent(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEvent(), "domain event is null");
+        ParamCheckUtil.checkTrue(domainReqDTO.getBusinessDomain().getDomainCode().equals(
+                domainReqDTO.getDomainEvent().getDomainCode()), "domain code is not equal");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainEvent().getEventAlias(), "domain event alias is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainEvent().getEventName(), "domain event name is blank");
+        ParamCheckUtil.checkBlank(domainReqDTO.getDomainEvent().getEventDesc(), "domain event desc is blank");
         return true;
     }
 }
