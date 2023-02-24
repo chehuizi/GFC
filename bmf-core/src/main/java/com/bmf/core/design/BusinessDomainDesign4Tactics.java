@@ -66,6 +66,13 @@ public interface BusinessDomainDesign4Tactics {
     boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent);
 
     /**
+     * 删除领域事件
+     * @param domainEvent
+     * @return
+     */
+    boolean delDomainEvent(DomainEvent domainEvent);
+
+    /**
      * 构建实体和值对象关系
      * @param entity
      * @param valueObject

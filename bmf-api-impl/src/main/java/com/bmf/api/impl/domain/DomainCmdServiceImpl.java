@@ -113,6 +113,12 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4DelDomainEvent")
+    public Result<Boolean> delDomainEvent(DomainReqDTO domainReqDTO) {
+        return ResultUtil.success(businessDomainDesign4Tactics.delDomainEvent(domainReqDTO.getDomainEvent()));
+    }
+
+    @Override
     public Result<Boolean> addEntityRelVO(DomainReqDTO domainReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.addEntityRelVO(domainReqDTO.getDomainEntity(), domainReqDTO.getDomainValueObject()));
     }

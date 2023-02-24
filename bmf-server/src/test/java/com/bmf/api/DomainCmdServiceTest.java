@@ -169,6 +169,18 @@ public class DomainCmdServiceTest {
     }
 
     @Test
+    public void test_domain_del_event() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainEvent domainEvent = new DomainEvent();
+        domainEvent.setDomainCode(103);
+        domainEvent.setEventCode(103);
+        domainReqDTO.setDomainEvent(domainEvent);
+        Result<Boolean> result = domainCmdService.delDomainEvent(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
+
+    @Test
     public void test_domain_add_entity_rel_vo() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();

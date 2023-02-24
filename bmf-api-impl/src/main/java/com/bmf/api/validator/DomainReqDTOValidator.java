@@ -181,4 +181,17 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkBlank(domainReqDTO.getDomainEvent().getEventDesc(), "domain event desc is blank");
         return true;
     }
+
+    /**
+     * 校验delDomainEvent方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4DelDomainEvent(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEvent(), "domain event is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEvent().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEvent().getEventCode(), "domain event code is null");
+        return true;
+    }
 }
