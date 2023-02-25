@@ -29,7 +29,7 @@ public class DomainController {
     public String detail() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(10);
+        businessDomain.setDomainCode(103);
         domainReqDTO.setBusinessDomain(businessDomain);
         Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
         return JSON.toJSONString(result);
