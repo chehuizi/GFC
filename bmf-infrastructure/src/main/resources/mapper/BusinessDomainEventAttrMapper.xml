@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainServiceAttrMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainServiceAttrPO">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainEventAttrMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainEventAttrPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="service_code" jdbcType="INTEGER" property="serviceCode"/>
+        <result column="event_code" jdbcType="INTEGER" property="eventCode"/>
         <result column="attr_name" jdbcType="VARCHAR" property="attrName"/>
         <result column="attr_type" jdbcType="VARCHAR" property="attrType"/>
         <result column="attr_desc" jdbcType="VARCHAR" property="attrDesc"/>
@@ -13,31 +13,31 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, service_code, attr_name, attr_type, attr_desc, gmt_create, gmt_modify, is_deleted
+        id, event_code, attr_name, attr_type, attr_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainServiceAttrPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEventAttrPO">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM bmf_business_domain_service_attr
-        where service_code = #{serviceCode,jdbcType=INTEGER}
+        FROM bmf_business_domain_event_attr
+        where event_code = #{eventCode,jdbcType=INTEGER}
         and attr_name = #{attrName,jdbcType=VARCHAR}
         limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainServiceAttrPO">
-        insert into bmf_business_domain_service_attr (service_code, attr_name, attr_type, attr_desc)
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEventAttrPO">
+        insert into bmf_business_domain_event_attr (event_code, attr_name, attr_type, attr_desc)
         values (
-            #{serviceCode,jdbcType=INTEGER},
+            #{eventCode,jdbcType=INTEGER},
             #{attrName,jdbcType=VARCHAR},
             #{attrType,jdbcType=VARCHAR},
             #{attrDesc,jdbcType=VARCHAR}
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainServiceAttrPO">
-        delete from bmf_business_domain_service_attr
-        where service_code = #{serviceCode,jdbcType=INTEGER}
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEventAttrPO">
+        delete from bmf_business_domain_event_attr
+        where event_code = #{eventCode,jdbcType=INTEGER}
         and attr_name = #{attrName,jdbcType=VARCHAR}
     </delete>
 </mapper>

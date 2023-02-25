@@ -4,6 +4,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.event.DomainEvent;
+import com.bmf.base.tactics.event.DomainEventAttr;
 import com.bmf.base.tactics.service.DomainService;
 import com.bmf.base.tactics.service.DomainServiceAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
@@ -166,5 +167,14 @@ public class DomainPOUtil {
         domainEventPO.setEventName(domainEvent.getEventName());
         domainEventPO.setEventDesc(domainEvent.getEventDesc());
         return domainEventPO;
+    }
+
+    public static BusinessDomainEventAttrPO convert(DomainEventAttr domainEventAttr) {
+        BusinessDomainEventAttrPO domainEventAttrPO = new BusinessDomainEventAttrPO();
+        domainEventAttrPO.setEventCode(domainEventAttr.getEventCode());
+        domainEventAttrPO.setAttrName(domainEventAttr.getAttrName());
+        domainEventAttrPO.setAttrType(domainEventAttr.getAttrType());
+        domainEventAttrPO.setAttrDesc(domainEventAttr.getAttrDesc());
+        return domainEventAttrPO;
     }
 }

@@ -9,6 +9,7 @@ import lombok.Getter;
 public enum AttrTypeEnum {
 
     STRING("string", "字符串"),
+    TIMESTAMP("timestamp", "时间戳"),
     ;
 
     /**
