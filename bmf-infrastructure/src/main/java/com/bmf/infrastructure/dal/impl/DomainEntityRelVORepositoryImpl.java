@@ -4,6 +4,7 @@ import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.infrastructure.dal.DomainEntityRelVORepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityRelVOMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityRelVOPO;
+import com.bmf.infrastructure.dal.utils.DomainPOUtil;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -21,7 +22,8 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
 
     @Override
     public boolean insert(EntityRelVO req) {
-        return false;
+        BusinessDomainEntityRelVOPO entityRelVOPO = DomainPOUtil.convert(req);
+        return domainEntityRelVOMapper.insert(entityRelVOPO) == 1;
     }
 
     @Override
@@ -31,6 +33,7 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
 
     @Override
     public boolean delete(EntityRelVO req) {
-        return false;
+        BusinessDomainEntityRelVOPO entityRelVOPO = DomainPOUtil.convert(req);
+        return domainEntityRelVOMapper.delete(entityRelVOPO) == 1;
     }
 }

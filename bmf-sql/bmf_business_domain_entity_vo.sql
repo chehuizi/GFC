@@ -1,4 +1,4 @@
-CREATE TABLE `bmf_business_domain_entity_rel_vo` (
+CREATE TABLE `bmf_business_domain_entity_vo` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `entity_id_code` int(11) NOT NULL COMMENT '实体ID编码',
   `vo_code` int(11) NOT NULL COMMENT '值对象编码',

@@ -6,6 +6,7 @@ import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.base.tactics.entity.DomainEntity;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.common.utils.DomainUtil;
@@ -14,6 +15,7 @@ import com.bmf.common.validator.Validator;
 import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.core.domain.DomainEntityService;
 import com.bmf.core.domain.DomainService;
+import com.bmf.core.domain.DomainValueObjectService;
 import com.bmf.infrastructure.generator.CodeSeqGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -25,6 +27,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     private DomainService domainService;
     @Autowired
     private DomainEntityService domainEntityService;
+    @Autowired
+    private DomainValueObjectService domainValueObjectService;
     @Autowired
     private BusinessDomainDesign4Tactics businessDomainDesign4Tactics;
     @Autowired
@@ -119,8 +123,23 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4AddEntityRelVO")
     public Result<Boolean> addEntityRelVO(DomainReqDTO domainReqDTO) {
+        DomainEntity domainEntity = domainEntityService.queryDomainEntity(domainReqDTO.getDomainEntity());
+        BusinessCheckUtil.checkNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_NOT_EXIST);
+        DomainValueObject domainValueObject = domainValueObjectService.queryDomainValueObject(domainReqDTO.getDomainValueObject());
+        BusinessCheckUtil.checkNull(domainValueObject, BizCodeEnum.DOMAIN_VALUE_OBJECT_NOT_EXIST);
         return ResultUtil.success(businessDomainDesign4Tactics.addEntityRelVO(domainReqDTO.getDomainEntity(), domainReqDTO.getDomainValueObject()));
+    }
+
+    @Override
+    @Validator(beanName = "domainReqDTOValidator", method = "v4DelEntityRelVO")
+    public Result<Boolean> delEntityRelVO(DomainReqDTO domainReqDTO) {
+        DomainEntity domainEntity = domainEntityService.queryDomainEntity(domainReqDTO.getDomainEntity());
+        BusinessCheckUtil.checkNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_NOT_EXIST);
+        DomainValueObject domainValueObject = domainValueObjectService.queryDomainValueObject(domainReqDTO.getDomainValueObject());
+        BusinessCheckUtil.checkNull(domainValueObject, BizCodeEnum.DOMAIN_VALUE_OBJECT_NOT_EXIST);
+        return ResultUtil.success(businessDomainDesign4Tactics.delEntityRelVO(domainReqDTO.getDomainEntity(), domainReqDTO.getDomainValueObject()));
     }
 
     @Override

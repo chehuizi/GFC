@@ -21,6 +21,11 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_domain_vo
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="voCode != null">and vo_code = #{voCode}</if>
+            <if test="voAlias != null">and vo_alias = #{voAlias}</if>
+        </trim>
         limit 1
     </select>
 

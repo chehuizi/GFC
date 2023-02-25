@@ -194,4 +194,36 @@ public class DomainReqDTOValidator {
         ParamCheckUtil.checkNull(domainReqDTO.getDomainEvent().getEventCode(), "domain event code is null");
         return true;
     }
+
+    /**
+     * 校验addEntityRelVO方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4AddEntityRelVO(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity().getEntityIdCode(), "domain entity id code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject(), "domain value object is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject().getVoCode(), "domain value object code is null");
+        ParamCheckUtil.checkTrue(domainReqDTO.getDomainEntity().getDomainCode().equals(
+                domainReqDTO.getDomainValueObject().getDomainCode()), "domain code is not equal");
+        return true;
+    }
+
+    /**
+     * 校验delEntityRelVO方法
+     * @param domainReqDTO
+     * @return
+     */
+    public boolean v4DelEntityRelVO(DomainReqDTO domainReqDTO) {
+        ParamCheckUtil.checkNull(domainReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainEntity().getEntityIdCode(), "domain entity id code is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject(), "domain value object is null");
+        ParamCheckUtil.checkNull(domainReqDTO.getDomainValueObject().getVoCode(), "domain value object code is null");
+        ParamCheckUtil.checkTrue(domainReqDTO.getDomainEntity().getDomainCode().equals(
+                domainReqDTO.getDomainValueObject().getDomainCode()), "domain code is not equal");
+        return true;
+    }
 }

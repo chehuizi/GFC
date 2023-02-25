@@ -183,19 +183,33 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_add_entity_rel_vo() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(14);
-        businessDomain.setDomainName("test");
-        businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
-        domainReqDTO.setBusinessDomain(businessDomain);
         DomainEntity domainEntity = new DomainEntity();
-        domainEntity.setEntityIdCode(1011);
-        domainEntity.setEntityIdName("test");
-        domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
         domainReqDTO.setDomainEntity(domainEntity);
+        domainEntity.setDomainCode(103);
+        domainEntity.setEntityIdCode(100010);
+        DomainValueObject domainValueObject = new DomainValueObject();
+        domainValueObject.setDomainCode(103);
+        domainValueObject.setVoCode(103);
+        domainReqDTO.setDomainValueObject(domainValueObject);
         Result<Boolean> result = domainCmdService.addEntityRelVO(domainReqDTO);
         System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
+
+    @Test
+    public void test_domain_del_entity_rel_vo() {
+        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainEntity domainEntity = new DomainEntity();
+        domainReqDTO.setDomainEntity(domainEntity);
+        domainEntity.setDomainCode(103);
+        domainEntity.setEntityIdCode(100010);
+        DomainValueObject domainValueObject = new DomainValueObject();
+        domainValueObject.setDomainCode(103);
+        domainValueObject.setVoCode(103);
+        domainReqDTO.setDomainValueObject(domainValueObject);
+        Result<Boolean> result = domainCmdService.delEntityRelVO(domainReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
     }
 
     @Test

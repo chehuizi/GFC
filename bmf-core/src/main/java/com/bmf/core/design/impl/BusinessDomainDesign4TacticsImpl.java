@@ -76,6 +76,12 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
+    public boolean delEntityRelVO(DomainEntity entity, DomainValueObject valueObject) {
+        EntityRelVO entityRelVO = DomainUtil.build(entity, valueObject);
+        return domainEntityRelVORepository.delete(entityRelVO);
+    }
+
+    @Override
     public boolean addAggregate(BusinessDomain domain, DomainAggregate aggregate) {
         return false;
     }

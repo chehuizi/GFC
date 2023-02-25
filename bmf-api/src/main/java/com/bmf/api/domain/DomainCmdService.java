@@ -66,11 +66,18 @@ public interface DomainCmdService extends CmdService<DomainReqDTO> {
     Result<Boolean> delDomainEvent(DomainReqDTO domainReqDTO);
 
     /**
-     * 领域实体添加值对象
+     * 添加领域实体和值对象关系
      * @param domainReqDTO
      * @return
      */
     Result<Boolean> addEntityRelVO(DomainReqDTO domainReqDTO);
+
+    /**
+     * 删除领域实体和值对象关系
+     * @param domainReqDTO
+     * @return
+     */
+    Result<Boolean> delEntityRelVO(DomainReqDTO domainReqDTO);
 
     /**
      * 添加聚合根

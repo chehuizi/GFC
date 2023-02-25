@@ -17,7 +17,8 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
 
     @Override
     public BusinessDomainValueObjectPO selectOne(DomainValueObject req) {
-        return null;
+        BusinessDomainValueObjectPO domainValueObjectPO = DomainPOUtil.convert(req);
+        return businessDomainValueObjectMapper.selectOne(domainValueObjectPO);
     }
 
     @Override

@@ -1,6 +1,7 @@
 package com.bmf.infrastructure.dal.utils;
 
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.event.DomainEvent;
@@ -150,6 +151,19 @@ public class DomainPOUtil {
         return domainValueObjectPO;
     }
 
+    public static DomainValueObject convert(BusinessDomainValueObjectPO domainValueObjectPO) {
+        if (Objects.isNull(domainValueObjectPO)) {
+            return null;
+        }
+        DomainValueObject domainValueObject = new DomainValueObject();
+        domainValueObject.setDomainCode(domainValueObjectPO.getDomainCode());
+        domainValueObject.setVoCode(domainValueObjectPO.getVoCode());
+        domainValueObject.setVoAlias(domainValueObjectPO.getVoAlias());
+        domainValueObject.setVoName(domainValueObjectPO.getVoName());
+        domainValueObject.setVoDesc(domainValueObjectPO.getVoDesc());
+        return domainValueObject;
+    }
+
     public static BusinessDomainValueObjectAttrPO convert(DomainValueObjectAttr domainValueObjectAttr) {
         BusinessDomainValueObjectAttrPO valueObjectAttrPO = new BusinessDomainValueObjectAttrPO();
         valueObjectAttrPO.setVoCode(domainValueObjectAttr.getVoCode());
@@ -176,5 +190,12 @@ public class DomainPOUtil {
         domainEventAttrPO.setAttrType(domainEventAttr.getAttrType());
         domainEventAttrPO.setAttrDesc(domainEventAttr.getAttrDesc());
         return domainEventAttrPO;
+    }
+
+    public static BusinessDomainEntityRelVOPO convert(EntityRelVO entityRelVO) {
+        BusinessDomainEntityRelVOPO entityRelVOPO = new BusinessDomainEntityRelVOPO();
+        entityRelVOPO.setEntityIdCode(entityRelVO.getEntityIdCode());
+        entityRelVOPO.setVoCode(entityRelVO.getVoCode());
+        return entityRelVOPO;
     }
 }
