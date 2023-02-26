@@ -2,7 +2,7 @@ package com.bmf.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
-import com.bmf.api.domain.DomainCmdService;
+import com.bmf.api.domain.cmd.DomainCmdService;
 import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;

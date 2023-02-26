@@ -1,6 +1,6 @@
 package com.bmf.api;
 
-import com.bmf.api.domain.DomainCmdService;
+import com.bmf.api.domain.cmd.DomainCmdService;
 import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.AttrTypeEnum;

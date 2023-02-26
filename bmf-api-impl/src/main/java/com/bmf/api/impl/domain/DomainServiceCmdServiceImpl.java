@@ -1,7 +1,7 @@
 package com.bmf.api.impl.domain;
 
 import com.bmf.api.Result;
-import com.bmf.api.domain.DomainServiceCmdService;
+import com.bmf.api.domain.cmd.DomainServiceCmdService;
 import com.bmf.api.domain.dto.DomainServiceReqDTO;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.ResultUtil;

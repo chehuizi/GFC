@@ -1,11 +1,8 @@
 package com.bmf.api;
 
-import com.bmf.api.domain.DomainEventCmdService;
-import com.bmf.api.domain.dto.DomainEntityReqDTO;
+import com.bmf.api.domain.cmd.DomainEventCmdService;
 import com.bmf.api.domain.dto.DomainEventReqDTO;
 import com.bmf.base.enums.AttrTypeEnum;
-import com.bmf.base.tactics.entity.DomainEntity;
-import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.base.tactics.event.DomainEventAttr;
 import org.junit.Assert;

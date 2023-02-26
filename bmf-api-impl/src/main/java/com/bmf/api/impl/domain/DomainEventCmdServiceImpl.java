@@ -1,7 +1,7 @@
 package com.bmf.api.impl.domain;
 
 import com.bmf.api.Result;
-import com.bmf.api.domain.DomainEventCmdService;
+import com.bmf.api.domain.cmd.DomainEventCmdService;
 import com.bmf.api.domain.dto.DomainEventReqDTO;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;

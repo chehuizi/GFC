@@ -1,7 +1,7 @@
 package com.bmf.api.impl.domain;
 
 import com.bmf.api.Result;
-import com.bmf.api.domain.DomainEntityCmdService;
+import com.bmf.api.domain.cmd.DomainEntityCmdService;
 import com.bmf.api.domain.dto.DomainEntityReqDTO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.common.enums.BizCodeEnum;
