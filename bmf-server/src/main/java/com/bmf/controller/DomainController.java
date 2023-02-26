@@ -4,7 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainCmdService;
 import com.bmf.api.domain.DomainQryService;
-import com.bmf.api.domain.dto.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import org.slf4j.Logger;
@@ -28,11 +28,11 @@ public class DomainController {
 
     @GetMapping("detail")
     public String detail(@RequestParam("domain_code") Integer domainCode) {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(domainCode);
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
+        domainQryReqDTO.setBusinessDomain(businessDomain);
+        Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
         return JSON.toJSONString(result);
     }
 

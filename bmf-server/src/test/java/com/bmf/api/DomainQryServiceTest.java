@@ -1,7 +1,7 @@
 package com.bmf.api;
 
 import com.bmf.api.domain.DomainQryService;
-import com.bmf.api.domain.dto.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import org.junit.Assert;
@@ -20,22 +20,22 @@ public class DomainQryServiceTest {
 
     @Test
     public void test_domain_query_one_1() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(10);
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
+        domainQryReqDTO.setBusinessDomain(businessDomain);
+        Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
         System.out.println(result);
         Assert.assertTrue(10 == result.getData().getBusinessDomain().getDomainCode());
     }
 
     @Test
     public void test_domain_query_one_2() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainAlias("wms");
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
+        domainQryReqDTO.setBusinessDomain(businessDomain);
+        Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
         System.out.println(result);
         Assert.assertTrue(10 == result.getData().getBusinessDomain().getDomainCode());
     }

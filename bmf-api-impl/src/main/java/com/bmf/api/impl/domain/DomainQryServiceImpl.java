@@ -2,6 +2,7 @@ package com.bmf.api.impl.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.DomainQryService;
+import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
@@ -20,7 +21,7 @@ public class DomainQryServiceImpl implements DomainQryService {
 
     @Override
     @Validator(beanName = "domainReqDTOValidator", method = "v4QueryOne")
-    public Result<DomainRespDTO> queryOne(DomainReqDTO req) {
+    public Result<DomainRespDTO> queryOne(DomainQryReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         BusinessDomain result = domainService.queryDomain(domain);
         DomainRespDTO respDTO = new DomainRespDTO(result);
@@ -28,7 +29,7 @@ public class DomainQryServiceImpl implements DomainQryService {
     }
 
     @Override
-    public Result<DomainRespDTO> queryByBusiness(DomainReqDTO domainReqDTO) {
+    public Result<DomainRespDTO> queryByBusiness(DomainQryReqDTO domainQryReqDTO) {
         return null;
     }
 }
