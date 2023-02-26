@@ -19,7 +19,7 @@ public class DomainQryServiceImpl implements DomainQryService {
     private DomainService domainService;
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4QueryOne")
+    @Validator(beanName = "domainQryReqDTOValidator", method = "v4QueryOne")
     public Result<DomainRespDTO> queryOne(DomainQryReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         BusinessDomain result = domainService.queryDomain(domain);

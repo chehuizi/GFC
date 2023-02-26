@@ -1,7 +1,6 @@
 package com.bmf.api.validator;
 
 import com.bmf.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.common.utils.ParamCheckUtil;
@@ -10,22 +9,8 @@ import org.springframework.stereotype.Service;
 
 import java.util.Objects;
 
-@Service("domainReqDTOValidator")
+@Service("domainCmdReqDTOValidator")
 public class DomainCmdReqDTOValidator {
-
-    /**
-     * 校验queryOne方法
-     * @param domainQryReqDTO
-     * @return
-     */
-    public boolean v4QueryOne(DomainQryReqDTO domainQryReqDTO) {
-        ParamCheckUtil.checkNull(domainQryReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainQryReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkTrue(Objects.nonNull(domainQryReqDTO.getBusinessDomain().getDomainCode()) ||
-                        StringUtils.isNotBlank(domainQryReqDTO.getBusinessDomain().getDomainAlias()),
-                "domain code is null && domain alias is blank");
-        return true;
-    }
 
     /**
      * 校验create方法

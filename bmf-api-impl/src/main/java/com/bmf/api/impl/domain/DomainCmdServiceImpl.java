@@ -35,7 +35,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     private CodeSeqGenerator codeSeqGenerator;
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4Create")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(DomainCmdReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         BusinessDomain queryResult = domainService.queryDomain(domain);
@@ -45,7 +45,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4Update")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Update")
     public Result<Boolean> update(DomainCmdReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         BusinessDomain queryResult = domainService.queryDomain(domain);
@@ -54,14 +54,14 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4Delete")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Delete")
     public Result<Boolean> delete(DomainCmdReqDTO req) {
         BusinessDomain domain = DomainUtil.convert(req);
         return ResultUtil.success(domainService.deleteDomain(domain));
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4AddEntity")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddEntity")
     public Result<Boolean> addEntity(DomainCmdReqDTO domainCmdReqDTO) {
         BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
@@ -72,13 +72,13 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4DelEntity")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4DelEntity")
     public Result<Boolean> delEntity(DomainCmdReqDTO domainCmdReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.delEntity(domainCmdReqDTO.getDomainEntity()));
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4AddService")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddService")
     public Result<Boolean> addService(DomainCmdReqDTO domainCmdReqDTO) {
         BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
@@ -87,13 +87,13 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4DelService")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4DelService")
     public Result<Boolean> delService(DomainCmdReqDTO domainCmdReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.delService(domainCmdReqDTO.getDomainService()));
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4AddValueObject")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddValueObject")
     public Result<Boolean> addValueObject(DomainCmdReqDTO domainCmdReqDTO) {
         BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
@@ -102,13 +102,13 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4DelValueObject")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4DelValueObject")
     public Result<Boolean> delValueObject(DomainCmdReqDTO domainCmdReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.delValueObject(domainCmdReqDTO.getDomainValueObject()));
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4AddDomainEvent")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddDomainEvent")
     public Result<Boolean> addDomainEvent(DomainCmdReqDTO domainCmdReqDTO) {
         BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
@@ -117,13 +117,13 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4DelDomainEvent")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4DelDomainEvent")
     public Result<Boolean> delDomainEvent(DomainCmdReqDTO domainCmdReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.delDomainEvent(domainCmdReqDTO.getDomainEvent()));
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4AddEntityRelVO")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddEntityRelVO")
     public Result<Boolean> addEntityRelVO(DomainCmdReqDTO domainCmdReqDTO) {
         DomainEntity domainEntity = domainEntityService.queryDomainEntity(domainCmdReqDTO.getDomainEntity());
         BusinessCheckUtil.checkNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_NOT_EXIST);
@@ -133,7 +133,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     }
 
     @Override
-    @Validator(beanName = "domainReqDTOValidator", method = "v4DelEntityRelVO")
+    @Validator(beanName = "domainCmdReqDTOValidator", method = "v4DelEntityRelVO")
     public Result<Boolean> delEntityRelVO(DomainCmdReqDTO domainCmdReqDTO) {
         DomainEntity domainEntity = domainEntityService.queryDomainEntity(domainCmdReqDTO.getDomainEntity());
         BusinessCheckUtil.checkNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_NOT_EXIST);
