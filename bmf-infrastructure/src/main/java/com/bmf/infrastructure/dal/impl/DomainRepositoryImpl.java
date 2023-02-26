@@ -17,14 +17,14 @@ public class DomainRepositoryImpl implements DomainRepository {
     private DomainMapper domainMapper;
 
     @Override
-    public DomainPO selectOne(BusinessDomain req) {
+    public BusinessDomain selectOne(BusinessDomain req) {
         DomainPO domainPO = POUtils.convert(req, DomainPO.class);
-        return domainMapper.selectOne(domainPO);
+        return POUtils.convert(domainMapper.selectOne(domainPO), BusinessDomain.class);
     }
 
     @Override
-    public List<DomainPO> selectList(List<Integer> domainCodeList) {
-        return domainMapper.selectList(domainCodeList);
+    public List<BusinessDomain> selectList(List<Integer> domainCodeList) {
+        return POUtils.convert(domainMapper.selectList(domainCodeList), BusinessDomain.class);
     }
 
     @Override

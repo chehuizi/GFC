@@ -14,7 +14,7 @@ import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
 import com.bmf.infrastructure.dal.po.BusinessPO;
 import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
-import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -41,39 +41,34 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public Business queryBusiness(Business business) {
-        BusinessPO businessPO = businessRepository.selectOne(business);
-        return BusinessPOUtil.convert(businessPO);
+        return businessRepository.selectOne(business);
     }
 
     @Override
     public List<BusinessRelDomain> queryBusinessRelDomain(Business business) {
         BusinessRelDomain businessRelDomain = BusinessUtil.convert(business);
         List<BusinessRelDomainPO> businessRelDomainPOList = businessRelDomainRepository.selectList(businessRelDomain);
-        return BusinessPOUtil.convert(businessRelDomainPOList);
+        return POUtils.convert(businessRelDomainPOList, BusinessRelDomain.class);
     }
 
     @Override
     public BusinessRelDomain queryBusinessRelDomain(Business business, BusinessDomain domain) {
         BusinessRelDomain businessRelDomain = BusinessUtil.convert(business, domain);
-        BusinessRelDomainPO businessRelDomainPO = businessRelDomainRepository.selectOne(businessRelDomain);
-        if (Objects.isNull(businessRelDomainPO)) {
-            return null;
-        }
-        return BusinessPOUtil.convert(businessRelDomainPO);
+        return businessRelDomainRepository.selectOne(businessRelDomain);
     }
 
     @Override
     public List<BusinessDomainRelation> queryBusinessDomainRelation(Business business) {
         BusinessDomainRelation businessDomainRelation = BusinessUtil.convertDR(business);
         List<BusinessDomainRelationPO> businessDomainRelationPOList = businessDomainRelationRepository.selectList(businessDomainRelation);
-        return BusinessPOUtil.convertDR(businessDomainRelationPOList);
+        return POUtils.convert(businessDomainRelationPOList, BusinessDomainRelation.class);
     }
 
     @Override
     public List<BusinessDomainRelation> queryBusinessDomainRelation(Business business, BusinessDomain domain) {
         BusinessDomainRelation businessDomainRelation = BusinessUtil.convertDR(business, domain);
         List<BusinessDomainRelationPO> businessDomainRelationPOList = businessDomainRelationRepository.selectByDomain(businessDomainRelation);
-        return BusinessPOUtil.convertDR(businessDomainRelationPOList);
+        return POUtils.convert(businessDomainRelationPOList, BusinessDomainRelation.class);
     }
 
     @Override

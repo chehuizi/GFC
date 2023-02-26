@@ -16,7 +16,7 @@ public class DomainEventAttrRepositoryImpl implements DomainEventAttrRepository 
     private BusinessDomainEventAttrMapper businessDomainEventAttrMapper;
 
     @Override
-    public BusinessDomainEventAttrPO selectOne(DomainEventAttr req) {
+    public DomainEventAttr selectOne(DomainEventAttr req) {
         return null;
     }
 

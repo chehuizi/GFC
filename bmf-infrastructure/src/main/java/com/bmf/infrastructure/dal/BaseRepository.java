@@ -1,12 +1,11 @@
 package com.bmf.infrastructure.dal;
 
 import com.bmf.base.BaseModel;
-import com.bmf.infrastructure.dal.po.BasePO;
 
 /**
  * 仓储接口基类
  */
-public interface BaseRepository<T extends BaseModel, R extends BasePO> {
+public interface BaseRepository<T extends BaseModel, R extends BaseModel> {
 
     /**
      * 查询单条记录

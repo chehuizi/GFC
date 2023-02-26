@@ -5,7 +5,7 @@ import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
 
 import java.util.List;
 
-public interface BusinessDomainRelationRepository extends BaseRepository<BusinessDomainRelation, BusinessDomainRelationPO> {
+public interface BusinessDomainRelationRepository extends BaseRepository<BusinessDomainRelation, BusinessDomainRelation> {
 
     List<BusinessDomainRelationPO> selectList(BusinessDomainRelation req);
 

@@ -4,7 +4,7 @@ import com.bmf.base.Business;
 import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessMapper;
 import com.bmf.infrastructure.dal.po.BusinessPO;
-import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -16,15 +16,15 @@ public class BusinessRepositoryImpl implements BusinessRepository {
     private BusinessMapper businessMapper;
 
     @Override
-    public BusinessPO selectOne(Business req) {
-        BusinessPO businessPO = BusinessPOUtil.convert(req);
-        BusinessPO result = businessMapper.selectOne(businessPO);
-        return result;
+    public Business selectOne(Business req) {
+        BusinessPO businessPO = POUtils.convert(req, BusinessPO.class);
+        return POUtils.convert(businessMapper.selectOne(businessPO), Business.class);
     }
 
     @Override
     public boolean insert(Business req) {
-        return businessMapper.insert(BusinessPOUtil.convert(req)) == 1;
+        BusinessPO businessPO = POUtils.convert(req, BusinessPO.class);
+        return businessMapper.insert(businessPO) == 1;
     }
 
     @Override

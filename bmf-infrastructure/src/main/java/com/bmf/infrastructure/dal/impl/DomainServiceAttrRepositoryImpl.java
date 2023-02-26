@@ -16,7 +16,7 @@ public class DomainServiceAttrRepositoryImpl implements DomainServiceAttrReposit
     private BusinessDomainServiceAttrMapper businessDomainServiceAttrMapper;
 
     @Override
-    public BusinessDomainServiceAttrPO selectOne(DomainServiceAttr req) {
+    public DomainServiceAttr selectOne(DomainServiceAttr req) {
         return null;
     }
 

@@ -1,11 +1,10 @@
 package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.BusinessDomainRelation;
-import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainRelationMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
-import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -18,25 +17,26 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
     private BusinessDomainRelationMapper businessDomainRelationMapper;
 
     @Override
-    public BusinessDomainRelationPO selectOne(BusinessDomainRelation req) {
+    public BusinessDomainRelation selectOne(BusinessDomainRelation req) {
         return null;
     }
 
     @Override
     public List<BusinessDomainRelationPO> selectList(BusinessDomainRelation req) {
-        BusinessDomainRelationPO businessDomainRelationPO = BusinessPOUtil.convert(req);
+        BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
         return businessDomainRelationMapper.selectList(businessDomainRelationPO);
     }
 
     @Override
     public List<BusinessDomainRelationPO> selectByDomain(BusinessDomainRelation req) {
-        BusinessDomainRelationPO businessDomainRelationPO = BusinessPOUtil.convert(req);
+        BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
         return businessDomainRelationMapper.selectByDomain(businessDomainRelationPO);
     }
 
     @Override
     public boolean insert(BusinessDomainRelation req) {
-        return businessDomainRelationMapper.insert(BusinessPOUtil.convert(req)) == 1;
+        BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
+        return businessDomainRelationMapper.insert(businessDomainRelationPO) == 1;
     }
 
     @Override
@@ -46,6 +46,7 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
 
     @Override
     public boolean delete(BusinessDomainRelation req) {
-        return businessDomainRelationMapper.delete(BusinessPOUtil.convert(req)) == 1;
+        BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
+        return businessDomainRelationMapper.delete(businessDomainRelationPO) == 1;
     }
 }

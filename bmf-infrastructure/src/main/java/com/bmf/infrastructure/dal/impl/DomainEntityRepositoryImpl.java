@@ -16,9 +16,9 @@ public class DomainEntityRepositoryImpl implements DomainEntityRepository {
     private BusinessDomainEntityMapper domainEntityMapper;
 
     @Override
-    public BusinessDomainEntityPO selectOne(DomainEntity req) {
+    public DomainEntity selectOne(DomainEntity req) {
         BusinessDomainEntityPO domainEntityPO = POUtils.convert(req, BusinessDomainEntityPO.class);
-        return domainEntityMapper.selectOne(domainEntityPO);
+        return POUtils.convert(domainEntityMapper.selectOne(domainEntityPO), DomainEntity.class);
     }
 
     @Override

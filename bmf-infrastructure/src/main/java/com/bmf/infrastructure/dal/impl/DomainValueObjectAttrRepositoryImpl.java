@@ -16,7 +16,7 @@ public class DomainValueObjectAttrRepositoryImpl implements DomainValueObjectAtt
     private BusinessDomainValueObjectAttrMapper businessDomainValueObjectAttrMapper;
 
     @Override
-    public BusinessDomainValueObjectAttrPO selectOne(DomainValueObjectAttr req) {
+    public DomainValueObjectAttr selectOne(DomainValueObjectAttr req) {
         return null;
     }
 

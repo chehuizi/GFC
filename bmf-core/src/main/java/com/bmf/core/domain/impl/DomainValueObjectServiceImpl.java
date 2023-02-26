@@ -5,12 +5,8 @@ import com.bmf.base.tactics.valueobject.DomainValueObjectAttr;
 import com.bmf.core.domain.DomainValueObjectService;
 import com.bmf.infrastructure.dal.DomainValueObjectAttrRepository;
 import com.bmf.infrastructure.dal.DomainValueObjectRepository;
-import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO;
-import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Objects;
 
 @Service
 public class DomainValueObjectServiceImpl implements DomainValueObjectService {
@@ -22,11 +18,7 @@ public class DomainValueObjectServiceImpl implements DomainValueObjectService {
 
     @Override
     public DomainValueObject queryDomainValueObject(DomainValueObject domainValueObject) {
-        BusinessDomainValueObjectPO domainValueObjectPO = domainValueObjectRepository.selectOne(domainValueObject);
-        if (Objects.isNull(domainValueObjectPO)) {
-            return null;
-        }
-        return POUtils.convert(domainValueObjectPO, DomainValueObject.class);
+        return domainValueObjectRepository.selectOne(domainValueObject);
     }
 
     @Override

@@ -16,7 +16,7 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
     private BusinessDomainEntityRelVOMapper domainEntityRelVOMapper;
 
     @Override
-    public BusinessDomainEntityRelVOPO selectOne(EntityRelVO req) {
+    public EntityRelVO selectOne(EntityRelVO req) {
         return null;
     }
 

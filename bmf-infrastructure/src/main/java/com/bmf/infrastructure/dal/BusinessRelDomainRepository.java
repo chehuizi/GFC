@@ -5,7 +5,7 @@ import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
 
 import java.util.List;
 
-public interface BusinessRelDomainRepository extends BaseRepository<BusinessRelDomain, BusinessRelDomainPO> {
+public interface BusinessRelDomainRepository extends BaseRepository<BusinessRelDomain, BusinessRelDomain> {
 
     /**
      * 查询业务下的领域列表

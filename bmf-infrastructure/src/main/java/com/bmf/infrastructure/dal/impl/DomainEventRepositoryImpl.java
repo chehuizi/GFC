@@ -16,9 +16,9 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
     private BusinessDomainEventMapper domainEventMapper;
 
     @Override
-    public BusinessDomainEventPO selectOne(DomainEvent req) {
+    public DomainEvent selectOne(DomainEvent req) {
         BusinessDomainEventPO domainEventPO = POUtils.convert(req, BusinessDomainEventPO.class);
-        return domainEventMapper.selectOne(domainEventPO);
+        return POUtils.convert(domainEventMapper.selectOne(domainEventPO), DomainEvent.class);
     }
 
     @Override

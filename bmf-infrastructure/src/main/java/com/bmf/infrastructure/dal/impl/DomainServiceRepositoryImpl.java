@@ -16,9 +16,9 @@ public class DomainServiceRepositoryImpl implements DomainServiceRepository {
     private BusinessDomainServiceMapper businessDomainServiceMapper;
 
     @Override
-    public BusinessDomainServicePO selectOne(DomainService req) {
+    public DomainService selectOne(DomainService req) {
         BusinessDomainServicePO domainServicePO = POUtils.convert(req, BusinessDomainServicePO.class);
-        return businessDomainServiceMapper.selectOne(domainServicePO);
+        return POUtils.convert(businessDomainServiceMapper.selectOne(domainServicePO), DomainService.class);
     }
 
     @Override

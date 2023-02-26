@@ -4,7 +4,7 @@ import com.bmf.base.BusinessRelDomain;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessRelDomainMapper;
 import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
-import com.bmf.infrastructure.dal.utils.BusinessPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,22 +17,20 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     private BusinessRelDomainMapper businessRelDomainMapper;
 
     @Override
-    public BusinessRelDomainPO selectOne(BusinessRelDomain req) {
-        BusinessRelDomainPO businessRelDomainPO = BusinessPOUtil.convert(req);
-        return businessRelDomainMapper.selectOne(businessRelDomainPO);
+    public BusinessRelDomain selectOne(BusinessRelDomain req) {
+        BusinessRelDomainPO businessRelDomainPO = POUtils.convert(req, BusinessRelDomainPO.class);
+        return POUtils.convert(businessRelDomainMapper.selectOne(businessRelDomainPO), BusinessRelDomain.class);
     }
 
     @Override
     public List<BusinessRelDomainPO> selectList(BusinessRelDomain req) {
-        BusinessRelDomainPO businessRelDomainPO = BusinessPOUtil.convert(req);
+        BusinessRelDomainPO businessRelDomainPO = POUtils.convert(req, BusinessRelDomainPO.class);
         return businessRelDomainMapper.selectList(businessRelDomainPO);
     }
 
     @Override
     public boolean insert(BusinessRelDomain req) {
-        BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
-        businessRelDomainPO.setBusinessCode(req.getBusinessCode());
-        businessRelDomainPO.setDomainCode(req.getDomainCode());
+        BusinessRelDomainPO businessRelDomainPO = POUtils.convert(req, BusinessRelDomainPO.class);
         return businessRelDomainMapper.insert(businessRelDomainPO) == 1;
     }
 
@@ -43,9 +41,7 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
 
     @Override
     public boolean delete(BusinessRelDomain req) {
-        BusinessRelDomainPO businessRelDomainPO = new BusinessRelDomainPO();
-        businessRelDomainPO.setBusinessCode(req.getBusinessCode());
-        businessRelDomainPO.setDomainCode(req.getDomainCode());
+        BusinessRelDomainPO businessRelDomainPO = POUtils.convert(req, BusinessRelDomainPO.class);
         return businessRelDomainMapper.delete(businessRelDomainPO) == 1;
     }
 }

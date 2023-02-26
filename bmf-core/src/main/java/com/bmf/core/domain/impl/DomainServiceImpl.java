@@ -18,14 +18,12 @@ public class DomainServiceImpl implements DomainService {
 
     @Override
     public BusinessDomain queryDomain(BusinessDomain businessDomain) {
-        DomainPO domainPO = domainRepository.selectOne(businessDomain);
-        return POUtils.convert(domainPO, BusinessDomain.class);
+        return domainRepository.selectOne(businessDomain);
     }
 
     @Override
     public List<BusinessDomain> queryDomainList(List<Integer> domainCodeList) {
-        List<DomainPO> domainPOList = domainRepository.selectList(domainCodeList);
-        return POUtils.convert(domainPOList, BusinessDomain.class);
+        return domainRepository.selectList(domainCodeList);
     }
 
     @Override
