@@ -26,7 +26,7 @@ public class DomainEntityServiceImpl implements DomainEntityService {
         if (Objects.isNull(domainEntityPO)) {
             return null;
         }
-        return POUtils.convert(domainEntityPO);
+        return POUtils.convert(domainEntityPO, DomainEntity.class);
     }
 
     @Override

@@ -26,7 +26,7 @@ public class DomainValueObjectServiceImpl implements DomainValueObjectService {
         if (Objects.isNull(domainValueObjectPO)) {
             return null;
         }
-        return POUtils.convert(domainValueObjectPO);
+        return POUtils.convert(domainValueObjectPO, DomainValueObject.class);
     }
 
     @Override

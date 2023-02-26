@@ -29,7 +29,7 @@ public class DomainCmdServiceTest {
     public void test_domain_create() {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(50);
+        businessDomain.setDomainCode(103);
         businessDomain.setDomainName("仓库管理域");
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
