@@ -4,7 +4,7 @@ import com.bmf.base.BusinessDomain;
 
 import java.util.List;
 
-public interface DomainRepository extends BaseRepository<BusinessDomain, BusinessDomain> {
+public interface DomainRepository extends BaseRepository<BusinessDomain> {
 
     /**
      * 查询领域列表
