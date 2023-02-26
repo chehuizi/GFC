@@ -4,7 +4,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.core.domain.DomainService;
 import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.po.DomainPO;
-import com.bmf.infrastructure.dal.utils.DomainPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,13 +19,13 @@ public class DomainServiceImpl implements DomainService {
     @Override
     public BusinessDomain queryDomain(BusinessDomain businessDomain) {
         DomainPO domainPO = domainRepository.selectOne(businessDomain);
-        return DomainPOUtil.convert(domainPO);
+        return POUtils.convert(domainPO);
     }
 
     @Override
     public List<BusinessDomain> queryDomainList(List<Integer> domainCodeList) {
         List<DomainPO> domainPOList = domainRepository.selectList(domainCodeList);
-        return DomainPOUtil.convert(domainPOList);
+        return POUtils.convert(domainPOList);
     }
 
     @Override

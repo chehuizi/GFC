@@ -1,13 +1,12 @@
 package com.bmf.core.domain.impl;
 
-import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.base.tactics.valueobject.DomainValueObjectAttr;
 import com.bmf.core.domain.DomainValueObjectService;
 import com.bmf.infrastructure.dal.DomainValueObjectAttrRepository;
 import com.bmf.infrastructure.dal.DomainValueObjectRepository;
 import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO;
-import com.bmf.infrastructure.dal.utils.DomainPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,7 +26,7 @@ public class DomainValueObjectServiceImpl implements DomainValueObjectService {
         if (Objects.isNull(domainValueObjectPO)) {
             return null;
         }
-        return DomainPOUtil.convert(domainValueObjectPO);
+        return POUtils.convert(domainValueObjectPO);
     }
 
     @Override

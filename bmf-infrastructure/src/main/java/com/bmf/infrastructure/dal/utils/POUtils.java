@@ -14,7 +14,7 @@ import java.util.Objects;
 /**
  * PO工具类
  */
-public class DomainPOUtil {
+public class POUtils {
 
     /**
      * 转换对象

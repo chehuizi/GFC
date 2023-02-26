@@ -4,7 +4,7 @@ import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.infrastructure.dal.DomainValueObjectRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO;
-import com.bmf.infrastructure.dal.utils.DomainPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,13 +17,13 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
 
     @Override
     public BusinessDomainValueObjectPO selectOne(DomainValueObject req) {
-        BusinessDomainValueObjectPO domainValueObjectPO = DomainPOUtil.convert(req, BusinessDomainValueObjectPO.class);
+        BusinessDomainValueObjectPO domainValueObjectPO = POUtils.convert(req, BusinessDomainValueObjectPO.class);
         return businessDomainValueObjectMapper.selectOne(domainValueObjectPO);
     }
 
     @Override
     public boolean insert(DomainValueObject req) {
-        BusinessDomainValueObjectPO domainValueObjectPO = DomainPOUtil.convert(req, BusinessDomainValueObjectPO.class);
+        BusinessDomainValueObjectPO domainValueObjectPO = POUtils.convert(req, BusinessDomainValueObjectPO.class);
         return businessDomainValueObjectMapper.insert(domainValueObjectPO) == 1;
     }
 
@@ -34,7 +34,7 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
 
     @Override
     public boolean delete(DomainValueObject req) {
-        BusinessDomainValueObjectPO domainValueObjectPO = DomainPOUtil.convert(req, BusinessDomainValueObjectPO.class);
+        BusinessDomainValueObjectPO domainValueObjectPO = POUtils.convert(req, BusinessDomainValueObjectPO.class);
         return businessDomainValueObjectMapper.delete(domainValueObjectPO) == 1;
     }
 }

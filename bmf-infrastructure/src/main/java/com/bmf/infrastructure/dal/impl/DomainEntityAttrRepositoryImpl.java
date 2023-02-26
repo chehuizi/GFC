@@ -4,7 +4,7 @@ import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.infrastructure.dal.DomainEntityAttrRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityAttrMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO;
-import com.bmf.infrastructure.dal.utils.DomainPOUtil;
+import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
@@ -17,13 +17,13 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
 
     @Override
     public BusinessDomainEntityAttrPO selectOne(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req, BusinessDomainEntityAttrPO.class);
+        BusinessDomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, BusinessDomainEntityAttrPO.class);
         return businessDomainEntityAttrMapper.selectOne(domainEntityAttrPO);
     }
 
     @Override
     public boolean insert(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req, BusinessDomainEntityAttrPO.class);
+        BusinessDomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, BusinessDomainEntityAttrPO.class);
         return businessDomainEntityAttrMapper.insert(domainEntityAttrPO) == 1;
     }
 
@@ -34,7 +34,7 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
 
     @Override
     public boolean delete(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req, BusinessDomainEntityAttrPO.class);
+        BusinessDomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, BusinessDomainEntityAttrPO.class);
         return businessDomainEntityAttrMapper.delete(domainEntityAttrPO) == 1;
     }
 }
