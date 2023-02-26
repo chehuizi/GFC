@@ -17,7 +17,8 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
 
     @Override
     public EntityRelVO selectOne(EntityRelVO req) {
-        return null;
+        BusinessDomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, BusinessDomainEntityRelVOPO.class);
+        return POUtils.convert(domainEntityRelVOMapper.selectOne(entityRelVOPO), EntityRelVO.class);
     }
 
     @Override

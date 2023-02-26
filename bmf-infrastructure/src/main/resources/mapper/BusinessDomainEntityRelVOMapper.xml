@@ -18,6 +18,10 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_domain_entity_vo
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="entityIdCode != null">and entity_id_code = #{entityIdCode}</if>
+            <if test="voCode != null">and vo_code = #{voCode}</if>
+        </trim>
         limit 1
     </select>
 
