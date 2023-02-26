@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Objects;
 
 @Service("domainReqDTOValidator")
-public class DomainReqDTOValidator {
+public class DomainCmdReqDTOValidator {
 
     /**
      * 校验queryOne方法
