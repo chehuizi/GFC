@@ -22,7 +22,7 @@ public class DomainEventAttrRepositoryImpl implements DomainEventAttrRepository 
 
     @Override
     public boolean insert(DomainEventAttr req) {
-        BusinessDomainEventAttrPO domainEventAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainEventAttrPO domainEventAttrPO = DomainPOUtil.convert(req, BusinessDomainEventAttrPO.class);
         return businessDomainEventAttrMapper.insert(domainEventAttrPO) == 1;
     }
 
@@ -33,7 +33,7 @@ public class DomainEventAttrRepositoryImpl implements DomainEventAttrRepository 
 
     @Override
     public boolean delete(DomainEventAttr req) {
-        BusinessDomainEventAttrPO domainEventAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainEventAttrPO domainEventAttrPO = DomainPOUtil.convert(req, BusinessDomainEventAttrPO.class);
         return businessDomainEventAttrMapper.delete(domainEventAttrPO) == 1;
     }
 }

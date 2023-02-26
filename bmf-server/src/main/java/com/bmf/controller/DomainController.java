@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,10 +27,10 @@ public class DomainController {
     private DomainCmdService domainCmdService;
 
     @GetMapping("detail")
-    public String detail() {
+    public String detail(@RequestParam("domain_code") Integer domainCode) {
         DomainReqDTO domainReqDTO = new DomainReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
+        businessDomain.setDomainCode(domainCode);
         domainReqDTO.setBusinessDomain(businessDomain);
         Result<DomainRespDTO> result = domainQryService.queryOne(domainReqDTO);
         return JSON.toJSONString(result);

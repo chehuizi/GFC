@@ -22,7 +22,7 @@ public class DomainServiceAttrRepositoryImpl implements DomainServiceAttrReposit
 
     @Override
     public boolean insert(DomainServiceAttr req) {
-        BusinessDomainServiceAttrPO serviceAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainServiceAttrPO serviceAttrPO = DomainPOUtil.convert(req, BusinessDomainServiceAttrPO.class);
         return businessDomainServiceAttrMapper.insert(serviceAttrPO) == 1;
     }
 
@@ -33,7 +33,7 @@ public class DomainServiceAttrRepositoryImpl implements DomainServiceAttrReposit
 
     @Override
     public boolean delete(DomainServiceAttr req) {
-        BusinessDomainServiceAttrPO serviceAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainServiceAttrPO serviceAttrPO = DomainPOUtil.convert(req, BusinessDomainServiceAttrPO.class);
         return businessDomainServiceAttrMapper.delete(serviceAttrPO) == 1;
     }
 }

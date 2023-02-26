@@ -1,16 +1,11 @@
 package com.bmf.infrastructure.dal.utils;
 
+import com.bmf.base.BaseModel;
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
-import com.bmf.base.tactics.entity.DomainEntityAttr;
-import com.bmf.base.tactics.event.DomainEvent;
-import com.bmf.base.tactics.event.DomainEventAttr;
-import com.bmf.base.tactics.service.DomainService;
-import com.bmf.base.tactics.service.DomainServiceAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
-import com.bmf.base.tactics.valueobject.DomainValueObjectAttr;
 import com.bmf.infrastructure.dal.po.*;
+import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,24 +15,6 @@ import java.util.Objects;
  * PO工具类
  */
 public class DomainPOUtil {
-
-    /**
-     * 转换对象
-     * @param businessDomain
-     * @return
-     */
-    public static DomainPO convert(BusinessDomain businessDomain) {
-        if (Objects.isNull(businessDomain)) {
-            return null;
-        }
-        DomainPO domainPO = new DomainPO();
-        domainPO.setDomainCode(businessDomain.getDomainCode());
-        domainPO.setDomainName(businessDomain.getDomainName());
-        domainPO.setDomainAlias(businessDomain.getDomainAlias());
-        domainPO.setDomainType(businessDomain.getDomainType());
-        domainPO.setDomainLevel(businessDomain.getDomainLevel());
-        return domainPO;
-    }
 
     /**
      * 转换对象
@@ -73,20 +50,6 @@ public class DomainPOUtil {
         return businessDomainList;
     }
 
-    public static BusinessDomainEntityPO convert(DomainEntity domainEntity) {
-        if (Objects.isNull(domainEntity)) {
-            return null;
-        }
-        BusinessDomainEntityPO domainEntityPO = new BusinessDomainEntityPO();
-        domainEntityPO.setDomainCode(domainEntity.getDomainCode());
-        domainEntityPO.setEntityIdCode(domainEntity.getEntityIdCode());
-        domainEntityPO.setEntityIdAlias(domainEntity.getEntityIdAlias());
-        domainEntityPO.setEntityIdName(domainEntity.getEntityIdName());
-        domainEntityPO.setEntityIdType(domainEntity.getEntityIdType());
-        domainEntityPO.setEntityDesc(domainEntity.getEntityDesc());
-        return domainEntityPO;
-    }
-
     public static DomainEntity convert(BusinessDomainEntityPO domainEntityPO) {
         if (Objects.isNull(domainEntityPO)) {
             return null;
@@ -99,56 +62,6 @@ public class DomainPOUtil {
         domainEntity.setEntityIdType(domainEntityPO.getEntityIdType());
         domainEntity.setEntityDesc(domainEntityPO.getEntityDesc());
         return domainEntity;
-    }
-
-    public static BusinessDomainEntityAttrPO convert(DomainEntityAttr domainEntityAttr) {
-        if (Objects.isNull(domainEntityAttr)) {
-            return null;
-        }
-        BusinessDomainEntityAttrPO domainEntityAttrPO = new BusinessDomainEntityAttrPO();
-        domainEntityAttrPO.setEntityIdCode(domainEntityAttr.getEntityIdCode());
-        domainEntityAttrPO.setAttrName(domainEntityAttr.getAttrName());
-        domainEntityAttrPO.setAttrType(domainEntityAttr.getAttrType());
-        domainEntityAttrPO.setAttrDesc(domainEntityAttr.getAttrDesc());
-        return domainEntityAttrPO;
-    }
-
-    public static BusinessDomainServicePO convert(DomainService domainService) {
-        if (Objects.isNull(domainService)) {
-            return null;
-        }
-        BusinessDomainServicePO domainServicePO = new BusinessDomainServicePO();
-        domainServicePO.setDomainCode(domainService.getDomainCode());
-        domainServicePO.setServiceCode(domainService.getServiceCode());
-        domainServicePO.setServiceAlias(domainService.getServiceAlias());
-        domainServicePO.setServiceName(domainService.getServiceName());
-        domainServicePO.setServiceDesc(domainService.getServiceDesc());
-        return domainServicePO;
-    }
-
-    public static BusinessDomainServiceAttrPO convert(DomainServiceAttr domainServiceAttr) {
-        if (Objects.isNull(domainServiceAttr)) {
-            return null;
-        }
-        BusinessDomainServiceAttrPO serviceAttrPO = new BusinessDomainServiceAttrPO();
-        serviceAttrPO.setServiceCode(domainServiceAttr.getServiceCode());
-        serviceAttrPO.setAttrName(domainServiceAttr.getAttrName());
-        serviceAttrPO.setAttrType(domainServiceAttr.getAttrType());
-        serviceAttrPO.setAttrDesc(domainServiceAttr.getAttrDesc());
-        return serviceAttrPO;
-    }
-
-    public static BusinessDomainValueObjectPO convert(DomainValueObject domainValueObject) {
-        if (Objects.isNull(domainValueObject)) {
-            return null;
-        }
-        BusinessDomainValueObjectPO domainValueObjectPO = new BusinessDomainValueObjectPO();
-        domainValueObjectPO.setDomainCode(domainValueObject.getDomainCode());
-        domainValueObjectPO.setVoCode(domainValueObject.getVoCode());
-        domainValueObjectPO.setVoAlias(domainValueObject.getVoAlias());
-        domainValueObjectPO.setVoName(domainValueObject.getVoName());
-        domainValueObjectPO.setVoDesc(domainValueObject.getVoDesc());
-        return domainValueObjectPO;
     }
 
     public static DomainValueObject convert(BusinessDomainValueObjectPO domainValueObjectPO) {
@@ -164,38 +77,25 @@ public class DomainPOUtil {
         return domainValueObject;
     }
 
-    public static BusinessDomainValueObjectAttrPO convert(DomainValueObjectAttr domainValueObjectAttr) {
-        BusinessDomainValueObjectAttrPO valueObjectAttrPO = new BusinessDomainValueObjectAttrPO();
-        valueObjectAttrPO.setVoCode(domainValueObjectAttr.getVoCode());
-        valueObjectAttrPO.setAttrName(domainValueObjectAttr.getAttrName());
-        valueObjectAttrPO.setAttrType(domainValueObjectAttr.getAttrType());
-        valueObjectAttrPO.setAttrDesc(domainValueObjectAttr.getAttrDesc());
-        return valueObjectAttrPO;
-    }
+    /**
+     * 模型对象转持久化对象
+     * @param src
+     * @param dstClass
+     * @param <R>
+     * @param <T>
+     * @return
+     */
+    public static  <R extends BaseModel, T extends BasePO> T convert(R src, Class<T> dstClass) {
+        if (Objects.isNull(src)) {
+            return null;
+        }
+        try {
+            T dst = dstClass.newInstance();
+            BeanUtils.copyProperties(src, dst);
+            return dst;
+        } catch (Exception ex) {
 
-    public static BusinessDomainEventPO convert(DomainEvent domainEvent) {
-        BusinessDomainEventPO domainEventPO = new BusinessDomainEventPO();
-        domainEventPO.setDomainCode(domainEvent.getDomainCode());
-        domainEventPO.setEventCode(domainEvent.getEventCode());
-        domainEventPO.setEventAlias(domainEvent.getEventAlias());
-        domainEventPO.setEventName(domainEvent.getEventName());
-        domainEventPO.setEventDesc(domainEvent.getEventDesc());
-        return domainEventPO;
-    }
-
-    public static BusinessDomainEventAttrPO convert(DomainEventAttr domainEventAttr) {
-        BusinessDomainEventAttrPO domainEventAttrPO = new BusinessDomainEventAttrPO();
-        domainEventAttrPO.setEventCode(domainEventAttr.getEventCode());
-        domainEventAttrPO.setAttrName(domainEventAttr.getAttrName());
-        domainEventAttrPO.setAttrType(domainEventAttr.getAttrType());
-        domainEventAttrPO.setAttrDesc(domainEventAttr.getAttrDesc());
-        return domainEventAttrPO;
-    }
-
-    public static BusinessDomainEntityRelVOPO convert(EntityRelVO entityRelVO) {
-        BusinessDomainEntityRelVOPO entityRelVOPO = new BusinessDomainEntityRelVOPO();
-        entityRelVOPO.setEntityIdCode(entityRelVO.getEntityIdCode());
-        entityRelVOPO.setVoCode(entityRelVO.getVoCode());
-        return entityRelVOPO;
+        }
+        return null;
     }
 }

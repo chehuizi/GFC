@@ -22,7 +22,7 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
 
     @Override
     public boolean insert(EntityRelVO req) {
-        BusinessDomainEntityRelVOPO entityRelVOPO = DomainPOUtil.convert(req);
+        BusinessDomainEntityRelVOPO entityRelVOPO = DomainPOUtil.convert(req, BusinessDomainEntityRelVOPO.class);
         return domainEntityRelVOMapper.insert(entityRelVOPO) == 1;
     }
 
@@ -33,7 +33,7 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
 
     @Override
     public boolean delete(EntityRelVO req) {
-        BusinessDomainEntityRelVOPO entityRelVOPO = DomainPOUtil.convert(req);
+        BusinessDomainEntityRelVOPO entityRelVOPO = DomainPOUtil.convert(req, BusinessDomainEntityRelVOPO.class);
         return domainEntityRelVOMapper.delete(entityRelVOPO) == 1;
     }
 }

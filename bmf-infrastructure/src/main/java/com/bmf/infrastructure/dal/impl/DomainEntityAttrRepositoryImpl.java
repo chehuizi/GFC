@@ -17,13 +17,13 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
 
     @Override
     public BusinessDomainEntityAttrPO selectOne(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req, BusinessDomainEntityAttrPO.class);
         return businessDomainEntityAttrMapper.selectOne(domainEntityAttrPO);
     }
 
     @Override
     public boolean insert(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req, BusinessDomainEntityAttrPO.class);
         return businessDomainEntityAttrMapper.insert(domainEntityAttrPO) == 1;
     }
 
@@ -34,7 +34,7 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
 
     @Override
     public boolean delete(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainEntityAttrPO domainEntityAttrPO = DomainPOUtil.convert(req, BusinessDomainEntityAttrPO.class);
         return businessDomainEntityAttrMapper.delete(domainEntityAttrPO) == 1;
     }
 }

@@ -17,13 +17,13 @@ public class DomainServiceRepositoryImpl implements DomainServiceRepository {
 
     @Override
     public BusinessDomainServicePO selectOne(DomainService req) {
-        BusinessDomainServicePO domainServicePO = new BusinessDomainServicePO();
+        BusinessDomainServicePO domainServicePO = DomainPOUtil.convert(req, BusinessDomainServicePO.class);
         return businessDomainServiceMapper.selectOne(domainServicePO);
     }
 
     @Override
     public boolean insert(DomainService req) {
-        BusinessDomainServicePO domainServicePO = DomainPOUtil.convert(req);
+        BusinessDomainServicePO domainServicePO = DomainPOUtil.convert(req, BusinessDomainServicePO.class);
         return businessDomainServiceMapper.insert(domainServicePO) == 1;
     }
 
@@ -34,7 +34,7 @@ public class DomainServiceRepositoryImpl implements DomainServiceRepository {
 
     @Override
     public boolean delete(DomainService req) {
-        BusinessDomainServicePO domainServicePO = DomainPOUtil.convert(req);
+        BusinessDomainServicePO domainServicePO = DomainPOUtil.convert(req, BusinessDomainServicePO.class);
         return businessDomainServiceMapper.delete(domainServicePO) == 1;
     }
 }

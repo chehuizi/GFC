@@ -18,7 +18,8 @@ public class DomainRepositoryImpl implements DomainRepository {
 
     @Override
     public DomainPO selectOne(BusinessDomain req) {
-        return domainMapper.selectOne(DomainPOUtil.convert(req));
+        DomainPO domainPO = DomainPOUtil.convert(req, DomainPO.class);
+        return domainMapper.selectOne(domainPO);
     }
 
     @Override
@@ -28,16 +29,19 @@ public class DomainRepositoryImpl implements DomainRepository {
 
     @Override
     public boolean insert(BusinessDomain req) {
-        return domainMapper.insert(DomainPOUtil.convert(req)) > 0;
+        DomainPO domainPO = DomainPOUtil.convert(req, DomainPO.class);
+        return domainMapper.insert(domainPO) == 1;
     }
 
     @Override
     public boolean update(BusinessDomain req) {
-        return domainMapper.update(DomainPOUtil.convert(req)) > 0;
+        DomainPO domainPO = DomainPOUtil.convert(req, DomainPO.class);
+        return domainMapper.update(domainPO) == 1;
     }
 
     @Override
     public boolean delete(BusinessDomain req) {
-        return domainMapper.delete(DomainPOUtil.convert(req)) > 0;
+        DomainPO domainPO = DomainPOUtil.convert(req, DomainPO.class);
+        return domainMapper.delete(domainPO) == 1;
     }
 }

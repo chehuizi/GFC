@@ -17,13 +17,13 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
 
     @Override
     public BusinessDomainEventPO selectOne(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req);
+        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req, BusinessDomainEventPO.class);
         return domainEventMapper.selectOne(domainEventPO);
     }
 
     @Override
     public boolean insert(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req);
+        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req, BusinessDomainEventPO.class);
         return domainEventMapper.insert(domainEventPO) == 1;
     }
 
@@ -34,7 +34,7 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
 
     @Override
     public boolean delete(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req);
+        BusinessDomainEventPO domainEventPO = DomainPOUtil.convert(req, BusinessDomainEventPO.class);
         return domainEventMapper.delete(domainEventPO) == 1;
     }
 }

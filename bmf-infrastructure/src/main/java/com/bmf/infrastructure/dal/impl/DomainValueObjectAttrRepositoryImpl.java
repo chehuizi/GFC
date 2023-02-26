@@ -22,7 +22,7 @@ public class DomainValueObjectAttrRepositoryImpl implements DomainValueObjectAtt
 
     @Override
     public boolean insert(DomainValueObjectAttr req) {
-        BusinessDomainValueObjectAttrPO valueObjectAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainValueObjectAttrPO valueObjectAttrPO = DomainPOUtil.convert(req, BusinessDomainValueObjectAttrPO.class);
         return businessDomainValueObjectAttrMapper.insert(valueObjectAttrPO) == 1;
     }
 
@@ -33,7 +33,7 @@ public class DomainValueObjectAttrRepositoryImpl implements DomainValueObjectAtt
 
     @Override
     public boolean delete(DomainValueObjectAttr req) {
-        BusinessDomainValueObjectAttrPO valueObjectAttrPO = DomainPOUtil.convert(req);
+        BusinessDomainValueObjectAttrPO valueObjectAttrPO = DomainPOUtil.convert(req, BusinessDomainValueObjectAttrPO.class);
         return businessDomainValueObjectAttrMapper.delete(valueObjectAttrPO) == 1;
     }
 }
