@@ -4,7 +4,6 @@ import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.dto.DomainQryReqDTO;
-import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;

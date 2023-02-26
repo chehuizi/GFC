@@ -1,7 +1,7 @@
 package com.bmf.api;
 
 import com.bmf.api.domain.cmd.DomainCmdService;
-import com.bmf.api.domain.dto.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainCmdReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
@@ -29,114 +29,114 @@ public class DomainCmdServiceExceptionTest {
 
     @Test
     public void test_domain_create_exp_80001_2() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
-        domainReqDTO.setBusinessDomain(null);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
+        domainCmdReqDTO.setBusinessDomain(null);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_create_exp_80001_3() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainName("");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_create_exp_80001_4() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(null);
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_create_exp_80001_5() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("");
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_create_exp_80001_6() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         businessDomain.setDomainType("");
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_create_exp_80001_7() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         businessDomain.setDomainType("test");
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_create_exp_80001_8() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainLevel(0);
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_create_exp_100004() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(10);
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.DOMAIN_IS_EXISTED.getCode() == result.getCode());
     }
@@ -150,20 +150,20 @@ public class DomainCmdServiceExceptionTest {
 
     @Test
     public void test_domain_update_exp_80001_2() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
-        domainReqDTO.setBusinessDomain(null);
-        Result<Boolean> result = domainCmdService.update(domainReqDTO);
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
+        domainCmdReqDTO.setBusinessDomain(null);
+        Result<Boolean> result = domainCmdService.update(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_update_exp_80001_3() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainName("仓库管理系统");
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.update(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.update(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
     }

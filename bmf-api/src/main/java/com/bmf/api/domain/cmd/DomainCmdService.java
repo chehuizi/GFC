@@ -2,88 +2,88 @@ package com.bmf.api.domain.cmd;
 
 import com.bmf.api.CmdService;
 import com.bmf.api.Result;
-import com.bmf.api.domain.dto.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainCmdReqDTO;
 
 /**
  * 业务领域cmd服务
  */
-public interface DomainCmdService extends CmdService<DomainReqDTO> {
+public interface DomainCmdService extends CmdService<DomainCmdReqDTO> {
 
     /**
      * 添加领域实体
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> addEntity(DomainReqDTO domainReqDTO);
+    Result<Boolean> addEntity(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 删除领域实体
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> delEntity(DomainReqDTO domainReqDTO);
+    Result<Boolean> delEntity(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 添加领域服务
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> addService(DomainReqDTO domainReqDTO);
+    Result<Boolean> addService(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 删除领域服务
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> delService(DomainReqDTO domainReqDTO);
+    Result<Boolean> delService(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 添加领域值对象
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> addValueObject(DomainReqDTO domainReqDTO);
+    Result<Boolean> addValueObject(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 删除领域值对象
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> delValueObject(DomainReqDTO domainReqDTO);
+    Result<Boolean> delValueObject(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 添加领域事件
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> addDomainEvent(DomainReqDTO domainReqDTO);
+    Result<Boolean> addDomainEvent(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 删除领域事件
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> delDomainEvent(DomainReqDTO domainReqDTO);
+    Result<Boolean> delDomainEvent(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 添加领域实体和值对象关系
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> addEntityRelVO(DomainReqDTO domainReqDTO);
+    Result<Boolean> addEntityRelVO(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 删除领域实体和值对象关系
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> delEntityRelVO(DomainReqDTO domainReqDTO);
+    Result<Boolean> delEntityRelVO(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 添加聚合根
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> addAggregate(DomainReqDTO domainReqDTO);
+    Result<Boolean> addAggregate(DomainCmdReqDTO domainCmdReqDTO);
 
 }

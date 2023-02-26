@@ -2,7 +2,6 @@ package com.bmf.api;
 
 import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.dto.DomainQryReqDTO;
-import com.bmf.api.domain.dto.DomainReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.common.enums.BizCodeEnum;

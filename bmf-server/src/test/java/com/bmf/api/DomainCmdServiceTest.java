@@ -1,7 +1,7 @@
 package com.bmf.api;
 
 import com.bmf.api.domain.cmd.DomainCmdService;
-import com.bmf.api.domain.dto.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainCmdReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
@@ -27,206 +27,206 @@ public class DomainCmdServiceTest {
 
     @Test
     public void test_domain_create() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(103);
         businessDomain.setDomainName("仓库管理域");
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.create(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_update() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(102);
         businessDomain.setDomainName("库存管理域");
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.update(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.update(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_delete() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(10);
-        domainReqDTO.setBusinessDomain(businessDomain);
-        Result<Boolean> result = domainCmdService.delete(domainReqDTO);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Result<Boolean> result = domainCmdService.delete(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
     @Test
     public void test_domain_add_entity() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(103);
-        domainReqDTO.setBusinessDomain(businessDomain);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(103);
         domainEntity.setEntityIdAlias("whSn");
         domainEntity.setEntityIdName("仓库编号");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
         domainEntity.setEntityDesc("仓库");
-        domainReqDTO.setDomainEntity(domainEntity);
-        Result<Boolean> result = domainCmdService.addEntity(domainReqDTO);
+        domainCmdReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.addEntity(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_del_entity() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(103);
         domainEntity.setEntityIdCode(100009);
-        domainReqDTO.setDomainEntity(domainEntity);
-        Result<Boolean> result = domainCmdService.delEntity(domainReqDTO);
+        domainCmdReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.delEntity(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_add_service() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(103);
-        domainReqDTO.setBusinessDomain(businessDomain);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainService domainService = new DomainService();
         domainService.setDomainCode(103);
         domainService.setServiceAlias("outbound_service");
         domainService.setServiceName("出库服务");
         domainService.setServiceDesc("支持存货和固资出库服务");
-        domainReqDTO.setDomainService(domainService);
-        Result<Boolean> result = domainCmdService.addService(domainReqDTO);
+        domainCmdReqDTO.setDomainService(domainService);
+        Result<Boolean> result = domainCmdService.addService(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_del_service() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainService domainService = new DomainService();
         domainService.setDomainCode(103);
         domainService.setServiceCode(100001);
-        domainReqDTO.setDomainService(domainService);
-        Result<Boolean> result = domainCmdService.delService(domainReqDTO);
+        domainCmdReqDTO.setDomainService(domainService);
+        Result<Boolean> result = domainCmdService.delService(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_add_vo() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(103);
-        domainReqDTO.setBusinessDomain(businessDomain);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainValueObject valueObject = new DomainValueObject();
         valueObject.setDomainCode(103);
         valueObject.setVoAlias("zone");
         valueObject.setVoName("行政区划");
         valueObject.setVoDesc("国家行政区划（国标）");
-        domainReqDTO.setDomainValueObject(valueObject);
-        Result<Boolean> result = domainCmdService.addValueObject(domainReqDTO);
+        domainCmdReqDTO.setDomainValueObject(valueObject);
+        Result<Boolean> result = domainCmdService.addValueObject(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_del_vo() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainValueObject valueObject = new DomainValueObject();
         valueObject.setDomainCode(103);
         valueObject.setVoCode(102);
-        domainReqDTO.setDomainValueObject(valueObject);
-        Result<Boolean> result = domainCmdService.delValueObject(domainReqDTO);
+        domainCmdReqDTO.setDomainValueObject(valueObject);
+        Result<Boolean> result = domainCmdService.delValueObject(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_add_event() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(103);
-        domainReqDTO.setBusinessDomain(businessDomain);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainEvent domainEvent = new DomainEvent();
         domainEvent.setDomainCode(103);
         domainEvent.setEventAlias("outbound_success_event");
         domainEvent.setEventName("出库成功事件");
         domainEvent.setEventDesc("出库单成功关闭");
-        domainReqDTO.setDomainEvent(domainEvent);
-        Result<Boolean> result = domainCmdService.addDomainEvent(domainReqDTO);
+        domainCmdReqDTO.setDomainEvent(domainEvent);
+        Result<Boolean> result = domainCmdService.addDomainEvent(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_del_event() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainEvent domainEvent = new DomainEvent();
         domainEvent.setDomainCode(103);
         domainEvent.setEventCode(103);
-        domainReqDTO.setDomainEvent(domainEvent);
-        Result<Boolean> result = domainCmdService.delDomainEvent(domainReqDTO);
+        domainCmdReqDTO.setDomainEvent(domainEvent);
+        Result<Boolean> result = domainCmdService.delDomainEvent(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_add_entity_rel_vo() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainEntity domainEntity = new DomainEntity();
-        domainReqDTO.setDomainEntity(domainEntity);
+        domainCmdReqDTO.setDomainEntity(domainEntity);
         domainEntity.setDomainCode(103);
         domainEntity.setEntityIdCode(100010);
         DomainValueObject domainValueObject = new DomainValueObject();
         domainValueObject.setDomainCode(103);
         domainValueObject.setVoCode(103);
-        domainReqDTO.setDomainValueObject(domainValueObject);
-        Result<Boolean> result = domainCmdService.addEntityRelVO(domainReqDTO);
+        domainCmdReqDTO.setDomainValueObject(domainValueObject);
+        Result<Boolean> result = domainCmdService.addEntityRelVO(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_del_entity_rel_vo() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainEntity domainEntity = new DomainEntity();
-        domainReqDTO.setDomainEntity(domainEntity);
+        domainCmdReqDTO.setDomainEntity(domainEntity);
         domainEntity.setDomainCode(103);
         domainEntity.setEntityIdCode(100010);
         DomainValueObject domainValueObject = new DomainValueObject();
         domainValueObject.setDomainCode(103);
         domainValueObject.setVoCode(103);
-        domainReqDTO.setDomainValueObject(domainValueObject);
-        Result<Boolean> result = domainCmdService.delEntityRelVO(domainReqDTO);
+        domainCmdReqDTO.setDomainValueObject(domainValueObject);
+        Result<Boolean> result = domainCmdService.delEntityRelVO(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void test_domain_add_aggregate() {
-        DomainReqDTO domainReqDTO = new DomainReqDTO();
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(14);
         businessDomain.setDomainName("test");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
-        domainReqDTO.setBusinessDomain(businessDomain);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);
         domainEntity.setEntityIdName("test");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
-        domainReqDTO.setDomainEntity(domainEntity);
-        Result<Boolean> result = domainCmdService.addAggregate(domainReqDTO);
+        domainCmdReqDTO.setDomainEntity(domainEntity);
+        Result<Boolean> result = domainCmdService.addAggregate(domainCmdReqDTO);
         System.out.println(result);
     }
 

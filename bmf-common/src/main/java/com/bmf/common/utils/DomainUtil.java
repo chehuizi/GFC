@@ -1,7 +1,7 @@
 package com.bmf.common.utils;
 
 import com.bmf.api.domain.dto.DomainQryReqDTO;
-import com.bmf.api.domain.dto.DomainReqDTO;
+import com.bmf.api.domain.dto.DomainCmdReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.tactics.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
@@ -14,16 +14,16 @@ public class DomainUtil {
 
     /**
      * 转换对象
-     * @param domainReqDTO
+     * @param domainCmdReqDTO
      * @return
      */
-    public static BusinessDomain convert(DomainReqDTO domainReqDTO) {
+    public static BusinessDomain convert(DomainCmdReqDTO domainCmdReqDTO) {
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(domainReqDTO.getBusinessDomain().getDomainCode());
-        businessDomain.setDomainName(domainReqDTO.getBusinessDomain().getDomainName());
-        businessDomain.setDomainAlias(domainReqDTO.getBusinessDomain().getDomainAlias());
-        businessDomain.setDomainLevel(domainReqDTO.getBusinessDomain().getDomainLevel());
-        businessDomain.setDomainType(domainReqDTO.getBusinessDomain().getDomainType());
+        businessDomain.setDomainCode(domainCmdReqDTO.getBusinessDomain().getDomainCode());
+        businessDomain.setDomainName(domainCmdReqDTO.getBusinessDomain().getDomainName());
+        businessDomain.setDomainAlias(domainCmdReqDTO.getBusinessDomain().getDomainAlias());
+        businessDomain.setDomainLevel(domainCmdReqDTO.getBusinessDomain().getDomainLevel());
+        businessDomain.setDomainType(domainCmdReqDTO.getBusinessDomain().getDomainType());
         return businessDomain;
     }
 
