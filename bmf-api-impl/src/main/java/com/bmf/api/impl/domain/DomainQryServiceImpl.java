@@ -5,7 +5,6 @@ import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.BusinessDomain;
-import com.bmf.common.utils.DomainUtil;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
 import com.bmf.core.domain.DomainService;
@@ -21,8 +20,7 @@ public class DomainQryServiceImpl implements DomainQryService {
     @Override
     @Validator(beanName = "domainQryReqDTOValidator", method = "v4QueryOne")
     public Result<DomainRespDTO> queryOne(DomainQryReqDTO req) {
-        BusinessDomain domain = DomainUtil.convert(req);
-        BusinessDomain result = domainService.queryDomain(domain);
+        BusinessDomain result = domainService.queryDomain(req.getBusinessDomain());
         DomainRespDTO respDTO = new DomainRespDTO(result);
         return ResultUtil.success(respDTO);
     }

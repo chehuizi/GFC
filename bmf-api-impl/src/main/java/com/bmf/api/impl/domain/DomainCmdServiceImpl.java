@@ -10,7 +10,6 @@ import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
-import com.bmf.common.utils.DomainUtil;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
 import com.bmf.core.design.BusinessDomainDesign4Tactics;
@@ -38,7 +37,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(DomainCmdReqDTO req) {
-        BusinessDomain domain = DomainUtil.convert(req);
+        BusinessDomain domain = req.getBusinessDomain();
         BusinessDomain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNonNull(queryResult, BizCodeEnum.DOMAIN_IS_EXISTED);
         domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
@@ -48,7 +47,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Update")
     public Result<Boolean> update(DomainCmdReqDTO req) {
-        BusinessDomain domain = DomainUtil.convert(req);
+        BusinessDomain domain = req.getBusinessDomain();
         BusinessDomain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNull(queryResult, BizCodeEnum.DOMAIN_NOT_EXIST);
         return ResultUtil.success(domainService.updateDomain(domain));
@@ -57,7 +56,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Delete")
     public Result<Boolean> delete(DomainCmdReqDTO req) {
-        BusinessDomain domain = DomainUtil.convert(req);
+        BusinessDomain domain = req.getBusinessDomain();
         return ResultUtil.success(domainService.deleteDomain(domain));
     }
 
