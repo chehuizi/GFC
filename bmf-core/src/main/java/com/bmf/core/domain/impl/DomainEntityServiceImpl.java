@@ -1,6 +1,6 @@
 package com.bmf.core.domain.impl;
 
-import com.bmf.base.tactics.EntityRelVO;
+import com.bmf.base.tactics.entity.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.core.domain.DomainEntityService;
@@ -9,6 +9,8 @@ import com.bmf.infrastructure.dal.DomainEntityRelVORepository;
 import com.bmf.infrastructure.dal.DomainEntityRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DomainEntityServiceImpl implements DomainEntityService {
@@ -23,6 +25,11 @@ public class DomainEntityServiceImpl implements DomainEntityService {
     @Override
     public DomainEntity queryDomainEntity(DomainEntity domainEntity) {
         return domainEntityRepository.selectOne(domainEntity);
+    }
+
+    @Override
+    public List<DomainEntity> queryByDomainCode(Integer domainCode) {
+        return null;
     }
 
     @Override

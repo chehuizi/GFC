@@ -35,7 +35,7 @@ public class DomainEntity extends BaseModel {
      */
     private String entityDesc;
     /**
-     * 业务领域实体属性列表
+     * 实体属性列表
      */
     private List<DomainEntityAttr> entityAttrList;
     /**

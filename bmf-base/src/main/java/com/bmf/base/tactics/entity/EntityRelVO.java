@@ -1,4 +1,4 @@
-package com.bmf.base.tactics;
+package com.bmf.base.tactics.entity;
 
 import com.bmf.base.BaseModel;
 import lombok.Data;

@@ -25,7 +25,19 @@ public class DomainQryReqDTO extends ReqDTO implements Serializable {
      */
     private Business business;
     /**
-     * 业务域
+     * 业务领域
      */
     private BusinessDomain businessDomain;
+    /**
+     * 包括领域实体
+     */
+    private boolean includeEntity;
+    /**
+     * 包括领域服务
+     */
+    private boolean includeService;
+    /**
+     * 包括领域事件
+     */
+    private boolean includeEvent;
 }

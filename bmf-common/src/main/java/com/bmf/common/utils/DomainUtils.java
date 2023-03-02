@@ -1,8 +1,6 @@
 package com.bmf.common.utils;
 
-import com.bmf.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.EntityRelVO;
+import com.bmf.base.tactics.entity.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 

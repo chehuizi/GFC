@@ -3,6 +3,8 @@ package com.bmf.base.tactics.service;
 import com.bmf.base.BaseModel;
 import lombok.Data;
 
+import java.util.List;
+
 @Data
 public class DomainService extends BaseModel {
 
@@ -27,4 +29,8 @@ public class DomainService extends BaseModel {
      */
     private String serviceDesc;
 
+    /**
+     * 服务属性列表
+     */
+    private List<DomainServiceAttr> serviceAttrList;
 }

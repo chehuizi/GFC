@@ -3,6 +3,8 @@ package com.bmf.base.tactics.event;
 import com.bmf.base.BaseModel;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 业务领域事件
  */
@@ -29,4 +31,8 @@ public class DomainEvent extends BaseModel {
      * 事件描述
      */
     private String eventDesc;
+    /**
+     * 事件属性列表
+     */
+    private List<DomainEventAttr> eventAttrList;
 }

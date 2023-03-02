@@ -45,11 +45,11 @@ public class ParamCheckUtil {
 
     /**
      * TRUE校验
-     * @param param
+     * @param condition
      * @param message
      */
-    public static void checkTrue(boolean param, String message) {
-        if (!param) {
+    public static void checkTrue(boolean condition, String message) {
+        if (!condition) {
             throw new BizException(BizCodeEnum.PARAM_ERROR, message);
         }
     }

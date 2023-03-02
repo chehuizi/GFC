@@ -1,11 +1,14 @@
 package com.bmf.core.domain.impl;
 
+import com.bmf.base.tactics.service.DomainService;
 import com.bmf.base.tactics.service.DomainServiceAttr;
 import com.bmf.core.domain.DomainServiceService;
 import com.bmf.infrastructure.dal.DomainServiceAttrRepository;
 import com.bmf.infrastructure.dal.DomainServiceRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DomainServiceServiceImpl implements DomainServiceService {
@@ -14,6 +17,11 @@ public class DomainServiceServiceImpl implements DomainServiceService {
     private DomainServiceRepository domainServiceRepository;
     @Autowired
     private DomainServiceAttrRepository domainServiceAttrRepository;
+
+    @Override
+    public List<DomainService> queryByDomainCode(Integer domainCode) {
+        return null;
+    }
 
     @Override
     public Boolean addServiceAttr(DomainServiceAttr serviceAttr) {
