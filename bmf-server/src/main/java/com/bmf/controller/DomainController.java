@@ -27,11 +27,15 @@ public class DomainController {
     private DomainCmdService domainCmdService;
 
     @GetMapping("detail")
-    public String detail(@RequestParam("domain_code") Integer domainCode) {
+    public String detail(@RequestParam("domain_code") Integer domainCode,
+                         @RequestParam("include_all") Boolean includeAll) {
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
         businessDomain.setDomainCode(domainCode);
         domainQryReqDTO.setBusinessDomain(businessDomain);
+        domainQryReqDTO.setIncludeEntity(includeAll);
+        domainQryReqDTO.setIncludeService(includeAll);
+        domainQryReqDTO.setIncludeEvent(includeAll);
         Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
         return JSON.toJSONString(result);
     }

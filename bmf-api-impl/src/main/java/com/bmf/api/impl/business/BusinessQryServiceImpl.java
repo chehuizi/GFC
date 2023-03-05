@@ -42,13 +42,12 @@ public class BusinessQryServiceImpl implements BusinessQryService {
                 business.setBusinessDomainList(businessDomainList);
             }
         }
-
         if (req.isIncludeDomainRelation()) {
             List<BusinessDomainRelation> businessDomainRelationList = businessService.queryBusinessDomainRelation(business);
             business.setBusinessDomainRelationList(businessDomainRelationList);
         }
-        BusinessRespDTO respDTO = new BusinessRespDTO(business);
-        return ResultUtil.success(respDTO);
+
+        return ResultUtil.success(new BusinessRespDTO(business));
     }
 
     /**

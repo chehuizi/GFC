@@ -12,6 +12,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -26,13 +27,14 @@ public class BusinessController {
     private BusinessCmdService businessCmdService;
 
     @GetMapping("detail")
-    public String detail() {
+    public String detail(@RequestParam("business_code") Integer businessCode,
+                         @RequestParam("include_all") Boolean includeAll) {
         BusinessQryReqDTO businessQryReqDTO = new BusinessQryReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10);
+        business.setBusinessCode(businessCode);
         businessQryReqDTO.setBusiness(business);
-        businessQryReqDTO.setIncludeDomain(true);
-        businessQryReqDTO.setIncludeDomainRelation(true);
+        businessQryReqDTO.setIncludeDomain(includeAll);
+        businessQryReqDTO.setIncludeDomainRelation(includeAll);
         Result<BusinessRespDTO> result = businessQryService.queryOne(businessQryReqDTO);
         return JSON.toJSONString(result);
     }
