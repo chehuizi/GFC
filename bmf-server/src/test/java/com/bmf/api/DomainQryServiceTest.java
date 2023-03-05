@@ -40,5 +40,20 @@ public class DomainQryServiceTest {
         Assert.assertTrue(10 == result.getData().getBusinessDomain().getDomainCode());
     }
 
+    @Test
+    public void test_domain_query_one_3() {
+        DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(103);
+        domainQryReqDTO.setBusinessDomain(businessDomain);
+        domainQryReqDTO.setIncludeEntity(true);
+        domainQryReqDTO.setIncludeService(true);
+        domainQryReqDTO.setIncludeEvent(true);
+        Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(1 == result.getData().getBusinessDomain().getDomainEntityList().size()
+            && 1 == result.getData().getBusinessDomain().getDomainServiceList().size()
+            && 1 == result.getData().getBusinessDomain().getDomainEventList().size());
+    }
 }
 

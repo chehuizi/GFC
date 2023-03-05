@@ -8,6 +8,7 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DomainEventRepositoryImpl implements DomainEventRepository {
@@ -19,6 +20,11 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
     public DomainEvent selectOne(DomainEvent req) {
         BusinessDomainEventPO domainEventPO = POUtils.convert(req, BusinessDomainEventPO.class);
         return POUtils.convert(domainEventMapper.selectOne(domainEventPO), DomainEvent.class);
+    }
+
+    @Override
+    public List<DomainEvent> selectByDomainCode(Integer domainCode) {
+        return POUtils.convert(domainEventMapper.selectByDomainCode(domainCode), DomainEvent.class);
     }
 
     @Override

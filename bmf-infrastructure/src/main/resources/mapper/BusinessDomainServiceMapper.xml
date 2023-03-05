@@ -29,6 +29,13 @@
         limit 1
     </select>
 
+    <select id="selectByDomainCode" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_service
+        where domain_code = #{domainCode}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainServicePO">
         insert into bmf_business_domain_service (domain_code, service_code, service_alias, service_name, service_desc)
         values (

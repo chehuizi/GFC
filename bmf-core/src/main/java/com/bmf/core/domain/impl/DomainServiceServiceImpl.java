@@ -20,7 +20,7 @@ public class DomainServiceServiceImpl implements DomainServiceService {
 
     @Override
     public List<DomainService> queryByDomainCode(Integer domainCode) {
-        return null;
+        return domainServiceRepository.selectByDomainCode(domainCode);
     }
 
     @Override

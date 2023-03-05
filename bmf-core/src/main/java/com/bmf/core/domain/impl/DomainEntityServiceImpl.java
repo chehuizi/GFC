@@ -29,7 +29,7 @@ public class DomainEntityServiceImpl implements DomainEntityService {
 
     @Override
     public List<DomainEntity> queryByDomainCode(Integer domainCode) {
-        return null;
+        return domainEntityRepository.selectByDomainCode(domainCode);
     }
 
     @Override

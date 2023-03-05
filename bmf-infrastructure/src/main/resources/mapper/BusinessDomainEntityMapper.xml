@@ -31,6 +31,13 @@
         limit 1
     </select>
 
+    <select id="selectByDomainCode" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_entity
+        where domain_code = #{domainCode}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityPO">
         insert into bmf_business_domain_entity (domain_code, entity_id_code,
         entity_id_alias, entity_id_name, entity_id_type, entity_desc)

@@ -20,7 +20,7 @@ public class DomainEventServiceImpl implements DomainEventService {
 
     @Override
     public List<DomainEvent> queryByDomainCode(Integer domainCode) {
-        return null;
+        return domainEventRepository.selectByDomainCode(domainCode);
     }
 
     @Override
