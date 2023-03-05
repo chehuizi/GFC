@@ -18,7 +18,7 @@ public class CodeSeqGeneratorTest {
 
     @Test
     public void test_init_code_seq_business() {
-        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_BUSINESS.getKey(), 10000);
+        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_BUSINESS.getKey(), 100);
         System.out.println(result);
         Assert.assertTrue(result);
     }
@@ -39,21 +39,21 @@ public class CodeSeqGeneratorTest {
 
     @Test
     public void test_init_code_seq_service() {
-        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_SERVICE.getKey(), 100000);
+        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_SERVICE.getKey(), 10000);
         System.out.println(result);
         Assert.assertTrue(result);
     }
 
     @Test
     public void test_init_code_seq_vo() {
-        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_VALUE_OBJECT.getKey(), 100);
+        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_VALUE_OBJECT.getKey(), 10000);
         System.out.println(result);
         Assert.assertTrue(result);
     }
 
     @Test
     public void test_init_code_seq_event() {
-        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_EVENT.getKey(), 100);
+        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_EVENT.getKey(), 10000);
         System.out.println(result);
         Assert.assertTrue(result);
     }
