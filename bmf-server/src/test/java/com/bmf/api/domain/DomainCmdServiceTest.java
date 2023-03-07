@@ -30,9 +30,8 @@ public class DomainCmdServiceTest {
     public void test_domain_create() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
-        businessDomain.setDomainName("仓库管理域");
-        businessDomain.setDomainAlias("wms");
+        businessDomain.setDomainName("库存管理域");
+        businessDomain.setDomainAlias("ims");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainCmdReqDTO.setBusinessDomain(businessDomain);

@@ -34,9 +34,9 @@ public class BusinessCmdServiceTest {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
         business.setBusinessPrefix(BusinessPrefixEnum.B.getPrefix());
-        business.setBusinessName("外卖业务");
-        business.setBusinessAlias("food");
-        business.setBusinessDesc("外卖业务");
+        business.setBusinessName("共享两轮业务");
+        business.setBusinessAlias("sharing-bike");
+        business.setBusinessDesc("共享单车、电单车");
         businessCmdReqDTO.setBusiness(business);
         Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
         System.out.println(result);
@@ -47,7 +47,7 @@ public class BusinessCmdServiceTest {
     public void test_business_add_domain() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10003);
+        business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
         domain.setDomainCode(103);
@@ -75,21 +75,21 @@ public class BusinessCmdServiceTest {
     public void test_business_build_domain_relation() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10003);
+        business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
         UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship =
                 new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setBusinessCode(10003);
+        upstreamDownstreamRelationship.setBusinessCode(101);
         OpenHostServiceRole ohs = new OpenHostServiceRole();
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(102);
+        domain.setDomainCode(103);
         domainQryReqDTO.setBusinessDomain(domain);
         Result<DomainRespDTO> result1 = domainQryService.queryOne(domainQryReqDTO);
         ohs.setDomain(result1.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleA(ohs);
         ConformistRole cf = new ConformistRole();
-        domain.setDomainCode(103);
+        domain.setDomainCode(102);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainQryReqDTO);
         cf.setDomain(result2.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleB(cf);
