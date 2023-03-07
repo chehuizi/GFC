@@ -1,5 +1,6 @@
-package com.bmf.api;
+package com.bmf.api.domain;
 
+import com.bmf.api.Result;
 import com.bmf.api.domain.DomainQryService;
 import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;

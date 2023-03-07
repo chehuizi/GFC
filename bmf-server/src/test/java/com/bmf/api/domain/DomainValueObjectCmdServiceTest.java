@@ -1,5 +1,6 @@
-package com.bmf.api;
+package com.bmf.api.domain;
 
+import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainValueObjectCmdService;
 import com.bmf.api.domain.dto.DomainValueObjectReqDTO;
 import com.bmf.base.enums.AttrTypeEnum;

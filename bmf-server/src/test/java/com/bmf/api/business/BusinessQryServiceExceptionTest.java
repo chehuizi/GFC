@@ -1,5 +1,6 @@
-package com.bmf.api;
+package com.bmf.api.business;
 
+import com.bmf.api.Result;
 import com.bmf.api.business.BusinessQryService;
 import com.bmf.api.business.dto.BusinessQryReqDTO;
 import com.bmf.api.business.dto.BusinessRespDTO;
