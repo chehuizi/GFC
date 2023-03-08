@@ -1,6 +1,9 @@
 package com.bmf.base.enums;
 
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Objects;
 
 /**
  * 业务域关系角色枚举
@@ -36,4 +39,35 @@ public enum RelationshipRoleEnum {
         this.desc = desc;
     }
 
+    /**
+     * 根据role获取枚举
+     * @param role
+     * @return
+     */
+    public static RelationshipRoleEnum getByRole(String role) {
+        if (StringUtils.isBlank(role)) {
+            return null;
+        }
+
+        for (RelationshipRoleEnum item : RelationshipRoleEnum.values()) {
+            if (item.getRole().equals(role)) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 根据role获取描述
+     * @param role
+     * @return
+     */
+    public static String getDescByRole(String role) {
+        RelationshipRoleEnum roleEnum = getByRole(role);
+        if (Objects.nonNull(roleEnum)) {
+            return roleEnum.getDesc();
+        }
+        return StringUtils.EMPTY;
+    }
 }

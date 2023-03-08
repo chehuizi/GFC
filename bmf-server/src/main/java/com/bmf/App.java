@@ -12,7 +12,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @MapperScan("com.bmf.infrastructure.dal.mapper")
 public class App {
 
-    public static void main( String[] args ) {
+    public static void main(String[] args) {
         SpringApplication.run(App.class, args);
     }
 

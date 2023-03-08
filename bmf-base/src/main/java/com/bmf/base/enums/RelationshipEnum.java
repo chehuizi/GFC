@@ -1,6 +1,9 @@
 package com.bmf.base.enums;
 
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Objects;
 
 /**
  * 业务域关系枚举
@@ -29,4 +32,35 @@ public enum RelationshipEnum {
         this.desc = desc;
     }
 
+    /**
+     * 根据type获取枚举
+     * @param type
+     * @return
+     */
+    public static RelationshipEnum getByType(String type) {
+        if (StringUtils.isBlank(type)) {
+            return null;
+        }
+
+        for (RelationshipEnum item : RelationshipEnum.values()) {
+            if (item.getType().equals(type)) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 根据type获取描述
+     * @param type
+     * @return
+     */
+    public static String getDescByType(String type) {
+        RelationshipEnum relationshipEnum = getByType(type);
+        if (Objects.nonNull(relationshipEnum)) {
+            return relationshipEnum.getDesc();
+        }
+        return StringUtils.EMPTY;
+    }
 }

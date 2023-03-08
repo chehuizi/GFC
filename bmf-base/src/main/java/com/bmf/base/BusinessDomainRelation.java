@@ -1,6 +1,11 @@
 package com.bmf.base;
 
+import com.bmf.base.enums.RelationshipEnum;
+import com.bmf.base.enums.RelationshipRoleEnum;
 import lombok.Data;
+
+import java.util.HashMap;
+import java.util.Map;
 
 @Data
 public class BusinessDomainRelation extends BaseModel {
@@ -32,4 +37,16 @@ public class BusinessDomainRelation extends BaseModel {
      * 领域B编码
      */
     private Integer domainBCode;
+
+    /**
+     * 获取扩展map
+     * @return
+     */
+    public Map<String, Object> getExtMap() {
+        Map<String, Object> extMap = new HashMap<>();
+        extMap.put("domainARoleDesc", RelationshipRoleEnum.getDescByRole(domainARole));
+        extMap.put("domainBRoleDesc", RelationshipRoleEnum.getDescByRole(domainBRole));
+        extMap.put("domainRelationDesc", RelationshipEnum.getDescByType(domainRelation));
+        return extMap;
+    }
 }
