@@ -1,8 +1,6 @@
 package com.bmf.base;
 
 import com.bmf.base.enums.BusinessDomainTypeEnum;
-import com.bmf.base.enums.RelationshipEnum;
-import com.bmf.base.enums.RelationshipRoleEnum;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.base.tactics.service.DomainService;
