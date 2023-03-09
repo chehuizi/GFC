@@ -24,13 +24,13 @@ public class DomainEventCmdServiceTest {
     public void testAddEventAttr() {
         DomainEventReqDTO domainEventReqDTO = new DomainEventReqDTO();
         DomainEvent domainEvent = new DomainEvent();
-        domainEvent.setEventCode(104);
+        domainEvent.setEventCode(10003);
         domainEventReqDTO.setDomainEvent(domainEvent);
         DomainEventAttr domainEventAttr = new DomainEventAttr();
-        domainEventAttr.setEventCode(104);
-        domainEventAttr.setAttrName("outboundTime");
-        domainEventAttr.setAttrType(AttrTypeEnum.TIMESTAMP.getType());
-        domainEventAttr.setAttrDesc("出库时间");
+        domainEventAttr.setEventCode(10003);
+        domainEventAttr.setAttrName("inventoryOrderNo");
+        domainEventAttr.setAttrType(AttrTypeEnum.STRING.getType());
+        domainEventAttr.setAttrDesc("盘点单号");
         domainEventReqDTO.setEventAttr(domainEventAttr);
         Result<Boolean> result = domainEventCmdService.addEventAttr(domainEventReqDTO);
         System.out.println(result);

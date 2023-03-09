@@ -24,12 +24,12 @@ public class DomainServiceCmdServiceTest {
     public void testAddServiceAttr() {
         DomainServiceReqDTO serviceReqDTO = new DomainServiceReqDTO();
         DomainService domainService = new DomainService();
-        domainService.setServiceCode(100002);
+        domainService.setServiceCode(10003);
         DomainServiceAttr serviceAttr = new DomainServiceAttr();
-        serviceAttr.setServiceCode(100002);
-        serviceAttr.setAttrName("outboundType");
+        serviceAttr.setServiceCode(10003);
+        serviceAttr.setAttrName("inventoryWhSn");
         serviceAttr.setAttrType(AttrTypeEnum.STRING.getType());
-        serviceAttr.setAttrDesc("出库方式（扫码、RFID）");
+        serviceAttr.setAttrDesc("盘点仓库（仓库编码）");
         serviceReqDTO.setServiceAttr(serviceAttr);
         serviceReqDTO.setDomainService(domainService);
         Result<Boolean> result = domainServiceCmdService.addServiceAttr(serviceReqDTO);

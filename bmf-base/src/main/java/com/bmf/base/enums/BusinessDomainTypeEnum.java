@@ -1,6 +1,9 @@
 package com.bmf.base.enums;
 
 import lombok.Getter;
+import org.apache.commons.lang3.StringUtils;
+
+import java.util.Objects;
 
 /**
  * 业务域类型枚举
@@ -40,5 +43,37 @@ public enum BusinessDomainTypeEnum {
             }
         }
         return false;
+    }
+
+    /**
+     * 根据type获取枚举
+     * @param type
+     * @return
+     */
+    public static BusinessDomainTypeEnum getByType(String type) {
+        if (StringUtils.isBlank(type)) {
+            return null;
+        }
+
+        for (BusinessDomainTypeEnum item : BusinessDomainTypeEnum.values()) {
+            if (item.getType().equals(type)) {
+                return item;
+            }
+        }
+
+        return null;
+    }
+
+    /**
+     * 根据type获取描述
+     * @param type
+     * @return
+     */
+    public static String getDescByType(String type) {
+        BusinessDomainTypeEnum domainTypeEnum = getByType(type);
+        if (Objects.nonNull(domainTypeEnum)) {
+            return domainTypeEnum.getDesc();
+        }
+        return StringUtils.EMPTY;
     }
 }

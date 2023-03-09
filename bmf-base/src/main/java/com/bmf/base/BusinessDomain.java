@@ -1,11 +1,16 @@
 package com.bmf.base;
 
+import com.bmf.base.enums.BusinessDomainTypeEnum;
+import com.bmf.base.enums.RelationshipEnum;
+import com.bmf.base.enums.RelationshipRoleEnum;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.base.tactics.service.DomainService;
 import lombok.Data;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * 业务领域
@@ -86,5 +91,15 @@ public class BusinessDomain extends BaseModel {
                 ", \"domainType\": \"" + domainType + "\"" +
                 ", \"domainLevel\": " + domainLevel +
                 "}";
+    }
+
+    /**
+     * 获取扩展map
+     * @return
+     */
+    public Map<String, Object> getExtMap() {
+        Map<String, Object> extMap = new HashMap<>();
+        extMap.put("domainTypeDesc", BusinessDomainTypeEnum.getDescByType(domainType));
+        return extMap;
     }
 }
