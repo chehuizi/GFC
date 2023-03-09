@@ -10,6 +10,8 @@ public enum AttrTypeEnum {
 
     STRING("string", "字符串"),
     TIMESTAMP("timestamp", "时间戳"),
+    INTEGER("integer", "整数"),
+    DOUBLE("double", "浮点数"),
     ;
 
     /**

@@ -67,10 +67,10 @@ public class DomainCmdServiceTest {
     public void test_domain_add_entity() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
+        businessDomain.setDomainCode(101);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainEntity domainEntity = new DomainEntity();
-        domainEntity.setDomainCode(103);
+        domainEntity.setDomainCode(101);
         domainEntity.setEntityIdAlias("whSn");
         domainEntity.setEntityIdName("仓库编号");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
@@ -126,10 +126,10 @@ public class DomainCmdServiceTest {
     public void test_domain_add_vo() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
+        businessDomain.setDomainCode(101);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainValueObject valueObject = new DomainValueObject();
-        valueObject.setDomainCode(103);
+        valueObject.setDomainCode(101);
         valueObject.setVoAlias("zone");
         valueObject.setVoName("行政区划");
         valueObject.setVoDesc("国家行政区划（国标）");
@@ -185,11 +185,11 @@ public class DomainCmdServiceTest {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainEntity domainEntity = new DomainEntity();
         domainCmdReqDTO.setDomainEntity(domainEntity);
-        domainEntity.setDomainCode(103);
-        domainEntity.setEntityIdCode(100010);
+        domainEntity.setDomainCode(101);
+        domainEntity.setEntityIdCode(10001);
         DomainValueObject domainValueObject = new DomainValueObject();
-        domainValueObject.setDomainCode(103);
-        domainValueObject.setVoCode(103);
+        domainValueObject.setDomainCode(101);
+        domainValueObject.setVoCode(10001);
         domainCmdReqDTO.setDomainValueObject(domainValueObject);
         Result<Boolean> result = domainCmdService.addEntityRelVO(domainCmdReqDTO);
         System.out.println(result);

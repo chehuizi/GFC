@@ -24,12 +24,12 @@ public class DomainEntityCmdServiceTest {
     public void testAddEntityAttr() {
         DomainEntityReqDTO domainEntityReqDTO = new DomainEntityReqDTO();
         DomainEntity domainEntity = new DomainEntity();
-        domainEntity.setEntityIdCode(100010);
+        domainEntity.setEntityIdCode(10001);
         domainEntityReqDTO.setDomainEntity(domainEntity);
         DomainEntityAttr domainEntityAttr = new DomainEntityAttr();
-        domainEntityAttr.setAttrName("address");
-        domainEntityAttr.setAttrType(AttrTypeEnum.STRING.getType());
-        domainEntityAttr.setAttrDesc("仓库地址");
+        domainEntityAttr.setAttrName("area");
+        domainEntityAttr.setAttrType(AttrTypeEnum.INTEGER.getType());
+        domainEntityAttr.setAttrDesc("面积");
         domainEntityReqDTO.setEntityAttr(domainEntityAttr);
         Result<Boolean> result = domainEntityCmdService.addEntityAttr(domainEntityReqDTO);
         System.out.println(result);
