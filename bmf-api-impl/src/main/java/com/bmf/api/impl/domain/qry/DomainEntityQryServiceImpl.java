@@ -23,8 +23,6 @@ public class DomainEntityQryServiceImpl implements DomainEntityQryService {
     private DomainService domainService;
     @Autowired
     private DomainEntityService domainEntityService;
-    @Autowired
-    private DomainValueObjectService domainValueObjectService;
 
     @Override
     @Validator(beanName = "domainEntityReqDTOValidator", method = "v4QueryOne")

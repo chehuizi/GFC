@@ -19,8 +19,18 @@ public class DomainServiceServiceImpl implements DomainServiceService {
     private DomainServiceAttrRepository domainServiceAttrRepository;
 
     @Override
+    public DomainService queryDomainService(DomainService domainService) {
+        return domainServiceRepository.selectOne(domainService);
+    }
+
+    @Override
     public List<DomainService> queryByDomainCode(Integer domainCode) {
         return domainServiceRepository.selectByDomainCode(domainCode);
+    }
+
+    @Override
+    public List<DomainServiceAttr> queryServiceAttr(Integer serviceCode) {
+        return domainServiceAttrRepository.selectByServiceCode(serviceCode);
     }
 
     @Override

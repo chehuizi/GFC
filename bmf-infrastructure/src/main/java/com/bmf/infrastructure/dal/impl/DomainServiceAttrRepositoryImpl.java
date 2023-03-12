@@ -8,6 +8,7 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DomainServiceAttrRepositoryImpl implements DomainServiceAttrRepository {
@@ -18,6 +19,11 @@ public class DomainServiceAttrRepositoryImpl implements DomainServiceAttrReposit
     @Override
     public DomainServiceAttr selectOne(DomainServiceAttr req) {
         return null;
+    }
+
+    @Override
+    public List<DomainServiceAttr> selectByServiceCode(Integer serviceCode) {
+        return POUtils.convert(businessDomainServiceAttrMapper.selectByServiceCode(serviceCode), DomainServiceAttr.class);
     }
 
     @Override

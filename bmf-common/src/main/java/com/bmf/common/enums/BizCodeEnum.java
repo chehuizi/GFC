@@ -25,6 +25,7 @@ public enum BizCodeEnum {
     DOMAIN_ENTITY_NOT_EXIST(100008, "领域实体不存在"),
     DOMAIN_VALUE_OBJECT_NOT_EXIST(100009, "领域值对象不存在"),
     ENTITY_REL_VO_IS_EXISTED(100010, "实体和值对象关系已存在"),
+    DOMAIN_SERVICE_NOT_EXIST(100011, "领域服务不存在"),
     /******************** api层错误码 end   ********************/
 
     /******************** core层错误码 start ********************/

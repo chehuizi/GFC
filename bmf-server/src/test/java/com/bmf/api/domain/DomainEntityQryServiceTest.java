@@ -20,7 +20,7 @@ public class DomainEntityQryServiceTest {
     private DomainEntityQryService domainEntityQryService;
 
     @Test
-    public void testQueryOne4Full() {
+    public void testDomainEntityQueryOne() {
         DomainEntityQryReqDTO domainEntityQryReqDTO = new DomainEntityQryReqDTO();
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(101);

@@ -25,6 +25,13 @@
         limit 1
     </select>
 
+    <select id="selectByServiceCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_service_attr
+        where service_code = #{serviceCode,jdbcType=INTEGER}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainServiceAttrPO">
         insert into bmf_business_domain_service_attr (service_code, attr_name, attr_type, attr_desc)
         values (

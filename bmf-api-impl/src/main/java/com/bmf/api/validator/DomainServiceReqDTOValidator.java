@@ -1,11 +1,26 @@
 package com.bmf.api.validator;
 
+import com.bmf.api.domain.dto.DomainEntityQryReqDTO;
+import com.bmf.api.domain.dto.DomainServiceQryReqDTO;
 import com.bmf.api.domain.dto.DomainServiceReqDTO;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.springframework.stereotype.Service;
 
 @Service("domainServiceReqDTOValidator")
 public class DomainServiceReqDTOValidator {
+
+    /**
+     * 校验queryOne方法
+     * @param domainServiceQryReqDTO
+     * @return
+     */
+    public boolean v4QueryOne(DomainServiceQryReqDTO domainServiceQryReqDTO) {
+        ParamCheckUtil.checkNull(domainServiceQryReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainServiceQryReqDTO.getDomainService(), "domain service is null");
+        ParamCheckUtil.checkNull(domainServiceQryReqDTO.getDomainService().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainServiceQryReqDTO.getDomainService().getServiceCode(), "service code is null");
+        return true;
+    }
 
     /**
      * 校验addServiceAttr方法

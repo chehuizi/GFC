@@ -17,6 +17,8 @@ import java.util.List;
 @NoArgsConstructor
 public class DomainEntityRespDTO extends RespDTO implements Serializable {
 
+    private static final long serialVersionUID = 2160028456586122534L;
+
     /**
      * 领域实体
      */
