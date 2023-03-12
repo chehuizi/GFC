@@ -8,6 +8,19 @@ import org.springframework.stereotype.Service;
 public class DomainEntityReqDTOValidator {
 
     /**
+     * 校验queryOne方法
+     * @param domainEntityReqDTO
+     * @return
+     */
+    public boolean v4QueryOne(DomainEntityReqDTO domainEntityReqDTO) {
+        ParamCheckUtil.checkNull(domainEntityReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity().getEntityIdCode(), "entity id code is null");
+        return true;
+    }
+
+    /**
      * 校验addEntityAttr方法
      * @param domainEntityReqDTO
      * @return

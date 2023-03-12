@@ -8,6 +8,7 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVORepository {
@@ -19,6 +20,11 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
     public EntityRelVO selectOne(EntityRelVO req) {
         BusinessDomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, BusinessDomainEntityRelVOPO.class);
         return POUtils.convert(domainEntityRelVOMapper.selectOne(entityRelVOPO), EntityRelVO.class);
+    }
+
+    @Override
+    public List<EntityRelVO> selectByEntityIdCode(Integer entityIdCode) {
+        return POUtils.convert(domainEntityRelVOMapper.selectByEntityIdCode(entityIdCode), EntityRelVO.class);
     }
 
     @Override

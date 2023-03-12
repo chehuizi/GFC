@@ -8,6 +8,7 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DomainValueObjectRepositoryImpl implements DomainValueObjectRepository {
@@ -19,6 +20,11 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
     public DomainValueObject selectOne(DomainValueObject req) {
         BusinessDomainValueObjectPO domainValueObjectPO = POUtils.convert(req, BusinessDomainValueObjectPO.class);
         return POUtils.convert(businessDomainValueObjectMapper.selectOne(domainValueObjectPO), DomainValueObject.class);
+    }
+
+    @Override
+    public List<DomainValueObject> selectByVoCode(List<Integer> voCodeList) {
+        return POUtils.convert(businessDomainValueObjectMapper.selectByVoCode(voCodeList), DomainValueObject.class);
     }
 
     @Override

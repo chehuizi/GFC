@@ -3,6 +3,7 @@ package com.bmf.core.domain;
 import com.bmf.base.tactics.entity.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
+import com.bmf.base.tactics.valueobject.DomainValueObject;
 
 import java.util.List;
 
@@ -24,6 +25,20 @@ public interface DomainEntityService {
      * @return
      */
     List<DomainEntity> queryByDomainCode(Integer domainCode);
+
+    /**
+     * 根据实体ID查询实体属性
+     * @param entityIdCode
+     * @return
+     */
+    List<DomainEntityAttr> queryEntityAttr(Integer entityIdCode);
+
+    /**
+     * 根据实体ID查询值对象
+     * @param entityIdCode
+     * @return
+     */
+    List<DomainValueObject> queryEntityVO(Integer entityIdCode);
 
     /**
      * 查询实体和值对象关系

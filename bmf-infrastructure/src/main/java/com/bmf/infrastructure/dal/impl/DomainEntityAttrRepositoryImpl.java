@@ -8,6 +8,7 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepository {
@@ -19,6 +20,11 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
     public DomainEntityAttr selectOne(DomainEntityAttr req) {
         BusinessDomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, BusinessDomainEntityAttrPO.class);
         return POUtils.convert(businessDomainEntityAttrMapper.selectOne(domainEntityAttrPO), DomainEntityAttr.class);
+    }
+
+    @Override
+    public List<DomainEntityAttr> selectByEntityIdCode(Integer entityIdCode) {
+        return POUtils.convert(businessDomainEntityAttrMapper.selectByEntityIdCode(entityIdCode), DomainEntityAttr.class);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package com.bmf.api.impl.domain;
+package com.bmf.api.impl.domain.cmd;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainEventCmdService;
