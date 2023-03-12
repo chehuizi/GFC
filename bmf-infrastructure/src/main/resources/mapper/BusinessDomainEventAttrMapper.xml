@@ -25,6 +25,13 @@
         limit 1
     </select>
 
+    <select id="selectByEventCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_event_attr
+        where event_code = #{eventCode,jdbcType=INTEGER}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEventAttrPO">
         insert into bmf_business_domain_event_attr (event_code, attr_name, attr_type, attr_desc)
         values (

@@ -19,8 +19,18 @@ public class DomainEventServiceImpl implements DomainEventService {
     private DomainEventAttrRepository domainEventAttrRepository;
 
     @Override
+    public DomainEvent queryDomainEvent(DomainEvent domainEvent) {
+        return domainEventRepository.selectOne(domainEvent);
+    }
+
+    @Override
     public List<DomainEvent> queryByDomainCode(Integer domainCode) {
         return domainEventRepository.selectByDomainCode(domainCode);
+    }
+
+    @Override
+    public List<DomainEventAttr> queryEventAttr(Integer eventCode) {
+        return domainEventAttrRepository.selectByEventCode(eventCode);
     }
 
     @Override

@@ -11,10 +11,6 @@ import com.bmf.core.business.BusinessService;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.BusinessRepository;
-import com.bmf.infrastructure.dal.po.BusinessDomainRelationPO;
-import com.bmf.infrastructure.dal.po.BusinessPO;
-import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
-import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -59,15 +55,13 @@ public class BusinessServiceImpl implements BusinessService {
     @Override
     public List<BusinessDomainRelation> queryBusinessDomainRelation(Business business) {
         BusinessDomainRelation businessDomainRelation = BusinessUtil.convertDR(business);
-        List<BusinessDomainRelationPO> businessDomainRelationPOList = businessDomainRelationRepository.selectList(businessDomainRelation);
-        return POUtils.convert(businessDomainRelationPOList, BusinessDomainRelation.class);
+        return businessDomainRelationRepository.selectList(businessDomainRelation);
     }
 
     @Override
     public List<BusinessDomainRelation> queryBusinessDomainRelation(Business business, BusinessDomain domain) {
         BusinessDomainRelation businessDomainRelation = BusinessUtil.convertDR(business, domain);
-        List<BusinessDomainRelationPO> businessDomainRelationPOList = businessDomainRelationRepository.selectByDomain(businessDomainRelation);
-        return POUtils.convert(businessDomainRelationPOList, BusinessDomainRelation.class);
+        return businessDomainRelationRepository.selectByDomain(businessDomainRelation);
     }
 
     @Override

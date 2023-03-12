@@ -1,11 +1,25 @@
 package com.bmf.api.validator;
 
+import com.bmf.api.domain.dto.DomainEventQryReqDTO;
 import com.bmf.api.domain.dto.DomainEventReqDTO;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.springframework.stereotype.Service;
 
 @Service("domainEventReqDTOValidator")
 public class DomainEventReqDTOValidator {
+
+    /**
+     * 校验queryOne方法
+     * @param domainEventQryReqDTO
+     * @return
+     */
+    public boolean v4QueryOne(DomainEventQryReqDTO domainEventQryReqDTO) {
+        ParamCheckUtil.checkNull(domainEventQryReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainEventQryReqDTO.getDomainEvent(), "domain event is null");
+        ParamCheckUtil.checkNull(domainEventQryReqDTO.getDomainEvent().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainEventQryReqDTO.getDomainEvent().getEventCode(), "event code is null");
+        return true;
+    }
 
     /**
      * 校验addEventAttr方法

@@ -22,15 +22,15 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
     }
 
     @Override
-    public List<BusinessDomainRelationPO> selectList(BusinessDomainRelation req) {
+    public List<BusinessDomainRelation> selectList(BusinessDomainRelation req) {
         BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
-        return businessDomainRelationMapper.selectList(businessDomainRelationPO);
+        return POUtils.convert(businessDomainRelationMapper.selectList(businessDomainRelationPO), BusinessDomainRelation.class);
     }
 
     @Override
-    public List<BusinessDomainRelationPO> selectByDomain(BusinessDomainRelation req) {
+    public List<BusinessDomainRelation> selectByDomain(BusinessDomainRelation req) {
         BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
-        return businessDomainRelationMapper.selectByDomain(businessDomainRelationPO);
+        return POUtils.convert(businessDomainRelationMapper.selectByDomain(businessDomainRelationPO), BusinessDomainRelation.class);
     }
 
     @Override
