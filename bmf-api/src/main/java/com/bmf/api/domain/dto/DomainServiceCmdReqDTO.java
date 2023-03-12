@@ -11,7 +11,7 @@ import java.io.Serializable;
  * 领域服务请求对象
  */
 @Data
-public class DomainServiceReqDTO extends ReqDTO implements Serializable {
+public class DomainServiceCmdReqDTO extends ReqDTO implements Serializable {
 
     private static final long serialVersionUID = 118824266913896116L;
     /**

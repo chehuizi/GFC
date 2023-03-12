@@ -2,7 +2,7 @@ package com.bmf.api.impl.domain.cmd;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainServiceCmdService;
-import com.bmf.api.domain.dto.DomainServiceReqDTO;
+import com.bmf.api.domain.dto.DomainServiceCmdReqDTO;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
@@ -18,28 +18,28 @@ public class DomainServiceCmdServiceImpl implements DomainServiceCmdService {
 
     @Override
     @Validator(beanName = "domainServiceReqDTOValidator", method = "v4AddServiceAttr")
-    public Result<Boolean> addServiceAttr(DomainServiceReqDTO domainServiceReqDTO) {
-        return ResultUtil.success(domainServiceService.addServiceAttr(domainServiceReqDTO.getServiceAttr()));
+    public Result<Boolean> addServiceAttr(DomainServiceCmdReqDTO domainServiceCmdReqDTO) {
+        return ResultUtil.success(domainServiceService.addServiceAttr(domainServiceCmdReqDTO.getServiceAttr()));
     }
 
     @Override
     @Validator(beanName = "domainServiceReqDTOValidator", method = "v4DelServiceAttr")
-    public Result<Boolean> delServiceAttr(DomainServiceReqDTO domainServiceReqDTO) {
-        return ResultUtil.success(domainServiceService.delServiceAttr(domainServiceReqDTO.getServiceAttr()));
+    public Result<Boolean> delServiceAttr(DomainServiceCmdReqDTO domainServiceCmdReqDTO) {
+        return ResultUtil.success(domainServiceService.delServiceAttr(domainServiceCmdReqDTO.getServiceAttr()));
     }
 
     @Override
-    public Result<Boolean> create(DomainServiceReqDTO req) {
+    public Result<Boolean> create(DomainServiceCmdReqDTO req) {
         return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
     }
 
     @Override
-    public Result<Boolean> update(DomainServiceReqDTO req) {
+    public Result<Boolean> update(DomainServiceCmdReqDTO req) {
         return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
     }
 
     @Override
-    public Result<Boolean> delete(DomainServiceReqDTO req) {
+    public Result<Boolean> delete(DomainServiceCmdReqDTO req) {
         return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
     }
 }

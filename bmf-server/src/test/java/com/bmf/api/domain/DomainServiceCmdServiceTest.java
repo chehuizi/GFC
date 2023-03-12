@@ -2,7 +2,7 @@ package com.bmf.api.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainServiceCmdService;
-import com.bmf.api.domain.dto.DomainServiceReqDTO;
+import com.bmf.api.domain.dto.DomainServiceCmdReqDTO;
 import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.tactics.service.DomainService;
 import com.bmf.base.tactics.service.DomainServiceAttr;
@@ -22,7 +22,7 @@ public class DomainServiceCmdServiceTest {
 
     @Test
     public void testAddServiceAttr() {
-        DomainServiceReqDTO serviceReqDTO = new DomainServiceReqDTO();
+        DomainServiceCmdReqDTO serviceReqDTO = new DomainServiceCmdReqDTO();
         DomainService domainService = new DomainService();
         domainService.setServiceCode(10003);
         DomainServiceAttr serviceAttr = new DomainServiceAttr();
@@ -39,7 +39,7 @@ public class DomainServiceCmdServiceTest {
 
     @Test
     public void testDelServiceAttr() {
-        DomainServiceReqDTO serviceReqDTO = new DomainServiceReqDTO();
+        DomainServiceCmdReqDTO serviceReqDTO = new DomainServiceCmdReqDTO();
         DomainServiceAttr serviceAttr = new DomainServiceAttr();
         serviceAttr.setServiceCode(100002);
         serviceAttr.setAttrName("outboundType");
