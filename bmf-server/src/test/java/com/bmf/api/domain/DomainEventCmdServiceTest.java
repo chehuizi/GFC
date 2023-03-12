@@ -2,7 +2,7 @@ package com.bmf.api.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainEventCmdService;
-import com.bmf.api.domain.dto.DomainEventReqDTO;
+import com.bmf.api.domain.dto.DomainEventCmdReqDTO;
 import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.base.tactics.event.DomainEventAttr;
@@ -22,29 +22,29 @@ public class DomainEventCmdServiceTest {
 
     @Test
     public void testAddEventAttr() {
-        DomainEventReqDTO domainEventReqDTO = new DomainEventReqDTO();
+        DomainEventCmdReqDTO domainEventCmdReqDTO = new DomainEventCmdReqDTO();
         DomainEvent domainEvent = new DomainEvent();
         domainEvent.setEventCode(10003);
-        domainEventReqDTO.setDomainEvent(domainEvent);
+        domainEventCmdReqDTO.setDomainEvent(domainEvent);
         DomainEventAttr domainEventAttr = new DomainEventAttr();
         domainEventAttr.setEventCode(10003);
         domainEventAttr.setAttrName("inventoryOrderNo");
         domainEventAttr.setAttrType(AttrTypeEnum.STRING.getType());
         domainEventAttr.setAttrDesc("盘点单号");
-        domainEventReqDTO.setEventAttr(domainEventAttr);
-        Result<Boolean> result = domainEventCmdService.addEventAttr(domainEventReqDTO);
+        domainEventCmdReqDTO.setEventAttr(domainEventAttr);
+        Result<Boolean> result = domainEventCmdService.addEventAttr(domainEventCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void testDelEventAttr() {
-        DomainEventReqDTO domainEventReqDTO = new DomainEventReqDTO();
+        DomainEventCmdReqDTO domainEventCmdReqDTO = new DomainEventCmdReqDTO();
         DomainEventAttr domainEventAttr = new DomainEventAttr();
         domainEventAttr.setEventCode(104);
         domainEventAttr.setAttrName("outboundTime");
-        domainEventReqDTO.setEventAttr(domainEventAttr);
-        Result<Boolean> result = domainEventCmdService.delEventAttr(domainEventReqDTO);
+        domainEventCmdReqDTO.setEventAttr(domainEventAttr);
+        Result<Boolean> result = domainEventCmdService.delEventAttr(domainEventCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }

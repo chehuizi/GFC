@@ -13,7 +13,7 @@ import java.io.Serializable;
  * 领域事件请求对象
  */
 @Data
-public class DomainEventReqDTO extends ReqDTO implements Serializable {
+public class DomainEventCmdReqDTO extends ReqDTO implements Serializable {
 
     private static final long serialVersionUID = 118824266913896116L;
     /**
