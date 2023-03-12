@@ -1,7 +1,11 @@
 package com.bmf.api.domain;
 
+import com.bmf.api.Result;
 import com.bmf.api.domain.dto.DomainEntityQryReqDTO;
+import com.bmf.api.domain.dto.DomainEntityRespDTO;
 import com.bmf.api.domain.qry.DomainEntityQryService;
+import com.bmf.base.tactics.entity.DomainEntity;
+import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -16,10 +20,18 @@ public class DomainEntityQryServiceTest {
     private DomainEntityQryService domainEntityQryService;
 
     @Test
-    public void testAddEntityAttr() {
+    public void testQueryOne4Full() {
         DomainEntityQryReqDTO domainEntityQryReqDTO = new DomainEntityQryReqDTO();
-        domainEntityQryReqDTO.setDomainEntity(null);
-        domainEntityQryService.queryOne(domainEntityQryReqDTO);
+        DomainEntity domainEntity = new DomainEntity();
+        domainEntity.setDomainCode(101);
+        domainEntity.setEntityIdCode(10001);
+        domainEntityQryReqDTO.setDomainEntity(domainEntity);
+        domainEntityQryReqDTO.setIncludeAttr(true);
+        domainEntityQryReqDTO.setIncludeVo(true);
+        Result<DomainEntityRespDTO> result = domainEntityQryService.queryOne(domainEntityQryReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData().getEntityAttrList().size() == 3
+                        && result.getData().getVoList().size() == 1);
     }
 }
 

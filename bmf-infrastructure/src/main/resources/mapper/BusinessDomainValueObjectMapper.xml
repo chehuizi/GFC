@@ -29,6 +29,16 @@
         limit 1
     </select>
 
+    <select id="selectByVoCode" resultMap="BaseResultMap" parameterType="java.util.List">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_vo
+        where vo_code in
+        <foreach collection="voCodeList" open="(" close=")" item="voCode" separator=",">
+            #{voCode}
+        </foreach>
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO">
         insert into bmf_business_domain_vo (domain_code, vo_code, vo_alias, vo_name, vo_desc)
         values (

@@ -1,5 +1,6 @@
 package com.bmf.api.validator;
 
+import com.bmf.api.domain.dto.DomainEntityQryReqDTO;
 import com.bmf.api.domain.dto.DomainEntityReqDTO;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.springframework.stereotype.Service;
@@ -9,14 +10,14 @@ public class DomainEntityReqDTOValidator {
 
     /**
      * 校验queryOne方法
-     * @param domainEntityReqDTO
+     * @param domainEntityQryReqDTO
      * @return
      */
-    public boolean v4QueryOne(DomainEntityReqDTO domainEntityReqDTO) {
-        ParamCheckUtil.checkNull(domainEntityReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity(), "domain entity is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity().getDomainCode(), "domain code is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity().getEntityIdCode(), "entity id code is null");
+    public boolean v4QueryOne(DomainEntityQryReqDTO domainEntityQryReqDTO) {
+        ParamCheckUtil.checkNull(domainEntityQryReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainEntityQryReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkNull(domainEntityQryReqDTO.getDomainEntity().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainEntityQryReqDTO.getDomainEntity().getEntityIdCode(), "entity id code is null");
         return true;
     }
 

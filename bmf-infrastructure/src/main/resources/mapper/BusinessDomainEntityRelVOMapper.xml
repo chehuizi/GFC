@@ -25,6 +25,13 @@
         limit 1
     </select>
 
+    <select id="selectByEntityIdCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_entity_vo
+        where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityRelVOPO">
         insert into bmf_business_domain_entity_vo (entity_id_code, vo_code)
         values (

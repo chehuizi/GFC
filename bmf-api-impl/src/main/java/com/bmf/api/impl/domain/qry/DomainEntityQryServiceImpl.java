@@ -32,7 +32,7 @@ public class DomainEntityQryServiceImpl implements DomainEntityQryService {
         BusinessDomain domain = domainService.queryDomain(new BusinessDomain(req.getDomainEntity().getDomainCode()));
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         DomainEntity domainEntity = domainEntityService.queryDomainEntity(req.getDomainEntity());
-        BusinessCheckUtil.checkNonNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_IS_EXISTED);
+        BusinessCheckUtil.checkNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_NOT_EXIST);
         DomainEntityRespDTO domainEntityRespDTO = new DomainEntityRespDTO();
         domainEntityRespDTO.setDomainEntity(domainEntity);
         if (req.isIncludeAttr()) {
