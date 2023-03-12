@@ -1,7 +1,7 @@
 package com.bmf.api.validator;
 
 import com.bmf.api.domain.dto.DomainEntityQryReqDTO;
-import com.bmf.api.domain.dto.DomainEntityReqDTO;
+import com.bmf.api.domain.dto.DomainEntityCmdReqDTO;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.springframework.stereotype.Service;
 
@@ -23,30 +23,30 @@ public class DomainEntityReqDTOValidator {
 
     /**
      * 校验addEntityAttr方法
-     * @param domainEntityReqDTO
+     * @param domainEntityCmdReqDTO
      * @return
      */
-    public boolean v4AddEntityAttr(DomainEntityReqDTO domainEntityReqDTO) {
-        ParamCheckUtil.checkNull(domainEntityReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity(), "domain entity is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getDomainEntity().getEntityIdCode(), "entity id code is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getEntityAttr(), "entity attr is null");
-        ParamCheckUtil.checkBlank(domainEntityReqDTO.getEntityAttr().getAttrName(), "entity attr name is blank");
-        ParamCheckUtil.checkBlank(domainEntityReqDTO.getEntityAttr().getAttrType(), "entity attr type is blank");
-        ParamCheckUtil.checkBlank(domainEntityReqDTO.getEntityAttr().getAttrDesc(), "entity attr desc is blank");
+    public boolean v4AddEntityAttr(DomainEntityCmdReqDTO domainEntityCmdReqDTO) {
+        ParamCheckUtil.checkNull(domainEntityCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainEntityCmdReqDTO.getDomainEntity(), "domain entity is null");
+        ParamCheckUtil.checkNull(domainEntityCmdReqDTO.getDomainEntity().getEntityIdCode(), "entity id code is null");
+        ParamCheckUtil.checkNull(domainEntityCmdReqDTO.getEntityAttr(), "entity attr is null");
+        ParamCheckUtil.checkBlank(domainEntityCmdReqDTO.getEntityAttr().getAttrName(), "entity attr name is blank");
+        ParamCheckUtil.checkBlank(domainEntityCmdReqDTO.getEntityAttr().getAttrType(), "entity attr type is blank");
+        ParamCheckUtil.checkBlank(domainEntityCmdReqDTO.getEntityAttr().getAttrDesc(), "entity attr desc is blank");
         return true;
     }
 
     /**
      * 校验delEntityAttr方法
-     * @param domainEntityReqDTO
+     * @param domainEntityCmdReqDTO
      * @return
      */
-    public boolean v4DelEntityAttr(DomainEntityReqDTO domainEntityReqDTO) {
-        ParamCheckUtil.checkNull(domainEntityReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getEntityAttr(), "entity attr is null");
-        ParamCheckUtil.checkNull(domainEntityReqDTO.getEntityAttr().getEntityIdCode(), "entity id code is null");
-        ParamCheckUtil.checkBlank(domainEntityReqDTO.getEntityAttr().getAttrName(), "entity attr name is blank");
+    public boolean v4DelEntityAttr(DomainEntityCmdReqDTO domainEntityCmdReqDTO) {
+        ParamCheckUtil.checkNull(domainEntityCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainEntityCmdReqDTO.getEntityAttr(), "entity attr is null");
+        ParamCheckUtil.checkNull(domainEntityCmdReqDTO.getEntityAttr().getEntityIdCode(), "entity id code is null");
+        ParamCheckUtil.checkBlank(domainEntityCmdReqDTO.getEntityAttr().getAttrName(), "entity attr name is blank");
         return true;
     }
 }

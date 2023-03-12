@@ -2,7 +2,7 @@ package com.bmf.api.domain;
 
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainEntityCmdService;
-import com.bmf.api.domain.dto.DomainEntityReqDTO;
+import com.bmf.api.domain.dto.DomainEntityCmdReqDTO;
 import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
@@ -22,31 +22,31 @@ public class DomainEntityCmdServiceTest {
 
     @Test
     public void testAddEntityAttr() {
-        DomainEntityReqDTO domainEntityReqDTO = new DomainEntityReqDTO();
+        DomainEntityCmdReqDTO domainEntityCmdReqDTO = new DomainEntityCmdReqDTO();
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(10001);
-        domainEntityReqDTO.setDomainEntity(domainEntity);
+        domainEntityCmdReqDTO.setDomainEntity(domainEntity);
         DomainEntityAttr domainEntityAttr = new DomainEntityAttr();
         domainEntityAttr.setAttrName("area");
         domainEntityAttr.setAttrType(AttrTypeEnum.INTEGER.getType());
         domainEntityAttr.setAttrDesc("面积");
-        domainEntityReqDTO.setEntityAttr(domainEntityAttr);
-        Result<Boolean> result = domainEntityCmdService.addEntityAttr(domainEntityReqDTO);
+        domainEntityCmdReqDTO.setEntityAttr(domainEntityAttr);
+        Result<Boolean> result = domainEntityCmdService.addEntityAttr(domainEntityCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
 
     @Test
     public void testDelEntityAttr() {
-        DomainEntityReqDTO domainEntityReqDTO = new DomainEntityReqDTO();
+        DomainEntityCmdReqDTO domainEntityCmdReqDTO = new DomainEntityCmdReqDTO();
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(100010);
-        domainEntityReqDTO.setDomainEntity(domainEntity);
+        domainEntityCmdReqDTO.setDomainEntity(domainEntity);
         DomainEntityAttr domainEntityAttr = new DomainEntityAttr();
         domainEntityAttr.setEntityIdCode(100010);
         domainEntityAttr.setAttrName("address");
-        domainEntityReqDTO.setEntityAttr(domainEntityAttr);
-        Result<Boolean> result = domainEntityCmdService.delEntityAttr(domainEntityReqDTO);
+        domainEntityCmdReqDTO.setEntityAttr(domainEntityAttr);
+        Result<Boolean> result = domainEntityCmdService.delEntityAttr(domainEntityCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
