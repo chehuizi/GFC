@@ -17,6 +17,8 @@
         <module>bmf-server</module>
         <module>bmf-demo</module>
         <module>bmf-api-impl</module>
+        <module>bmf-flow</module>
+        <module>bmf-dsl</module>
     </modules>
 
     <name>bmf</name>
