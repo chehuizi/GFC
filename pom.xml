@@ -19,6 +19,7 @@
         <module>bmf-api-impl</module>
         <module>bmf-flow</module>
         <module>bmf-dsl</module>
+        <module>bmf-data</module>
     </modules>
 
     <name>bmf</name>
