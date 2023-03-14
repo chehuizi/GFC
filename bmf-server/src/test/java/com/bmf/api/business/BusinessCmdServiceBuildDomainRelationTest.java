@@ -64,13 +64,13 @@ public class BusinessCmdServiceBuildDomainRelationTest {
         PartnerRole partnerA = new PartnerRole();
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(101);
+        domain.setDomainCode(102);
         domainQryReqDTO.setBusinessDomain(domain);
         Result<DomainRespDTO> result1 = domainQryService.queryOne(domainQryReqDTO);
         partnerA.setDomain(result1.getData().getBusinessDomain());
         partnership.setRoleA(partnerA);
         PartnerRole partnerB = new PartnerRole();
-        domain.setDomainCode(102);
+        domain.setDomainCode(104);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainQryReqDTO);
         partnerB.setDomain(result2.getData().getBusinessDomain());
         partnership.setRoleB(partnerB);

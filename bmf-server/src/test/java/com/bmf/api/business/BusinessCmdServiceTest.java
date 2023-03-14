@@ -49,7 +49,7 @@ public class BusinessCmdServiceTest {
         business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(103);
+        domain.setDomainCode(104);
         businessCmdReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);
         System.out.println(result);
@@ -88,7 +88,7 @@ public class BusinessCmdServiceTest {
         ohs.setDomain(result1.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleA(ohs);
         ConformistRole cf = new ConformistRole();
-        domain.setDomainCode(102);
+        domain.setDomainCode(104);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainQryReqDTO);
         cf.setDomain(result2.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleB(cf);
