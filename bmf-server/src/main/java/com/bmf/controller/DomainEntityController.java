@@ -2,18 +2,16 @@ package com.bmf.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
+import com.bmf.api.domain.cmd.DomainEntityCmdService;
+import com.bmf.api.domain.dto.DomainEntityCmdReqDTO;
 import com.bmf.api.domain.dto.DomainEntityQryReqDTO;
 import com.bmf.api.domain.dto.DomainEntityRespDTO;
-import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.api.domain.qry.DomainEntityQryService;
 import com.bmf.base.tactics.entity.DomainEntity;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "domain/entity")
@@ -23,6 +21,8 @@ public class DomainEntityController {
 
     @Autowired
     private DomainEntityQryService domainEntityQryService;
+    @Autowired
+    private DomainEntityCmdService domainEntityCmdService;
 
     @GetMapping("detail")
     public String detail(@RequestParam("domain_code") Integer domainCode,
@@ -39,4 +39,9 @@ public class DomainEntityController {
         return JSON.toJSONString(result);
     }
 
+    @PostMapping("addAttr")
+    public Boolean addAttr(@RequestBody DomainEntityCmdReqDTO domainEntityCmdReqDTO) {
+        Result<Boolean> result = domainEntityCmdService.addEntityAttr(domainEntityCmdReqDTO);
+        return result.getData();
+    }
 }
