@@ -39,7 +39,7 @@ public class DomainEntityController {
         return JSON.toJSONString(result);
     }
 
-    @PostMapping("addAttr")
+    @PostMapping("attr/add")
     public Boolean addAttr(@RequestBody DomainEntityCmdReqDTO domainEntityCmdReqDTO) {
         Result<Boolean> result = domainEntityCmdService.addEntityAttr(domainEntityCmdReqDTO);
         return result.getData();
