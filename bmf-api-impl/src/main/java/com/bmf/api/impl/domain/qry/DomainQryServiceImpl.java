@@ -17,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class DomainQryServiceImpl implements DomainQryService {
@@ -34,6 +35,10 @@ public class DomainQryServiceImpl implements DomainQryService {
     @Validator(beanName = "domainQryReqDTOValidator", method = "v4QueryOne")
     public Result<DomainRespDTO> queryOne(DomainQryReqDTO req) {
         BusinessDomain domain = domainService.queryDomain(req.getBusinessDomain());
+        if (Objects.isNull(domain)) {
+            return ResultUtil.success(null);
+        }
+
         if (req.isIncludeEntity()) {
             List<DomainEntity> domainEntityList = domainEntityService.queryByDomainCode(domain.getDomainCode());
             domain.setDomainEntityList(domainEntityList);
