@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-base</artifactId>
+  <artifactId>bmf-core</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-base</name>
+  <name>bmf-core</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -25,16 +25,16 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-base</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-common</artifactId>
     </dependency>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-infrastructure</artifactId>
     </dependency>
   </dependencies>
 
@@ -82,5 +82,15 @@
         </plugin>
       </plugins>
     </pluginManagement>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <configuration>
+          <source>8</source>
+          <target>8</target>
+        </configuration>
+      </plugin>
+    </plugins>
   </build>
 </project>

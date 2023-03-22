@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainRelationMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
+        <result column="domain_relation" jdbcType="VARCHAR" property="domainRelation"/>
+        <result column="domain_a_code" jdbcType="INTEGER" property="domainACode"/>
+        <result column="domain_b_code" jdbcType="INTEGER" property="domainBCode"/>
+        <result column="domain_a_role" jdbcType="VARCHAR" property="domainARole"/>
+        <result column="domain_b_role" jdbcType="VARCHAR" property="domainBRole"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role, gmt_create, gmt_modify
+    </sql>
+
+    <select id="selectOne" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_relation
+        limit 1
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_relation
+        where business_code = #{businessCode,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectByDomain" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_relation
+        where business_code = #{businessCode,jdbcType=INTEGER}
+        and (
+            domain_a_code = #{domainACode,jdbcType=INTEGER}
+            or
+            domain_b_code = #{domainBCode,jdbcType=INTEGER}
+        )
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+        insert into bmf_business_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
+        values (
+            #{businessCode,jdbcType=INTEGER},
+            #{domainRelation,jdbcType=VARCHAR},
+            #{domainACode,jdbcType=INTEGER},
+            #{domainBCode,jdbcType=INTEGER},
+            #{domainARole,jdbcType=VARCHAR},
+            #{domainBRole,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+        delete from bmf_business_domain_relation
+        <trim prefix="where" prefixOverrides="and | or">
+            <if test="businessCode != null">
+                and business_code = #{businessCode}
+            </if>
+            <if test="domainRelation != null">
+                and domain_relation = #{domainRelation}
+            </if>
+            <if test="domainACode != null">
+                and domain_a_code = #{domainACode}
+            </if>
+            <if test="domainBCode != null">
+                and domain_b_code = #{domainBCode}
+            </if>
+            <if test="domainARole != null">
+                and domain_a_role = #{domainARole}
+            </if>
+            <if test="domainBRole != null">
+                and domain_b_role = #{domainBRole}
+            </if>
+        </trim>
+    </delete>
+</mapper>

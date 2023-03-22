@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.CodeSeqMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.CodeSeqPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="code_key" jdbcType="VARCHAR" property="codeKey"/>
+        <result column="code_seq" jdbcType="BIGINT" property="codeSeq"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, code_key, code_seq, gmt_create, gmt_modify
+    </sql>
+
+    <select id="selectByCodeKey" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        FROM bmf_code_seq
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="codeKey != null">and code_key = #{codeKey}</if>
+        </trim>
+        for update
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.CodeSeqPO">
+        insert into bmf_code_seq (code_key, code_seq)
+        values (
+            #{codeKey,jdbcType=VARCHAR},
+            #{codeSeq,jdbcType=BIGINT}
+        )
+    </insert>
+
+    <update id="update">
+        update bmf_code_seq set code_seq = code_seq + 1
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="codeKey != null">and code_key = #{codeKey}</if>
+            <if test="codeSeq != null">and code_seq = #{codeSeq}</if>
+        </trim>
+    </update>
+</mapper>
