@@ -163,7 +163,7 @@ public class DomainCmdServiceTest {
         domainEvent.setEventName("盘点成功事件");
         domainEvent.setEventDesc("盘点单成功关闭");
         domainCmdReqDTO.setDomainEvent(domainEvent);
-        Result<Boolean> result = domainCmdService.addDomainEvent(domainCmdReqDTO);
+        Result<Boolean> result = domainCmdService.addEvent(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }
@@ -175,7 +175,7 @@ public class DomainCmdServiceTest {
         domainEvent.setDomainCode(103);
         domainEvent.setEventCode(103);
         domainCmdReqDTO.setDomainEvent(domainEvent);
-        Result<Boolean> result = domainCmdService.delDomainEvent(domainCmdReqDTO);
+        Result<Boolean> result = domainCmdService.delEvent(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }

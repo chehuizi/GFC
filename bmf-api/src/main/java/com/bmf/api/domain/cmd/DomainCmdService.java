@@ -56,14 +56,14 @@ public interface DomainCmdService extends CmdService<DomainCmdReqDTO> {
      * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> addDomainEvent(DomainCmdReqDTO domainCmdReqDTO);
+    Result<Boolean> addEvent(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 删除领域事件
      * @param domainCmdReqDTO
      * @return
      */
-    Result<Boolean> delDomainEvent(DomainCmdReqDTO domainCmdReqDTO);
+    Result<Boolean> delEvent(DomainCmdReqDTO domainCmdReqDTO);
 
     /**
      * 添加领域实体和值对象关系

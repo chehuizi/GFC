@@ -109,7 +109,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
 
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddDomainEvent")
-    public Result<Boolean> addDomainEvent(DomainCmdReqDTO domainCmdReqDTO) {
+    public Result<Boolean> addEvent(DomainCmdReqDTO domainCmdReqDTO) {
         BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         domainCmdReqDTO.getDomainEvent().setEventCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_EVENT.getKey()));
@@ -118,7 +118,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
 
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4DelDomainEvent")
-    public Result<Boolean> delDomainEvent(DomainCmdReqDTO domainCmdReqDTO) {
+    public Result<Boolean> delEvent(DomainCmdReqDTO domainCmdReqDTO) {
         return ResultUtil.success(businessDomainDesign4Tactics.delDomainEvent(domainCmdReqDTO.getDomainEvent()));
     }
 
