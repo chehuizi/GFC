@@ -11,4 +11,10 @@ public @interface BusinessDomain {
      * 领域编码
      */
     int domainCode();
+
+    /**
+     * 领域别名（英文）
+     * @return
+     */
+    String domainAlias();
 }
