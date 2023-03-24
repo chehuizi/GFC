@@ -9,4 +9,16 @@ import lombok.Data;
 @Data
 public class BusinessApplication extends BaseModel {
 
+    /**
+     * 应用ID
+     */
+    private Integer appId;
+    /**
+     * 应用名称
+     */
+    private String appName;
+    /**
+     * 应用描述
+     */
+    private String appDesc;
 }
