@@ -25,4 +25,8 @@ public class BusinessApi extends BaseModel {
      * API描述
      */
     private String apiDesc;
+    /**
+     * 领域服务编码
+     */
+    private Integer serviceCode;
 }

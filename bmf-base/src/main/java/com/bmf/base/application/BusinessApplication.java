@@ -21,4 +21,8 @@ public class BusinessApplication extends BaseModel {
      * 应用描述
      */
     private String appDesc;
+    /**
+     * 领域编码
+     */
+    private Integer domainCode;
 }
