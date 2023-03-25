@@ -1,10 +1,12 @@
 package com.bmf.demo.api;
 
 import com.bmf.base.annotations.BusinessApi;
+import com.bmf.base.annotations.BusinessApplication;
 
 /**
  * 入库服务
  */
+@BusinessApplication(domainCode = 101, domainAlias = "wms")
 public interface InboundService {
 
     /**
