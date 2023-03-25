@@ -25,4 +25,8 @@ public class BusinessApplication extends BaseModel {
      * 领域编码
      */
     private Integer domainCode;
+    /**
+     * 领域别名（英文）
+     */
+    private String domainAlias;
 }

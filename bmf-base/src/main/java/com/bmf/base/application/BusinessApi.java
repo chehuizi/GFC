@@ -29,4 +29,8 @@ public class BusinessApi extends BaseModel {
      * 领域服务编码
      */
     private Integer serviceCode;
+    /**
+     * 领域服务别名（英文）
+     */
+    private String serviceAlias;
 }
