@@ -1,4 +1,4 @@
-package com.bmf.demo.registrar;
+package com.bmf.common.registrar;
 
 import org.springframework.context.annotation.Import;
 

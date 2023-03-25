@@ -35,6 +35,10 @@
       <artifactId>bmf-base</artifactId>
     </dependency>
     <dependency>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-common</artifactId>
+    </dependency>
+    <dependency>
       <groupId>org.springframework</groupId>
       <artifactId>spring-context</artifactId>
     </dependency>

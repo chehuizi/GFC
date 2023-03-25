@@ -1,6 +1,6 @@
-package com.bmf.demo.registrar;
+package com.bmf.common.registrar;
 
-import com.bmf.base.annotations.BusinessApplication;
+import com.bmf.base.annotations.DomainService;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -43,7 +43,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         ClassPathScanningCandidateComponentProvider scanner = buildScanner();
         scanner.setResourceLoader(resourceLoader);
 
-        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(BusinessApplication.class);
+        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainService.class);
         scanner.addIncludeFilter(annotationTypeFilter);
 
         Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents("com.bmf.demo.api");
