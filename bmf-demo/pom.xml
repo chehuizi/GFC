@@ -25,16 +25,6 @@
 
   <dependencies>
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>4.12</version>
-      <scope>test</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.bmf</groupId>
-      <artifactId>bmf-base</artifactId>
-    </dependency>
-    <dependency>
       <groupId>com.bmf</groupId>
       <artifactId>bmf-agent-api</artifactId>
     </dependency>
@@ -49,6 +39,10 @@
     <dependency>
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter-test</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
     </dependency>
   </dependencies>
 
