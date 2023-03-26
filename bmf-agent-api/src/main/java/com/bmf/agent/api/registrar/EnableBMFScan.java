@@ -12,5 +12,9 @@ import java.lang.annotation.Target;
 @Import({BMFRegistrar.class})
 public @interface EnableBMFScan {
 
+    /**
+     * 扫描包
+     * @return
+     */
     String[] basePackages() default {};
 }
