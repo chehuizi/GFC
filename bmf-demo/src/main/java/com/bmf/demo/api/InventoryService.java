@@ -1,7 +1,6 @@
 package com.bmf.demo.api;
 
 import com.bmf.base.annotations.BusinessApi;
-import com.bmf.base.annotations.BusinessApplication;
 import com.bmf.base.annotations.DomainService;
 
 /**
