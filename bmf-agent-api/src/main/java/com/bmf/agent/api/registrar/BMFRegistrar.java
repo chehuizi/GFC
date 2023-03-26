@@ -1,4 +1,4 @@
-package com.bmf.common.registrar;
+package com.bmf.agent.api.registrar;
 
 import com.bmf.base.annotations.DomainService;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;

@@ -20,6 +20,7 @@
         <module>bmf-flow</module>
         <module>bmf-data</module>
         <module>bmf-demo</module>
+        <module>bmf-agent-api</module>
     </modules>
 
     <name>bmf</name>
@@ -77,6 +78,11 @@
             <dependency>
                 <groupId>com.bmf</groupId>
                 <artifactId>bmf-infrastructure</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-agent-api</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <!-- spring-boot -->
