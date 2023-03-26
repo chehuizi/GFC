@@ -11,7 +11,7 @@ import org.springframework.context.annotation.ComponentScan;
  */
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.bmf.demo"})
-@EnableBMFScan
+@EnableBMFScan(basePackages = {"com.bmf.demo.api"})
 @BusinessApplication(domainCode = 101, domainAlias = "wms")
 public class App {
 

@@ -1,5 +1,6 @@
 package com.bmf.agent.api.registrar;
 
+import com.bmf.base.annotations.BusinessApi;
 import com.bmf.base.annotations.DomainService;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -12,15 +13,29 @@ import org.springframework.context.annotation.ImportBeanDefinitionRegistrar;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.core.type.AnnotationMetadata;
+import org.springframework.core.type.MethodMetadata;
 import org.springframework.core.type.filter.AnnotationTypeFilter;
 import org.springframework.stereotype.Component;
+import org.springframework.util.ClassUtils;
+import org.springframework.util.StringUtils;
 
+import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
+/**
+ * BMF注册器
+ */
 @Component
 public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, EnvironmentAware {
 
+    /**
+     * 资源加载器
+     */
     private ResourceLoader resourceLoader;
+    /**
+     * 容器环境
+     */
     private Environment environment;
 
     @Override
@@ -40,16 +55,27 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+        // 创建scanner
         ClassPathScanningCandidateComponentProvider scanner = buildScanner();
         scanner.setResourceLoader(resourceLoader);
-
+        // 设置scanner的过滤条件
         AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainService.class);
         scanner.addIncludeFilter(annotationTypeFilter);
-
-        Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents("com.bmf.demo.api");
-
-        for (BeanDefinition beanDefinition: candidateComponents) {
-
+        // 获取指定扫描的包
+        Set<String> basePackages = getBasePackages(importingClassMetadata);
+        for (String basePackage : basePackages) {
+            Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents(basePackage);
+            for (BeanDefinition candidateComponent : candidateComponents) {
+                if (candidateComponent instanceof AnnotatedBeanDefinition) {
+                    AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;
+                    AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
+                    Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(BusinessApi.class.getCanonicalName());
+                    for (MethodMetadata methodMetadata : methodMetadataSet) {
+                        Map<String, Object> attrMap = methodMetadata.getAnnotationAttributes(BusinessApi.class.getCanonicalName());
+                        com.bmf.base.application.BusinessApi businessApi = buildBusinessApi(attrMap);
+                    }
+                }
+            }
         }
     }
 
@@ -69,5 +95,24 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
                 return isCandidate;
             }
         };
+    }
+
+    private Set<String> getBasePackages(AnnotationMetadata importingClassMetadata) {
+        Map<String, Object> attributes = importingClassMetadata.getAnnotationAttributes(EnableBMFScan.class.getCanonicalName());
+        assert attributes != null;
+        Set<String> basePackages = new HashSet<>();
+        for (String pkg : (String[]) attributes.get("basePackages")) {
+            if (StringUtils.hasText(pkg)) {
+                basePackages.add(pkg);
+            }
+        }
+        if (basePackages.isEmpty()) {
+            basePackages.add(ClassUtils.getPackageName(importingClassMetadata.getClassName()));
+        }
+        return basePackages;
+    }
+
+    private com.bmf.base.application.BusinessApi buildBusinessApi(Map<String, Object> methodAttrMap) {
+        return null;
     }
 }
