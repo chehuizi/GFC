@@ -71,8 +71,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
                     AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
                     Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(BusinessApi.class.getCanonicalName());
                     for (MethodMetadata methodMetadata : methodMetadataSet) {
-                        Map<String, Object> attrMap = methodMetadata.getAnnotationAttributes(BusinessApi.class.getCanonicalName());
-                        com.bmf.base.application.BusinessApi businessApi = buildBusinessApi(attrMap);
+                        com.bmf.base.application.BusinessApi businessApi = buildBusinessApi(methodMetadata);
                     }
                 }
             }
@@ -119,12 +118,16 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
     /**
      * 构建业务API对象
-     * @param methodAttrMap
+     * @param methodMetadata
      * @return
      */
-    private com.bmf.base.application.BusinessApi buildBusinessApi(Map<String, Object> methodAttrMap) {
+    private com.bmf.base.application.BusinessApi buildBusinessApi(MethodMetadata methodMetadata) {
+        Map<String, Object> methodAttrMap = methodMetadata.getAnnotationAttributes(BusinessApi.class.getCanonicalName());
         com.bmf.base.application.BusinessApi businessApi = new com.bmf.base.application.BusinessApi();
+        businessApi.setApiPath(methodMetadata.getDeclaringClassName());
+        businessApi.setApiName(methodMetadata.getMethodName());
         businessApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
+        businessApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
         return businessApi;
     }
 }
