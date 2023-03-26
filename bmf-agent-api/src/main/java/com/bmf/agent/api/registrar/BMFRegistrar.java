@@ -97,6 +97,11 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         };
     }
 
+    /**
+     * 获取扫描包集合
+     * @param importingClassMetadata
+     * @return
+     */
     private Set<String> getBasePackages(AnnotationMetadata importingClassMetadata) {
         Map<String, Object> attributes = importingClassMetadata.getAnnotationAttributes(EnableBMFScan.class.getCanonicalName());
         assert attributes != null;
@@ -112,7 +117,14 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         return basePackages;
     }
 
+    /**
+     * 构建业务API对象
+     * @param methodAttrMap
+     * @return
+     */
     private com.bmf.base.application.BusinessApi buildBusinessApi(Map<String, Object> methodAttrMap) {
-        return null;
+        com.bmf.base.application.BusinessApi businessApi = new com.bmf.base.application.BusinessApi();
+        businessApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
+        return businessApi;
     }
 }
