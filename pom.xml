@@ -10,7 +10,6 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>bmf-base</module>
-        <module>bmf-dsl</module>
         <module>bmf-core</module>
         <module>bmf-common</module>
         <module>bmf-infrastructure</module>
