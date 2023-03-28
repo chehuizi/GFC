@@ -19,9 +19,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.ClassUtils;
 import org.springframework.util.StringUtils;
 
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * BMF注册器
@@ -63,6 +61,8 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         scanner.addIncludeFilter(annotationTypeFilter);
         // 获取指定扫描的包
         Set<String> basePackages = getBasePackages(importingClassMetadata);
+
+        List<com.bmf.base.application.BusinessApi> businessApiList = new ArrayList<>();
         for (String basePackage : basePackages) {
             Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents(basePackage);
             for (BeanDefinition candidateComponent : candidateComponents) {
@@ -72,9 +72,14 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
                     Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(BusinessApi.class.getCanonicalName());
                     for (MethodMetadata methodMetadata : methodMetadataSet) {
                         com.bmf.base.application.BusinessApi businessApi = buildBusinessApi(methodMetadata);
+                        businessApiList.add(businessApi);
                     }
                 }
             }
+        }
+
+        if (businessApiList.size() > 0) {
+            // todo
         }
     }
 
