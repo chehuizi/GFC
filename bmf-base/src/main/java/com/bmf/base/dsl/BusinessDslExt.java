@@ -9,6 +9,10 @@ import lombok.Data;
 public class BusinessDslExt {
 
     /**
+     * 术语编码
+     */
+    private Integer dslCode;
+    /**
      * 扩展类型
      * @see com.bmf.base.enums.AttrTypeEnum
      */

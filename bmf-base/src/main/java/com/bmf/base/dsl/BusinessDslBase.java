@@ -17,6 +17,10 @@ public class BusinessDslBase extends BaseModel {
      */
     private Integer domainCode;
     /**
+     * 术语编码
+     */
+    private Integer dslCode;
+    /**
      * 名称（中文）
      */
     private String dslName;
