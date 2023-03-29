@@ -14,11 +14,11 @@ public interface InboundService {
      * @return
      */
     @BusinessApi(serviceCode = 10002, serviceAlias = "inbound_create_order_service")
-    String createOutboundOrder();
+    String createInboundOrder();
 
     /**
      * 取消入库单
      * @return
      */
-    boolean cancelOutboundOrder();
+    boolean cancelInboundOrder();
 }

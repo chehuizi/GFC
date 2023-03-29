@@ -14,11 +14,11 @@ public interface InventoryService {
      * @return
      */
     @BusinessApi(serviceCode = 10003, serviceAlias = "inventory_create_order_service")
-    String createOutboundOrder();
+    String createInventoryOrder();
 
     /**
      * 取消盘点单
      * @return
      */
-    boolean cancelOutboundOrder();
+    boolean cancelInventoryOrder();
 }
