@@ -4,16 +4,14 @@ import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.BusinessQryService;
+import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.api.business.dto.BusinessQryReqDTO;
 import com.bmf.api.business.dto.BusinessRespDTO;
 import com.bmf.base.Business;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "business")
@@ -37,5 +35,35 @@ public class BusinessController {
         businessQryReqDTO.setIncludeDomainRelation(includeAll);
         Result<BusinessRespDTO> result = businessQryService.queryOne(businessQryReqDTO);
         return JSON.toJSONString(result);
+    }
+
+    @PostMapping("create")
+    public Boolean create(@RequestBody BusinessCmdReqDTO businessCmdReqDTO) {
+        Result<Boolean> result = businessCmdService.create(businessCmdReqDTO);
+        return result.getData();
+    }
+
+    @PostMapping("domain/add")
+    public Boolean addDomain(@RequestBody BusinessCmdReqDTO businessCmdReqDTO) {
+        Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);
+        return result.getData();
+    }
+
+    @PostMapping("domain/del")
+    public Boolean delDomain(@RequestBody BusinessCmdReqDTO businessCmdReqDTO) {
+        Result<Boolean> result = businessCmdService.delDomain(businessCmdReqDTO);
+        return result.getData();
+    }
+
+    @PostMapping("domain/relation/add")
+    public Boolean addDomainRelation(@RequestBody BusinessCmdReqDTO businessCmdReqDTO) {
+        Result<Boolean> result = businessCmdService.buildDomainRelation(businessCmdReqDTO);
+        return result.getData();
+    }
+
+    @PostMapping("domain/relation/del")
+    public Boolean delDomainRelation(@RequestBody BusinessCmdReqDTO businessCmdReqDTO) {
+        Result<Boolean> result = businessCmdService.removeDomainRelation(businessCmdReqDTO);
+        return result.getData();
     }
 }

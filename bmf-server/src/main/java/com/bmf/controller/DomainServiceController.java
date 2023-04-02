@@ -2,20 +2,17 @@ package com.bmf.controller;
 
 import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
-import com.bmf.api.domain.dto.DomainEntityQryReqDTO;
-import com.bmf.api.domain.dto.DomainEntityRespDTO;
+import com.bmf.api.domain.cmd.DomainServiceCmdService;
+import com.bmf.api.domain.dto.DomainEventCmdReqDTO;
+import com.bmf.api.domain.dto.DomainServiceCmdReqDTO;
 import com.bmf.api.domain.dto.DomainServiceQryReqDTO;
 import com.bmf.api.domain.dto.DomainServiceRespDTO;
 import com.bmf.api.domain.qry.DomainServiceQryService;
-import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.service.DomainService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(path = "domain/service")
@@ -25,6 +22,8 @@ public class DomainServiceController {
 
     @Autowired
     private DomainServiceQryService domainServiceQryService;
+    @Autowired
+    private DomainServiceCmdService domainServiceCmdService;
 
     @GetMapping("detail")
     public String detail(@RequestParam("domain_code") Integer domainCode,
@@ -40,4 +39,15 @@ public class DomainServiceController {
         return JSON.toJSONString(result);
     }
 
+    @PostMapping("attr/add")
+    public Boolean addServiceAttr(@RequestBody DomainServiceCmdReqDTO domainServiceCmdReqDTO) {
+        Result<Boolean> result = domainServiceCmdService.addServiceAttr(domainServiceCmdReqDTO);
+        return result.getData();
+    }
+
+    @PostMapping("attr/del")
+    public Boolean delServiceAttr(@RequestBody DomainServiceCmdReqDTO domainServiceCmdReqDTO) {
+        Result<Boolean> result = domainServiceCmdService.delServiceAttr(domainServiceCmdReqDTO);
+        return result.getData();
+    }
 }

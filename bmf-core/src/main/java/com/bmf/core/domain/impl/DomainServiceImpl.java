@@ -1,6 +1,8 @@
 package com.bmf.core.domain.impl;
 
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.dsl.BusinessDslBase;
+import com.bmf.base.dsl.BusinessDslExt;
 import com.bmf.core.domain.DomainService;
 import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.po.DomainPO;
@@ -41,5 +43,25 @@ public class DomainServiceImpl implements DomainService {
     @Override
     public boolean deleteDomain(BusinessDomain businessDomain) {
         return domainRepository.delete(businessDomain);
+    }
+
+    @Override
+    public boolean addDsl(BusinessDslBase businessDslBase) {
+        return false;
+    }
+
+    @Override
+    public boolean delDsl(BusinessDslBase businessDslBase) {
+        return false;
+    }
+
+    @Override
+    public boolean addDslExt(BusinessDslExt businessDslExt) {
+        return false;
+    }
+
+    @Override
+    public boolean delDslExt(BusinessDslExt businessDslExt) {
+        return false;
     }
 }

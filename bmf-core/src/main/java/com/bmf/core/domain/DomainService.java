@@ -1,6 +1,8 @@
 package com.bmf.core.domain;
 
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.dsl.BusinessDslBase;
+import com.bmf.base.dsl.BusinessDslExt;
 
 import java.util.List;
 
@@ -43,4 +45,32 @@ public interface DomainService {
      * @return
      */
     boolean deleteDomain(BusinessDomain businessDomain);
+
+    /**
+     * 添加领域术语
+     * @param businessDslBase
+     * @return
+     */
+    boolean addDsl(BusinessDslBase businessDslBase);
+
+    /**
+     * 删除领域术语
+     * @param businessDslBase
+     * @return
+     */
+    boolean delDsl(BusinessDslBase businessDslBase);
+
+    /**
+     * 添加领域术语扩展属性
+     * @param businessDslExt
+     * @return
+     */
+    boolean addDslExt(BusinessDslExt businessDslExt);
+
+    /**
+     * 删除领域术语扩展属性
+     * @param businessDslExt
+     * @return
+     */
+    boolean delDslExt(BusinessDslExt businessDslExt);
 }

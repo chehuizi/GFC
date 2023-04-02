@@ -40,8 +40,14 @@ public class DomainEntityController {
     }
 
     @PostMapping("attr/add")
-    public Boolean addAttr(@RequestBody DomainEntityCmdReqDTO domainEntityCmdReqDTO) {
+    public Boolean addEntityAttr(@RequestBody DomainEntityCmdReqDTO domainEntityCmdReqDTO) {
         Result<Boolean> result = domainEntityCmdService.addEntityAttr(domainEntityCmdReqDTO);
+        return result.getData();
+    }
+
+    @PostMapping("attr/del")
+    public Boolean delEntityAttr(@RequestBody DomainEntityCmdReqDTO domainEntityCmdReqDTO) {
+        Result<Boolean> result = domainEntityCmdService.delEntityAttr(domainEntityCmdReqDTO);
         return result.getData();
     }
 }
