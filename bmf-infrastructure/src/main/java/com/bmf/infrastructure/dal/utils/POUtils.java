@@ -21,7 +21,7 @@ public class POUtils {
      * @param <T>
      * @return
      */
-    public static  <R extends BaseModel, T extends BasePO> T convert(R src, Class<T> dstClass) {
+    public static <R extends BaseModel, T extends BasePO> T convert(R src, Class<T> dstClass) {
         if (Objects.isNull(src)) {
             return null;
         }
@@ -66,6 +66,33 @@ public class POUtils {
      * @return
      */
     public static <R extends BasePO, T extends BaseModel> List<T> convert(List<R> srcList, Class<T> dstClass) {
+        if (Objects.isNull(srcList) || srcList.size() <= 0) {
+            return null;
+        }
+        try {
+            List<T> dstList = new ArrayList<>();
+            for (R item : srcList) {
+                T dst = dstClass.newInstance();
+                BeanUtils.copyProperties(item, dst);
+                dstList.add(dst);
+            }
+
+            return dstList;
+        } catch (Exception ex) {
+
+        }
+        return null;
+    }
+
+    /**
+     * 模型对象列表转持久化对象列表
+     * @param srcList
+     * @param dstClass
+     * @param <R>
+     * @param <T>
+     * @return
+     */
+    public static <R extends BaseModel, T extends BasePO> List<T> convertModel2PO(List<R> srcList, Class<T> dstClass) {
         if (Objects.isNull(srcList) || srcList.size() <= 0) {
             return null;
         }
