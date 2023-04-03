@@ -7,7 +7,7 @@ import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.base.tactics.service.DomainService;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
-import com.bmf.common.utils.DomainUtils;
+import com.bmf.core.utils.DomainUtils;
 import com.bmf.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.infrastructure.dal.*;
 import org.springframework.beans.factory.annotation.Autowired;

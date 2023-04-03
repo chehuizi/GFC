@@ -1,4 +1,4 @@
-package com.bmf.common.utils;
+package com.bmf.core.utils;
 
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.Business;

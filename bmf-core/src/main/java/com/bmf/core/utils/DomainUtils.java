@@ -1,4 +1,4 @@
-package com.bmf.common.utils;
+package com.bmf.core.utils;
 
 import com.bmf.base.tactics.entity.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
