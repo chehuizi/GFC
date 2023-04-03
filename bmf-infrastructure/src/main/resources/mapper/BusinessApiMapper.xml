@@ -3,7 +3,6 @@
 <mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessApiMapper">
     <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessApiPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="api_no" jdbcType="INTEGER" property="apiNo"/>
         <result column="api_name" jdbcType="VARCHAR" property="apiName"/>
         <result column="api_path" jdbcType="VARCHAR" property="apiPath"/>
         <result column="api_desc" jdbcType="VARCHAR" property="apiDesc"/>
@@ -15,7 +14,7 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, api_no, api_name, api_path, api_desc, service_code, service_alias, gmt_create, gmt_modify, is_deleted
+        id, api_name, api_path, api_desc, service_code, service_alias, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessApiPO">
@@ -30,11 +29,10 @@
     </select>
 
     <insert id="insertBatch" parameterType="com.bmf.infrastructure.dal.po.BusinessApiPO">
-        insert into bmf_business_api (api_no, api_name, api_path, api_desc, service_code, service_alias)
+        insert into bmf_business_api (api_name, api_path, api_desc, service_code, service_alias)
         values
         <foreach collection="list" item="item" index="index" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
-                #{item.apiNo,jdbcType=INTEGER},
                 #{item.apiName,jdbcType=VARCHAR},
                 #{item.apiPath,jdbcType=VARCHAR},
                 #{item.apiDesc,jdbcType=VARCHAR},

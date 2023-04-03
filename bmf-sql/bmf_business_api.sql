@@ -1,6 +1,5 @@
 CREATE TABLE `bmf_business_api` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT COMMENT '主键',
-  `api_no` int(11) COMMENT 'API编号',
   `api_name` varchar(64) NOT NULL COMMENT 'API名称',
   `api_path` varchar(512) NOT NULL COMMENT 'API路径',
   `api_desc` varchar(1024) COMMENT 'API描述',

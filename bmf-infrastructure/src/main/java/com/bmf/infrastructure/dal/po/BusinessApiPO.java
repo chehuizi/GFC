@@ -6,10 +6,6 @@ import lombok.Data;
 public class BusinessApiPO extends BasePO {
 
     /**
-     * API编号
-     */
-    private Integer apiNo;
-    /**
      * API名称
      */
     private String apiName;

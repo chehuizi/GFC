@@ -26,7 +26,6 @@ public class BusinessApiCmdServiceTest {
         BusinessApiCmdReqDTO businessApiCmdReqDTO = new BusinessApiCmdReqDTO();
         List<BusinessApi> businessApiList = new ArrayList<>();
         BusinessApi businessApi_1 = new BusinessApi();
-        businessApi_1.setApiNo(1);
         businessApi_1.setApiName("createOutboundOrder");
         businessApi_1.setApiPath("com.bmf.demo.api.OutboundService.createOutboundOrder");
         businessApi_1.setApiDesc("创建出库单");
@@ -34,7 +33,6 @@ public class BusinessApiCmdServiceTest {
         businessApi_1.setServiceAlias("outbound_create_order_service");
         businessApiList.add(businessApi_1);
         BusinessApi businessApi_2 = new BusinessApi();
-        businessApi_2.setApiNo(2);
         businessApi_2.setApiName("createInboundOrder");
         businessApi_2.setApiPath("com.bmf.demo.api.InboundService.createInboundOrder");
         businessApi_2.setApiDesc("创建入库单");

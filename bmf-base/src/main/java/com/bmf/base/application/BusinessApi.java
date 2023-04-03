@@ -10,10 +10,6 @@ import lombok.Data;
 public class BusinessApi extends BaseModel {
 
     /**
-     * API编号
-     */
-    private Integer apiNo;
-    /**
      * API名称
      */
     private String apiName;
