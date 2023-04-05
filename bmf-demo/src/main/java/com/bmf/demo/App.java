@@ -1,6 +1,6 @@
 package com.bmf.demo;
 
-import com.bmf.agent.api.registrar.EnableBMFScan;
+import com.bmf.agent.client.registrar.EnableBMFScan;
 import com.bmf.base.annotations.BusinessApplication;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

@@ -2,7 +2,7 @@ package com.bmf.core.design.impl;
 
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.strategy.BusinessDomainRelationship;
-import com.bmf.common.utils.BusinessUtil;
+import com.bmf.core.utils.BusinessUtil;
 import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import org.springframework.beans.factory.annotation.Autowired;

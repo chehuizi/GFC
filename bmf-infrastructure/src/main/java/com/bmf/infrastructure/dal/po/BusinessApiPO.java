@@ -1,13 +1,9 @@
-package com.bmf.base.application;
+package com.bmf.infrastructure.dal.po;
 
-import com.bmf.base.BaseModel;
 import lombok.Data;
 
-/**
- * 业务API
- */
 @Data
-public class BusinessApi extends BaseModel {
+public class BusinessApiPO extends BasePO {
 
     /**
      * API名称

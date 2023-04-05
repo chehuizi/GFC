@@ -16,10 +16,10 @@
         <module>bmf-design-api</module>
         <module>bmf-design-api-impl</module>
         <module>bmf-server</module>
-        <module>bmf-flow-api</module>
+        <module>bmf-flow-engine</module>
         <module>bmf-data</module>
         <module>bmf-demo</module>
-        <module>bmf-agent-api</module>
+        <module>bmf-agent-client</module>
     </modules>
 
     <name>bmf</name>
@@ -45,6 +45,7 @@
         <logback.version>1.2.1</logback.version>
         <jcl-over-slf4j.version>1.7.25</jcl-over-slf4j.version>
         <fastjson.version>2.0.19</fastjson.version>
+        <httpcomponents.client.version>5.1.1</httpcomponents.client.version>
     </properties>
 
     <dependencyManagement>
@@ -81,7 +82,7 @@
             </dependency>
             <dependency>
                 <groupId>com.bmf</groupId>
-                <artifactId>bmf-agent-api</artifactId>
+                <artifactId>bmf-agent-client</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <!-- spring-boot -->
@@ -276,6 +277,11 @@
                 <groupId>com.alibaba</groupId>
                 <artifactId>fastjson</artifactId>
                 <version>${fastjson.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.apache.httpcomponents.client5</groupId>
+                <artifactId>httpclient5</artifactId>
+                <version>${httpcomponents.client.version}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>

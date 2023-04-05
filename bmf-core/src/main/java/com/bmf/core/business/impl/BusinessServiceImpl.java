@@ -6,7 +6,7 @@ import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessRelDomain;
-import com.bmf.common.utils.BusinessUtil;
+import com.bmf.core.utils.BusinessUtil;
 import com.bmf.core.business.BusinessService;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;

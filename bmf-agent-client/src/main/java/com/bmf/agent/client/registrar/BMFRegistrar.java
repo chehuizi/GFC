@@ -1,5 +1,7 @@
-package com.bmf.agent.api.registrar;
+package com.bmf.agent.client.registrar;
 
+import com.bmf.agent.client.utils.HttpUtil;
+import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
 import com.bmf.base.annotations.BusinessApi;
 import com.bmf.base.annotations.DomainService;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
@@ -79,7 +81,9 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         }
 
         if (businessApiList.size() > 0) {
-            // todo
+            BusinessApiCmdReqDTO businessApiCmdReqDTO = new BusinessApiCmdReqDTO();
+            businessApiCmdReqDTO.setBusinessApiList(businessApiList);
+            HttpUtil.post(businessApiCmdReqDTO);
         }
     }
 
@@ -131,6 +135,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         com.bmf.base.application.BusinessApi businessApi = new com.bmf.base.application.BusinessApi();
         businessApi.setApiPath(methodMetadata.getDeclaringClassName());
         businessApi.setApiName(methodMetadata.getMethodName());
+        businessApi.setApiDesc("test");
         businessApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
         businessApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
         return businessApi;
