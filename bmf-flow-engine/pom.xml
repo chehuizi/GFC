@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-flow-api</artifactId>
+  <artifactId>bmf-flow-engine</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-flow-api</name>
+  <name>bmf-flow-engine</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
