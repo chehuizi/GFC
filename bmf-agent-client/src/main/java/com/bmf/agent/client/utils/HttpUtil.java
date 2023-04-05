@@ -1,8 +1,7 @@
-package com.bmf.agent.api.utils;
+package com.bmf.agent.client.utils;
 
 import com.alibaba.fastjson.JSON;
 import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
-import com.bmf.base.application.BusinessApi;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;

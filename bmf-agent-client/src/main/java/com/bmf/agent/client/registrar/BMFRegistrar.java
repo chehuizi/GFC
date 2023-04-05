@@ -1,6 +1,6 @@
-package com.bmf.agent.api.registrar;
+package com.bmf.agent.client.registrar;
 
-import com.bmf.agent.api.utils.HttpUtil;
+import com.bmf.agent.client.utils.HttpUtil;
 import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
 import com.bmf.base.annotations.BusinessApi;
 import com.bmf.base.annotations.DomainService;

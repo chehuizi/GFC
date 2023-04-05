@@ -1,4 +1,4 @@
-package com.bmf.agent.api.registrar;
+package com.bmf.agent.client.registrar;
 
 import org.springframework.context.annotation.Import;
 

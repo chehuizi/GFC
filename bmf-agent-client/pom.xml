@@ -10,10 +10,10 @@
 
   <modelVersion>4.0.0</modelVersion>
 
-  <artifactId>bmf-agent-api</artifactId>
+  <artifactId>bmf-agent-client</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-agent-api</name>
+  <name>bmf-agent-client</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
