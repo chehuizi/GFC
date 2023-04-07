@@ -23,10 +23,12 @@ public class BusinessFlowNode extends BaseModel {
     private String nodeName;
     /**
      * 节点
+     * @see com.bmf.base.enums.BusinessFlowNodeTypeEnum
      */
     private String nodeType;
     /**
      * 领域元素
+     * @see com.bmf.base.enums.DomainElementEnum
      */
     private String domainElement;
     /**
@@ -34,15 +36,7 @@ public class BusinessFlowNode extends BaseModel {
      */
     private Integer elementId;
     /**
-     * 领域元素名称（中文）
+     * 后节点ID列表
      */
-    private String elementName;
-    /**
-     * 领域元素别名（英文）
-     */
-    private String elementAlias;
-    /**
-     * 前节点ID
-     */
-    private String preNodeId;
+    private Integer[] nextNodes;
 }
