@@ -12,6 +12,7 @@ public enum AttrTypeEnum {
     TIMESTAMP("timestamp", "时间戳"),
     INTEGER("integer", "整数"),
     DOUBLE("double", "浮点数"),
+    BOOLEAN("boolean", "布尔类型"),
     ENUM("enum", "枚举"),
     ;
 

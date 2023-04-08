@@ -47,7 +47,7 @@
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainServicePO">
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEventPO">
         delete from bmf_business_domain_event
         where domain_code = #{domainCode,jdbcType=INTEGER}
         and event_code = #{eventCode,jdbcType=INTEGER}

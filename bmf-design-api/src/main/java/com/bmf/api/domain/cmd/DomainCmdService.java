@@ -10,6 +10,20 @@ import com.bmf.api.domain.dto.DomainCmdReqDTO;
 public interface DomainCmdService extends CmdService<DomainCmdReqDTO> {
 
     /**
+     * 添加DSL
+     * @param domainCmdReqDTO
+     * @return
+     */
+    Result<Boolean> addDsl(DomainCmdReqDTO domainCmdReqDTO);
+
+    /**
+     * 删除DSL
+     * @param domainCmdReqDTO
+     * @return
+     */
+    Result<Boolean> delDsl(DomainCmdReqDTO domainCmdReqDTO);
+
+    /**
      * 添加领域实体
      * @param domainCmdReqDTO
      * @return

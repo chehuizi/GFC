@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDslExtMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="dsl_code" jdbcType="INTEGER" property="dslCode"/>
+        <result column="dsl_ext_type" jdbcType="VARCHAR" property="dslExtType"/>
+        <result column="dsl_ext_key" jdbcType="VARCHAR" property="dslExtKey"/>
+        <result column="dsl_ext_val" jdbcType="VARCHAR" property="dslExtVal"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, dsl_code, dsl_ext_type, dsl_ext_key, dsl_ext_val, gmt_create, gmt_modify, is_deleted
+    </sql>
+
+    <select id="selectOne" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_dsl_ext
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="dslCode != null">and dsl_code = #{dslCode}</if>
+            <if test="dslExtKey != null">and dsl_ext_key = #{dslExtKey}</if>
+        </trim>
+        limit 1
+    </select>
+
+    <select id="selectByDslCode" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_dsl_ext
+        where dsl_code = #{dslCode}
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+        insert into bmf_business_dsl_ext (dsl_code, dsl_ext_type, dsl_ext_key, dsl_ext_val)
+        values (
+            #{dslCode,jdbcType=INTEGER},
+            #{dslExtType,jdbcType=VARCHAR},
+            #{dslExtKey,jdbcType=VARCHAR},
+            #{dslExtVal,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+        insert into bmf_business_dsl_ext (dsl_code, dsl_ext_type, dsl_ext_key, dsl_ext_val)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.dslCode,jdbcType=INTEGER},
+                #{item.dslExtType,jdbcType=VARCHAR},
+                #{item.dslExtKey,jdbcType=VARCHAR},
+                #{item.dslExtVal,jdbcType=VARCHAR}
+            </trim>
+        </foreach>
+    </insert>
+
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+        delete from bmf_business_dsl_ext
+        where dsl_code = #{dslCode,jdbcType=INTEGER}
+        and dsl_ext_key = #{dslExtKey,jdbcType=VARCHAR}
+    </delete>
+</mapper>

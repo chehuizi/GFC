@@ -4,6 +4,7 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainCmdService;
 import com.bmf.api.domain.dto.DomainCmdReqDTO;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.enums.BusinessDomainLevelEnum;
 import com.bmf.base.enums.BusinessDomainTypeEnum;
@@ -61,6 +62,38 @@ public class DomainCmdServiceTest {
         Result<Boolean> result = domainCmdService.delete(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_domain_add_dsl() {
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(101);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        BusinessDslBase businessDslBase = new BusinessDslBase();
+        businessDslBase.setDomainCode(101);
+        businessDslBase.setDslName("批次管理");
+        businessDslBase.setDslAlias("Batch Management");
+        businessDslBase.setDslDesc("批次管理");
+        domainCmdReqDTO.setDslBase(businessDslBase);
+        Result<Boolean> result = domainCmdService.addDsl(domainCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
+    }
+
+    @Test
+    public void test_domain_del_dsl() {
+        DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
+        BusinessDomain businessDomain = new BusinessDomain();
+        businessDomain.setDomainCode(101);
+        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        BusinessDslBase businessDslBase = new BusinessDslBase();
+        businessDslBase.setDomainCode(101);
+        businessDslBase.setDslCode(1000008);
+        domainCmdReqDTO.setDslBase(businessDslBase);
+        Result<Boolean> result = domainCmdService.delDsl(domainCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
     }
 
     @Test

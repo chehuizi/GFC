@@ -57,7 +57,23 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Delete")
     public Result<Boolean> delete(DomainCmdReqDTO req) {
         BusinessDomain domain = req.getBusinessDomain();
+        BusinessDomain queryResult = domainService.queryDomain(domain);
+        BusinessCheckUtil.checkNull(queryResult, BizCodeEnum.DOMAIN_NOT_EXIST);
         return ResultUtil.success(domainService.deleteDomain(domain));
+    }
+
+    @Override
+    public Result<Boolean> addDsl(DomainCmdReqDTO domainCmdReqDTO) {
+        BusinessDomain domain = domainCmdReqDTO.getBusinessDomain();
+        BusinessDomain queryResult = domainService.queryDomain(domain);
+        BusinessCheckUtil.checkNull(queryResult, BizCodeEnum.DOMAIN_NOT_EXIST);
+        domainCmdReqDTO.getDslBase().setDslCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DSL.getKey()));
+        return ResultUtil.success(domainService.addDsl(domainCmdReqDTO.getDslBase()));
+    }
+
+    @Override
+    public Result<Boolean> delDsl(DomainCmdReqDTO domainCmdReqDTO) {
+        return ResultUtil.success(domainService.delDsl(domainCmdReqDTO.getDslBase()));
     }
 
     @Override

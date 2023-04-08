@@ -11,5 +11,5 @@ public interface BusinessApiRepository extends BaseRepository<BusinessApi> {
      * @param req
      * @return
      */
-    boolean insertBatch(List<BusinessApi> req);
+    boolean batchInsert(List<BusinessApi> req);
 }

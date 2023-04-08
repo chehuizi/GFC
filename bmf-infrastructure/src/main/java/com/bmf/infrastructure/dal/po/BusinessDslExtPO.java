@@ -1,21 +1,16 @@
-package com.bmf.base.dsl;
+package com.bmf.infrastructure.dal.po;
 
-import com.bmf.base.BaseModel;
 import lombok.Data;
 
-/**
- * DSL扩展类
- */
 @Data
-public class BusinessDslExt extends BaseModel {
+public class BusinessDslExtPO extends BasePO {
 
     /**
-     * 术语编码
+     * DSL编码
      */
     private Integer dslCode;
     /**
-     * 扩展类型
-     * @see com.bmf.base.enums.AttrTypeEnum
+     * DSL扩展类型
      */
     private String dslExtType;
     /**
@@ -26,4 +21,5 @@ public class BusinessDslExt extends BaseModel {
      * 扩展value
      */
     private Object dslExtVal;
+
 }
