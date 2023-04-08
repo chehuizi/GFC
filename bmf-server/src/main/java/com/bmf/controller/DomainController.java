@@ -103,4 +103,16 @@ public class DomainController {
         Result<Boolean> result = domainCmdService.delEvent(domainCmdReqDTO);
         return result.getData();
     }
+
+    @PostMapping("dsl/add")
+    public Boolean addDsl(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        Result<Boolean> result = domainCmdService.addDsl(domainCmdReqDTO);
+        return result.getData();
+    }
+
+    @PostMapping("dsl/del")
+    public Boolean delDsl(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        Result<Boolean> result = domainCmdService.delDsl(domainCmdReqDTO);
+        return result.getData();
+    }
 }
