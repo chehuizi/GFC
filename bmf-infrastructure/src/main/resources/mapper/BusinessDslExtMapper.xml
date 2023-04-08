@@ -44,6 +44,19 @@
         )
     </insert>
 
+    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+        insert into bmf_business_dsl_ext (dsl_code, dsl_ext_type, dsl_ext_key, dsl_ext_val)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.dslCode,jdbcType=INTEGER},
+                #{item.dslExtType,jdbcType=VARCHAR},
+                #{item.dslExtKey,jdbcType=VARCHAR},
+                #{item.dslExtVal,jdbcType=VARCHAR}
+            </trim>
+        </foreach>
+    </insert>
+
     <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
         delete from bmf_business_dsl_ext
         where dsl_code = #{dslCode,jdbcType=INTEGER}

@@ -8,6 +8,7 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
+import java.util.List;
 
 @Service
 public class DslExtRepositoryImpl implements DslExtRepository {
@@ -25,6 +26,12 @@ public class DslExtRepositoryImpl implements DslExtRepository {
     public boolean insert(BusinessDslExt req) {
         BusinessDslExtPO businessDslExtPO = POUtils.convert(req, BusinessDslExtPO.class);
         return businessDslExtMapper.insert(businessDslExtPO) == 1;
+    }
+
+    @Override
+    public boolean batchInsert(List<BusinessDslExt> dslExtList) {
+        List<BusinessDslExtPO> dslExtPOList = POUtils.convertModel2PO(dslExtList, BusinessDslExtPO.class);
+        return businessDslExtMapper.batchInsert(dslExtPOList) == dslExtList.size();
     }
 
     @Override
