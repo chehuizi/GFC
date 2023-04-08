@@ -47,6 +47,12 @@ public class DslCmdServiceTest {
     @Test
     public void testDelDslExt() {
         DslCmdReqDTO dslCmdReqDTO = new DslCmdReqDTO();
-        dslCmdService.delDslExt(dslCmdReqDTO);
+        BusinessDslExt dslExt = new BusinessDslExt();
+        dslExt.setDslCode(1000009);
+        dslExt.setDslExtKey("hasGB");
+        dslCmdReqDTO.setDslExt(dslExt);
+        Result<Boolean> result = dslCmdService.delDslExt(dslCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(result.getData());
     }
 }
