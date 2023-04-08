@@ -28,7 +28,7 @@
         limit 1
     </select>
 
-    <insert id="insertBatch" parameterType="com.bmf.infrastructure.dal.po.BusinessApiPO">
+    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.BusinessApiPO">
         insert into bmf_business_api (api_name, api_path, api_desc, service_code, service_alias)
         values
         <foreach collection="list" item="item" index="index" separator=",">

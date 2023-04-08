@@ -10,7 +10,7 @@ public interface BusinessApiMapper {
 
     int insert(BusinessApiPO businessApiPO);
 
-    int insertBatch(List<BusinessApiPO> businessApiPOList);
+    int batchInsert(List<BusinessApiPO> businessApiPOList);
 
     int update(BusinessApiPO businessApiPO);
 

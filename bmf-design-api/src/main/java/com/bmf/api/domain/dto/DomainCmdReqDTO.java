@@ -3,6 +3,7 @@ package com.bmf.api.domain.dto;
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.tactics.aggregate.DomainAggregate;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
@@ -48,4 +49,8 @@ public class DomainCmdReqDTO extends ReqDTO implements Serializable {
      * 领域事件
      */
     private DomainEvent domainEvent;
+    /**
+     * DSL
+     */
+    private BusinessDslBase dslBase;
 }

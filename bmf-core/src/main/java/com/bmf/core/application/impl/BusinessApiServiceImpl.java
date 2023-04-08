@@ -16,6 +16,6 @@ public class BusinessApiServiceImpl implements BusinessApiService {
 
     @Override
     public boolean createBusinessApi(List<BusinessApi> businessApiList) {
-        return businessApiRepository.insertBatch(businessApiList);
+        return businessApiRepository.batchInsert(businessApiList);
     }
 }

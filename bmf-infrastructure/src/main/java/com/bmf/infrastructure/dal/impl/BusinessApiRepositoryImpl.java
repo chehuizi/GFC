@@ -27,9 +27,9 @@ public class BusinessApiRepositoryImpl implements BusinessApiRepository {
     }
 
     @Override
-    public boolean insertBatch(List<BusinessApi> req) {
+    public boolean batchInsert(List<BusinessApi> req) {
         List<BusinessApiPO> businessApiPOList = POUtils.convertModel2PO(req, BusinessApiPO.class);
-        return businessApiMapper.insertBatch(businessApiPOList) == req.size();
+        return businessApiMapper.batchInsert(businessApiPOList) == req.size();
     }
 
     @Override
