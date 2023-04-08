@@ -89,7 +89,7 @@ public class DomainCmdServiceTest {
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         BusinessDslBase businessDslBase = new BusinessDslBase();
         businessDslBase.setDomainCode(101);
-        businessDslBase.setDslCode(1000003);
+        businessDslBase.setDslCode(1000008);
         domainCmdReqDTO.setDslBase(businessDslBase);
         Result<Boolean> result = domainCmdService.delDsl(domainCmdReqDTO);
         System.out.println(result);

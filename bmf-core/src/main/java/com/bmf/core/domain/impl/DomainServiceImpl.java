@@ -9,6 +9,7 @@ import com.bmf.infrastructure.dal.DslBaseRepository;
 import com.bmf.infrastructure.dal.DslExtRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
@@ -61,11 +62,11 @@ public class DomainServiceImpl implements DomainService {
     }
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public boolean delDsl(BusinessDslBase businessDslBase) {
         boolean delBase = dslBaseRepository.delete(businessDslBase);
         if (delBase) {
-            return dslExtRepository.delete(null);
+            boolean delExt = dslExtRepository.delete(null);
         }
         return false;
     }
