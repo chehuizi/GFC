@@ -1,6 +1,7 @@
 package com.bmf.core.business.impl;
 
 import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.flow.BusinessRole;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
@@ -78,5 +79,15 @@ public class BusinessServiceImpl implements BusinessService {
         businessRelDomain.setBusinessCode(business.getBusinessCode());
         businessRelDomain.setDomainCode(domain.getDomainCode());
         return businessRelDomainRepository.delete(businessRelDomain);
+    }
+
+    @Override
+    public boolean addRole(Business business, BusinessRole role) {
+        return false;
+    }
+
+    @Override
+    public boolean delRole(Business business, BusinessRole role) {
+        return false;
     }
 }

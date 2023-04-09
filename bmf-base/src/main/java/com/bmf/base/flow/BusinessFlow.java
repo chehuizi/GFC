@@ -10,6 +10,10 @@ import lombok.Data;
 public class BusinessFlow extends BaseModel {
 
     /**
+     * 业务编码
+     */
+    private Integer businessCode;
+    /**
      * 流程ID
      */
     private Integer flowId;

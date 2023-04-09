@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessRoleMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessRolePO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
+        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="role_type" jdbcType="VARCHAR" property="roleType"/>
+        <result column="role_name" jdbcType="VARCHAR" property="roleName"/>
+        <result column="role_alias" jdbcType="VARCHAR" property="roleAlias"/>
+        <result column="role_desc" jdbcType="VARCHAR" property="roleDesc"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, business_code, role_id, role_type, role_name, role_alias, role_desc, gmt_create, gmt_modify, is_deleted
+    </sql>
+
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessRolePO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_role
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="businessCode != null">and business_code = #{businessCode}</if>
+            <if test="roleId != null">and role_id = #{roleId}</if>
+        </trim>
+        limit 1
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRolePO">
+        insert into bmf_business_role (business_code, role_id, role_type, role_name, role_alias, role_desc)
+        values (
+            #{businessCode,jdbcType=INTEGER},
+            #{roleId,jdbcType=INTEGER},
+            #{roleType,jdbcType=VARCHAR},
+            #{roleName,jdbcType=VARCHAR},
+            #{roleAlias,jdbcType=VARCHAR},
+            #{roleDesc,jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>
