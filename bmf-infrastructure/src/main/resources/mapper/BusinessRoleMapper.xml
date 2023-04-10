@@ -41,4 +41,11 @@
         )
     </insert>
 
+    <delete id="delete">
+        delete from bmf_business_role
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="businessCode != null">and business_code = #{businessCode}</if>
+            <if test="roleId != null">and role_id = #{roleId}</if>
+        </trim>
+    </delete>
 </mapper>

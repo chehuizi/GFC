@@ -16,6 +16,7 @@ public enum CodeKeyEnum {
     CODE_KEY_VALUE_OBJECT("valueObject", "值对象"),
     CODE_KEY_EVENT("event", "事件"),
     CODE_KEY_DSL("dsl", "DSL"),
+    CODE_KEY_ROLE("role", "角色"),
     ;
 
     /**
