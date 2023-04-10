@@ -8,6 +8,8 @@ import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessPrefixEnum;
+import com.bmf.base.enums.BusinessRoleTypeEnum;
+import com.bmf.base.flow.BusinessRole;
 import com.bmf.base.strategy.asymmetric.UpstreamDownstreamRelationship;
 import com.bmf.base.strategy.role.downstream.ConformistRole;
 import com.bmf.base.strategy.role.upstream.OpenHostServiceRole;
@@ -115,6 +117,39 @@ public class BusinessCmdServiceTest {
         businessCmdReqDTO.setRelationship(upstreamDownstreamRelationship);
         Result<Boolean> result = businessCmdService.removeDomainRelation(businessCmdReqDTO);
         System.out.println(result);
+    }
+
+    @Test
+    public void test_business_add_role() {
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(101);
+        businessCmdReqDTO.setBusiness(business);
+        BusinessRole role = new BusinessRole();
+        role.setBusinessCode(101);
+        role.setRoleName("仓管");
+        role.setRoleAlias("warehouse manager");
+        role.setRoleType(BusinessRoleTypeEnum.MANAGER.getType());
+        role.setRoleDesc("仓库管理员");
+        businessCmdReqDTO.setBusinessRole(role);
+        Result<Boolean> result = businessCmdService.addRole(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_business_del_role() {
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(101);
+        businessCmdReqDTO.setBusiness(business);
+        BusinessRole role = new BusinessRole();
+        role.setBusinessCode(101);
+        role.setRoleId(10001);
+        businessCmdReqDTO.setBusinessRole(role);
+        Result<Boolean> result = businessCmdService.delRole(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 }
 

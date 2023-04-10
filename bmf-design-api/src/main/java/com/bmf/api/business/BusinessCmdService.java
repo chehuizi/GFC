@@ -36,4 +36,18 @@ public interface BusinessCmdService extends CmdService<BusinessCmdReqDTO> {
      * @return
      */
     Result<Boolean> removeDomainRelation(BusinessCmdReqDTO businessCmdReqDTO);
+
+    /**
+     * 添加角色
+     * @param businessCmdReqDTO
+     * @return
+     */
+    Result<Boolean> addRole(BusinessCmdReqDTO businessCmdReqDTO);
+
+    /**
+     * 删除角色
+     * @param businessCmdReqDTO
+     * @return
+     */
+    Result<Boolean> delRole(BusinessCmdReqDTO businessCmdReqDTO);
 }

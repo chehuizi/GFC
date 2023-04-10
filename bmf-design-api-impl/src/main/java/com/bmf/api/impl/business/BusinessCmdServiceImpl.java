@@ -42,16 +42,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> create(BusinessCmdReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNonNull(business, BizCodeEnum.BUSINESS_IS_EXISTED);
-        fillBusinessInfo(req.getBusiness());
-        return ResultUtil.success(businessService.createBusiness(req.getBusiness()));
-    }
-
-    /**
-     * 填充业务信息
-     * @param business
-     */
-    private void fillBusinessInfo(Business business) {
         business.setBusinessCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_BUSINESS.getKey()));
+        return ResultUtil.success(businessService.createBusiness(req.getBusiness()));
     }
 
     @Override
@@ -112,5 +104,16 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         BusinessDomain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
         BusinessCheckUtil.checkNull(domainB, BizCodeEnum.DOMAIN_NOT_EXIST);
         return ResultUtil.success(businessDomainDesign4Strategy.removeBusinessDomainRelationship(businessCmdReqDTO.getRelationship()));
+    }
+
+    @Override
+    public Result<Boolean> addRole(BusinessCmdReqDTO businessCmdReqDTO) {
+        businessCmdReqDTO.getBusinessRole().setRoleId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_ROLE.getKey()));
+        return ResultUtil.success(businessService.addRole(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getBusinessRole()));
+    }
+
+    @Override
+    public Result<Boolean> delRole(BusinessCmdReqDTO businessCmdReqDTO) {
+        return ResultUtil.success(businessService.delRole(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getBusinessRole()));
     }
 }

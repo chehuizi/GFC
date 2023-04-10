@@ -1,6 +1,7 @@
 package com.bmf.core.business.impl;
 
 import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.flow.BusinessRole;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
@@ -11,6 +12,7 @@ import com.bmf.core.business.BusinessService;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import com.bmf.infrastructure.dal.BusinessRelDomainRepository;
 import com.bmf.infrastructure.dal.BusinessRepository;
+import com.bmf.infrastructure.dal.BusinessRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +28,8 @@ public class BusinessServiceImpl implements BusinessService {
     private BusinessRelDomainRepository businessRelDomainRepository;
     @Autowired
     private BusinessDomainRelationRepository businessDomainRelationRepository;
+    @Autowired
+    private BusinessRoleRepository businessRoleRepository;
 
     @Override
     public boolean createBusiness(Business business) {
@@ -78,5 +82,15 @@ public class BusinessServiceImpl implements BusinessService {
         businessRelDomain.setBusinessCode(business.getBusinessCode());
         businessRelDomain.setDomainCode(domain.getDomainCode());
         return businessRelDomainRepository.delete(businessRelDomain);
+    }
+
+    @Override
+    public boolean addRole(Business business, BusinessRole role) {
+        return businessRoleRepository.insert(role);
+    }
+
+    @Override
+    public boolean delRole(Business business, BusinessRole role) {
+        return businessRoleRepository.delete(role);
     }
 }

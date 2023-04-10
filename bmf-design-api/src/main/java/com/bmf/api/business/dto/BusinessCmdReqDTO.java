@@ -3,6 +3,7 @@ package com.bmf.api.business.dto;
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.flow.BusinessRole;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import lombok.Data;
 
@@ -28,4 +29,8 @@ public class BusinessCmdReqDTO extends ReqDTO implements Serializable {
      * 领域关系
      */
     private BusinessDomainRelationship relationship;
+    /**
+     * 角色
+     */
+    private BusinessRole businessRole;
 }

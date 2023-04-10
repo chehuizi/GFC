@@ -4,6 +4,7 @@ import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
+import com.bmf.base.flow.BusinessRole;
 
 import java.util.List;
 
@@ -71,4 +72,20 @@ public interface BusinessService {
      * @return
      */
     boolean delDomain(Business business, BusinessDomain domain);
+
+    /**
+     * 添加角色
+     * @param business
+     * @param role
+     * @return
+     */
+    boolean addRole(Business business, BusinessRole role);
+
+    /**
+     * 删除角色
+     * @param business
+     * @param role
+     * @return
+     */
+    boolean delRole(Business business, BusinessRole role);
 }
