@@ -1,9 +1,9 @@
 spring:
   datasource:
     name: assets_platform
-    url: jdbc:mysql://10.78.133.3:6383/assets_platform?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
-    username: didi_IUPk
-    password: yxP97Wneg
+    url: jdbc:mysql://127.0.0.1:3306/bmf?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
+    username: root
+    password: chehuizi
     # 使用druid数据源
     type: com.alibaba.druid.pool.DruidDataSource
     driver-class-name: com.mysql.jdbc.Driver

@@ -42,7 +42,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> create(BusinessCmdReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNonNull(business, BizCodeEnum.BUSINESS_IS_EXISTED);
-        business.setBusinessCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_BUSINESS.getKey()));
+        req.getBusiness().setBusinessCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_BUSINESS.getKey()));
         return ResultUtil.success(businessService.createBusiness(req.getBusiness()));
     }
 
