@@ -1,5 +1,7 @@
 # BMF概览
 BMF: Business Management Framework，是一套业务管理框架，主要面向业务应用软件的技术角色提供软件全生命周期管理的标准和框架。
+<img width="1174" alt="image" src="https://user-images.githubusercontent.com/11364967/235175040-e3934fa5-6460-4f81-863f-344ac10c4cb9.png">
+
 
 # BMF产品介绍
 
