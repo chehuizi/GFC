@@ -27,7 +27,7 @@ public class DslCmdServiceTest {
         DslCmdReqDTO dslCmdReqDTO = new DslCmdReqDTO();
         List<BusinessDslExt> dslExtList = new ArrayList<>();
         BusinessDslExt dslExt1 = new BusinessDslExt();
-        dslExt1.setDslCode(1000009);
+        dslExt1.setDslCode(1000001);
         dslExt1.setDslExtType(AttrTypeEnum.BOOLEAN.getType());
         dslExt1.setDslExtKey("hasGB");
         dslExt1.setDslExtVal("Y");

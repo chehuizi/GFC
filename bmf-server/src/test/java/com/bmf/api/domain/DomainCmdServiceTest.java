@@ -68,10 +68,10 @@ public class DomainCmdServiceTest {
     public void test_domain_add_dsl() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(101);
+        businessDomain.setDomainCode(103);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         BusinessDslBase businessDslBase = new BusinessDslBase();
-        businessDslBase.setDomainCode(101);
+        businessDslBase.setDomainCode(103);
         businessDslBase.setDslName("批次管理");
         businessDslBase.setDslAlias("Batch Management");
         businessDslBase.setDslDesc("批次管理");
