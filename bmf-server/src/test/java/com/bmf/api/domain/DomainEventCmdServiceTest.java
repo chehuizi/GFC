@@ -24,10 +24,10 @@ public class DomainEventCmdServiceTest {
     public void testAddEventAttr() {
         DomainEventCmdReqDTO domainEventCmdReqDTO = new DomainEventCmdReqDTO();
         DomainEvent domainEvent = new DomainEvent();
-        domainEvent.setEventCode(10003);
+        domainEvent.setEventCode(10001);
         domainEventCmdReqDTO.setDomainEvent(domainEvent);
         DomainEventAttr domainEventAttr = new DomainEventAttr();
-        domainEventAttr.setEventCode(10003);
+        domainEventAttr.setEventCode(10001);
         domainEventAttr.setAttrName("inventoryOrderNo");
         domainEventAttr.setAttrType(AttrTypeEnum.STRING.getType());
         domainEventAttr.setAttrDesc("盘点单号");
