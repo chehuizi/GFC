@@ -48,7 +48,7 @@ public class BusinessCmdServiceTest {
     public void test_business_add_domain() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(101);
+        business.setBusinessCode(102);
         businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
         domain.setDomainCode(104);
@@ -76,21 +76,21 @@ public class BusinessCmdServiceTest {
     public void test_business_build_domain_relation() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(101);
+        business.setBusinessCode(102);
         businessCmdReqDTO.setBusiness(business);
         UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship =
                 new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setBusinessCode(101);
+        upstreamDownstreamRelationship.setBusinessCode(102);
         OpenHostServiceRole ohs = new OpenHostServiceRole();
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(103);
+        domain.setDomainCode(104);
         domainQryReqDTO.setBusinessDomain(domain);
         Result<DomainRespDTO> result1 = domainQryService.queryOne(domainQryReqDTO);
         ohs.setDomain(result1.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleA(ohs);
         ConformistRole cf = new ConformistRole();
-        domain.setDomainCode(104);
+        domain.setDomainCode(101);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainQryReqDTO);
         cf.setDomain(result2.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleB(cf);
