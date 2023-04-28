@@ -31,8 +31,8 @@ public class DomainCmdServiceTest {
     public void test_domain_create() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainName("履约域");
-        businessDomain.setDomainAlias("ofc");
+        businessDomain.setDomainName("库存域");
+        businessDomain.setDomainAlias("ims");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
         domainCmdReqDTO.setBusinessDomain(businessDomain);
@@ -68,10 +68,10 @@ public class DomainCmdServiceTest {
     public void test_domain_add_dsl() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(101);
+        businessDomain.setDomainCode(103);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         BusinessDslBase businessDslBase = new BusinessDslBase();
-        businessDslBase.setDomainCode(101);
+        businessDslBase.setDomainCode(103);
         businessDslBase.setDslName("批次管理");
         businessDslBase.setDslAlias("Batch Management");
         businessDslBase.setDslDesc("批次管理");
@@ -100,10 +100,10 @@ public class DomainCmdServiceTest {
     public void test_domain_add_entity() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(101);
+        businessDomain.setDomainCode(103);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainEntity domainEntity = new DomainEntity();
-        domainEntity.setDomainCode(101);
+        domainEntity.setDomainCode(103);
         domainEntity.setEntityIdAlias("whSn");
         domainEntity.setEntityIdName("仓库编号");
         domainEntity.setEntityIdType(AttrTypeEnum.STRING.getType());
@@ -130,13 +130,13 @@ public class DomainCmdServiceTest {
     public void test_domain_add_service() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(101);
+        businessDomain.setDomainCode(103);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainService domainService = new DomainService();
-        domainService.setDomainCode(101);
-        domainService.setServiceAlias("inventory_service");
-        domainService.setServiceName("盘点服务");
-        domainService.setServiceDesc("支持存货和固资盘点服务");
+        domainService.setDomainCode(103);
+        domainService.setServiceAlias("outbound_service");
+        domainService.setServiceName("出库服务");
+        domainService.setServiceDesc("支持存货和固资出库服务");
         domainCmdReqDTO.setDomainService(domainService);
         Result<Boolean> result = domainCmdService.addService(domainCmdReqDTO);
         System.out.println(result);
@@ -159,10 +159,10 @@ public class DomainCmdServiceTest {
     public void test_domain_add_vo() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(101);
+        businessDomain.setDomainCode(103);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainValueObject valueObject = new DomainValueObject();
-        valueObject.setDomainCode(101);
+        valueObject.setDomainCode(103);
         valueObject.setVoAlias("zone");
         valueObject.setVoName("行政区划");
         valueObject.setVoDesc("国家行政区划（国标）");
@@ -188,13 +188,13 @@ public class DomainCmdServiceTest {
     public void test_domain_add_event() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(101);
+        businessDomain.setDomainCode(103);
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainEvent domainEvent = new DomainEvent();
-        domainEvent.setDomainCode(101);
-        domainEvent.setEventAlias("inventory_success_event");
-        domainEvent.setEventName("盘点成功事件");
-        domainEvent.setEventDesc("盘点单成功关闭");
+        domainEvent.setDomainCode(103);
+        domainEvent.setEventAlias("outbound_success_event");
+        domainEvent.setEventName("出库成功事件");
+        domainEvent.setEventDesc("出库单成功关闭");
         domainCmdReqDTO.setDomainEvent(domainEvent);
         Result<Boolean> result = domainCmdService.addEvent(domainCmdReqDTO);
         System.out.println(result);
@@ -218,11 +218,11 @@ public class DomainCmdServiceTest {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
         DomainEntity domainEntity = new DomainEntity();
         domainCmdReqDTO.setDomainEntity(domainEntity);
-        domainEntity.setDomainCode(101);
+        domainEntity.setDomainCode(103);
         domainEntity.setEntityIdCode(10001);
         DomainValueObject domainValueObject = new DomainValueObject();
-        domainValueObject.setDomainCode(101);
-        domainValueObject.setVoCode(10001);
+        domainValueObject.setDomainCode(103);
+        domainValueObject.setVoCode(10002);
         domainCmdReqDTO.setDomainValueObject(domainValueObject);
         Result<Boolean> result = domainCmdService.addEntityRelVO(domainCmdReqDTO);
         System.out.println(result);

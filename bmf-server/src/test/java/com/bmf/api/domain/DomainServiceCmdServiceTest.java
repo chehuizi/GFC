@@ -24,9 +24,9 @@ public class DomainServiceCmdServiceTest {
     public void testAddServiceAttr() {
         DomainServiceCmdReqDTO serviceReqDTO = new DomainServiceCmdReqDTO();
         DomainService domainService = new DomainService();
-        domainService.setServiceCode(10003);
+        domainService.setServiceCode(10001);
         DomainServiceAttr serviceAttr = new DomainServiceAttr();
-        serviceAttr.setServiceCode(10003);
+        serviceAttr.setServiceCode(10001);
         serviceAttr.setAttrName("inventoryWhSn");
         serviceAttr.setAttrType(AttrTypeEnum.STRING.getType());
         serviceAttr.setAttrDesc("盘点仓库（仓库编码）");
