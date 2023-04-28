@@ -14,10 +14,6 @@ public class BusinessFlow extends BaseModel {
      */
     private Integer businessCode;
     /**
-     * 角色ID
-     */
-    private Integer roleId;
-    /**
      * 流程ID
      */
     private Integer flowId;
@@ -29,4 +25,8 @@ public class BusinessFlow extends BaseModel {
      * 流程别名（英文）
      */
     private String flowAlias;
+    /**
+     * 角色ID
+     */
+    private Integer roleId;
 }

@@ -39,4 +39,8 @@ public class BusinessFlowNode extends BaseModel {
      * 后节点ID列表
      */
     private Integer[] nextNodes;
+    /**
+     * 角色ID
+     */
+    private Integer roleId;
 }
