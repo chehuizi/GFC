@@ -69,6 +69,21 @@ public class BusinessCmdReqDTOValidator {
     }
 
     /**
+     * 校验addRole方法
+     * @param businessCmdReqDTO
+     * @return
+     */
+    public boolean v4AddRole(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusinessRole(), "business role is null");
+        ParamCheckUtil.checkTrue(businessCmdReqDTO.getBusiness().getBusinessCode().equals(
+                businessCmdReqDTO.getBusinessRole().getBusinessCode()), "business code is not equal");
+        return true;
+    }
+
+    /**
      * 校验BusinessDomainRelationship参数
      * @param relationship
      */

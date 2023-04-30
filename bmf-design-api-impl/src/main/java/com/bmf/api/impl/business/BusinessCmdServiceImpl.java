@@ -107,7 +107,10 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4AddRole")
     public Result<Boolean> addRole(BusinessCmdReqDTO businessCmdReqDTO) {
+        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
+        BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
         businessCmdReqDTO.getBusinessRole().setRoleId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_ROLE.getKey()));
         return ResultUtil.success(businessService.addRole(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getBusinessRole()));
     }

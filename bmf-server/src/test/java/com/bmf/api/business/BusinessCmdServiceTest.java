@@ -123,10 +123,10 @@ public class BusinessCmdServiceTest {
     public void test_business_add_role() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(101);
+        business.setBusinessCode(102);
         businessCmdReqDTO.setBusiness(business);
         BusinessRole role = new BusinessRole();
-        role.setBusinessCode(101);
+        role.setBusinessCode(102);
         role.setRoleName("仓管");
         role.setRoleAlias("warehouse manager");
         role.setRoleType(BusinessRoleTypeEnum.MANAGER.getType());
