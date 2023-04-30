@@ -5,15 +5,15 @@ import com.bmf.infrastructure.dal.DomainEntityRelVORepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityRelVOMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityRelVOPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVORepository {
 
-    @Resource
+    @Autowired
     private BusinessDomainEntityRelVOMapper domainEntityRelVOMapper;
 
     @Override

@@ -5,14 +5,13 @@ import com.bmf.infrastructure.dal.DomainValueObjectAttrRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectAttrMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectAttrPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 @Service
 public class DomainValueObjectAttrRepositoryImpl implements DomainValueObjectAttrRepository {
 
-    @Resource
+    @Autowired
     private BusinessDomainValueObjectAttrMapper businessDomainValueObjectAttrMapper;
 
     @Override

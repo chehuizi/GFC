@@ -5,15 +5,15 @@ import com.bmf.infrastructure.dal.DslExtRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDslExtMapper;
 import com.bmf.infrastructure.dal.po.BusinessDslExtPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class DslExtRepositoryImpl implements DslExtRepository {
 
-    @Resource
+    @Autowired
     private BusinessDslExtMapper businessDslExtMapper;
 
     @Override

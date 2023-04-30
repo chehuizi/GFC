@@ -5,15 +5,15 @@ import com.bmf.infrastructure.dal.DomainEventRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainEventMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEventPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class DomainEventRepositoryImpl implements DomainEventRepository {
 
-    @Resource
+    @Autowired
     private BusinessDomainEventMapper domainEventMapper;
 
     @Override

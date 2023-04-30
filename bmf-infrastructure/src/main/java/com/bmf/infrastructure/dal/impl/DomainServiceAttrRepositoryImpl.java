@@ -5,15 +5,15 @@ import com.bmf.infrastructure.dal.DomainServiceAttrRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainServiceAttrMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainServiceAttrPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class DomainServiceAttrRepositoryImpl implements DomainServiceAttrRepository {
 
-    @Resource
+    @Autowired
     private BusinessDomainServiceAttrMapper businessDomainServiceAttrMapper;
 
     @Override

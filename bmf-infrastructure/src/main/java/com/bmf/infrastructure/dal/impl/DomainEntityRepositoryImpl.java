@@ -5,15 +5,15 @@ import com.bmf.infrastructure.dal.DomainEntityRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityMapper;
 import com.bmf.infrastructure.dal.po.BusinessDomainEntityPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class DomainEntityRepositoryImpl implements DomainEntityRepository {
 
-    @Resource
+    @Autowired
     private BusinessDomainEntityMapper domainEntityMapper;
 
     @Override

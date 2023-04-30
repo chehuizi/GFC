@@ -5,15 +5,15 @@ import com.bmf.infrastructure.dal.BusinessApiRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessApiMapper;
 import com.bmf.infrastructure.dal.po.BusinessApiPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.List;
 
 @Service
 public class BusinessApiRepositoryImpl implements BusinessApiRepository {
 
-    @Resource
+    @Autowired
     private BusinessApiMapper businessApiMapper;
 
     @Override

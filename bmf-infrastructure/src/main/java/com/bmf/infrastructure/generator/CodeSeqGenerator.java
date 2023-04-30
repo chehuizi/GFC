@@ -4,9 +4,8 @@ import com.bmf.infrastructure.dal.mapper.CodeSeqMapper;
 import com.bmf.infrastructure.dal.po.CodeSeqPO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import javax.annotation.Resource;
 
 /**
  * code序列号生成器
@@ -16,7 +15,7 @@ public class CodeSeqGenerator {
 
     private static final Logger logger = LoggerFactory.getLogger(CodeSeqGenerator.class);
 
-    @Resource
+    @Autowired
     private CodeSeqMapper codeSeqMapper;
 
     /**

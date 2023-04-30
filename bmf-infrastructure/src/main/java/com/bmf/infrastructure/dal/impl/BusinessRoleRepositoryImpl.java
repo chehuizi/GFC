@@ -5,14 +5,14 @@ import com.bmf.infrastructure.dal.BusinessRoleRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessRoleMapper;
 import com.bmf.infrastructure.dal.po.BusinessRolePO;
 import com.bmf.infrastructure.dal.utils.POUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 
 @Service
 public class BusinessRoleRepositoryImpl implements BusinessRoleRepository {
 
-    @Resource
+    @Autowired
     private BusinessRoleMapper businessRoleMapper;
 
     @Override
