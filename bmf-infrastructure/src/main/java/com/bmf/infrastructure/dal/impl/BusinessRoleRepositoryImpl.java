@@ -8,7 +8,6 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
 @Service
 public class BusinessRoleRepositoryImpl implements BusinessRoleRepository {
 
