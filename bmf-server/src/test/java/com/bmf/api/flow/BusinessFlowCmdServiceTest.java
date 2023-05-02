@@ -1,6 +1,5 @@
 package com.bmf.api.flow;
 
-import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
 import com.bmf.api.flow.dto.BusinessFlowCmdReqDTO;
 import com.bmf.base.Business;
@@ -15,8 +14,6 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.Arrays;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
