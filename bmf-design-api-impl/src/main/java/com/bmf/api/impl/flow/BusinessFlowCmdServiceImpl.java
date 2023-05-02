@@ -5,6 +5,7 @@ import com.bmf.api.flow.BusinessFlowCmdService;
 import com.bmf.api.flow.dto.BusinessFlowCmdReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.enums.CodeKeyEnum;
+import com.bmf.base.flow.BusinessFlow;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.common.utils.ResultUtil;
@@ -30,17 +31,26 @@ public class BusinessFlowCmdServiceImpl implements BusinessFlowCmdService {
     public Result<Boolean> create(BusinessFlowCmdReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        req.getBusinessFlow().setFlowId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_BUSINESS.getKey()));
+        req.getBusinessFlow().setFlowId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_FLOW.getKey()));
         return ResultUtil.success(businessFlowDesign.addFlow(req.getBusinessFlow()));
     }
 
     @Override
     public Result<Boolean> update(BusinessFlowCmdReqDTO req) {
-        return null;
+        return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
     }
 
     @Override
     public Result<Boolean> delete(BusinessFlowCmdReqDTO req) {
-        return null;
+        return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
+    }
+
+    @Override
+    @Validator(beanName = "businessFlowCmdReqDTOValidator", method = "v4AddFlowNode")
+    public Result<Boolean> addFlowNode(BusinessFlowCmdReqDTO businessFlowCmdReqDTO) {
+        BusinessFlow businessFlow = businessFlowDesign.queryFlow(businessFlowCmdReqDTO.getBusinessFlow());
+        BusinessCheckUtil.checkNull(businessFlow, BizCodeEnum.BUSINESS_FLOW_NOT_EXIST);
+        businessFlowCmdReqDTO.getBusinessFlowNode().setNodeId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_NODE.getKey()));
+        return ResultUtil.success(businessFlowDesign.addFlowNode(businessFlowCmdReqDTO.getBusinessFlowNode()));
     }
 }

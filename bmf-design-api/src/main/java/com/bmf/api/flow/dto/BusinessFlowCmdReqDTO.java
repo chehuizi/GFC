@@ -3,6 +3,7 @@ package com.bmf.api.flow.dto;
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
 import com.bmf.base.flow.BusinessFlow;
+import com.bmf.base.flow.BusinessFlowNode;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -20,4 +21,8 @@ public class BusinessFlowCmdReqDTO extends ReqDTO implements Serializable {
      * 业务流程
      */
     private BusinessFlow businessFlow;
+    /**
+     * 流程节点
+     */
+    private BusinessFlowNode businessFlowNode;
 }

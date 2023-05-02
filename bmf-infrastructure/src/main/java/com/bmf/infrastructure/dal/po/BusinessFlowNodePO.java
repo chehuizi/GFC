@@ -1,13 +1,10 @@
-package com.bmf.base.flow;
+package com.bmf.infrastructure.dal.po;
 
-import com.bmf.base.BaseModel;
 import lombok.Data;
 
-/**
- * 业务流程节点
- */
+
 @Data
-public class BusinessFlowNode extends BaseModel {
+public class BusinessFlowNodePO extends BasePO {
 
     /**
      * 流程ID
@@ -42,7 +39,7 @@ public class BusinessFlowNode extends BaseModel {
     /**
      * 前节点ID列表
      */
-    private Integer[] preNodes;
+    private String preNodes;
     /**
      * 角色ID
      */

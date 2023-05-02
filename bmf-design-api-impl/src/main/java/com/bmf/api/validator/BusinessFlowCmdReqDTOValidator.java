@@ -23,4 +23,21 @@ public class BusinessFlowCmdReqDTOValidator {
         ParamCheckUtil.checkNull(businessFlowCmdReqDTO.getBusinessFlow().getRoleId(), "role id is null");
         return true;
     }
+
+    /**
+     * 校验addFlowNode方法
+     * @param businessFlowCmdReqDTO
+     * @return
+     */
+    public boolean v4AddFlowNode(BusinessFlowCmdReqDTO businessFlowCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessFlowCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessFlowCmdReqDTO.getBusinessFlowNode(), "business flow node is null");
+        ParamCheckUtil.checkNull(businessFlowCmdReqDTO.getBusinessFlowNode().getFlowId(), "flow id is null");
+        ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getNodeName(), "flow node name is blank");
+        ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getNodeAlias(), "flow node alias is blank");
+        ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getNodeType(), "flow node type is blank");
+        ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getDomainElement(), "domain element is blank");
+        ParamCheckUtil.checkNull(businessFlowCmdReqDTO.getBusinessFlowNode().getElementId(), "domain element id is null");
+        return true;
+    }
 }

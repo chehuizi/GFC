@@ -134,9 +134,9 @@ public class DomainCmdServiceTest {
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainService domainService = new DomainService();
         domainService.setDomainCode(103);
-        domainService.setServiceAlias("outbound_service");
-        domainService.setServiceName("出库服务");
-        domainService.setServiceDesc("支持存货和固资出库服务");
+        domainService.setServiceAlias("apply_inbound_service");
+        domainService.setServiceName("预约入库服务");
+        domainService.setServiceDesc("支持存货和固资预约入库服务");
         domainCmdReqDTO.setDomainService(domainService);
         Result<Boolean> result = domainCmdService.addService(domainCmdReqDTO);
         System.out.println(result);

@@ -21,10 +21,7 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_flow
-        <trim prefix="where" prefixOverrides="and|or">
-            <if test="businessCode != null">and business_code = #{businessCode}</if>
-            <if test="flowId != null">and flow_id = #{flowId}</if>
-        </trim>
+        where flow_id = #{flowId}
         limit 1
     </select>
 
