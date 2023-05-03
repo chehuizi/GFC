@@ -52,6 +52,7 @@ public class BusinessFlowCmdServiceTest {
         flowNode.setNodeType(BusinessFlowNodeTypeEnum.DOMAIN.getType());
         flowNode.setDomainElement(DomainElementEnum.DOMAIN_SERVICE.getElement());
         flowNode.setElementId(10004);
+        flowNode.setPreNodes(new Integer[]{1, 2, 3});
         businessFlowCmdReqDTO.setBusinessFlowNode(flowNode);
         Result<Boolean> result = businessFlowCmdService.addFlowNode(businessFlowCmdReqDTO);
         System.out.println(result);

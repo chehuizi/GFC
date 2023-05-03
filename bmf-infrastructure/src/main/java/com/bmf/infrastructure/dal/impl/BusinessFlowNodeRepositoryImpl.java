@@ -23,7 +23,6 @@ public class BusinessFlowNodeRepositoryImpl implements BusinessFlowNodeRepositor
     @Override
     public boolean insert(BusinessFlowNode req) {
         BusinessFlowNodePO businessFlowNodePO = POUtils.convert(req, BusinessFlowNodePO.class);
-        businessFlowNodePO.setPreNodes("test");
         return businessFlowNodeMapper.insert(businessFlowNodePO) == 1;
     }
 

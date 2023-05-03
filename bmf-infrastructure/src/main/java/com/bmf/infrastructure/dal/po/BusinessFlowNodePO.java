@@ -39,7 +39,7 @@ public class BusinessFlowNodePO extends BasePO {
     /**
      * 前节点ID列表
      */
-    private String preNodes;
+    private Integer[] preNodes;
     /**
      * 角色ID
      */

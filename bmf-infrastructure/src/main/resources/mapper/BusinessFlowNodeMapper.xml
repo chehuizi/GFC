@@ -10,7 +10,8 @@
         <result column="node_type" jdbcType="VARCHAR" property="nodeType"/>
         <result column="domain_element" jdbcType="VARCHAR" property="domainElement"/>
         <result column="element_id" jdbcType="INTEGER" property="elementId"/>
-        <result column="pre_nodes" jdbcType="VARCHAR" property="preNodes"/>
+        <result column="pre_nodes" jdbcType="VARCHAR" property="preNodes"
+                typeHandler="com.bmf.infrastructure.dal.typehandler.IntegerArrayTypeHandler"/>
         <result column="role_id" jdbcType="INTEGER" property="roleId"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
