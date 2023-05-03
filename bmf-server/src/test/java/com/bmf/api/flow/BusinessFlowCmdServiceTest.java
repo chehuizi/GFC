@@ -43,6 +43,7 @@ public class BusinessFlowCmdServiceTest {
     public void test_business_flow_add_node() {
         BusinessFlowCmdReqDTO businessFlowCmdReqDTO = new BusinessFlowCmdReqDTO();
         BusinessFlow businessFlow = new BusinessFlow();
+        businessFlow.setBusinessCode(102);
         businessFlow.setFlowId(1001);
         businessFlowCmdReqDTO.setBusinessFlow(businessFlow);
         BusinessFlowNode flowNode = new BusinessFlowNode();

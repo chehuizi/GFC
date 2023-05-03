@@ -1,7 +1,10 @@
 package com.bmf.core.design;
 
+import com.bmf.base.Business;
 import com.bmf.base.flow.BusinessFlow;
 import com.bmf.base.flow.BusinessFlowNode;
+
+import java.util.List;
 
 /**
  * 业务设计
@@ -27,4 +30,11 @@ public interface BusinessFlowDesign {
      * @return
      */
     BusinessFlow queryFlow(BusinessFlow businessFlow);
+
+    /**
+     * 查询流程节点
+     * @param businessFlow
+     * @return
+     */
+    List<BusinessFlowNode> queryFlowNode(BusinessFlow businessFlow);
 }

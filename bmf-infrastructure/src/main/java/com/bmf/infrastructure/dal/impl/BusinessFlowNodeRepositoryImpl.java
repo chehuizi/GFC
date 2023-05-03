@@ -8,6 +8,8 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BusinessFlowNodeRepositoryImpl implements BusinessFlowNodeRepository {
 
@@ -36,5 +38,11 @@ public class BusinessFlowNodeRepositoryImpl implements BusinessFlowNodeRepositor
     public boolean delete(BusinessFlowNode req) {
         BusinessFlowNodePO businessFlowNodePO = POUtils.convert(req, BusinessFlowNodePO.class);
         return businessFlowNodeMapper.delete(businessFlowNodePO) == 1;
+    }
+
+    @Override
+    public List<BusinessFlowNode> selectNodeList(Integer flowId) {
+        return POUtils.convert(businessFlowNodeMapper.selectNodeList(flowId),
+                BusinessFlowNode.class);
     }
 }

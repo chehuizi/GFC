@@ -23,16 +23,16 @@ public class IntegerArrayTypeHandler extends BaseTypeHandler<Integer[]> {
 
     @Override
     public Integer[] getNullableResult(ResultSet resultSet, String s) throws SQLException {
-        return (Integer[]) JSON.parseArray(resultSet.getString(s), Integer.class).toArray();
+        return JSON.parseObject(resultSet.getString(s), Integer[].class);
     }
 
     @Override
     public Integer[] getNullableResult(ResultSet resultSet, int i) throws SQLException {
-        return (Integer[]) JSON.parseArray(resultSet.getString(i), Integer.class).toArray();
+        return JSON.parseObject(resultSet.getString(i), Integer[].class);
     }
 
     @Override
     public Integer[] getNullableResult(CallableStatement callableStatement, int i) throws SQLException {
-        return (Integer[]) JSON.parseArray(callableStatement.getString(i), Integer.class).toArray();
+        return JSON.parseObject(callableStatement.getString(i), Integer[].class);
     }
 }

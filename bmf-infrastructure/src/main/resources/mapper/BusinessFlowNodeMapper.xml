@@ -34,6 +34,13 @@
         limit 1
     </select>
 
+    <select id="selectNodeList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_flow_node
+        where flow_id = #{flowId}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessFlowNodePO">
         insert into bmf_business_flow_node (flow_id, node_id, node_name, node_alias, node_type,
         domain_element, element_id, pre_nodes)

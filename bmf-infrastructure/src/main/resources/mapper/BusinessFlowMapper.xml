@@ -21,7 +21,8 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_flow
-        where flow_id = #{flowId}
+        where business_code = #{businessCode}
+        and flow_id = #{flowId}
         limit 1
     </select>
 

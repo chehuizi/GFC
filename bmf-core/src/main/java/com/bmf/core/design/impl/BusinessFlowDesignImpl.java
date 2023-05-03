@@ -8,6 +8,8 @@ import com.bmf.infrastructure.dal.BusinessFlowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BusinessFlowDesignImpl implements BusinessFlowDesign {
 
@@ -29,5 +31,10 @@ public class BusinessFlowDesignImpl implements BusinessFlowDesign {
     @Override
     public BusinessFlow queryFlow(BusinessFlow businessFlow) {
         return businessFlowRepository.selectOne(businessFlow);
+    }
+
+    @Override
+    public List<BusinessFlowNode> queryFlowNode(BusinessFlow businessFlow) {
+        return businessFlowNodeRepository.selectNodeList(businessFlow.getFlowId());
     }
 }
