@@ -13,9 +13,11 @@ public interface BusinessFlowDesign {
 
     /**
      * 添加流程
+     * @param businessFlow
+     * @param businessFlowNode
      * @return
      */
-    boolean addFlow(BusinessFlow businessFlow);
+    boolean addFlow(BusinessFlow businessFlow, BusinessFlowNode businessFlowNode);
 
     /**
      * 添加流程节点

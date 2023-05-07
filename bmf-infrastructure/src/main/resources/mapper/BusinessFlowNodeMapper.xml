@@ -51,8 +51,8 @@
             #{nodeAlias,jdbcType=VARCHAR},
             #{nodeType,jdbcType=VARCHAR},
             #{domainElement,jdbcType=VARCHAR},
-            #{elementId,jdbcType=INTEGER},
-            #{preNodes,jdbcType=VARCHAR}
+            <if test="elementId != null">#{elementId,jdbcType=INTEGER},</if><if test="elementId == null">0,</if>
+            <if test="preNodes != null">#{preNodes,jdbcType=VARCHAR}</if><if test="preNodes == null">''</if>
         )
     </insert>
 

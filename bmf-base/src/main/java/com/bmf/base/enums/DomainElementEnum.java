@@ -10,6 +10,7 @@ public enum DomainElementEnum {
 
     DOMAIN_SERVICE("domain_service", "领域服务"),
     DOMAIN_EVENT("domain_event", "领域事件"),
+    NONE("none", "非领域元素"),
     ;
 
     /**

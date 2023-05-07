@@ -32,7 +32,10 @@ public class BusinessFlowCmdServiceImpl implements BusinessFlowCmdService {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
         req.getBusinessFlow().setFlowId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_FLOW.getKey()));
-        return ResultUtil.success(businessFlowDesign.addFlow(req.getBusinessFlow()));
+        req.initStartNode();
+        req.getBusinessFlowNode().setNodeId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_NODE.getKey()));
+        return ResultUtil.success(businessFlowDesign.addFlow(req.getBusinessFlow(),
+                req.getBusinessFlowNode()));
     }
 
     @Override
