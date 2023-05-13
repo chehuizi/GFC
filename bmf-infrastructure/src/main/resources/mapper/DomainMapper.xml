@@ -3,7 +3,7 @@
 <mapper namespace="com.bmf.infrastructure.dal.mapper.DomainMapper">
     <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
-        <result column="domain_code" jdbcType="VARCHAR" property="domainCode"/>
+        <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
         <result column="domain_name" jdbcType="VARCHAR" property="domainName"/>
         <result column="domain_alias" jdbcType="VARCHAR" property="domainAlias"/>
         <result column="domain_type" jdbcType="VARCHAR" property="domainType"/>

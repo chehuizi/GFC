@@ -19,6 +19,7 @@ public enum CodeKeyEnum {
     CODE_KEY_ROLE("role", "角色"),
     CODE_KEY_FLOW("flow", "流程"),
     CODE_KEY_NODE("node", "节点"),
+    CODE_KEY_USER("user", "用户"),
     ;
 
     /**

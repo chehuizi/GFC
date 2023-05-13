@@ -87,6 +87,13 @@ public class CodeSeqGeneratorTest {
     }
 
     @Test
+    public void test_init_code_seq_user() {
+        boolean result = codeSeqGenerator.initCodeSeq(CodeKeyEnum.CODE_KEY_USER.getKey(), 100000);
+        System.out.println(result);
+        Assert.assertTrue(result);
+    }
+
+    @Test
     public void test_gen_seq_business() {
         Integer seqNo = codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_BUSINESS.getKey());
         System.out.println(seqNo);
