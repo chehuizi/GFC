@@ -25,7 +25,7 @@ const rootRouter: RouteObject[] = [
       },
       {
         path: "/business/industryStandard",
-        element: <>行业标准</>,
+        element: <>标准</>,
       },
       {
         path: "/business/domain",
