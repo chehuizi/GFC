@@ -1,50 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.UserMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.UserPO">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.UserBusinessMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.UserBusinessPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="user_id" jdbcType="INTEGER" property="userId"/>
-        <result column="user_name" jdbcType="VARCHAR" property="userName"/>
-        <result column="password" jdbcType="VARCHAR" property="password"/>
+        <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, user_id, user_name, password, gmt_create, gmt_modify, is_deleted
+        id, user_id, business_code, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap">
         select
         <include refid="Base_Column_List"/>
-        FROM bmf_user
+        FROM bmf_user_business
         <trim prefix="where" prefixOverrides="and|or">
             <if test="userId != null">and user_id = #{userId}</if>
-            <if test="userName != null">and user_name = #{userName}</if>
+            <if test="businessCode != null">and business_code = #{businessCode}</if>
         </trim>
         limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.UserPO">
-        insert into bmf_user (user_id, user_name, password)
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.UserBusinessPO">
+        insert into bmf_user_business (user_id, business_code)
         values (
             #{userId,jdbcType=INTEGER},
-            #{userName,jdbcType=VARCHAR},
-            #{password,jdbcType=VARCHAR}
+            #{businessCode,jdbcType=INTEGER}
         )
     </insert>
 
-    <update id="update">
-        update bmf_user
-        <set>
-            <if test="password != null">password = #{password},</if>
-        </set>
-        where user_id = #{userId}
-    </update>
-
     <delete id="delete">
-        delete from bmf_user
+        delete from bmf_user_business
         where user_id = #{userId}
+        and business_code = #{businessCode}
     </delete>
 </mapper>
