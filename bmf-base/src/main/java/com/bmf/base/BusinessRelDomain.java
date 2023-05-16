@@ -13,5 +13,8 @@ public class BusinessRelDomain extends BaseModel {
      * 领域编码
      */
     private Integer domainCode;
-
+    /**
+     * 位置（JSON格式存储）
+     */
+    private String position;
 }
