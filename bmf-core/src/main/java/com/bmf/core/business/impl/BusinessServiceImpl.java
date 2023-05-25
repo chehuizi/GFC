@@ -33,9 +33,6 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public boolean createBusiness(Business business) {
-        if (Objects.isNull(business)) {
-            throw new BizException(BizCodeEnum.BUSINESS_NOT_EXIST);
-        }
         return businessRepository.insert(business);
     }
 
