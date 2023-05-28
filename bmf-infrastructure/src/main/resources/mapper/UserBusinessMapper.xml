@@ -25,6 +25,13 @@
         limit 1
     </select>
 
+    <select id="selectByUser" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        FROM bmf_user_business
+        where user_id = #{userId}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.UserBusinessPO">
         insert into bmf_user_business (user_id, business_code)
         values (
