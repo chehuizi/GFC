@@ -43,7 +43,7 @@
         )
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
         insert into bmf_business_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
         values (
             #{businessCode,jdbcType=INTEGER},
@@ -53,6 +53,23 @@
             #{domainARole,jdbcType=VARCHAR},
             #{domainBRole,jdbcType=VARCHAR}
         )
+    </insert>
+
+    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
+        insert into bmf_business_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.businessCode,jdbcType=INTEGER},
+                #{item.domainRelation,jdbcType=VARCHAR},
+                #{item.domainACode,jdbcType=INTEGER},
+                #{item.domainBCode,jdbcType=INTEGER},
+                #{item.domainARole,jdbcType=VARCHAR},
+                #{item.domainBRole,jdbcType=VARCHAR}
+            </trim>
+        </foreach>
+        on duplicate key update
+        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
     </insert>
 
     <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">

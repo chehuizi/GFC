@@ -28,6 +28,9 @@ public enum BizCodeEnum {
     DOMAIN_SERVICE_NOT_EXIST(100011, "领域服务不存在"),
     DOMAIN_EVENT_NOT_EXIST(100012, "领域事件不存在"),
     BUSINESS_FLOW_NOT_EXIST(100013, "业务流程不存在"),
+    STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED(100014, "战略设计领域处理失败"),
+    STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED(100015, "战略设计业务关联领域处理失败"),
+    STRATEGY_DESIGN_DOMAIN_RELATION_HANDLE_FAILED(100016, "战略设计领域关系处理失败"),
     /******************** api层错误码 end   ********************/
 
     /******************** core层错误码 start ********************/

@@ -44,6 +44,11 @@ public class BusinessDomain extends BaseModel {
     private int domainLevel;
 
     /**
+     * 位置（JSON格式存储）
+     */
+    private String position;
+
+    /**
      * 领域实体列表
      */
     private List<DomainEntity> domainEntityList;

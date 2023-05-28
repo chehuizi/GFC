@@ -34,6 +34,12 @@ public class DomainRepositoryImpl implements DomainRepository {
     }
 
     @Override
+    public boolean batchInsert(List<BusinessDomain> businessDomainList) {
+        List<DomainPO> domainPOList = POUtils.convertModel2PO(businessDomainList, DomainPO.class);
+        return domainMapper.batchInsert(domainPOList) == businessDomainList.size();
+    }
+
+    @Override
     public boolean update(BusinessDomain req) {
         DomainPO domainPO = POUtils.convert(req, DomainPO.class);
         return domainMapper.update(domainPO) == 1;

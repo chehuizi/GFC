@@ -75,7 +75,13 @@ public class BusinessServiceImpl implements BusinessService {
         BusinessRelDomain businessRelDomain = new BusinessRelDomain();
         businessRelDomain.setBusinessCode(business.getBusinessCode());
         businessRelDomain.setDomainCode(domain.getDomainCode());
+        businessRelDomain.setPosition(domain.getPosition());
         return businessRelDomainRepository.insert(businessRelDomain);
+    }
+
+    @Override
+    public boolean addDomainList(Business business, List<BusinessDomain> domainList) {
+        return false;
     }
 
     @Override

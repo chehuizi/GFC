@@ -10,6 +10,13 @@ import com.bmf.api.business.dto.BusinessCmdReqDTO;
 public interface BusinessCmdService extends CmdService<BusinessCmdReqDTO> {
 
     /**
+     * 保存战略设计
+     * @param businessCmdReqDTO
+     * @return
+     */
+    Result<Boolean> saveStrategyDesign(BusinessCmdReqDTO businessCmdReqDTO);
+
+    /**
      * 添加领域
      * @param businessCmdReqDTO
      * @return

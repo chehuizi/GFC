@@ -12,6 +12,8 @@ public interface BusinessRelDomainMapper {
 
     int insert(BusinessRelDomainPO businessRelDomainPO);
 
+    int batchInsert(List<BusinessRelDomainPO> businessRelDomainPOList);
+
     int update(BusinessRelDomainPO businessRelDomainPO);
 
     int delete(BusinessRelDomainPO businessRelDomainPO);

@@ -12,4 +12,11 @@ public interface DomainRepository extends BaseRepository<BusinessDomain> {
      * @return
      */
     List<BusinessDomain> selectList(List<Integer> domainCodeList);
+
+    /**
+     * 批量插入领域
+     * @param businessDomainList
+     * @return
+     */
+    boolean batchInsert(List<BusinessDomain> businessDomainList);
 }

@@ -6,6 +6,8 @@ import com.bmf.common.utils.ParamCheckUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
+
 @Service("businessCmdReqDTOValidator")
 public class BusinessCmdReqDTOValidator {
 
@@ -35,6 +37,22 @@ public class BusinessCmdReqDTOValidator {
     }
 
     /**
+     * 校验saveStrategyDesign方法
+     * @param businessCmdReqDTO
+     * @return
+     */
+    public boolean v4SaveStrategyDesign(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
+        ParamCheckUtil.checkTrue(Objects.nonNull(businessCmdReqDTO.getDomainList())
+                && businessCmdReqDTO.getDomainList().size() > 0, "domain list is empty");
+        ParamCheckUtil.checkTrue(Objects.nonNull(businessCmdReqDTO.getRelationshipList())
+                && businessCmdReqDTO.getRelationshipList().size() > 0, "domain relationship list is empty");
+        return true;
+    }
+
+    /**
      * 校验addDomain方法
      * @param businessCmdReqDTO
      * @return
@@ -45,6 +63,7 @@ public class BusinessCmdReqDTOValidator {
         ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
         ParamCheckUtil.checkNull(businessCmdReqDTO.getDomain(), "domain is null");
         ParamCheckUtil.checkNull(businessCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkBlank(businessCmdReqDTO.getDomain().getPosition(), "domain position is blank");
         return true;
     }
 

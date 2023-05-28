@@ -33,6 +33,13 @@ public interface DomainService {
     boolean createDomain(BusinessDomain businessDomain);
 
     /**
+     * 批量创建领域
+     * @param businessDomainList
+     * @return
+     */
+    boolean batchCreateDomain(List<BusinessDomain> businessDomainList);
+
+    /**
      * 更新领域
      * @param businessDomain
      * @return

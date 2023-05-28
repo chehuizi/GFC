@@ -46,6 +46,20 @@
         )
     </insert>
 
+    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.DomainPO">
+        insert into bmf_domain (domain_code, domain_name, domain_alias, domain_type, domain_level)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.domainCode,jdbcType=INTEGER},
+                #{item.domainName,jdbcType=VARCHAR},
+                #{item.domainAlias,jdbcType=VARCHAR},
+                #{item.domainType,jdbcType=VARCHAR},
+                #{item.domainLevel,jdbcType=INTEGER}
+            </trim>
+        </foreach>
+    </insert>
+
     <update id="update">
         update bmf_domain
         <set>

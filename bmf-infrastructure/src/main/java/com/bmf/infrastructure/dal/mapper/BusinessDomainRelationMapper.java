@@ -14,6 +14,8 @@ public interface BusinessDomainRelationMapper {
 
     int insert(BusinessDomainRelationPO businessDomainRelationPO);
 
+    int batchInsert(List<BusinessDomainRelationPO> businessDomainRelationPOList);
+
     int update(BusinessDomainRelationPO businessDomainRelationPO);
 
     int delete(BusinessDomainRelationPO businessDomainRelationPO);

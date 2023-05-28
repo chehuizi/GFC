@@ -41,6 +41,11 @@ public class DomainServiceImpl implements DomainService {
     }
 
     @Override
+    public boolean batchCreateDomain(List<BusinessDomain> businessDomainList) {
+        return domainRepository.batchInsert(businessDomainList);
+    }
+
+    @Override
     public boolean updateDomain(BusinessDomain businessDomain) {
         return domainRepository.update(businessDomain);
     }

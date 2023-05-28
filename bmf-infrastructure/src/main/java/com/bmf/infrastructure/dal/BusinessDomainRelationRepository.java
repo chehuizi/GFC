@@ -10,4 +10,6 @@ public interface BusinessDomainRelationRepository extends BaseRepository<Busines
     List<BusinessDomainRelation> selectList(BusinessDomainRelation req);
 
     List<BusinessDomainRelation> selectByDomain(BusinessDomainRelation req);
+
+    boolean batchInsert(List<BusinessDomainRelation> businessDomainRelationList);
 }

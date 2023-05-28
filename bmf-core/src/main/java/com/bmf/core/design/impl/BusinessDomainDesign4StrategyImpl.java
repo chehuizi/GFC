@@ -8,6 +8,8 @@ import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BusinessDomainDesign4StrategyImpl implements BusinessDomainDesign4Strategy {
 
@@ -18,6 +20,12 @@ public class BusinessDomainDesign4StrategyImpl implements BusinessDomainDesign4S
     public boolean buildBusinessDomainRelationship(BusinessDomainRelationship relationship) {
         BusinessDomainRelation businessDomainRelation = BusinessUtil.convert(relationship);
         return businessDomainRelationRepository.insert(businessDomainRelation);
+    }
+
+    @Override
+    public boolean batchBuildBusinessDomainRelationship(List<BusinessDomainRelationship> relationshipList) {
+        List<BusinessDomainRelation> businessDomainRelationList = BusinessUtil.convert(relationshipList);
+        return businessDomainRelationRepository.batchInsert(businessDomainRelationList);
     }
 
     @Override

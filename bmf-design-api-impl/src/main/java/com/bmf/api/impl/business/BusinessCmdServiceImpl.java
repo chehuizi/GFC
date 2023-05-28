@@ -20,8 +20,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class BusinessCmdServiceImpl implements BusinessCmdService {
@@ -55,6 +59,39 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     @Override
     public Result<Boolean> delete(BusinessCmdReqDTO req) {
         return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
+    }
+
+    @Override
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4SaveStrategyDesign")
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
+    public Result<Boolean> saveStrategyDesign(BusinessCmdReqDTO businessCmdReqDTO) {
+        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
+        BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
+        // step1：处理领域
+        boolean result = handleBusinessDomain(businessCmdReqDTO.getDomainList());
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
+        // step2：处理业务和领域关系
+        result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
+        // step3：处理领域关系
+        result = businessDomainDesign4Strategy.batchBuildBusinessDomainRelationship(businessCmdReqDTO.getRelationshipList());
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
+        return ResultUtil.success(Boolean.TRUE);
+    }
+
+    /**
+     * 处理领域
+     * @param businessDomainList
+     */
+    private boolean handleBusinessDomain(List<BusinessDomain> businessDomainList) {
+        List<BusinessDomain> tmp = new ArrayList<>();
+        for (BusinessDomain domain : businessDomainList) {
+            if (Objects.nonNull(domain.getDomainCode())) {
+                domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
+                tmp.add(domain);
+            }
+        }
+        return domainService.batchCreateDomain(tmp);
     }
 
     @Override

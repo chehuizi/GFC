@@ -73,6 +73,14 @@ public interface BusinessService {
     boolean addDomain(Business business, BusinessDomain domain);
 
     /**
+     * 添加领域列表
+     * @param business
+     * @param domainList
+     * @return
+     */
+    boolean addDomainList(Business business, List<BusinessDomain> domainList);
+
+    /**
      * 删除领域
      * @param business
      * @param domain

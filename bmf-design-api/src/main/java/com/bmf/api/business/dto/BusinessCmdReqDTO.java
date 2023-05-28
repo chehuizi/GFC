@@ -8,6 +8,7 @@ import com.bmf.base.strategy.BusinessDomainRelationship;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * 业务请求对象
@@ -26,9 +27,17 @@ public class BusinessCmdReqDTO extends ReqDTO implements Serializable {
      */
     private BusinessDomain domain;
     /**
+     * 领域列表
+     */
+    private List<BusinessDomain> domainList;
+    /**
      * 领域关系
      */
     private BusinessDomainRelationship relationship;
+    /**
+     * 领域关系列表
+     */
+    private List<BusinessDomainRelationship> relationshipList;
     /**
      * 角色
      */

@@ -31,4 +31,15 @@ public class BusinessCheckUtil {
             throw new BizException(bizCodeEnum);
         }
     }
+
+    /**
+     * true校验
+     * @param condition
+     * @param bizCodeEnum
+     */
+    public static void checkTrue(boolean condition, BizCodeEnum bizCodeEnum) {
+        if (!condition) {
+            throw new BizException(bizCodeEnum);
+        }
+    }
 }

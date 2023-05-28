@@ -6,6 +6,10 @@ import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 public class BusinessUtil {
 
     /**
@@ -63,6 +67,9 @@ public class BusinessUtil {
      * @return
      */
     public static BusinessDomainRelation convert(BusinessDomainRelationship businessDomainRelationship) {
+        if (Objects.isNull(businessDomainRelationship)) {
+            return null;
+        }
         BusinessDomainRelation businessDomainRelation = new BusinessDomainRelation();
         businessDomainRelation.setBusinessCode(businessDomainRelationship.getBusinessCode());
         businessDomainRelation.setDomainRelation(businessDomainRelationship.getRelationship());
@@ -71,5 +78,21 @@ public class BusinessUtil {
         businessDomainRelation.setDomainBCode(businessDomainRelationship.getRoleB().getDomain().getDomainCode());
         businessDomainRelation.setDomainBRole(businessDomainRelationship.getRoleB().getRole());
         return businessDomainRelation;
+    }
+
+    /**
+     * 转换对象列表
+     * @param relationshipList
+     * @return
+     */
+    public static List<BusinessDomainRelation> convert(List<BusinessDomainRelationship> relationshipList) {
+        if (relationshipList.isEmpty()) {
+            return null;
+        }
+        List<BusinessDomainRelation> businessDomainRelationList = new ArrayList<>();
+        for (BusinessDomainRelationship item : relationshipList) {
+            businessDomainRelationList.add(convert(item));
+        }
+        return businessDomainRelationList;
     }
 }

@@ -12,4 +12,11 @@ public interface BusinessRelDomainRepository extends BaseRepository<BusinessRelD
      * @return
      */
     List<BusinessRelDomain> selectList(BusinessRelDomain req);
+
+    /**
+     * 批量插入业务领域关系
+     * @param businessRelDomainList
+     * @return
+     */
+    boolean batchInsert(List<BusinessRelDomain> businessRelDomainList);
 }
