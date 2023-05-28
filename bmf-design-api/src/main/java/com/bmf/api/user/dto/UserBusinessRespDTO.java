@@ -2,7 +2,6 @@ package com.bmf.api.user.dto;
 
 import com.bmf.api.RespDTO;
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
 import com.bmf.base.user.UserBusiness;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,7 +25,8 @@ public class UserBusinessRespDTO extends RespDTO implements Serializable {
      */
     private List<Business> businessList;
 
-    public UserBusinessRespDTO(List<UserBusiness> userBusinessList) {
+    public UserBusinessRespDTO(List<UserBusiness> userBusinessList, List<Business> businessList) {
         this.userBusinessList = userBusinessList;
+        this.businessList = businessList;
     }
 }

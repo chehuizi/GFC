@@ -28,6 +28,16 @@
         limit 1
     </select>
 
+    <select id="selectByBusinessCode" resultMap="BaseResultMap" parameterType="java.util.List">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business
+        where business_code in
+        <foreach collection="businessCodeList" open="(" close=")" item="businessCode" separator=",">
+            #{businessCode}
+        </foreach>
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessPO">
         insert into bmf_business (business_prefix, business_code, business_name, business_alias, business_desc)
         values (

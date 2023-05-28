@@ -35,6 +35,13 @@ public interface BusinessService {
     Business queryBusiness(Business business);
 
     /**
+     * 查询业务列表
+     * @param businessCodeList
+     * @return
+     */
+    List<Business> queryBusinessList(List<Integer> businessCodeList);
+
+    /**
      * 查询业务关联领域
      * @param business
      * @param domain

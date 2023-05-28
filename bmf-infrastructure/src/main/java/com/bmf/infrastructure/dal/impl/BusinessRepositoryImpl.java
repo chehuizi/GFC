@@ -8,6 +8,8 @@ import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class BusinessRepositoryImpl implements BusinessRepository {
 
@@ -18,6 +20,12 @@ public class BusinessRepositoryImpl implements BusinessRepository {
     public Business selectOne(Business req) {
         BusinessPO businessPO = POUtils.convert(req, BusinessPO.class);
         return POUtils.convert(businessMapper.selectOne(businessPO), Business.class);
+    }
+
+    @Override
+    public List<Business> selectByBusinessCode(List<Integer> businessCodeList) {
+        return POUtils.convert(businessMapper.selectByBusinessCode(businessCodeList),
+                Business.class);
     }
 
     @Override
