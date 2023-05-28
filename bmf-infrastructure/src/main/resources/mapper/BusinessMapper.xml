@@ -39,4 +39,12 @@
         )
     </insert>
 
+    <update id="update">
+        update bmf_business
+        <set>
+            <if test="businessName != null">business_name = #{businessName},</if>
+            <if test="businessDesc != null">business_desc = #{businessDesc},</if>
+        </set>
+        where business_code = #{businessCode}
+    </update>
 </mapper>

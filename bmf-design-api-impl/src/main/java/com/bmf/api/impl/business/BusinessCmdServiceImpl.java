@@ -47,8 +47,9 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4Update")
     public Result<Boolean> update(BusinessCmdReqDTO req) {
-        return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
+        return ResultUtil.success(businessService.updateBusiness(req.getBusiness()));
     }
 
     @Override

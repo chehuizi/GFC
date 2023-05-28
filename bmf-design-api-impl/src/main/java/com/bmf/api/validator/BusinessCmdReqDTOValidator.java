@@ -3,6 +3,7 @@ package com.bmf.api.validator;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.common.utils.ParamCheckUtil;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 @Service("businessCmdReqDTOValidator")
@@ -20,6 +21,16 @@ public class BusinessCmdReqDTOValidator {
         ParamCheckUtil.checkBlank(businessCmdReqDTO.getBusiness().getBusinessAlias(), "business alias is blank");
         ParamCheckUtil.checkBlank(businessCmdReqDTO.getBusiness().getBusinessName(), "business name is blank");
         ParamCheckUtil.checkBlank(businessCmdReqDTO.getBusiness().getBusinessDesc(), "business description is blank");
+        return true;
+    }
+
+    public boolean v4Update(BusinessCmdReqDTO businessCmdReqDTO) {
+        ParamCheckUtil.checkNull(businessCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
+        ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
+        ParamCheckUtil.checkTrue(StringUtils.isNotBlank(businessCmdReqDTO.getBusiness().getBusinessDesc())
+                                || StringUtils.isNotBlank(businessCmdReqDTO.getBusiness().getBusinessName()),
+                        "no param to update");
         return true;
     }
 

@@ -37,6 +37,11 @@ public class BusinessServiceImpl implements BusinessService {
     }
 
     @Override
+    public boolean updateBusiness(Business business) {
+        return businessRepository.update(business);
+    }
+
+    @Override
     public Business queryBusiness(Business business) {
         return businessRepository.selectOne(business);
     }

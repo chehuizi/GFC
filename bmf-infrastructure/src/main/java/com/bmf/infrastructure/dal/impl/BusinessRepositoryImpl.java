@@ -28,7 +28,8 @@ public class BusinessRepositoryImpl implements BusinessRepository {
 
     @Override
     public boolean update(Business req) {
-        return false;
+        BusinessPO businessPO = POUtils.convert(req, BusinessPO.class);
+        return businessMapper.update(businessPO) == 1;
     }
 
     @Override

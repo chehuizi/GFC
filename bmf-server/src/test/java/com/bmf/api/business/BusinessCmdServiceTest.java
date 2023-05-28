@@ -45,6 +45,19 @@ public class BusinessCmdServiceTest {
     }
 
     @Test
+    public void test_business_update() {
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(102);
+        business.setBusinessAlias("sharing-bike");
+        business.setBusinessDesc("共享两轮业务（单车、电单车）");
+        businessCmdReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.update(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
+
+    @Test
     public void test_business_add_domain() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
