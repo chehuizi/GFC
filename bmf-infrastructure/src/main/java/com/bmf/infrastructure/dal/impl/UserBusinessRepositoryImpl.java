@@ -16,7 +16,8 @@ public class UserBusinessRepositoryImpl implements UserBusinessRepository {
 
     @Override
     public UserBusiness selectOne(UserBusiness req) {
-        return null;
+        UserBusinessPO userBusinessPO = POUtils.convert(req, UserBusinessPO.class);
+        return POUtils.convert(userBusinessMapper.selectOne(userBusinessPO), UserBusiness.class);
     }
 
     @Override
