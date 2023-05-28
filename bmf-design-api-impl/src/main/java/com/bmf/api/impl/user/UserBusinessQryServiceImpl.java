@@ -10,6 +10,7 @@ import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.user.UserBusinessService;
+import com.bmf.core.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -21,6 +22,8 @@ import java.util.stream.Collectors;
 public class UserBusinessQryServiceImpl implements UserBusinessQryService {
 
     @Autowired
+    private UserService userService;
+    @Autowired
     private UserBusinessService userBusinessService;
     @Autowired
     private BusinessService businessService;
@@ -28,6 +31,7 @@ public class UserBusinessQryServiceImpl implements UserBusinessQryService {
     @Override
     @Validator(beanName = "userBusinessReqDTOValidator", method = "v4QueryOne")
     public Result<UserBusinessRespDTO> queryOne(UserBusinessQryReqDTO req) {
+//        userService
         List<UserBusiness> userBusinessList = userBusinessService.queryUserBusiness(req.getUserBusiness());
         if (Objects.isNull(userBusinessList) || userBusinessList.isEmpty()) {
             return ResultUtil.success(null);
