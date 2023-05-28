@@ -13,4 +13,11 @@ public interface UserService {
      * @return
      */
     Boolean addUser(User user);
+
+    /**
+     * 查询用户
+     * @param user
+     * @return
+     */
+    User queryUser(User user);
 }

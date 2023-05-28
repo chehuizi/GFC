@@ -5,7 +5,10 @@ import com.bmf.api.user.UserBusinessQryService;
 import com.bmf.api.user.dto.UserBusinessQryReqDTO;
 import com.bmf.api.user.dto.UserBusinessRespDTO;
 import com.bmf.base.Business;
+import com.bmf.base.user.User;
 import com.bmf.base.user.UserBusiness;
+import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
@@ -31,7 +34,8 @@ public class UserBusinessQryServiceImpl implements UserBusinessQryService {
     @Override
     @Validator(beanName = "userBusinessReqDTOValidator", method = "v4QueryOne")
     public Result<UserBusinessRespDTO> queryOne(UserBusinessQryReqDTO req) {
-//        userService
+        User user = userService.queryUser(new User(req.getUserBusiness().getUserId()));
+        BusinessCheckUtil.checkNull(user, BizCodeEnum.USER_NOT_EXIST);
         List<UserBusiness> userBusinessList = userBusinessService.queryUserBusiness(req.getUserBusiness());
         if (Objects.isNull(userBusinessList) || userBusinessList.isEmpty()) {
             return ResultUtil.success(null);

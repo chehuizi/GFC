@@ -16,7 +16,8 @@ public class UserRepositoryImpl implements UserRepository {
 
     @Override
     public User selectOne(User req) {
-        return null;
+        UserPO userPO = POUtils.convert(req, UserPO.class);
+        return POUtils.convert(userMapper.selectOne(userPO), User.class);
     }
 
     @Override

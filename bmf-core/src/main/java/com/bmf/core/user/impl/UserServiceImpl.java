@@ -16,4 +16,9 @@ public class UserServiceImpl implements UserService {
     public Boolean addUser(User user) {
         return userRepository.insert(user);
     }
+
+    @Override
+    public User queryUser(User user) {
+        return userRepository.selectOne(user);
+    }
 }

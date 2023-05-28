@@ -2,11 +2,13 @@ package com.bmf.base.user;
 
 import com.bmf.base.BaseModel;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 用户
  */
 @Data
+@NoArgsConstructor
 public class User extends BaseModel {
 
     /**
@@ -21,4 +23,8 @@ public class User extends BaseModel {
      * 密码
      */
     private String password;
+
+    public User(Integer userId) {
+        this.userId = userId;
+    }
 }
