@@ -4,7 +4,7 @@ import qs from "qs";
 const instance = axios.create({
   timeout: 10000,
   baseURL: "https://some-domain.com/api/",
-  headers: {},
+  // headers: {},
 });
 
 instance.interceptors.request.use(
@@ -26,16 +26,14 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
   (res) => {
     // 成功时返回数据
-    let code = res.data.code;
-    if (code === 200) {
-      return res.data;
-    } else if (code === 401) {
-      // token失效
-      // router.push("/login"); // 跳转登录页
-    } else {
-      return res.data;
-    }
-    return Promise.resolve(res);
+    // let code = res.data.code;
+    // if (code === 200) {
+    //   return res.data;
+    // } else if (code === 401) {
+    //   // token失效
+    //   // router.push("/login"); // 跳转登录页
+    // }
+    return Promise.resolve(res.data);
   },
   (err) => Promise.reject(err)
 );

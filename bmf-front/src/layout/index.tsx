@@ -6,6 +6,7 @@ import {
   VideoCameraOutlined,
 } from "@ant-design/icons";
 import { Layout, Menu, theme, Select } from "antd";
+import axios from "../utils/axios";
 import "./index.css";
 
 const { Header, Sider, Content } = Layout;
@@ -16,9 +17,16 @@ const App: React.FC = () => {
     token: { colorBgContainer },
   } = theme.useToken();
   const navigate = useNavigate();
+  const [businesses, setBusinesses] = useState<any[]>([]);
 
   useEffect(() => {
     navigate("/business/domain");
+  }, []);
+
+  useEffect(() => {
+    axios.get("/1212", { params: { userId: "" } }).then((res) => {
+      setBusinesses(res.data || []);
+    });
   }, []);
 
   const onChange = () => {
@@ -58,19 +66,17 @@ const App: React.FC = () => {
       </Sider>
       <Layout className="site-layout">
         <Header className="header" style={{ background: colorBgContainer }}>
-          {/* <div className="trigger" onClick={() => setCollapsed(!collapsed)}>
+          <div className="trigger" onClick={() => setCollapsed(!collapsed)}>
             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
-          </div> */}
-          {/* business： */}
-          <Select
-            className="business"
-            defaultValue="business"
-            onChange={onChange}
-            options={[
-              { value: "business", label: "business" },
-              { value: "business1", label: "business2" },
-            ]}
-          />
+          </div>
+          <div style={{ marginLeft: 10 }}>
+            <Select
+              defaultActiveFirstOption
+              className="business"
+              onChange={onChange}
+              options={businesses}
+            />
+          </div>
         </Header>
         <Content
           className="content"
