@@ -37,14 +37,12 @@ public class DomainServiceImpl implements DomainService {
 
     @Override
     public boolean createDomain(BusinessDomain businessDomain) {
-        boolean result = domainRepository.insert(businessDomain);
-        return result;
+        return domainRepository.insert(businessDomain);
     }
 
     @Override
     public boolean updateDomain(BusinessDomain businessDomain) {
-        boolean result = domainRepository.update(businessDomain);
-        return result;
+        return domainRepository.update(businessDomain);
     }
 
     @Override
