@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import React from "react";
 import { AndroidOutlined, MailOutlined } from "@ant-design/icons";
 import { Tabs } from "antd";
-import Strategy from "./strategy";
+import Strategy from "./strategy/index1";
 
 const Domain: React.FC = () => (
   <Tabs

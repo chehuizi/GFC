@@ -26,7 +26,7 @@ const App: React.FC = () => {
   };
 
   return (
-    <Layout style={{ width: "100vw", height: "100vh" }}>
+    <Layout style={{ width: "100vw", height: "100vh", overflow: "hidden" }}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <div className="logo">BMF</div>
         <Menu
@@ -39,22 +39,16 @@ const App: React.FC = () => {
           }}
           items={[
             {
-              key: "/business",
-              label: "business",
-              children: [
-                {
-                  key: "/business/industryStandard",
-                  label: "行业标准",
-                },
-                {
-                  key: "/business/process",
-                  label: "流程",
-                },
-                {
-                  key: "/business/domain",
-                  label: "领域",
-                },
-              ],
+              key: "/business/industryStandard",
+              label: "标准",
+            },
+            {
+              key: "/business/process",
+              label: "流程",
+            },
+            {
+              key: "/business/domain",
+              label: "领域",
             },
           ]}
           onClick={({ key }) => {

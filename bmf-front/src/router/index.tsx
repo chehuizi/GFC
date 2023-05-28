@@ -5,7 +5,9 @@ import Domain from "../pages/domain";
 import Process from "../pages/process";
 import Home from "../pages/home";
 
-const rootRouter: RouteObject[] = [
+type RouteItemObj = RouteObject & { root?: boolean };
+
+const rootRouter: RouteItemObj[] = [
   {
     path: "/login",
     element: <Login />,
@@ -13,6 +15,7 @@ const rootRouter: RouteObject[] = [
   {
     path: "/",
     element: <Layout />,
+    root: true,
     // meta: {
     //   requiresAuth: false,
     //   title: "layout",
