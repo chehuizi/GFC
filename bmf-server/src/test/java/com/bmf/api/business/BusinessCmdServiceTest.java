@@ -87,6 +87,17 @@ public class BusinessCmdServiceTest {
     }
 
     @Test
+    public void test_business_save_strategy_design() {
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(102);
+        businessCmdReqDTO.setBusiness(business);
+        Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
+
+    @Test
     public void test_business_build_domain_relation() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();

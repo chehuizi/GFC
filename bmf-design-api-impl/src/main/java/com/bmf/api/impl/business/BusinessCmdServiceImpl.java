@@ -72,10 +72,10 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
         // step2：处理业务和领域关系
         result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED);
         // step3：处理领域关系
         result = businessDomainDesign4Strategy.batchBuildBusinessDomainRelationship(businessCmdReqDTO.getRelationshipList());
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_RELATION_HANDLE_FAILED);
         return ResultUtil.success(Boolean.TRUE);
     }
 
@@ -86,7 +86,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     private boolean handleBusinessDomain(List<BusinessDomain> businessDomainList) {
         List<BusinessDomain> tmp = new ArrayList<>();
         for (BusinessDomain domain : businessDomainList) {
-            if (Objects.nonNull(domain.getDomainCode())) {
+            if (Objects.isNull(domain.getDomainCode())) {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
                 tmp.add(domain);
             }

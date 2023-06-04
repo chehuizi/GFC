@@ -21,6 +21,7 @@
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_domain_relation
+        where is_deleted = 0
         limit 1
     </select>
 
@@ -29,6 +30,7 @@
         <include refid="Base_Column_List"/>
         FROM bmf_business_domain_relation
         where business_code = #{businessCode,jdbcType=INTEGER}
+        and is_deleted = 0
     </select>
 
     <select id="selectByDomain" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">
@@ -41,6 +43,7 @@
             or
             domain_b_code = #{domainBCode,jdbcType=INTEGER}
         )
+        and is_deleted = 0
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainRelationPO">

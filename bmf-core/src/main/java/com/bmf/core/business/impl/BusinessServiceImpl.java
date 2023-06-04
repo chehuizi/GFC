@@ -16,6 +16,7 @@ import com.bmf.infrastructure.dal.BusinessRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -86,7 +87,8 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public boolean addDomainList(Business business, List<BusinessDomain> domainList) {
-        return false;
+        List<BusinessRelDomain> businessRelDomainList = new ArrayList<>();
+        return businessRelDomainRepository.batchInsert(businessRelDomainList);
     }
 
     @Override

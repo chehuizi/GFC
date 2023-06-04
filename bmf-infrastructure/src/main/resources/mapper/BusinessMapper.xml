@@ -25,6 +25,7 @@
             <if test="businessCode != null">and business_code = #{businessCode}</if>
             <if test="businessAlias != null">and business_alias = #{businessAlias}</if>
         </trim>
+        and is_deleted = 0
         limit 1
     </select>
 
@@ -36,6 +37,7 @@
         <foreach collection="businessCodeList" open="(" close=")" item="businessCode" separator=",">
             #{businessCode}
         </foreach>
+        and is_deleted = 0
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessPO">

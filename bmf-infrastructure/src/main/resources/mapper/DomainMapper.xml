@@ -22,6 +22,7 @@
             <if test="domainCode != null">and domain_code = #{domainCode}</if>
             <if test="domainAlias != null">and domain_alias = #{domainAlias}</if>
         </trim>
+        and is_deleted = 0
         limit 1
     </select>
 
@@ -33,6 +34,7 @@
         <foreach collection="list" open="(" close=")" item="domainCode" separator=",">
             #{domainCode}
         </foreach>
+        and is_deleted = 0
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO">
