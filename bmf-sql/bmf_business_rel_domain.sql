@@ -2,6 +2,7 @@ CREATE TABLE `bmf_business_rel_domain` (
   `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
   `business_code` int(11) NOT NULL COMMENT '业务编码',
   `domain_code` bigint(20) unsigned NOT NULL COMMENT '领域编码',
+  `domain_position` varchar(128) NOT NULL COMMENT '领域位置',
   `gmt_create` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `gmt_modify` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `is_deleted` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否删除（1:删除 0:正常）',

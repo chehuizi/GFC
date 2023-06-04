@@ -18,7 +18,6 @@ import com.bmf.core.user.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.Objects;
@@ -46,7 +45,7 @@ public class UserBusinessQryServiceImpl implements UserBusinessQryService {
         List<Business> businessList = businessService.queryBusinessList(
                 userBusinessList.stream().map(UserBusiness::getBusinessCode)
                         .collect(Collectors.toList()));
-        ParamCheckUtil.checkNull(businessList, "business is null");
+        BusinessCheckUtil.checkNull(businessList, BizCodeEnum.BUSINESS_NOT_EXIST);
         Map<Integer, Business> businessMap = businessList.stream().
                 collect(Collectors.toMap(e -> e.getBusinessCode(), e -> e));
         for (UserBusiness item : userBusinessList) {

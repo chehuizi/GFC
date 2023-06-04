@@ -15,6 +15,7 @@ public class BusinessRelDomain extends BaseModel {
     private Integer domainCode;
     /**
      * 位置（JSON格式存储）
+     * @see com.bmf.base.view.DomainPosition
      */
-    private String position;
+    private String domainPosition;
 }

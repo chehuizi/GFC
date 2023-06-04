@@ -65,6 +65,7 @@ public class BusinessCmdServiceTest {
         businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
         domain.setDomainCode(104);
+        domain.setDomainPosition("{x: 0, y:400}");
         businessCmdReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);
         System.out.println(result);

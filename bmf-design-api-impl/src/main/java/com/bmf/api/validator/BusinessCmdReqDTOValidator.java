@@ -63,7 +63,7 @@ public class BusinessCmdReqDTOValidator {
         ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
         ParamCheckUtil.checkNull(businessCmdReqDTO.getDomain(), "domain is null");
         ParamCheckUtil.checkNull(businessCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
-        ParamCheckUtil.checkBlank(businessCmdReqDTO.getDomain().getPosition(), "domain position is blank");
+        ParamCheckUtil.checkBlank(businessCmdReqDTO.getDomain().getDomainPosition(), "domain position is blank");
         return true;
     }
 

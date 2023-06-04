@@ -80,7 +80,7 @@ public class BusinessServiceImpl implements BusinessService {
         BusinessRelDomain businessRelDomain = new BusinessRelDomain();
         businessRelDomain.setBusinessCode(business.getBusinessCode());
         businessRelDomain.setDomainCode(domain.getDomainCode());
-        businessRelDomain.setPosition(domain.getPosition());
+        businessRelDomain.setDomainPosition(domain.getDomainPosition());
         return businessRelDomainRepository.insert(businessRelDomain);
     }
 

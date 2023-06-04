@@ -15,9 +15,10 @@ import com.bmf.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class BusinessQryServiceImpl implements BusinessQryService {
@@ -37,8 +38,14 @@ public class BusinessQryServiceImpl implements BusinessQryService {
 
         if (req.isIncludeDomain()) {
             List<BusinessRelDomain> businessRelDomainList =  businessService.queryBusinessRelDomain(business);
+            Map<Integer, BusinessRelDomain> businessRelDomainMap = businessRelDomainList.stream().
+                    collect(Collectors.toMap(e -> e.getDomainCode(), e -> e));
             if (Objects.nonNull(businessRelDomainList) && businessRelDomainList.size() > 0) {
-                List<BusinessDomain> businessDomainList = domainService.queryDomainList(fetchDomainCode(businessRelDomainList));
+                List<BusinessDomain> businessDomainList = domainService.queryDomainList(
+                        businessRelDomainList.stream().map(BusinessRelDomain::getDomainCode).
+                                collect(Collectors.toList()));
+                businessDomainList.forEach(item ->
+                        item.setDomainPosition(businessRelDomainMap.get(item.getDomainCode()).getDomainPosition()));
                 business.setBusinessDomainList(businessDomainList);
             }
         }
@@ -50,16 +57,4 @@ public class BusinessQryServiceImpl implements BusinessQryService {
         return ResultUtil.success(new BusinessRespDTO(business));
     }
 
-    /**
-     * 提取domainCode
-     * @param businessRelDomainList
-     * @return
-     */
-    private List<Integer> fetchDomainCode(List<BusinessRelDomain> businessRelDomainList) {
-        List<Integer> domainCodeList = new ArrayList<>();
-        for (BusinessRelDomain item : businessRelDomainList) {
-            domainCodeList.add(item.getDomainCode());
-        }
-        return domainCodeList;
-    }
 }

@@ -46,7 +46,7 @@ public class BusinessDomain extends BaseModel {
     /**
      * 位置（JSON格式存储）
      */
-    private String position;
+    private String domainPosition;
 
     /**
      * 领域实体列表

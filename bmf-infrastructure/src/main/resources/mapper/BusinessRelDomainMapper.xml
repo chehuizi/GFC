@@ -5,13 +5,14 @@
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
         <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
+        <result column="domain_position" jdbcType="VARCHAR" property="domainPosition"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, business_code, domain_code
+        id, business_code, domain_code, domain_position
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
@@ -31,10 +32,11 @@
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
-        insert into bmf_business_rel_domain (business_code, domain_code)
+        insert into bmf_business_rel_domain (business_code, domain_code, domain_position)
         values (
             #{businessCode,jdbcType=INTEGER},
-            #{domainCode,jdbcType=INTEGER}
+            #{domainCode,jdbcType=INTEGER},
+            #{domainPosition,jdbcType=VARCHAR}
         )
     </insert>
 
@@ -44,7 +46,8 @@
         <foreach collection="list" item="item" index="index" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
                 #{item.businessCode,jdbcType=INTEGER},
-                #{item.domainCode,jdbcType=INTEGER}
+                #{item.domainCode,jdbcType=INTEGER},
+                #{item.domainPosition,jdbcType=VARCHAR}
             </trim>
         </foreach>
         on duplicate key update
