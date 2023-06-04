@@ -17,4 +17,8 @@ public class UserBusiness extends BaseModel {
      * 业务编码
      */
     private Integer businessCode;
+    /**
+     * 业务名称
+     */
+    private String businessName;
 }
