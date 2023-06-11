@@ -7,6 +7,7 @@ import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.enums.BusinessPrefixEnum;
 import com.bmf.base.enums.BusinessRoleTypeEnum;
 import com.bmf.base.enums.RelationshipEnum;
@@ -93,22 +94,53 @@ public class BusinessCmdServiceTest {
     }
 
     @Test
-    public void test_business_save_strategy_design() {
+    public void test_business_save_strategy_design_1() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
         business.setBusinessCode(102);
         businessCmdReqDTO.setBusiness(business);
         List<BusinessDomain> businessDomainList = new ArrayList<>();
         BusinessDomain domain1 = new BusinessDomain();
-        domain1.setDomainCode(101);
-        domain1.setDomainAlias("ofc");
-        domain1.setDomainName("履约域");
+        domain1.setDomainCode(104);
+        domain1.setDomainAlias("ims");
+        domain1.setDomainName("库存域");
         domain1.setDomainPosition("{\"x\": 500, \"y\": 100}");
         businessDomainList.add(domain1);
         BusinessDomain domain2 = new BusinessDomain();
-        domain2.setDomainCode(102);
+        domain2.setDomainCode(107);
         domain2.setDomainAlias("tms");
         domain2.setDomainName("物流域");
+        domain2.setDomainPosition("{\"x\": 500, \"y\": 200}");
+        businessDomainList.add(domain2);
+        businessCmdReqDTO.setDomainList(businessDomainList);
+        List<BusinessDomainRelationship> relationshipList = new ArrayList<>();
+        BusinessDomainRelationship relationship1 = new UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole>();
+        relationship1.setRoleA(new OpenHostServiceRole(domain1));
+        relationship1.setRoleB(new ConformistRole(domain2));
+        relationshipList.add(relationship1);
+        businessCmdReqDTO.setRelationshipList(relationshipList);
+        Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
+
+    @Test
+    public void test_business_save_strategy_design_2() {
+        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
+        Business business = new Business();
+        business.setBusinessCode(102);
+        businessCmdReqDTO.setBusiness(business);
+        List<BusinessDomain> businessDomainList = new ArrayList<>();
+        BusinessDomain domain1 = new BusinessDomain();
+        domain1.setDomainAlias("ofc");
+        domain1.setDomainName("履约域");
+        domain1.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        domain1.setDomainPosition("{\"x\": 500, \"y\": 100}");
+        businessDomainList.add(domain1);
+        BusinessDomain domain2 = new BusinessDomain();
+        domain2.setDomainAlias("tms");
+        domain2.setDomainName("物流域");
+        domain2.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         domain2.setDomainPosition("{\"x\": 500, \"y\": 200}");
         businessDomainList.add(domain2);
         businessCmdReqDTO.setDomainList(businessDomainList);

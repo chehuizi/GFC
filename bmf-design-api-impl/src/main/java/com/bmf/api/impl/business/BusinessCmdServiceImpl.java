@@ -7,6 +7,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.enums.CodeKeyEnum;
+import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;
 import com.bmf.common.utils.BusinessCheckUtil;
@@ -25,7 +26,9 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class BusinessCmdServiceImpl implements BusinessCmdService {
@@ -74,8 +77,11 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED);
         // step3：处理领域关系
-        result = businessDomainDesign4Strategy.batchBuildBusinessDomainRelationship(business, businessCmdReqDTO.getRelationshipList());
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_RELATION_HANDLE_FAILED);
+        if (businessCmdReqDTO.getRelationshipList().size() > 0) {
+            fillRelationship(businessCmdReqDTO.getDomainList(), businessCmdReqDTO.getRelationshipList());
+            result = businessDomainDesign4Strategy.batchBuildBusinessDomainRelationship(business, businessCmdReqDTO.getRelationshipList());
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_RELATION_HANDLE_FAILED);
+        }
         return ResultUtil.success(Boolean.TRUE);
     }
 
@@ -95,6 +101,26 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
             return domainService.batchCreateDomain(tmp);
         }
         return true;
+    }
+
+    /**
+     * 填充领域关系
+     * @param domainList
+     * @param relationshipList
+     */
+    private void fillRelationship(List<BusinessDomain> domainList, List<BusinessDomainRelationship> relationshipList) {
+        Map<String, BusinessDomain> domainMap = domainList.stream().collect(
+                Collectors.toMap(e -> e.getDomainAlias(), e -> e));
+        for (BusinessDomainRelationship relationship : relationshipList) {
+            BusinessDomain domainA = relationship.getRoleA().getDomain();
+            BusinessDomain domainB = relationship.getRoleB().getDomain();
+            if (Objects.isNull(domainA.getDomainCode())) {
+                domainA.setDomainCode(domainMap.get(domainA.getDomainAlias()).getDomainCode());
+            }
+            if (Objects.isNull(domainB.getDomainCode())) {
+                domainB.setDomainCode(domainMap.get(domainB.getDomainAlias()).getDomainCode());
+            }
+        }
     }
 
     @Override

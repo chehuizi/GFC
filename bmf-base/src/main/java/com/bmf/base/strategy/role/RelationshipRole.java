@@ -2,11 +2,13 @@ package com.bmf.base.strategy.role;
 
 import com.bmf.base.BusinessDomain;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 关系角色
  */
 @Data
+@NoArgsConstructor
 public class RelationshipRole {
 
     /**
