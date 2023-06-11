@@ -9,9 +9,12 @@ import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.enums.BusinessPrefixEnum;
 import com.bmf.base.enums.BusinessRoleTypeEnum;
+import com.bmf.base.enums.RelationshipEnum;
 import com.bmf.base.flow.BusinessRole;
+import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.base.strategy.asymmetric.UpstreamDownstreamRelationship;
 import com.bmf.base.strategy.role.downstream.ConformistRole;
+import com.bmf.base.strategy.role.partner.PartnerRole;
 import com.bmf.base.strategy.role.upstream.OpenHostServiceRole;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
@@ -20,6 +23,9 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
@@ -92,6 +98,28 @@ public class BusinessCmdServiceTest {
         Business business = new Business();
         business.setBusinessCode(102);
         businessCmdReqDTO.setBusiness(business);
+        List<BusinessDomain> businessDomainList = new ArrayList<>();
+        BusinessDomain domain1 = new BusinessDomain();
+        domain1.setDomainCode(101);
+        domain1.setDomainAlias("ofc");
+        domain1.setDomainName("履约域");
+        domain1.setDomainPosition("{\"x\": 500, \"y\":0}");
+        businessDomainList.add(domain1);
+        BusinessDomain domain2 = new BusinessDomain();
+        domain2.setDomainCode(102);
+        domain2.setDomainAlias("tms");
+        domain2.setDomainName("物流域");
+        domain2.setDomainPosition("{\"x\": 500, \"y\":0}");
+        businessDomainList.add(domain2);
+        businessCmdReqDTO.setDomainList(businessDomainList);
+        List<BusinessDomainRelationship> relationshipList = new ArrayList<>();
+        BusinessDomainRelationship relationship1 = new BusinessDomainRelationship();
+        relationship1.setBusinessCode(business.getBusinessCode());
+        relationship1.setRelationship(RelationshipEnum.PS.getType());
+        relationship1.setRoleA(new PartnerRole(domain1));
+        relationship1.setRoleB(new PartnerRole(domain2));
+        relationshipList.add(relationship1);
+        businessCmdReqDTO.setRelationshipList(relationshipList);
         Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());

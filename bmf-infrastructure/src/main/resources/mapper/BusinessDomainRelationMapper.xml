@@ -72,7 +72,8 @@
             </trim>
         </foreach>
         on duplicate key update
-        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+        domain_relation = values(domain_relation),
+        gmt_modify = now()
     </insert>
 
     <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">

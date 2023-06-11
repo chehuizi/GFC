@@ -87,8 +87,27 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public boolean addDomainList(Business business, List<BusinessDomain> domainList) {
-        List<BusinessRelDomain> businessRelDomainList = new ArrayList<>();
+        List<BusinessRelDomain> businessRelDomainList = buildBusinessRelDomain(business, domainList);
         return businessRelDomainRepository.batchInsert(businessRelDomainList);
+    }
+
+    /**
+     * 构建业务和领域关系
+     * @param business
+     * @param domainList
+     * @return
+     */
+    private List<BusinessRelDomain> buildBusinessRelDomain(Business business,
+                                                           List<BusinessDomain> domainList) {
+        List<BusinessRelDomain> businessRelDomainList = new ArrayList<>();
+        for (BusinessDomain domain : domainList) {
+            BusinessRelDomain businessRelDomain = new BusinessRelDomain();
+            businessRelDomain.setBusinessCode(business.getBusinessCode());
+            businessRelDomain.setDomainCode(domain.getDomainCode());
+            businessRelDomain.setDomainPosition(domain.getDomainPosition());
+            businessRelDomainList.add(businessRelDomain);
+        }
+        return businessRelDomainList;
     }
 
     @Override

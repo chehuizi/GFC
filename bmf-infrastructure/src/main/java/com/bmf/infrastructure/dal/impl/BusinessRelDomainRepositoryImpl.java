@@ -38,7 +38,7 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     public boolean batchInsert(List<BusinessRelDomain> businessRelDomainList) {
         List<BusinessRelDomainPO> businessRelDomainPOList = POUtils.convertModel2PO(businessRelDomainList,
                 BusinessRelDomainPO.class);
-        return businessRelDomainMapper.batchInsert(businessRelDomainPOList) == businessRelDomainList.size();
+        return businessRelDomainMapper.batchInsert(businessRelDomainPOList) > 0;
     }
 
     @Override

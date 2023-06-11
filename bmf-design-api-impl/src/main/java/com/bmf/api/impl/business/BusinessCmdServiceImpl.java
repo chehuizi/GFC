@@ -91,7 +91,10 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
                 tmp.add(domain);
             }
         }
-        return domainService.batchCreateDomain(tmp);
+        if (tmp.size() > 0) {
+            return domainService.batchCreateDomain(tmp);
+        }
+        return true;
     }
 
     @Override

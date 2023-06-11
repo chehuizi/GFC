@@ -41,7 +41,7 @@
     </insert>
 
     <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
-        insert into bmf_business_rel_domain (business_code, domain_code)
+        insert into bmf_business_rel_domain (business_code, domain_code, domain_position)
         values
         <foreach collection="list" item="item" index="index" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -51,7 +51,8 @@
             </trim>
         </foreach>
         on duplicate key update
-        gmt_modify = #{gmtModify,jdbcType=TIMESTAMP}
+        domain_position = values(domain_position),
+        gmt_modify = now()
     </insert>
 
     <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
