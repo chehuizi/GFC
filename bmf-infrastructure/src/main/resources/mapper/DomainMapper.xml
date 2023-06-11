@@ -60,6 +60,11 @@
                 #{item.domainLevel,jdbcType=INTEGER}
             </trim>
         </foreach>
+        on duplicate key update
+        domain_name = values(domain_name),
+        domain_type = values(domain_type),
+        domain_level = values(domain_level),
+        gmt_modify = now()
     </insert>
 
     <update id="update">

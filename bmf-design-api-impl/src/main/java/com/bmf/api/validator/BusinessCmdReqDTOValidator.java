@@ -3,6 +3,7 @@ package com.bmf.api.validator;
 import com.alibaba.fastjson.JSON;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.BusinessDomain;
+import com.bmf.base.enums.BusinessDomainTypeEnum;
 import com.bmf.base.enums.RelationshipEnum;
 import com.bmf.base.enums.RelationshipRoleEnum;
 import com.bmf.base.strategy.BusinessDomainRelationship;
@@ -55,6 +56,8 @@ public class BusinessCmdReqDTOValidator {
         for (BusinessDomain domain : businessCmdReqDTO.getDomainList()) {
             ParamCheckUtil.checkBlank(domain.getDomainAlias(), "domain alias is blank");
             ParamCheckUtil.checkBlank(domain.getDomainName(), "domain name is blank");
+            ParamCheckUtil.checkBlank(domain.getDomainType(), "domain type is blank");
+            ParamCheckUtil.checkNull(BusinessDomainTypeEnum.getByType(domain.getDomainType()), "domain type is not enum");
             ParamCheckUtil.checkBlank(domain.getDomainPosition(), "domain position is blank");
             DomainPosition domainPosition = JSON.parseObject(domain.getDomainPosition(), DomainPosition.class);
             ParamCheckUtil.checkTrue(domainPosition.getX() > 0, "domain position X is not positive integer");

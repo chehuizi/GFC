@@ -90,17 +90,12 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
      * @param businessDomainList
      */
     private boolean handleBusinessDomain(List<BusinessDomain> businessDomainList) {
-        List<BusinessDomain> tmp = new ArrayList<>();
         for (BusinessDomain domain : businessDomainList) {
             if (Objects.isNull(domain.getDomainCode())) {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
-                tmp.add(domain);
             }
         }
-        if (tmp.size() > 0) {
-            return domainService.batchCreateDomain(tmp);
-        }
-        return true;
+        return domainService.batchCreateDomain(businessDomainList);
     }
 
     /**
