@@ -74,7 +74,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED);
         // step3：处理领域关系
-        result = businessDomainDesign4Strategy.batchBuildBusinessDomainRelationship(businessCmdReqDTO.getRelationshipList());
+        result = businessDomainDesign4Strategy.batchBuildBusinessDomainRelationship(business, businessCmdReqDTO.getRelationshipList());
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_RELATION_HANDLE_FAILED);
         return ResultUtil.success(Boolean.TRUE);
     }

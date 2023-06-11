@@ -1,5 +1,6 @@
 package com.bmf.core.design.impl;
 
+import com.bmf.base.Business;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.core.utils.BusinessUtil;
@@ -18,19 +19,19 @@ public class BusinessDomainDesign4StrategyImpl implements BusinessDomainDesign4S
 
     @Override
     public boolean buildBusinessDomainRelationship(BusinessDomainRelationship relationship) {
-        BusinessDomainRelation businessDomainRelation = BusinessUtil.convert(relationship);
+        BusinessDomainRelation businessDomainRelation = BusinessUtil.convert(null, relationship);
         return businessDomainRelationRepository.insert(businessDomainRelation);
     }
 
     @Override
-    public boolean batchBuildBusinessDomainRelationship(List<BusinessDomainRelationship> relationshipList) {
-        List<BusinessDomainRelation> businessDomainRelationList = BusinessUtil.convert(relationshipList);
+    public boolean batchBuildBusinessDomainRelationship(Business business, List<BusinessDomainRelationship> relationshipList) {
+        List<BusinessDomainRelation> businessDomainRelationList = BusinessUtil.convert(business, relationshipList);
         return businessDomainRelationRepository.batchInsert(businessDomainRelationList);
     }
 
     @Override
     public boolean removeBusinessDomainRelationship(BusinessDomainRelationship relationship) {
-        BusinessDomainRelation businessDomainRelation = BusinessUtil.convert(relationship);
+        BusinessDomainRelation businessDomainRelation = BusinessUtil.convert(null, relationship);
         return businessDomainRelationRepository.delete(businessDomainRelation);
     }
 }

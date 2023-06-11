@@ -43,7 +43,8 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
     public boolean batchInsert(List<BusinessDomainRelation> businessDomainRelationList) {
         List<BusinessDomainRelationPO> businessDomainRelationPOList = POUtils.convertModel2PO(businessDomainRelationList,
                 BusinessDomainRelationPO.class);
-        return businessDomainRelationMapper.batchInsert(businessDomainRelationPOList) > 0;
+        int num = businessDomainRelationMapper.batchInsert(businessDomainRelationPOList);
+        return num >= businessDomainRelationList.size() && num <= 2 * businessDomainRelationList.size();
     }
 
     @Override

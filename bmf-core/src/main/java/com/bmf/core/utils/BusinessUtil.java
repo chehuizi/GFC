@@ -63,15 +63,17 @@ public class BusinessUtil {
 
     /**
      * 转换对象
+     * @param business
      * @param businessDomainRelationship
      * @return
      */
-    public static BusinessDomainRelation convert(BusinessDomainRelationship businessDomainRelationship) {
+    public static BusinessDomainRelation convert(Business business, BusinessDomainRelationship businessDomainRelationship) {
         if (Objects.isNull(businessDomainRelationship)) {
             return null;
         }
         BusinessDomainRelation businessDomainRelation = new BusinessDomainRelation();
-        businessDomainRelation.setBusinessCode(businessDomainRelationship.getBusinessCode());
+        businessDomainRelation.setBusinessCode(Objects.nonNull(business) ? business.getBusinessCode()
+                : businessDomainRelationship.getBusinessCode());
         businessDomainRelation.setDomainRelation(businessDomainRelationship.getRelationship());
         businessDomainRelation.setDomainACode(businessDomainRelationship.getRoleA().getDomain().getDomainCode());
         businessDomainRelation.setDomainARole(businessDomainRelationship.getRoleA().getRole());
@@ -82,16 +84,17 @@ public class BusinessUtil {
 
     /**
      * 转换对象列表
+     * @param business
      * @param relationshipList
      * @return
      */
-    public static List<BusinessDomainRelation> convert(List<BusinessDomainRelationship> relationshipList) {
+    public static List<BusinessDomainRelation> convert(Business business, List<BusinessDomainRelationship> relationshipList) {
         if (relationshipList.isEmpty()) {
             return null;
         }
         List<BusinessDomainRelation> businessDomainRelationList = new ArrayList<>();
         for (BusinessDomainRelationship item : relationshipList) {
-            businessDomainRelationList.add(convert(item));
+            businessDomainRelationList.add(convert(business, item));
         }
         return businessDomainRelationList;
     }
