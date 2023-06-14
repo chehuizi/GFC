@@ -40,7 +40,7 @@
         <druid.version>1.1.10</druid.version>
         <bmf.version>1.0-SNAPSHOT</bmf.version>
         <junit.version>4.12</junit.version>
-        <lombok.version>1.18.10</lombok.version>
+        <lombok.version>1.18.20</lombok.version>
         <commons.lang.version>3.12.0</commons.lang.version>
         <logback.version>1.2.1</logback.version>
         <jcl-over-slf4j.version>1.7.25</jcl-over-slf4j.version>
