@@ -21,6 +21,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <JarOut.path>/Users/chehuizi/Desktop/code/pkg</JarOut.path>
   </properties>
 
   <dependencies>
@@ -39,6 +40,7 @@
     </dependency>
   </dependencies>
 
+  <!--
   <build>
     <plugins>
       <plugin>
@@ -57,6 +59,142 @@
             </goals>
           </execution>
         </executions>
+      </plugin>
+    </plugins>
+  </build>
+  -->
+
+  <build>
+    <finalName>bmf</finalName>
+    <plugins>
+      <!--清理之前生成的打包目录。-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-clean-plugin</artifactId>
+        <version>2.5</version>
+        <executions>
+          <execution>
+            <id>auto-clean</id>
+            <phase>initialize</phase>
+            <goals>
+              <goal>clean</goal>
+            </goals>
+            <configuration>
+              <skip>false</skip>
+              <filesets>
+                <fileset>
+                  <directory>${JarOut.path}</directory>
+                </fileset>
+              </filesets>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+      <!--打包自己的项目为jar并放入lib目录，不包含依赖。-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-jar-plugin</artifactId>
+        <version>3.2.2</version>
+        <configuration>
+          <archive>
+            <manifest>
+              <addClasspath>true</addClasspath>
+              <!--MANIFEST.MF 中 Class-Path 加入前缀-->
+              <classpathPrefix>./lib/</classpathPrefix>
+              <!--jar包不包含唯一版本标识-->
+              <useUniqueVersions>false</useUniqueVersions>
+              <mainClass>com.bmf.App</mainClass>
+            </manifest>
+            <manifestEntries>
+              <!--                            <Class-Path>./config/</Class-Path>-->
+              <Class-Path>./</Class-Path>
+            </manifestEntries>
+          </archive>
+          <!--不打包资源文件-->
+          <excludes>
+            <exclude>*/*.xml</exclude>
+            <exclude>*/*/*.xml</exclude>
+          </excludes>
+          <outputDirectory>${JarOut.path}</outputDirectory>
+        </configuration>
+      </plugin>
+
+      <!--拷贝依赖 copy-dependencies-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <version>3.3.0</version>
+        <executions>
+          <execution>
+            <id>copy-dependencies</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-dependencies</goal>
+            </goals>
+            <configuration>
+              <outputDirectory>
+                ${JarOut.path}/lib/
+              </outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!--拷贝资源文件 copy-resources-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-resources-plugin</artifactId>
+        <version>3.2.0</version>
+        <executions>
+          <execution>
+            <id>copy-resources</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>src/main/resources</directory>
+                  <excludes>
+                    <exclude>*.yml</exclude>
+                    <exclude>application.properties</exclude>
+                  </excludes>
+                </resource>
+              </resources>
+              <outputDirectory>${JarOut.path}/config/</outputDirectory>
+            </configuration>
+          </execution>
+          <execution>
+            <id>copy-yml</id>
+            <phase>package</phase>
+            <goals>
+              <goal>copy-resources</goal>
+            </goals>
+            <configuration>
+              <resources>
+                <resource>
+                  <directory>src/main/resources</directory>
+                  <includes>
+                    <include>*.yml</include>
+                    <include>application.properties</include>
+                  </includes>
+                </resource>
+              </resources>
+              <outputDirectory>${JarOut.path}</outputDirectory>
+            </configuration>
+          </execution>
+        </executions>
+      </plugin>
+
+      <!--maven打包时，跳过测试-->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>3.0.0-M6</version>
+        <configuration>
+          <skip>true</skip>
+        </configuration>
       </plugin>
     </plugins>
   </build>

@@ -1,6 +1,6 @@
 spring:
   datasource:
-    name: assets_platform
+    name: bmf
     url: jdbc:mysql://127.0.0.1:3306/bmf?characterEncoding=UTF-8&zeroDateTimeBehavior=convertToNull&useSSL=false
     username: root
     password: chehuizi
