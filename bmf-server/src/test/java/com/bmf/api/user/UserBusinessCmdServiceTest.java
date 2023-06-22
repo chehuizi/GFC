@@ -22,8 +22,8 @@ public class UserBusinessCmdServiceTest {
     public void test_user_business_create() {
         UserBusinessCmdReqDTO userBusinessCmdReqDTO = new UserBusinessCmdReqDTO();
         UserBusiness userBusiness = new UserBusiness();
-        userBusiness.setUserId(100003);
-        userBusiness.setBusinessCode(102);
+        userBusiness.setUserId(100001);
+        userBusiness.setBusinessCode(101);
         userBusinessCmdReqDTO.setUserBusiness(userBusiness);
         Result<Boolean> result = userBusinessCmdService.create(userBusinessCmdReqDTO);
         System.out.println(result);

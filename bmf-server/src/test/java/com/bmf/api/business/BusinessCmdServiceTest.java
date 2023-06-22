@@ -65,7 +65,7 @@ public class BusinessCmdServiceTest {
     public void test_business_add_domain() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(102);
+        business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
         BusinessDomain domain = new BusinessDomain();
         domain.setDomainCode(104);
@@ -161,21 +161,21 @@ public class BusinessCmdServiceTest {
     public void test_business_build_domain_relation() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(102);
+        business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
         UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship =
                 new UpstreamDownstreamRelationship();
-        upstreamDownstreamRelationship.setBusinessCode(102);
+        upstreamDownstreamRelationship.setBusinessCode(101);
         OpenHostServiceRole ohs = new OpenHostServiceRole();
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         BusinessDomain domain = new BusinessDomain();
-        domain.setDomainCode(104);
+        domain.setDomainCode(101);
         domainQryReqDTO.setBusinessDomain(domain);
         Result<DomainRespDTO> result1 = domainQryService.queryOne(domainQryReqDTO);
         ohs.setDomain(result1.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleA(ohs);
         ConformistRole cf = new ConformistRole();
-        domain.setDomainCode(101);
+        domain.setDomainCode(104);
         Result<DomainRespDTO> result2 = domainQryService.queryOne(domainQryReqDTO);
         cf.setDomain(result2.getData().getBusinessDomain());
         upstreamDownstreamRelationship.setRoleB(cf);
@@ -188,11 +188,11 @@ public class BusinessCmdServiceTest {
     public void test_business_remove_domain_relation() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(10003);
+        business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
         UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship
                 = new UpstreamDownstreamRelationship<>();
-        upstreamDownstreamRelationship.setBusinessCode(10003);
+        upstreamDownstreamRelationship.setBusinessCode(101);
         OpenHostServiceRole roleA = new OpenHostServiceRole();
         roleA.setDomain(new BusinessDomain(102));
         upstreamDownstreamRelationship.setRoleA(roleA);
