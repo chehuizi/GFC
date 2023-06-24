@@ -26,7 +26,7 @@
         limit 1
     </select>
 
-    <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.List">
+    <select id="selectByDomainCode" resultMap="BaseResultMap" parameterType="java.util.List">
         select
         <include refid="Base_Column_List"/>
         FROM bmf_domain
@@ -35,6 +35,19 @@
             #{domainCode}
         </foreach>
         and is_deleted = 0
+    </select>
+
+    <select id="selectByDomainAlias" resultMap="BaseResultMap" parameterType="java.util.List">
+        select
+        a.*
+        FROM bmf_domain a
+        join bmf_business_rel_domain b on a.domain_code = b.domain_code
+        and b.business_code = #{businessCode}
+        where a.domain_alias in
+        <foreach collection="domainAliasList" open="(" close=")" item="domainAlias" separator=",">
+            #{domainAlias}
+        </foreach>
+        and a.is_deleted = 0
     </select>
 
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO">

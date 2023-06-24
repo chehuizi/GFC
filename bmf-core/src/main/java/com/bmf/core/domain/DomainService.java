@@ -1,5 +1,6 @@
 package com.bmf.core.domain;
 
+import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
@@ -23,7 +24,15 @@ public interface DomainService {
      * @param domainCodeList
      * @return
      */
-    List<BusinessDomain> queryDomainList(List<Integer> domainCodeList);
+    List<BusinessDomain> queryDomainByCode(List<Integer> domainCodeList);
+
+    /**
+     * 根据领域别名查询
+     * @param businessCode
+     * @param domainAliasList
+     * @return
+     */
+    List<BusinessDomain> queryDomainByAlias(Integer businessCode, List<String> domainAliasList);
 
     /**
      * 创建领域

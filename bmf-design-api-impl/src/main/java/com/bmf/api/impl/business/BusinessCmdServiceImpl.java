@@ -24,10 +24,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -71,11 +68,32 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
         // step1：处理领域
-        boolean result = handleBusinessDomain(businessCmdReqDTO.getDomainList());
+        boolean result = true;
+        List<BusinessDomain> existedDomains = domainService.queryDomainByAlias(business.getBusinessCode(),
+                businessCmdReqDTO.getDomainList().stream().map(BusinessDomain::getDomainAlias)
+                        .collect(Collectors.toList()));
+        Map<String, BusinessDomain> existedDomainMap = existedDomains.stream().collect(
+                Collectors.toMap(e -> e.getDomainAlias(), e -> e));
+        List<BusinessDomain> notExistedDomains = new ArrayList<>();
+        for (BusinessDomain domain : businessCmdReqDTO.getDomainList()) {
+            if (Objects.isNull(existedDomainMap.get(domain.getDomainAlias()))) {
+                domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
+                notExistedDomains.add(domain);
+            } else {
+                domain.setDomainCode(existedDomainMap.get(domain.getDomainAlias()).getDomainCode());
+            }
+        }
+        if (!notExistedDomains.isEmpty()) {
+            result = domainService.batchCreateDomain(notExistedDomains);
+        }
+
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
         // step2：处理业务和领域关系
-        result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
+        if (!notExistedDomains.isEmpty()) {
+            result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
+        }
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED);
+
         // step3：处理领域关系
         if (businessCmdReqDTO.getRelationshipList().size() > 0) {
             fillRelationship(businessCmdReqDTO.getDomainList(), businessCmdReqDTO.getRelationshipList());
@@ -89,14 +107,6 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
      * 处理领域
      * @param businessDomainList
      */
-    private boolean handleBusinessDomain(List<BusinessDomain> businessDomainList) {
-        for (BusinessDomain domain : businessDomainList) {
-            if (Objects.isNull(domain.getDomainCode())) {
-                domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
-            }
-        }
-        return domainService.batchCreateDomain(businessDomainList);
-    }
 
     /**
      * 填充领域关系

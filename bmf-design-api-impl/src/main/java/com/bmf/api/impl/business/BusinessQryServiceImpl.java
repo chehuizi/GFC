@@ -41,7 +41,7 @@ public class BusinessQryServiceImpl implements BusinessQryService {
             Map<Integer, BusinessRelDomain> businessRelDomainMap = businessRelDomainList.stream().
                     collect(Collectors.toMap(e -> e.getDomainCode(), e -> e));
             if (Objects.nonNull(businessRelDomainList) && businessRelDomainList.size() > 0) {
-                List<BusinessDomain> businessDomainList = domainService.queryDomainList(
+                List<BusinessDomain> businessDomainList = domainService.queryDomainByCode(
                         businessRelDomainList.stream().map(BusinessRelDomain::getDomainCode).
                                 collect(Collectors.toList()));
                 businessDomainList.forEach(item ->

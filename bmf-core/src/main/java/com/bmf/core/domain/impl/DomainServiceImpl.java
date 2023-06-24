@@ -1,5 +1,6 @@
 package com.bmf.core.domain.impl;
 
+import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
@@ -31,8 +32,13 @@ public class DomainServiceImpl implements DomainService {
     }
 
     @Override
-    public List<BusinessDomain> queryDomainList(List<Integer> domainCodeList) {
-        return domainRepository.selectList(domainCodeList);
+    public List<BusinessDomain> queryDomainByCode(List<Integer> domainCodeList) {
+        return domainRepository.selectByDomainCode(domainCodeList);
+    }
+
+    @Override
+    public List<BusinessDomain> queryDomainByAlias(Integer businessCode, List<String> domainAliasList) {
+        return domainRepository.selectByDomainAlias(businessCode, domainAliasList);
     }
 
     @Override
