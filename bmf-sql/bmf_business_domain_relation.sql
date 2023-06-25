@@ -10,5 +10,6 @@ CREATE TABLE `bmf_business_domain_relation` (
   `gmt_modify` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `is_deleted` tinyint(2) NOT NULL DEFAULT '0' COMMENT '是否删除（1:删除 0:正常）',
   PRIMARY KEY (`id`),
-  UNIQUE KEY `uk_business_code_domain_code` (`business_code`, `domain_a_code`, `domain_b_code`)
+  UNIQUE KEY `uk_business_code_domain_code_1` (`business_code`, `domain_a_code`, `domain_b_code`),
+  UNIQUE KEY `uk_business_code_domain_code_2` (`business_code`, `domain_b_code`, `domain_a_code`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8

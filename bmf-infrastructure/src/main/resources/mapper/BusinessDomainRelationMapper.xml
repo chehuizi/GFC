@@ -73,6 +73,8 @@
         </foreach>
         on duplicate key update
         domain_relation = values(domain_relation),
+        domain_a_role = values(domain_a_role),
+        domain_b_role = values(domain_b_role),
         gmt_modify = now()
     </insert>
 

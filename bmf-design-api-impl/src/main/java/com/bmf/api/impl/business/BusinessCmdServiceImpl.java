@@ -74,22 +74,31 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
                         .collect(Collectors.toList()));
         Map<String, BusinessDomain> existedDomainMap = existedDomains.stream().collect(
                 Collectors.toMap(e -> e.getDomainAlias(), e -> e));
-        List<BusinessDomain> notExistedDomains = new ArrayList<>();
+
+        List<BusinessDomain> insertedDomains = new ArrayList<>();
+        List<BusinessDomain> updatedDomains = new ArrayList<>();
         for (BusinessDomain domain : businessCmdReqDTO.getDomainList()) {
             if (Objects.isNull(existedDomainMap.get(domain.getDomainAlias()))) {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
-                notExistedDomains.add(domain);
+                insertedDomains.add(domain);
             } else {
-                domain.setDomainCode(existedDomainMap.get(domain.getDomainAlias()).getDomainCode());
+                BusinessCheckUtil.checkNull(domain.getDomainCode(), BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_IS_NULL);
+                updatedDomains.add(domain);
             }
         }
-        if (!notExistedDomains.isEmpty()) {
-            result = domainService.batchCreateDomain(notExistedDomains);
-        }
 
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_HANDLE_FAILED);
+        if (!insertedDomains.isEmpty()) {
+            result = domainService.batchCreateDomain(insertedDomains);
+        }
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_INSERTED_FAILED);
+
+        if (!updatedDomains.isEmpty()) {
+            result = domainService.batchCreateDomain(updatedDomains);
+        }
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_UPDATED_FAILED);
+
         // step2：处理业务和领域关系
-        if (!notExistedDomains.isEmpty()) {
+        if (!insertedDomains.isEmpty()) {
             result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
         }
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED);

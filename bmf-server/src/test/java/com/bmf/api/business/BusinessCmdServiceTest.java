@@ -133,6 +133,7 @@ public class BusinessCmdServiceTest {
         businessCmdReqDTO.setBusiness(business);
         List<BusinessDomain> businessDomainList = new ArrayList<>();
         BusinessDomain domain1 = new BusinessDomain();
+        domain1.setDomainCode(104);
         domain1.setDomainAlias("ofc");
         domain1.setDomainName("履约域");
         domain1.setDomainType(BusinessDomainTypeEnum.CORE.getType());
@@ -140,6 +141,7 @@ public class BusinessCmdServiceTest {
         domain1.setDomainPosition("{\"x\": 500, \"y\": 100}");
         businessDomainList.add(domain1);
         BusinessDomain domain2 = new BusinessDomain();
+        domain2.setDomainCode(103);
         domain2.setDomainAlias("tms");
         domain2.setDomainName("物流域");
         domain2.setDomainType(BusinessDomainTypeEnum.CORE.getType());
