@@ -17,6 +17,13 @@ public interface BusinessCmdService extends CmdService<BusinessCmdReqDTO> {
     Result<Boolean> saveStrategyDesign(BusinessCmdReqDTO businessCmdReqDTO);
 
     /**
+     * 保存战略设计V2
+     * @param businessCmdReqDTO
+     * @return
+     */
+    Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO);
+
+    /**
      * 添加领域
      * @param businessCmdReqDTO
      * @return

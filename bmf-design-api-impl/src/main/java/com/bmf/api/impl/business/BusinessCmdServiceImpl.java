@@ -62,6 +62,16 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
+    public Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO) {
+        // 备份
+
+        // 删除
+
+        // 新增
+        return null;
+    }
+
+    @Override
     @Validator(beanName = "businessCmdReqDTOValidator", method = "v4SaveStrategyDesign")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public Result<Boolean> saveStrategyDesign(BusinessCmdReqDTO businessCmdReqDTO) {
