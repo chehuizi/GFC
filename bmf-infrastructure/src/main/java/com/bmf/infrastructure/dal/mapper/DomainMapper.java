@@ -11,6 +11,8 @@ public interface DomainMapper {
 
     List<DomainPO> selectByDomainCode(List<Integer> domainCodeList);
 
+    List<DomainPO> selectByBusinessCode(@Param("businessCode") Integer businessCode);
+
     List<DomainPO> selectByDomainAlias(@Param("businessCode") Integer businessCode,
                                        @Param("domainAliasList") List<String> domainAliasList);
 

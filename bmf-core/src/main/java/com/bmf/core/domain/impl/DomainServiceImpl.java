@@ -32,6 +32,11 @@ public class DomainServiceImpl implements DomainService {
     }
 
     @Override
+    public List<BusinessDomain> queryDomainByBusinessCode(Integer businessCode) {
+        return domainRepository.selectByBusinessCode(businessCode);
+    }
+
+    @Override
     public List<BusinessDomain> queryDomainByCode(List<Integer> domainCodeList) {
         return domainRepository.selectByDomainCode(domainCodeList);
     }

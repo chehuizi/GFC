@@ -20,6 +20,13 @@ public interface DomainService {
     BusinessDomain queryDomain(BusinessDomain businessDomain);
 
     /**
+     * 根据业务编码查询领域
+     * @param businessCode
+     * @return
+     */
+    List<BusinessDomain> queryDomainByBusinessCode(Integer businessCode);
+
+    /**
      * 查询领域列表
      * @param domainCodeList
      * @return

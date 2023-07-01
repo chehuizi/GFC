@@ -28,6 +28,11 @@ public class DomainRepositoryImpl implements DomainRepository {
     }
 
     @Override
+    public List<BusinessDomain> selectByBusinessCode(Integer businessCode) {
+        return POUtils.convert(domainMapper.selectByBusinessCode(businessCode), BusinessDomain.class);
+    }
+
+    @Override
     public List<BusinessDomain> selectByDomainAlias(Integer businessCode, List<String> domainAliasList) {
         return POUtils.convert(domainMapper.selectByDomainAlias(businessCode, domainAliasList), BusinessDomain.class);
     }

@@ -63,6 +63,10 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
     @Override
     public Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO) {
+        // 查询
+        List<BusinessDomain> domainList = domainService.queryDomainByBusinessCode(
+                businessCmdReqDTO.getBusiness().getBusinessCode());
+
         // 备份
 
         // 删除
