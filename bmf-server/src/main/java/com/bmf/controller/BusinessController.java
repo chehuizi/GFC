@@ -43,7 +43,7 @@ public class BusinessController {
         return result.getData();
     }
 
-    @PostMapping("save/strategy/design")
+    @PostMapping("strategy/design/save")
     public Boolean saveStrategyDesign(@RequestBody BusinessCmdReqDTO businessCmdReqDTO) {
         Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
         return result.getData();

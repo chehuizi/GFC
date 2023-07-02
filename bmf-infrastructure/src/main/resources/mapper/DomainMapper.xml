@@ -37,7 +37,16 @@
         and is_deleted = 0
     </select>
 
-    <select id="selectByDomainAlias" resultMap="BaseResultMap" parameterType="java.util.List">
+    <select id="selectByBusinessCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        select
+        a.*
+        FROM bmf_domain a
+        join bmf_business_rel_domain b on a.domain_code = b.domain_code
+        and b.business_code = #{businessCode}
+        where a.is_deleted = 0
+    </select>
+
+    <select id="selectByDomainAlias" resultMap="BaseResultMap">
         select
         a.*
         FROM bmf_domain a

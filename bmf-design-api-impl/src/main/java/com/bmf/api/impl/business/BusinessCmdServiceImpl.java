@@ -66,12 +66,11 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         // 查询
         List<BusinessDomain> domainList = domainService.queryDomainByBusinessCode(
                 businessCmdReqDTO.getBusiness().getBusinessCode());
-
+        List<BusinessRelDomain> businessRelDomainList = businessService.queryBusinessRelDomain(
+                businessCmdReqDTO.getBusiness());
         // 备份
 
-        // 删除
 
-        // 新增
         return null;
     }
 
