@@ -7,6 +7,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.enums.CodeKeyEnum;
+import com.bmf.base.snapshot.DomainStrategyDesignSnapshot;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;
@@ -62,6 +63,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     }
 
     @Override
+    @Validator(beanName = "businessCmdReqDTOValidator", method = "v4SaveStrategyDesign")
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO) {
         // 查询
         List<BusinessDomain> domainList = domainService.queryDomainByBusinessCode(
@@ -70,6 +73,11 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
                 businessCmdReqDTO.getBusiness());
         List<BusinessDomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(
                 businessCmdReqDTO.getBusiness());
+        DomainStrategyDesignSnapshot snapshot = DomainStrategyDesignSnapshot.builder()
+                .domainList(domainList)
+                .businessRelDomainList(businessRelDomainList)
+                .domainRelationList(domainRelationList)
+                .build();
         // 备份
 
         // 删除
