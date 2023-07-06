@@ -7,8 +7,18 @@ import lombok.Data;
 public abstract class BaseSnapshot extends BaseModel {
 
     /**
+     * 快照对象ID
+     */
+    private String objId;
+    /**
+     * 快照对象类型
+     */
+    private String objType;
+
+    /**
      * 快照
      * @return
      */
-    public abstract String snapshot();
+    public abstract String getSnapshot();
+
 }

@@ -17,6 +17,7 @@ import com.bmf.common.validator.Validator;
 import com.bmf.core.business.BusinessService;
 import com.bmf.core.design.BusinessDomainDesign4Strategy;
 import com.bmf.core.domain.DomainService;
+import com.bmf.core.snapshot.SnapshotService;
 import com.bmf.infrastructure.generator.CodeSeqGenerator;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -41,6 +42,8 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     private BusinessDomainDesign4Strategy businessDomainDesign4Strategy;
     @Autowired
     private CodeSeqGenerator codeSeqGenerator;
+    @Autowired
+    private SnapshotService snapshotService;
 
     @Override
     @Validator(beanName = "businessCmdReqDTOValidator", method = "v4Create")
@@ -79,7 +82,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
                 .domainRelationList(domainRelationList)
                 .build();
         // 备份
-
+        snapshotService.snapshot(snapshot);
         // 删除
         return null;
     }

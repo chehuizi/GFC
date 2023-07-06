@@ -1,7 +1,6 @@
 package com.bmf.base.snapshot;
 
 import com.alibaba.fastjson.JSON;
-import com.bmf.base.BaseModel;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
@@ -32,7 +31,7 @@ public class DomainStrategyDesignSnapshot extends BaseSnapshot {
     private List<BusinessDomainRelation> domainRelationList;
 
     @Override
-    public String snapshot() {
+    public String getSnapshot() {
         return JSON.toJSONString(this);
     }
 }
