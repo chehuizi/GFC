@@ -10,7 +10,7 @@ import ReactFlow, {
   Edge,
 } from "reactflow";
 import { Button, Form, Input, Select } from "antd";
-import CustomEdge from "./customEdge";
+import RelationEdge from "./relationEdge";
 import axios, { get, post } from "../../../utils/axios";
 import "reactflow/dist/style.css";
 
@@ -34,7 +34,7 @@ const fitViewOptions = {
 };
 
 const edgeTypes: EdgeTypes = {
-  custom: CustomEdge,
+  relation: RelationEdge,
 };
 
 const AddNodeOnEdgeDrop = () => {
@@ -49,6 +49,35 @@ const AddNodeOnEdgeDrop = () => {
   const [nodeEndLabel, setNodeEndLabel] = useState("");
   const [hasStrategy, setHasStrategy] = useState(true);
   const [form] = useForm();
+  const opiotns = [
+    {
+      label: "合作伙伴",
+      value: "PS",
+
+      //       PS("partnership", "合作伙伴"),
+      // SK("shared-Kernel", "共享内核"),
+      // UD("upstream-downstream", "上下游"),
+      // CS("customer-supplier", "客户/供应商"),
+      // KS("kernel-shell", "被包含/包含")
+    },
+    {
+      label: "共享内核",
+      value: "SK",
+    },
+    {
+      label: "上下游",
+      value: "UD",
+    },
+    {
+      label: "客户/供应商",
+      value: "CS",
+    },
+    {
+      label: "被包含/包含",
+      value: "KS",
+    },
+  ];
+  const [relationOptions, setRelationOptions] = useState<any[]>(opiotns);
 
   const { project } = useReactFlow();
 
@@ -232,6 +261,12 @@ const AddNodeOnEdgeDrop = () => {
               source: String(domainACode),
               target: String(domainBCode),
               animated: true,
+              type: "relation",
+              data: {
+                domainRelation,
+                domainARole,
+                domainBRole,
+              },
               // data: {
               //   domainRelation,
               //   domainARole,
@@ -277,22 +312,45 @@ const AddNodeOnEdgeDrop = () => {
     );
   }, [nodeBg, setNodes]);
 
-  // useEffect(() => {
-  //   setEdges((edges) =>
-  //     edges.map((node) => {
-  //       if (node.selected) {
-  //         node.type = "custom";
-  //         if (!node.data) {
-  //           node.data = {};
-  //         }
-  //         node.data.startLabel = nodeStartLabel;
-  //         node.data.centerLabel = nodeCenterLabel;
-  //         node.data.endLabel = nodeEndLabel;
-  //       }
-  //       return node;
-  //     })
-  //   );
-  // }, [nodeStartLabel, nodeCenterLabel, nodeEndLabel, setEdges]);
+  useEffect(() => {
+    setEdges((edges) =>
+      edges.map((node) => {
+        debugger;
+        if (node.selected) {
+          node.type = "relation";
+          // node.animated = true;
+          if (!node.data) {
+            node.data = {};
+          }
+          node.data.domainARole = nodeStartLabel;
+          node.data.domainRelation = nodeCenterLabel;
+          node.data.domainBRole = nodeEndLabel;
+        }
+        return node;
+      })
+    );
+  }, [nodeStartLabel, nodeCenterLabel, nodeEndLabel, setEdges]);
+
+  useEffect(() => {
+    setEdges((edges) =>
+      JSON.parse(
+        JSON.stringify(
+          edges.map((node) => {
+            if (node.selected) {
+              node.type = "relation";
+              if (!node.data) {
+                node.data = {};
+              }
+              node.data.domainARole = nodeStartLabel;
+              node.data.domainRelation = nodeCenterLabel;
+              node.data.domainBRole = nodeEndLabel;
+            }
+            return node;
+          })
+        )
+      )
+    );
+  }, [nodeStartLabel, nodeCenterLabel, nodeEndLabel, setEdges]);
 
   const onConnect = useCallback((params) => {
     return setEdges((eds) => addEdge(params, eds));
@@ -362,7 +420,6 @@ const AddNodeOnEdgeDrop = () => {
     axios
       .post("/business/strategy/design/save", params)
       .then((res) => {
-        debugger;
         //
       })
       .catch((error) => {
@@ -402,7 +459,7 @@ const AddNodeOnEdgeDrop = () => {
           <ReactFlow
             nodes={nodes}
             edges={edges}
-            // edgeTypes={edgeTypes}
+            edgeTypes={edgeTypes}
             onNodesChange={(e) => {
               onNodesChange(e);
             }}
@@ -430,17 +487,33 @@ const AddNodeOnEdgeDrop = () => {
                     onChange={(evt) => setNodeBg(evt.target.value)}
                   />
                 </Form.Item>
-                <Form.Item label="上下游关系" name="domainRelation">
+                {/* <Form.Item label="上下游关系" name="domainRelation">
                   <Select
+                    options={relationOptions}
                     style={{ marginLeft: 10 }}
                     // onChange={(evt) => setNodeBg(evt.target.value)}
                   />
-                </Form.Item>
+                </Form.Item> */}
                 <Form.Item label="关系A" name="domainRelationA">
-                  <Select style={{ marginLeft: 10 }} />
+                  <Select
+                    style={{ marginLeft: 10 }}
+                    options={relationOptions}
+                    onChange={(value) => setNodeStartLabel(value)}
+                  />
                 </Form.Item>
-                <Form.Item label="关系B" name="domainRelationB">
-                  <Select style={{ marginLeft: 10 }} />
+                <Form.Item label="关系B" name="domainRelation">
+                  <Select
+                    style={{ marginLeft: 10 }}
+                    options={relationOptions}
+                    onChange={(value) => setNodeCenterLabel(value)}
+                  />
+                </Form.Item>
+                <Form.Item label="关系C" name="domainRelationB">
+                  <Select
+                    style={{ marginLeft: 10 }}
+                    options={relationOptions}
+                    onChange={(value) => setNodeEndLabel(value)}
+                  />
                 </Form.Item>
                 <Form.Item>
                   <Button type="primary" onClick={onSave}>
