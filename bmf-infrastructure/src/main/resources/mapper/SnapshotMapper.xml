@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.SnapshotMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.SnapshotPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="obj_id" jdbcType="VARCHAR" property="objId"/>
+        <result column="obj_type" jdbcType="VARCHAR" property="objType"/>
+        <result column="snapshot_version" jdbcType="INTEGER" property="snapshotVersion"/>
+        <result column="snapshot_content" jdbcType="VARCHAR" property="snapshotContent"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, obj_id, obj_type, snapshot_version, snapshot_content, gmt_create, gmt_modify, is_deleted
+    </sql>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.SnapshotPO">
+        insert into bmf_snapshot (obj_id, obj_type, snapshot_version, snapshot_content)
+        values (
+            #{objId,jdbcType=VARCHAR},
+            #{objType,jdbcType=VARCHAR},
+            #{snapshotVersion,jdbcType=INTEGER},
+            #{snapshotContent,jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>

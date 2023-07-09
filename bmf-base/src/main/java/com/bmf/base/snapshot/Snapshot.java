@@ -1,10 +1,12 @@
 package com.bmf.base.snapshot;
 
 import com.bmf.base.BaseModel;
+import lombok.Builder;
 import lombok.Data;
 
+@Builder
 @Data
-public abstract class BaseSnapshot extends BaseModel {
+public class Snapshot extends BaseModel {
 
     /**
      * 快照对象ID
@@ -14,11 +16,12 @@ public abstract class BaseSnapshot extends BaseModel {
      * 快照对象类型
      */
     private String objType;
-
+    /**
+     * 快照版本
+     */
+    private Integer snapshotVersion;
     /**
      * 快照内容
-     * @return
      */
-    public abstract String getSnapshotContent();
-
+    private String snapshotContent;
 }
