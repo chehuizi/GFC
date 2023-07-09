@@ -3,7 +3,7 @@ import qs from "qs";
 
 const instance = axios.create({
   timeout: 10000,
-  baseURL: "https://some-domain.com/api/",
+  baseURL: "/api",
   // headers: {},
 });
 
@@ -14,10 +14,11 @@ instance.interceptors.request.use(
       // 如果不是登录接口，就给请求头里面设置token
       config.headers.token = localStorage.getItem("token");
     }
+    debugger;
     // post请求需要序列化
-    if (config.method === "post") {
-      config.data = qs.stringify(config.data);
-    }
+    // if (config.method === "post") {
+    //   config.data = qs.stringify(config.data);
+    // }
     return config;
   },
   (err) => Promise.reject(err)
@@ -33,6 +34,7 @@ instance.interceptors.response.use(
     //   // token失效
     //   // router.push("/login"); // 跳转登录页
     // }
+    debugger;
     return Promise.resolve(res.data);
   },
   (err) => Promise.reject(err)

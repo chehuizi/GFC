@@ -18,15 +18,20 @@ const App: React.FC = () => {
   } = theme.useToken();
   const navigate = useNavigate();
   const [businesses, setBusinesses] = useState<any[]>([]);
+  const [defaultValue, setDefaultValue] = useState<string>("");
 
   useEffect(() => {
     navigate("/business/domain");
   }, []);
 
   useEffect(() => {
-    axios.get("/1212", { params: { userId: "" } }).then((res) => {
-      setBusinesses(res.data || []);
-    });
+    axios
+      .get("/user/business/detail", { params: { user_id: "100001" } })
+      .then((res) => {
+        const options = res.data?.userBusinessList || [];
+        setBusinesses(options);
+        setDefaultValue(options[0]?.businessCode);
+      });
   }, []);
 
   const onChange = () => {
@@ -71,10 +76,13 @@ const App: React.FC = () => {
           </div>
           <div style={{ marginLeft: 10 }}>
             <Select
+              value={defaultValue}
               defaultActiveFirstOption
               className="business"
+              fieldNames={{ label: "businessName", value: "businessCode" }}
               onChange={onChange}
               options={businesses}
+              placeholder="请选择"
             />
           </div>
         </Header>

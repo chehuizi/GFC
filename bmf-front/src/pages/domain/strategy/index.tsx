@@ -5,14 +5,19 @@ import ReactFlow, {
   addEdge,
   useReactFlow,
   ReactFlowProvider,
+  EdgeTypes,
+  Node,
+  Edge,
 } from "reactflow";
-import { Button } from "antd";
+import { Button, Form, Input, Select } from "antd";
+import CustomEdge from "./customEdge";
 import axios, { get, post } from "../../../utils/axios";
 import "reactflow/dist/style.css";
 
 import "./index.css";
+import { useForm } from "antd/es/form/Form";
 
-const initialNodes = [
+const initialNodes: Node[] = [
   {
     id: "0",
     type: "input",
@@ -28,6 +33,10 @@ const fitViewOptions = {
   padding: 3,
 };
 
+const edgeTypes: EdgeTypes = {
+  custom: CustomEdge,
+};
+
 const AddNodeOnEdgeDrop = () => {
   const reactFlowWrapper = useRef(null);
   const connectingNodeId = useRef(null);
@@ -35,16 +44,212 @@ const AddNodeOnEdgeDrop = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [nodeName, setNodeName] = useState("Node 1");
   const [nodeBg, setNodeBg] = useState("#fff");
-  const [nodeLabel, setNodeLabel] = useState("");
-  const [hasStrategy, setHasStrategy] = useState(false);
+  const [nodeStartLabel, setNodeStartLabel] = useState("");
+  const [nodeCenterLabel, setNodeCenterLabel] = useState("");
+  const [nodeEndLabel, setNodeEndLabel] = useState("");
+  const [hasStrategy, setHasStrategy] = useState(true);
+  const [form] = useForm();
 
   const { project } = useReactFlow();
 
   useEffect(() => {
-    axios.get("/sds").then(() => {
-      setHasStrategy(true);
-      //
-    });
+    axios
+      .get("/business/detail", {
+        params: { business_code: 101, include_all: true },
+      })
+      .then((res) => {
+        res = {
+          code: 200,
+          data: {
+            business: {
+              businessAlias: "sharing-bike",
+              businessCode: 101,
+              businessDesc: "共享单车、电单车",
+              businessDomainList: [
+                {
+                  domainAlias: "ims",
+                  domainCode: 101,
+                  domainLevel: 3,
+                  domainName: "库存域",
+                  domainPosition: '{"x": 400, "y": 0}',
+                  domainType: "core",
+                  extMap: { domainTypeDesc: "核心域" },
+                },
+                {
+                  domainAlias: "wms",
+                  domainCode: 102,
+                  domainLevel: 3,
+                  domainName: "仓库管理域",
+                  domainPosition: '{"x": 200, "y": 100}',
+                  domainType: "core",
+                  extMap: { domainTypeDesc: "核心域" },
+                },
+                {
+                  domainAlias: "tms",
+                  domainCode: 103,
+                  domainLevel: 3,
+                  domainName: "运输管理域",
+                  domainPosition: '{"x": 500, "y": 100}',
+                  domainType: "core",
+                  extMap: { domainTypeDesc: "核心域" },
+                },
+                {
+                  domainAlias: "ofc",
+                  domainCode: 104,
+                  domainLevel: 3,
+                  domainName: "履约域",
+                  domainPosition: '{"x": 400, "y": 300}',
+                  domainType: "core",
+                  extMap: { domainTypeDesc: "核心域" },
+                },
+              ],
+              businessDomainRelationList: [
+                {
+                  businessCode: 101,
+                  domainACode: 101,
+                  domainARole: "OHS",
+                  domainBCode: 102,
+                  domainBRole: "CF",
+                  domainRelation: "upstream-downstream",
+                  extMap: {
+                    domainARoleDesc: "开放主机服务",
+                    domainRelationDesc: "上下游",
+                    domainBRoleDesc: "遵从者",
+                  },
+                },
+                {
+                  businessCode: 101,
+                  domainACode: 101,
+                  domainARole: "OHS",
+                  domainBCode: 103,
+                  domainBRole: "CF",
+                  domainRelation: "upstream-downstream",
+                  extMap: {
+                    domainARoleDesc: "开放主机服务",
+                    domainRelationDesc: "上下游",
+                    domainBRoleDesc: "遵从者",
+                  },
+                },
+                {
+                  businessCode: 101,
+                  domainACode: 101,
+                  domainARole: "OHS",
+                  domainBCode: 104,
+                  domainBRole: "CF",
+                  domainRelation: "upstream-downstream",
+                  extMap: {
+                    domainARoleDesc: "开放主机服务",
+                    domainRelationDesc: "上下游",
+                    domainBRoleDesc: "遵从者",
+                  },
+                },
+                {
+                  businessCode: 101,
+                  domainACode: 102,
+                  domainARole: "partner",
+                  domainBCode: 103,
+                  domainBRole: "partner",
+                  domainRelation: "partnership",
+                  extMap: {
+                    domainARoleDesc: "合作伙伴",
+                    domainRelationDesc: "合作伙伴",
+                    domainBRoleDesc: "合作伙伴",
+                  },
+                },
+                {
+                  businessCode: 101,
+                  domainACode: 102,
+                  domainARole: "partner",
+                  domainBCode: 104,
+                  domainBRole: "partner",
+                  domainRelation: "partnership",
+                  extMap: {
+                    domainARoleDesc: "合作伙伴",
+                    domainRelationDesc: "合作伙伴",
+                    domainBRoleDesc: "合作伙伴",
+                  },
+                },
+                {
+                  businessCode: 101,
+                  domainACode: 103,
+                  domainARole: "partner",
+                  domainBCode: 104,
+                  domainBRole: "partner",
+                  domainRelation: "partnership",
+                  extMap: {
+                    domainARoleDesc: "合作伙伴",
+                    domainRelationDesc: "合作伙伴",
+                    domainBRoleDesc: "合作伙伴",
+                  },
+                },
+              ],
+              businessName: "共享两轮业务",
+              businessPrefix: "B",
+            },
+            pageIndex: 0,
+            pageSize: 0,
+            total: 0,
+          },
+          msg: "成功",
+        };
+        const { businessDomainList = [], businessDomainRelationList = [] } =
+          res?.data?.business;
+        if (businessDomainList?.length && businessDomainRelationList?.length) {
+          const nodes = businessDomainList.map((item: any, index: number) => {
+            const {
+              domainCode,
+              domainName,
+              domainType,
+              domainAlias,
+              domainPosition,
+              extMap,
+            } = item;
+            return {
+              // type: "input",
+              id: String(domainCode),
+              data: {
+                label: domainName,
+              },
+              position: JSON.parse(domainPosition),
+              // extInfo: {
+              //   domainType,
+              //   domainAlias,
+              //   extMap,
+              // },
+            };
+          });
+          setNodes(nodes);
+          const edges = businessDomainRelationList.map((item: any) => {
+            const {
+              domainARole,
+              domainACode,
+              domainRelation,
+              domainBRole,
+              domainBCode,
+            } = item;
+            return {
+              id: `e${domainACode}-${domainBCode}`,
+              source: String(domainACode),
+              target: String(domainBCode),
+              animated: true,
+              // data: {
+              //   domainRelation,
+              //   domainARole,
+              //   domainBRole,
+              // },
+              // type: "custom",
+            };
+          });
+          // console.log(edges, "edges");
+          setEdges(edges);
+          setHasStrategy(true);
+        } else {
+          setHasStrategy(false);
+        }
+      })
+      .catch(() => {
+        setHasStrategy(false);
+      });
   }, []);
 
   useEffect(() => {
@@ -72,20 +277,22 @@ const AddNodeOnEdgeDrop = () => {
     );
   }, [nodeBg, setNodes]);
 
-  useEffect(() => {
-    setEdges((edges) =>
-      edges.map((node) => {
-        if (node.selected) {
-          node.type = "custom";
-          if (!node.data) {
-            node.data = {};
-          }
-          node.data.label = nodeLabel;
-        }
-        return node;
-      })
-    );
-  }, [nodeLabel, setEdges]);
+  // useEffect(() => {
+  //   setEdges((edges) =>
+  //     edges.map((node) => {
+  //       if (node.selected) {
+  //         node.type = "custom";
+  //         if (!node.data) {
+  //           node.data = {};
+  //         }
+  //         node.data.startLabel = nodeStartLabel;
+  //         node.data.centerLabel = nodeCenterLabel;
+  //         node.data.endLabel = nodeEndLabel;
+  //       }
+  //       return node;
+  //     })
+  //   );
+  // }, [nodeStartLabel, nodeCenterLabel, nodeEndLabel, setEdges]);
 
   const onConnect = useCallback((params) => {
     return setEdges((eds) => addEdge(params, eds));
@@ -98,7 +305,6 @@ const AddNodeOnEdgeDrop = () => {
   const onConnectEnd = useCallback(
     (event) => {
       const targetIsPane = event.target.classList.contains("react-flow__pane");
-
       if (targetIsPane) {
         // we need to remove the wrapper bounds, in order to get the correct position
         const { top, left } = reactFlowWrapper.current.getBoundingClientRect();
@@ -127,7 +333,41 @@ const AddNodeOnEdgeDrop = () => {
   );
 
   const onSave = () => {
-    //
+    const params = {
+      business: {
+        businessCode: 101,
+      },
+      domainList: nodes.map((node: any) => {
+        const { id, data, position, extInfo = {} } = node;
+        return {
+          domainCode: id,
+          domainName: data.label,
+          ...extInfo,
+          domainPosition: JSON.stringify(position),
+        };
+      }),
+      // relationshipList: edges.map((node: any) => {
+      //   const { source, target, data = {} } = node;
+      //   const { domainRelation, domainARole, domainBRole } = data;
+      //   return {
+      //     domainRelation,
+      //     domainARole,
+      //     domainBRole,
+      //     domainACode: source,
+      //     domainBCode: target,
+      //     businessCode: "",
+      //   };
+      // }),
+    };
+    axios
+      .post("/business/strategy/design/save", params)
+      .then((res) => {
+        debugger;
+        //
+      })
+      .catch((error) => {
+        //
+      });
   };
 
   return (
@@ -162,6 +402,7 @@ const AddNodeOnEdgeDrop = () => {
           <ReactFlow
             nodes={nodes}
             edges={edges}
+            // edgeTypes={edgeTypes}
             onNodesChange={(e) => {
               onNodesChange(e);
             }}
@@ -174,15 +415,48 @@ const AddNodeOnEdgeDrop = () => {
             fitViewOptions={fitViewOptions}
           >
             <div className="updatenode__controls">
-              <div>
+              <Form form={form}>
+                <Form.Item label="节点文案" name="domainName">
+                  <Input
+                    style={{ marginLeft: 10 }}
+                    value={nodeName}
+                    onChange={(evt) => setNodeName(evt.target.value)}
+                  />
+                </Form.Item>
+                <Form.Item label="节点背景色" name="nodeBg">
+                  <Input
+                    style={{ marginLeft: 10 }}
+                    value={nodeBg}
+                    onChange={(evt) => setNodeBg(evt.target.value)}
+                  />
+                </Form.Item>
+                <Form.Item label="上下游关系" name="domainRelation">
+                  <Select
+                    style={{ marginLeft: 10 }}
+                    // onChange={(evt) => setNodeBg(evt.target.value)}
+                  />
+                </Form.Item>
+                <Form.Item label="关系A" name="domainRelationA">
+                  <Select style={{ marginLeft: 10 }} />
+                </Form.Item>
+                <Form.Item label="关系B" name="domainRelationB">
+                  <Select style={{ marginLeft: 10 }} />
+                </Form.Item>
+                <Form.Item>
+                  <Button type="primary" onClick={onSave}>
+                    保存
+                  </Button>
+                </Form.Item>
+              </Form>
+              {/* <div>
                 <label>节点文案:</label>
                 <input
                   style={{ marginLeft: 10 }}
                   value={nodeName}
                   onChange={(evt) => setNodeName(evt.target.value)}
                 />
-              </div>
-              <div>
+              </div> */}
+              {/* <div>
                 <label className="updatenode__bglabel">节点背景色:</label>
                 <input
                   style={{ marginLeft: 10 }}
@@ -191,13 +465,29 @@ const AddNodeOnEdgeDrop = () => {
                 />
               </div>
               <div>
-                <label className="updatenode__bglabel">节点关系:</label>
+                <label className="updatenode__bglabel">起始节点关系:</label>
                 <input
                   style={{ marginLeft: 10 }}
-                  value={nodeLabel}
-                  onChange={(evt) => setNodeLabel(evt.target.value)}
+                  value={nodeStartLabel}
+                  onChange={(evt) => setNodeStartLabel(evt.target.value)}
                 />
               </div>
+              <div>
+                <label className="updatenode__bglabel">中间节点关系:</label>
+                <input
+                  style={{ marginLeft: 10 }}
+                  value={nodeCenterLabel}
+                  onChange={(evt) => setNodeCenterLabel(evt.target.value)}
+                />
+              </div>
+              <div>
+                <label className="updatenode__bglabel">结尾节点关系:</label>
+                <input
+                  style={{ marginLeft: 10 }}
+                  value={nodeEndLabel}
+                  onChange={(evt) => setNodeEndLabel(evt.target.value)}
+                />
+              </div> */}
               {/* <div className="updatenode__checkboxwrapper">
             <label>hidden:</label>
             <input
@@ -208,11 +498,11 @@ const AddNodeOnEdgeDrop = () => {
           </div> */}
             </div>
           </ReactFlow>
-          <div style={{ position: "fixed", bottom: 100, right: 100 }}>
+          {/* <div style={{ position: "fixed", bottom: 100, right: 100 }}>
             <Button size="large" type="primary" onClick={() => onSave()}>
               保存
             </Button>
-          </div>
+          </div> */}
         </>
       )}
     </div>

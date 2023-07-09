@@ -3,6 +3,7 @@ import { EdgeProps, getBezierPath, EdgeLabelRenderer } from "reactflow";
 
 // this is a little helper component to render the actual edge label
 function EdgeLabel({ transform, label }: { transform: string; label: string }) {
+  debugger;
   return (
     <div
       style={{
@@ -48,6 +49,14 @@ const CustomEdge: FC<EdgeProps> = ({
           <EdgeLabel
             transform={`translate(-50%, 0%) translate(${sourceX}px,${sourceY}px)`}
             label={data.startLabel}
+          />
+        )}
+        {data.centerLabel && (
+          <EdgeLabel
+            transform={`translate(-50%, 0%) translate(${
+              (sourceX + targetX) / 2
+            }px,${(sourceY + targetY) / 2}px)`}
+            label={data.centerLabel}
           />
         )}
         {data.endLabel && (
