@@ -7,6 +7,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.enums.CodeKeyEnum;
+import com.bmf.base.enums.SnapshotObjTypeEnum;
 import com.bmf.base.snapshot.DomainStrategyDesignSnapshot;
 import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.common.enums.BizCodeEnum;
@@ -81,10 +82,13 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
                 .businessRelDomainList(businessRelDomainList)
                 .domainRelationList(domainRelationList)
                 .build();
+        snapshot.setObjId(businessCmdReqDTO.getBusiness().getBusinessCode().toString());
+        snapshot.setObjType(SnapshotObjTypeEnum.DOMAIN_STRATEGY.getObjType());
+
         // 备份
-        snapshotService.snapshot(snapshot);
+        boolean result = snapshotService.snapshot(snapshot);
         // 删除
-        return null;
+        return ResultUtil.success(Boolean.TRUE);
     }
 
     @Override

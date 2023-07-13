@@ -18,6 +18,7 @@ public class SnapshotServiceImpl implements SnapshotService {
         Snapshot snapshot = Snapshot.builder()
                 .objId(t.getObjId())
                 .objType(t.getObjType())
+                .snapshotVersion(1)
                 .snapshotContent(t.getSnapshotContent())
                 .build();
         return snapshotRepository.insert(snapshot);
