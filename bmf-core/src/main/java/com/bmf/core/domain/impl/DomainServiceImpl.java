@@ -1,6 +1,5 @@
 package com.bmf.core.domain.impl;
 
-import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
