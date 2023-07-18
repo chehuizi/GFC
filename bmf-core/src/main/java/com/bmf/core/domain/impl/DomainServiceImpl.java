@@ -4,17 +4,24 @@ import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
+import com.bmf.base.enums.CodeKeyEnum;
+import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.core.domain.DomainService;
 import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.DslBaseRepository;
 import com.bmf.infrastructure.dal.DslExtRepository;
+import com.bmf.infrastructure.generator.CodeSeqGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public class DomainServiceImpl implements DomainService {
@@ -25,6 +32,8 @@ public class DomainServiceImpl implements DomainService {
     private DslBaseRepository dslBaseRepository;
     @Autowired
     private DslExtRepository dslExtRepository;
+    @Autowired
+    private CodeSeqGenerator codeSeqGenerator;
 
     @Override
     public BusinessDomain queryDomain(BusinessDomain businessDomain) {
@@ -93,5 +102,52 @@ public class DomainServiceImpl implements DomainService {
     @Override
     public boolean delDslExt(BusinessDslExt businessDslExt) {
         return dslExtRepository.delete(businessDslExt);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
+    public boolean handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList) {
+        List<BusinessDomain> allDomains = domainRepository.selectByBusinessCode(businessCode);
+        Map<String, BusinessDomain> allDomainMap = allDomains.stream().collect(
+                Collectors.toMap(e -> e.getDomainAlias(), e -> e));
+
+        List<BusinessDomain> insertedDomains = new ArrayList<>();
+        List<BusinessDomain> updatedDomains = new ArrayList<>();
+        List<BusinessDomain> deletedDomains = new ArrayList<>();
+
+        for (BusinessDomain domain : domainList) {
+            if (Objects.isNull(allDomainMap.get(domain.getDomainAlias()))) {
+                domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
+                insertedDomains.add(domain);
+            } else {
+                BusinessCheckUtil.checkNull(domain.getDomainCode(), BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_IS_NULL);
+                updatedDomains.add(domain);
+            }
+        }
+
+        Map<String, BusinessDomain> reqDomainMap = domainList.stream().collect(
+                Collectors.toMap(e -> e.getDomainAlias(), e -> e));
+        for (BusinessDomain domain : allDomains) {
+            if (Objects.isNull(reqDomainMap.get(domain.getDomainAlias()))) {
+                deletedDomains.add(domain);
+            }
+        }
+
+        boolean result = false;
+        if (!insertedDomains.isEmpty()) {
+            result = domainRepository.batchInsert(insertedDomains);
+        }
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_INSERTED_FAILED);
+
+        if (!updatedDomains.isEmpty()) {
+            result = domainRepository.batchInsert(updatedDomains);
+        }
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_UPDATED_FAILED);
+
+        if (!deletedDomains.isEmpty()) {
+            result = domainRepository.delete(null);
+        }
+
+        return true;
     }
 }

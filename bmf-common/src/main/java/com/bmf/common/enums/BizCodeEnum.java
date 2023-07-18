@@ -33,6 +33,7 @@ public enum BizCodeEnum {
     STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED(100016, "战略设计业务关联领域处理失败"),
     STRATEGY_DESIGN_DOMAIN_RELATION_HANDLE_FAILED(100017, "战略设计领域关系处理失败"),
     STRATEGY_DESIGN_DOMAIN_CODE_IS_NULL(100018, "战略设计领域编码是空"),
+    STRATEGY_DESIGN_SNAPSHOT_FAILED(100019, "战略设计备份失败"),
 
     USER_NOT_EXIST(100200, "用户不存在"),
     /******************** api层错误码 end   ********************/

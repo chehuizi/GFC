@@ -60,4 +60,9 @@
         where business_code = #{businessCode,jdbcType=INTEGER}
         and domain_code = #{domainCode,jdbcType=INTEGER}
     </delete>
+
+    <delete id="deleteByBusinessCode" parameterType="java.lang.Integer">
+        delete from bmf_business_rel_domain
+        where business_code = #{businessCode,jdbcType=INTEGER}
+    </delete>
 </mapper>

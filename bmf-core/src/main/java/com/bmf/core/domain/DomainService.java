@@ -1,6 +1,5 @@
 package com.bmf.core.domain;
 
-import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
@@ -96,4 +95,12 @@ public interface DomainService {
      * @return
      */
     boolean delDslExt(BusinessDslExt businessDslExt);
+
+    /**
+     * 处理战略设计
+     * @param businessCode
+     * @param domainList
+     * @return
+     */
+    boolean handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList);
 }

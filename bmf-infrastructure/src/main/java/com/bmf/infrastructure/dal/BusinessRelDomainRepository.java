@@ -19,4 +19,11 @@ public interface BusinessRelDomainRepository extends BaseRepository<BusinessRelD
      * @return
      */
     boolean batchInsert(List<BusinessRelDomain> businessRelDomainList);
+
+    /**
+     * 按照业务编码删除
+     * @param businessCode
+     * @return
+     */
+    boolean deleteByBusinessCode(Integer businessCode);
 }

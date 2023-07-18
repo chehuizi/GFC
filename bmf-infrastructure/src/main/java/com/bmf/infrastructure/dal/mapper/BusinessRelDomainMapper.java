@@ -17,4 +17,6 @@ public interface BusinessRelDomainMapper {
     int update(BusinessRelDomainPO businessRelDomainPO);
 
     int delete(BusinessRelDomainPO businessRelDomainPO);
+
+    int deleteByBusinessCode(Integer businessCode);
 }

@@ -70,7 +70,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     @Validator(beanName = "businessCmdReqDTOValidator", method = "v4SaveStrategyDesign")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO) {
-        // 查询
+        // step1 查询
         List<BusinessDomain> domainList = domainService.queryDomainByBusinessCode(
                 businessCmdReqDTO.getBusiness().getBusinessCode());
         List<BusinessRelDomain> businessRelDomainList = businessService.queryBusinessRelDomain(
@@ -85,9 +85,12 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         snapshot.setObjId(businessCmdReqDTO.getBusiness().getBusinessCode().toString());
         snapshot.setObjType(SnapshotObjTypeEnum.DOMAIN_STRATEGY.getObjType());
 
-        // 备份
+        // step2 备份
         boolean result = snapshotService.snapshot(snapshot);
-        // 删除
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_SNAPSHOT_FAILED);
+
+        // step3 删除
+        businessService.cleanStrategyDesign(businessCmdReqDTO.getBusiness());
         return ResultUtil.success(Boolean.TRUE);
     }
 

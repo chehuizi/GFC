@@ -51,4 +51,9 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
         BusinessRelDomainPO businessRelDomainPO = POUtils.convert(req, BusinessRelDomainPO.class);
         return businessRelDomainMapper.delete(businessRelDomainPO) == 1;
     }
+
+    @Override
+    public boolean deleteByBusinessCode(Integer businessCode) {
+        return businessRelDomainMapper.deleteByBusinessCode(businessCode) >= 1;
+    }
 }

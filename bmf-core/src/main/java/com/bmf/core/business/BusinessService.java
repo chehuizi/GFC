@@ -72,6 +72,13 @@ public interface BusinessService {
     List<BusinessDomainRelation> queryBusinessDomainRelation(Business business, BusinessDomain domain);
 
     /**
+     * 清空战略设计
+     * @param business
+     * @return
+     */
+    boolean cleanStrategyDesign(Business business);
+
+    /**
      * 添加领域
      * @param business
      * @param domain

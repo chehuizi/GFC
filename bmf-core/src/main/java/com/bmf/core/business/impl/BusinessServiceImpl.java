@@ -15,6 +15,8 @@ import com.bmf.infrastructure.dal.BusinessRepository;
 import com.bmf.infrastructure.dal.BusinessRoleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -74,6 +76,13 @@ public class BusinessServiceImpl implements BusinessService {
     public List<BusinessDomainRelation> queryBusinessDomainRelation(Business business, BusinessDomain domain) {
         BusinessDomainRelation businessDomainRelation = BusinessUtil.convertDR(business, domain);
         return businessDomainRelationRepository.selectByDomain(businessDomainRelation);
+    }
+
+    @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
+    public boolean cleanStrategyDesign(Business business) {
+        businessRelDomainRepository.deleteByBusinessCode(business.getBusinessCode());
+        return false;
     }
 
     @Override
