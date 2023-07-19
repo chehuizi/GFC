@@ -4,9 +4,14 @@ import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
+import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.flow.BusinessRole;
+import com.bmf.base.strategy.BusinessDomainRelationship;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 业务服务
@@ -72,11 +77,15 @@ public interface BusinessService {
     List<BusinessDomainRelation> queryBusinessDomainRelation(Business business, BusinessDomain domain);
 
     /**
-     * 清空战略设计
+     * 处理战略设计
      * @param business
+     * @param domainResult
+     * @param relationshipList
      * @return
      */
-    boolean cleanStrategyDesign(Business business);
+    boolean handleStrategyDesign(Business business,
+                                 Map<Integer, CmdTypeEnum> domainResult,
+                                 List<BusinessDomainRelationship> relationshipList);
 
     /**
      * 添加领域

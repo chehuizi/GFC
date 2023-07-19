@@ -3,8 +3,10 @@ package com.bmf.core.domain;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
+import com.bmf.base.enums.CmdTypeEnum;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * 业务领域服务
@@ -102,5 +104,5 @@ public interface DomainService {
      * @param domainList
      * @return
      */
-    boolean handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList);
+    Map<Integer, CmdTypeEnum> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList);
 }

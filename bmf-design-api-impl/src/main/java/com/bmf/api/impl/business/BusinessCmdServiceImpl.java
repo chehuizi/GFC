@@ -6,6 +6,7 @@ import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessDomainRelation;
 import com.bmf.base.BusinessRelDomain;
+import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.base.enums.SnapshotObjTypeEnum;
 import com.bmf.base.snapshot.DomainStrategyDesignSnapshot;
@@ -90,7 +91,6 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_SNAPSHOT_FAILED);
 
         // step3 删除
-        businessService.cleanStrategyDesign(businessCmdReqDTO.getBusiness());
         return ResultUtil.success(Boolean.TRUE);
     }
 
@@ -101,47 +101,13 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
         // step1：处理领域
-        boolean result = true;
-        List<BusinessDomain> existedDomains = domainService.queryDomainByAlias(business.getBusinessCode(),
-                businessCmdReqDTO.getDomainList().stream().map(BusinessDomain::getDomainAlias)
-                        .collect(Collectors.toList()));
-        Map<String, BusinessDomain> existedDomainMap = existedDomains.stream().collect(
-                Collectors.toMap(e -> e.getDomainAlias(), e -> e));
-
-        List<BusinessDomain> insertedDomains = new ArrayList<>();
-        List<BusinessDomain> updatedDomains = new ArrayList<>();
-        for (BusinessDomain domain : businessCmdReqDTO.getDomainList()) {
-            if (Objects.isNull(existedDomainMap.get(domain.getDomainAlias()))) {
-                domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
-                insertedDomains.add(domain);
-            } else {
-                BusinessCheckUtil.checkNull(domain.getDomainCode(), BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_IS_NULL);
-                updatedDomains.add(domain);
-            }
-        }
-
-        if (!insertedDomains.isEmpty()) {
-            result = domainService.batchCreateDomain(insertedDomains);
-        }
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_INSERTED_FAILED);
-
-        if (!updatedDomains.isEmpty()) {
-            result = domainService.batchCreateDomain(updatedDomains);
-        }
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_UPDATED_FAILED);
+        Map<Integer, CmdTypeEnum> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
+                businessCmdReqDTO.getDomainList());
 
         // step2：处理业务和领域关系
-        if (!insertedDomains.isEmpty()) {
-            result = businessService.addDomainList(business, businessCmdReqDTO.getDomainList());
-        }
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_HANDLE_FAILED);
+        boolean result = businessService.handleStrategyDesign(business, domainResult,
+                businessCmdReqDTO.getRelationshipList());
 
-        // step3：处理领域关系
-        if (businessCmdReqDTO.getRelationshipList().size() > 0) {
-            fillRelationship(businessCmdReqDTO.getDomainList(), businessCmdReqDTO.getRelationshipList());
-            result = businessDomainDesign4Strategy.batchBuildBusinessDomainRelationship(business, businessCmdReqDTO.getRelationshipList());
-            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_RELATION_HANDLE_FAILED);
-        }
         return ResultUtil.success(Boolean.TRUE);
     }
 

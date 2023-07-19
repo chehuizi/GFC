@@ -3,6 +3,7 @@ package com.bmf.core.domain.impl;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
+import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
@@ -16,10 +17,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -105,7 +103,7 @@ public class DomainServiceImpl implements DomainService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public boolean handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList) {
+    public Map<Integer, CmdTypeEnum> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList) {
         List<BusinessDomain> allDomains = domainRepository.selectByBusinessCode(businessCode);
         Map<String, BusinessDomain> allDomainMap = allDomains.stream().collect(
                 Collectors.toMap(e -> e.getDomainAlias(), e -> e));
@@ -146,7 +144,18 @@ public class DomainServiceImpl implements DomainService {
         if (!deletedDomains.isEmpty()) {
             result = domainRepository.delete(null);
         }
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_DELETED_FAILED);
 
-        return true;
+        Map<Integer, CmdTypeEnum> data = new HashMap<>();
+        for (BusinessDomain domain : insertedDomains) {
+            data.put(domain.getDomainCode(), CmdTypeEnum.INSERT);
+        }
+        for (BusinessDomain domain : updatedDomains) {
+            data.put(domain.getDomainCode(), CmdTypeEnum.UPDATE);
+        }
+        for (BusinessDomain domain : deletedDomains) {
+            data.put(domain.getDomainCode(), CmdTypeEnum.DELETE);
+        }
+        return data;
     }
 }

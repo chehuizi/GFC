@@ -1,12 +1,12 @@
 package com.bmf.core.business.impl;
 
 import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.flow.BusinessRole;
-import com.bmf.common.enums.BizCodeEnum;
-import com.bmf.common.exception.BizException;
 import com.bmf.base.Business;
 import com.bmf.base.BusinessDomain;
 import com.bmf.base.BusinessRelDomain;
+import com.bmf.base.strategy.BusinessDomainRelationship;
 import com.bmf.core.utils.BusinessUtil;
 import com.bmf.core.business.BusinessService;
 import com.bmf.infrastructure.dal.BusinessDomainRelationRepository;
@@ -20,7 +20,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
+import java.util.Map;
 
 @Service
 public class BusinessServiceImpl implements BusinessService {
@@ -80,7 +80,9 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public boolean cleanStrategyDesign(Business business) {
+    public boolean handleStrategyDesign(Business business,
+                                        Map<Integer, CmdTypeEnum> domainResult,
+                                        List<BusinessDomainRelationship> relationshipList) {
         businessRelDomainRepository.deleteByBusinessCode(business.getBusinessCode());
         return false;
     }
