@@ -19,4 +19,6 @@ public interface BusinessDomainRelationMapper {
     int update(BusinessDomainRelationPO businessDomainRelationPO);
 
     int delete(BusinessDomainRelationPO businessDomainRelationPO);
+
+    int deleteByBusinessCode(Integer businessCode);
 }

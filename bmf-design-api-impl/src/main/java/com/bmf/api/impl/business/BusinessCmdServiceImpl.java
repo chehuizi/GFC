@@ -101,7 +101,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
         // step1：处理领域
-        Map<Integer, CmdTypeEnum> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
+        Map<CmdTypeEnum, List<BusinessDomain>> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
                 businessCmdReqDTO.getDomainList());
 
         // step2：处理业务和领域关系

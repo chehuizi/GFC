@@ -57,4 +57,9 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
         BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
         return businessDomainRelationMapper.delete(businessDomainRelationPO) == 1;
     }
+
+    @Override
+    public boolean deleteByBusinessCode(Integer businessCode) {
+        return businessDomainRelationMapper.deleteByBusinessCode(businessCode) > 0;
+    }
 }

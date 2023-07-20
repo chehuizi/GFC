@@ -40,7 +40,7 @@
         )
     </insert>
 
-    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+    <insert id="batchInsert" parameterType="java.util.List">
         insert into bmf_business_rel_domain (business_code, domain_code, domain_position)
         values
         <foreach collection="list" item="item" index="index" separator=",">
@@ -55,10 +55,42 @@
         gmt_modify = now()
     </insert>
 
+    <update id="batchUpdate" parameterType="java.util.List">
+        update bmf_business_rel_domain
+        <trim prefix="set" suffixOverrides=",">
+            <trim prefix="domain_position = case id" suffix="end">
+                <foreach collection="list" item="item">
+                    when #{item.id} then #{item.domainPosition}
+                </foreach>
+            </trim>
+            <trim prefix="gmt_modify = case id" suffix="end">
+                <foreach collection="list" item="item">
+                    when #{item.id} then now()
+                </foreach>
+            </trim>
+        </trim>
+        <where>
+            id in (
+            <foreach collection="list" separator="," item="item">
+                #{item.id}
+            </foreach>
+            )
+        </where>
+    </update>
+
     <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
         delete from bmf_business_rel_domain
         where business_code = #{businessCode,jdbcType=INTEGER}
         and domain_code = #{domainCode,jdbcType=INTEGER}
+    </delete>
+
+    <delete id="batchDelete" parameterType="java.util.List">
+        delete from bmf_business_rel_domain
+        where id in (
+            <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
+                #{item.id}
+            </foreach>
+        )
     </delete>
 
     <delete id="deleteByBusinessCode" parameterType="java.lang.Integer">

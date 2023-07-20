@@ -104,5 +104,5 @@ public interface DomainService {
      * @param domainList
      * @return
      */
-    Map<Integer, CmdTypeEnum> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList);
+    Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList);
 }

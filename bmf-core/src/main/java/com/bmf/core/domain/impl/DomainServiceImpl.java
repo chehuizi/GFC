@@ -103,7 +103,7 @@ public class DomainServiceImpl implements DomainService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public Map<Integer, CmdTypeEnum> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList) {
+    public Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList) {
         List<BusinessDomain> allDomains = domainRepository.selectByBusinessCode(businessCode);
         Map<String, BusinessDomain> allDomainMap = allDomains.stream().collect(
                 Collectors.toMap(e -> e.getDomainAlias(), e -> e));
@@ -146,16 +146,10 @@ public class DomainServiceImpl implements DomainService {
         }
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_DELETED_FAILED);
 
-        Map<Integer, CmdTypeEnum> data = new HashMap<>();
-        for (BusinessDomain domain : insertedDomains) {
-            data.put(domain.getDomainCode(), CmdTypeEnum.INSERT);
-        }
-        for (BusinessDomain domain : updatedDomains) {
-            data.put(domain.getDomainCode(), CmdTypeEnum.UPDATE);
-        }
-        for (BusinessDomain domain : deletedDomains) {
-            data.put(domain.getDomainCode(), CmdTypeEnum.DELETE);
-        }
+        Map<CmdTypeEnum, List<BusinessDomain>> data = new HashMap<>();
+        data.put(CmdTypeEnum.INSERT, insertedDomains);
+        data.put(CmdTypeEnum.UPDATE, updatedDomains);
+        data.put(CmdTypeEnum.DELETE, deletedDomains);
         return data;
     }
 }

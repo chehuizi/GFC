@@ -7,8 +7,6 @@ import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.flow.BusinessRole;
 import com.bmf.base.strategy.BusinessDomainRelationship;
-import org.springframework.transaction.annotation.Propagation;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import java.util.Map;
@@ -84,7 +82,7 @@ public interface BusinessService {
      * @return
      */
     boolean handleStrategyDesign(Business business,
-                                 Map<Integer, CmdTypeEnum> domainResult,
+                                 Map<CmdTypeEnum, List<BusinessDomain>> domainResult,
                                  List<BusinessDomainRelationship> relationshipList);
 
     /**
