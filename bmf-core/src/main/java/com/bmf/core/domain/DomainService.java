@@ -4,6 +4,7 @@ import com.bmf.base.BusinessDomain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
 import com.bmf.base.enums.CmdTypeEnum;
+import com.bmf.common.exception.BizException;
 
 import java.util.List;
 import java.util.Map;
@@ -104,5 +105,7 @@ public interface DomainService {
      * @param domainList
      * @return
      */
-    Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList);
+    Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode,
+                                                                List<BusinessDomain> domainList)
+            throws BizException;
 }

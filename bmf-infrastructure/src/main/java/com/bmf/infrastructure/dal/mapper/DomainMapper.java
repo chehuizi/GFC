@@ -22,5 +22,9 @@ public interface DomainMapper {
 
     int update(DomainPO domainPO);
 
+    int batchUpdate(List<DomainPO> domainPOList);
+
     int delete(DomainPO domainPO);
+
+    int batchDelete(List<DomainPO> domainPOList);
 }

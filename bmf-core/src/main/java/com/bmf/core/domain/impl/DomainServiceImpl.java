@@ -6,6 +6,7 @@ import com.bmf.base.dsl.BusinessDslExt;
 import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.common.exception.BizException;
 import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.core.domain.DomainService;
 import com.bmf.infrastructure.dal.DomainRepository;
@@ -103,17 +104,21 @@ public class DomainServiceImpl implements DomainService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode, List<BusinessDomain> domainList) {
+    public Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode,
+                                                                       List<BusinessDomain> domainList)
+            throws BizException {
         List<BusinessDomain> allDomains = domainRepository.selectByBusinessCode(businessCode);
-        Map<String, BusinessDomain> allDomainMap = allDomains.stream().collect(
+        Map<String, BusinessDomain> allDomainMapByAlias = allDomains.stream().collect(
                 Collectors.toMap(e -> e.getDomainAlias(), e -> e));
+        Map<Integer, BusinessDomain> allDomainMapByCode = allDomains.stream().collect(
+                Collectors.toMap(e -> e.getDomainCode(), e -> e));
 
         List<BusinessDomain> insertedDomains = new ArrayList<>();
         List<BusinessDomain> updatedDomains = new ArrayList<>();
         List<BusinessDomain> deletedDomains = new ArrayList<>();
-
         for (BusinessDomain domain : domainList) {
-            if (Objects.isNull(allDomainMap.get(domain.getDomainAlias()))) {
+            if (Objects.isNull(allDomainMapByAlias.get(domain.getDomainAlias()))
+                && Objects.isNull(allDomainMapByCode.get(domain.getDomainCode()))) {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
                 insertedDomains.add(domain);
             } else {
@@ -122,29 +127,21 @@ public class DomainServiceImpl implements DomainService {
             }
         }
 
-        Map<String, BusinessDomain> reqDomainMap = domainList.stream().collect(
-                Collectors.toMap(e -> e.getDomainAlias(), e -> e));
-        for (BusinessDomain domain : allDomains) {
-            if (Objects.isNull(reqDomainMap.get(domain.getDomainAlias()))) {
-                deletedDomains.add(domain);
-            }
-        }
-
-        boolean result = false;
+        boolean result;
         if (!insertedDomains.isEmpty()) {
             result = domainRepository.batchInsert(insertedDomains);
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_INSERTED_FAILED);
         }
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_INSERTED_FAILED);
 
         if (!updatedDomains.isEmpty()) {
-            result = domainRepository.batchInsert(updatedDomains);
+            result = domainRepository.batchUpdate(updatedDomains);
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_UPDATED_FAILED);
         }
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_UPDATED_FAILED);
 
         if (!deletedDomains.isEmpty()) {
-            result = domainRepository.delete(null);
+            result = domainRepository.batchDelete(deletedDomains);
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_DELETED_FAILED);
         }
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_DELETED_FAILED);
 
         Map<CmdTypeEnum, List<BusinessDomain>> data = new HashMap<>();
         data.put(CmdTypeEnum.INSERT, insertedDomains);

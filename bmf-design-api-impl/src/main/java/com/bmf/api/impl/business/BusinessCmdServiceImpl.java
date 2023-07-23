@@ -70,44 +70,51 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     @Override
     @Validator(beanName = "businessCmdReqDTOValidator", method = "v4SaveStrategyDesign")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO) {
+    public Result<Boolean> saveStrategyDesign(BusinessCmdReqDTO businessCmdReqDTO) {
+        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
+        BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
+        // step1：快照
+        boolean result = snapshotService(business);
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_SNAPSHOT_FAILED);
+
+        // step2：处理领域
+        Map<CmdTypeEnum, List<BusinessDomain>> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
+                businessCmdReqDTO.getDomainList());
+
+        // step3：处理业务和领域关系
+        result = businessService.handleStrategyDesign(business, domainResult,
+                businessCmdReqDTO.getRelationshipList());
+
+        return ResultUtil.success(result);
+    }
+
+    /**
+     * 备份
+     * @param business
+     * @return
+     */
+    private boolean snapshotService(Business business) {
         // step1 查询
-        List<BusinessDomain> domainList = domainService.queryDomainByBusinessCode(
-                businessCmdReqDTO.getBusiness().getBusinessCode());
-        List<BusinessRelDomain> businessRelDomainList = businessService.queryBusinessRelDomain(
-                businessCmdReqDTO.getBusiness());
-        List<BusinessDomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(
-                businessCmdReqDTO.getBusiness());
+        List<BusinessDomain> domainList = domainService.queryDomainByBusinessCode(business.getBusinessCode());
+        List<BusinessRelDomain> businessRelDomainList = businessService.queryBusinessRelDomain(business);
+        List<BusinessDomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(business);
         DomainStrategyDesignSnapshot snapshot = DomainStrategyDesignSnapshot.builder()
                 .domainList(domainList)
                 .businessRelDomainList(businessRelDomainList)
                 .domainRelationList(domainRelationList)
                 .build();
-        snapshot.setObjId(businessCmdReqDTO.getBusiness().getBusinessCode().toString());
+        snapshot.setObjId(business.getBusinessCode().toString());
         snapshot.setObjType(SnapshotObjTypeEnum.DOMAIN_STRATEGY.getObjType());
 
         // step2 备份
-        boolean result = snapshotService.snapshot(snapshot);
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_SNAPSHOT_FAILED);
-
-        // step3 删除
-        return ResultUtil.success(Boolean.TRUE);
+        return snapshotService.snapshot(snapshot);
     }
 
     @Override
     @Validator(beanName = "businessCmdReqDTOValidator", method = "v4SaveStrategyDesign")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public Result<Boolean> saveStrategyDesign(BusinessCmdReqDTO businessCmdReqDTO) {
-        Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
-        BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        // step1：处理领域
-        Map<CmdTypeEnum, List<BusinessDomain>> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
-                businessCmdReqDTO.getDomainList());
-
-        // step2：处理业务和领域关系
-        boolean result = businessService.handleStrategyDesign(business, domainResult,
-                businessCmdReqDTO.getRelationshipList());
-
+    public Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO) {
+        // step3 删除
         return ResultUtil.success(Boolean.TRUE);
     }
 

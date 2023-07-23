@@ -34,4 +34,8 @@ public interface DomainRepository extends BaseRepository<BusinessDomain> {
      * @return
      */
     boolean batchInsert(List<BusinessDomain> businessDomainList);
+
+    boolean batchUpdate(List<BusinessDomain> businessDomainList);
+
+    boolean batchDelete(List<BusinessDomain> businessDomainList);
 }
