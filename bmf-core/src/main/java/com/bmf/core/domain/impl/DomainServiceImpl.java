@@ -115,7 +115,6 @@ public class DomainServiceImpl implements DomainService {
 
         List<BusinessDomain> insertedDomains = new ArrayList<>();
         List<BusinessDomain> updatedDomains = new ArrayList<>();
-        List<BusinessDomain> deletedDomains = new ArrayList<>();
         for (BusinessDomain domain : domainList) {
             if (Objects.isNull(allDomainMapByAlias.get(domain.getDomainAlias()))
                 && Objects.isNull(allDomainMapByCode.get(domain.getDomainCode()))) {
@@ -124,8 +123,10 @@ public class DomainServiceImpl implements DomainService {
             } else {
                 BusinessCheckUtil.checkNull(domain.getDomainCode(), BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_IS_NULL);
                 updatedDomains.add(domain);
+                allDomainMapByCode.remove(domain.getDomainCode());
             }
         }
+        List<BusinessDomain> deletedDomains = new ArrayList<>(allDomainMapByCode.values());
 
         boolean result;
         if (!insertedDomains.isEmpty()) {

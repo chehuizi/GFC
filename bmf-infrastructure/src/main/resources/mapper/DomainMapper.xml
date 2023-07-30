@@ -97,14 +97,14 @@
         <trim prefix="set" suffixOverrides=",">
             <trim prefix="domain_name = case id" suffix="end">
                 <foreach collection="list" item="item">
-                    when #{item.id} then #{item.domainName}
+                    when #{item.domainCode} then #{item.domainName}
                 </foreach>
             </trim>
         </trim>
         <where>
-            id in (
+            domain_code in (
             <foreach collection="list" separator="," item="item">
-                #{item.id}
+                #{item.domainCode}
             </foreach>
             )
         </where>
