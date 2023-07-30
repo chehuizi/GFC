@@ -34,7 +34,7 @@
 }
 .updatenode__controls {
   display: flex;
-  width: 300px;
+  width: 450px;
   position: fixed;
   right: 0;
   flex-direction: column;

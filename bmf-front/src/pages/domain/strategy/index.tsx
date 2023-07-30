@@ -1,4 +1,4 @@
-import React, { useCallback, useRef, useEffect, useState } from "react";
+import { useCallback, useRef, useEffect, useState } from "react";
 import ReactFlow, {
   useNodesState,
   useEdgesState,
@@ -9,13 +9,157 @@ import ReactFlow, {
   Node,
   Edge,
 } from "reactflow";
-import { Button, Form, Input, Select } from "antd";
+import { Button, Form, Input, Select, message } from "antd";
 import RelationEdge from "./relationEdge";
-import axios, { get, post } from "../../../utils/axios";
+import axios from "../../../utils/axios";
 import "reactflow/dist/style.css";
 
 import "./index.css";
 import { useForm } from "antd/es/form/Form";
+
+const relationDefaultOptions = [
+  {
+    label: "合作伙伴",
+    value: "partnership",
+  },
+  {
+    label: "共享内核",
+    value: "shared-Kernel",
+  },
+  {
+    label: "上下游",
+    value: "upstream-downstream",
+  },
+  {
+    label: "客户/供应商",
+    value: "customer-supplier",
+  },
+  {
+    label: "被包含/包含",
+    value: "kernel-shell",
+  },
+];
+
+const relationRoleMap = {
+  partnership: {
+    options: [
+      {
+        label: "合作伙伴",
+        value: "PARTNER",
+      },
+    ],
+  },
+  "shared-Kernel": {
+    options: [
+      {
+        label: "合作伙伴",
+        value: "PARTNER",
+      },
+    ],
+  },
+  "upstream-downstream": {
+    options: [
+      {
+        label: "发布语言/开放主机",
+        value: "PL/OHS",
+      },
+      {
+        label: "防腐层/遵从者",
+        value: "ACL/CF",
+      },
+    ],
+  },
+  "customer-supplier": {
+    options: [
+      {
+        label: "客户",
+        value: "CUSTOMER",
+      },
+      {
+        label: "供应商",
+        value: "SUPPLIER",
+      },
+    ],
+  },
+  "kernel-shell": {
+    options: [
+      {
+        label: "被包含",
+        value: "KERNEL",
+      },
+      {
+        label: "包含",
+        value: "SHELL",
+      },
+    ],
+  },
+};
+const relationRoleOptions = [
+  {
+    label: "发布语言",
+    value: "PL",
+  },
+  {
+    label: "开放主机服务",
+    value: "OHS",
+  },
+  {
+    label: "供应商",
+    value: "SUPPLIER",
+  },
+  {
+    label: "防腐层",
+    value: "ACL",
+  },
+  {
+    label: "遵从者",
+    value: "CF",
+  },
+  {
+    label: "客户",
+    value: "CUSTOMER",
+  },
+  {
+    label: "合作伙伴",
+    value: "partne",
+  },
+  {
+    label: "被包含",
+    value: "KERNEL",
+  },
+  {
+    label: "包含",
+    value: "SHELL",
+  },
+];
+const domainTypeOptions = [
+  {
+    label: "核心域",
+    value: "core",
+  },
+  {
+    label: "通用域",
+    value: "generic",
+  },
+  {
+    label: "支撑域",
+    value: "supporting",
+  },
+];
+const domainLevelOptions = [
+  {
+    label: "一级域",
+    value: 1,
+  },
+  {
+    label: "二级域",
+    value: 2,
+  },
+  {
+    label: "三级域",
+    value: 3,
+  },
+];
 
 const initialNodes: Node[] = [
   {
@@ -42,42 +186,24 @@ const AddNodeOnEdgeDrop = () => {
   const connectingNodeId = useRef(null);
   const [nodes, setNodes, onNodesChange] = useNodesState(initialNodes);
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
-  const [nodeName, setNodeName] = useState("Node 1");
+  const [domainName, setDomainName] = useState("");
+  const [domainAlias, setDomainAlias] = useState("");
   const [nodeBg, setNodeBg] = useState("#fff");
   const [nodeStartLabel, setNodeStartLabel] = useState("");
   const [nodeCenterLabel, setNodeCenterLabel] = useState("");
   const [nodeEndLabel, setNodeEndLabel] = useState("");
   const [hasStrategy, setHasStrategy] = useState(true);
-  const [form] = useForm();
-  const opiotns = [
-    {
-      label: "合作伙伴",
-      value: "PS",
 
-      //       PS("partnership", "合作伙伴"),
-      // SK("shared-Kernel", "共享内核"),
-      // UD("upstream-downstream", "上下游"),
-      // CS("customer-supplier", "客户/供应商"),
-      // KS("kernel-shell", "被包含/包含")
-    },
-    {
-      label: "共享内核",
-      value: "SK",
-    },
-    {
-      label: "上下游",
-      value: "UD",
-    },
-    {
-      label: "客户/供应商",
-      value: "CS",
-    },
-    {
-      label: "被包含/包含",
-      value: "KS",
-    },
-  ];
-  const [relationOptions, setRelationOptions] = useState<any[]>(opiotns);
+  const [form] = useForm();
+  // const [relationOptions, setRelationOptions] = useState<any[]>(
+  //   relationDefaultOptions
+  // );
+  const [roleAOptions, setRoleAOptions] = useState<any[]>([]);
+  const [roleBOptions, setRoleBOptions] = useState<any[]>([]);
+
+  const [domainType, setDomainType] = useState<string>("");
+  const [domainLevel, setDomainLevel] = useState<number>();
+  const [selectedDomain, setSelectedDomain] = useState<boolean>(false);
 
   const { project } = useReactFlow();
 
@@ -87,140 +213,7 @@ const AddNodeOnEdgeDrop = () => {
         params: { business_code: 101, include_all: true },
       })
       .then((res) => {
-        res = {
-          code: 200,
-          data: {
-            business: {
-              businessAlias: "sharing-bike",
-              businessCode: 101,
-              businessDesc: "共享单车、电单车",
-              businessDomainList: [
-                {
-                  domainAlias: "ims",
-                  domainCode: 101,
-                  domainLevel: 3,
-                  domainName: "库存域",
-                  domainPosition: '{"x": 400, "y": 0}',
-                  domainType: "core",
-                  extMap: { domainTypeDesc: "核心域" },
-                },
-                {
-                  domainAlias: "wms",
-                  domainCode: 102,
-                  domainLevel: 3,
-                  domainName: "仓库管理域",
-                  domainPosition: '{"x": 200, "y": 100}',
-                  domainType: "core",
-                  extMap: { domainTypeDesc: "核心域" },
-                },
-                {
-                  domainAlias: "tms",
-                  domainCode: 103,
-                  domainLevel: 3,
-                  domainName: "运输管理域",
-                  domainPosition: '{"x": 500, "y": 100}',
-                  domainType: "core",
-                  extMap: { domainTypeDesc: "核心域" },
-                },
-                {
-                  domainAlias: "ofc",
-                  domainCode: 104,
-                  domainLevel: 3,
-                  domainName: "履约域",
-                  domainPosition: '{"x": 400, "y": 300}',
-                  domainType: "core",
-                  extMap: { domainTypeDesc: "核心域" },
-                },
-              ],
-              businessDomainRelationList: [
-                {
-                  businessCode: 101,
-                  domainACode: 101,
-                  domainARole: "OHS",
-                  domainBCode: 102,
-                  domainBRole: "CF",
-                  domainRelation: "upstream-downstream",
-                  extMap: {
-                    domainARoleDesc: "开放主机服务",
-                    domainRelationDesc: "上下游",
-                    domainBRoleDesc: "遵从者",
-                  },
-                },
-                {
-                  businessCode: 101,
-                  domainACode: 101,
-                  domainARole: "OHS",
-                  domainBCode: 103,
-                  domainBRole: "CF",
-                  domainRelation: "upstream-downstream",
-                  extMap: {
-                    domainARoleDesc: "开放主机服务",
-                    domainRelationDesc: "上下游",
-                    domainBRoleDesc: "遵从者",
-                  },
-                },
-                {
-                  businessCode: 101,
-                  domainACode: 101,
-                  domainARole: "OHS",
-                  domainBCode: 104,
-                  domainBRole: "CF",
-                  domainRelation: "upstream-downstream",
-                  extMap: {
-                    domainARoleDesc: "开放主机服务",
-                    domainRelationDesc: "上下游",
-                    domainBRoleDesc: "遵从者",
-                  },
-                },
-                {
-                  businessCode: 101,
-                  domainACode: 102,
-                  domainARole: "partner",
-                  domainBCode: 103,
-                  domainBRole: "partner",
-                  domainRelation: "partnership",
-                  extMap: {
-                    domainARoleDesc: "合作伙伴",
-                    domainRelationDesc: "合作伙伴",
-                    domainBRoleDesc: "合作伙伴",
-                  },
-                },
-                {
-                  businessCode: 101,
-                  domainACode: 102,
-                  domainARole: "partner",
-                  domainBCode: 104,
-                  domainBRole: "partner",
-                  domainRelation: "partnership",
-                  extMap: {
-                    domainARoleDesc: "合作伙伴",
-                    domainRelationDesc: "合作伙伴",
-                    domainBRoleDesc: "合作伙伴",
-                  },
-                },
-                {
-                  businessCode: 101,
-                  domainACode: 103,
-                  domainARole: "partner",
-                  domainBCode: 104,
-                  domainBRole: "partner",
-                  domainRelation: "partnership",
-                  extMap: {
-                    domainARoleDesc: "合作伙伴",
-                    domainRelationDesc: "合作伙伴",
-                    domainBRoleDesc: "合作伙伴",
-                  },
-                },
-              ],
-              businessName: "共享两轮业务",
-              businessPrefix: "B",
-            },
-            pageIndex: 0,
-            pageSize: 0,
-            total: 0,
-          },
-          msg: "成功",
-        };
+        return;
         const { businessDomainList = [], businessDomainRelationList = [] } =
           res?.data?.business;
         if (businessDomainList?.length && businessDomainRelationList?.length) {
@@ -293,13 +286,16 @@ const AddNodeOnEdgeDrop = () => {
         if (node.selected) {
           node.data = {
             ...node.data,
-            label: nodeName,
+            label: domainName,
+            domainAlias,
+            domainType,
+            domainLevel,
           };
         }
         return node;
       });
     });
-  }, [nodeName, setNodes]);
+  }, [domainName, domainAlias, domainType, domainLevel, setNodes]);
 
   useEffect(() => {
     setNodes((nds) =>
@@ -315,7 +311,6 @@ const AddNodeOnEdgeDrop = () => {
   useEffect(() => {
     setEdges((edges) =>
       edges.map((node) => {
-        debugger;
         if (node.selected) {
           node.type = "relation";
           // node.animated = true;
@@ -341,16 +336,35 @@ const AddNodeOnEdgeDrop = () => {
               if (!node.data) {
                 node.data = {};
               }
-              node.data.domainARole = nodeStartLabel;
-              node.data.domainRelation = nodeCenterLabel;
-              node.data.domainBRole = nodeEndLabel;
+              // if (domainType) {
+              //   node.data.domainType = domainType;
+              // }
+              // if (domainLevel) {
+              //   node.data.domainLevel = domainLevel;
+              // }
+              if (nodeStartLabel) {
+                node.data.domainARole = nodeStartLabel;
+              }
+              if (nodeCenterLabel) {
+                node.data.domainRelation = nodeCenterLabel;
+              }
+              if (nodeEndLabel) {
+                node.data.domainBRole = nodeEndLabel;
+              }
             }
             return node;
           })
         )
       )
     );
-  }, [nodeStartLabel, nodeCenterLabel, nodeEndLabel, setEdges]);
+  }, [
+    nodeStartLabel,
+    nodeCenterLabel,
+    nodeEndLabel,
+    // domainType,
+    // domainLevel,
+    setEdges,
+  ]);
 
   const onConnect = useCallback((params) => {
     return setEdges((eds) => addEdge(params, eds));
@@ -397,33 +411,53 @@ const AddNodeOnEdgeDrop = () => {
       },
       domainList: nodes.map((node: any) => {
         const { id, data, position, extInfo = {} } = node;
+        const { label: domainName, ...rest } = data;
+        if (position.x) {
+          position.x = parseInt(position.x);
+        }
+        if (position.y) {
+          position.y = parseInt(position.y);
+        }
         return {
           domainCode: id,
-          domainName: data.label,
+          domainName,
+          ...rest,
           ...extInfo,
           domainPosition: JSON.stringify(position),
         };
       }),
-      // relationshipList: edges.map((node: any) => {
-      //   const { source, target, data = {} } = node;
-      //   const { domainRelation, domainARole, domainBRole } = data;
-      //   return {
-      //     domainRelation,
-      //     domainARole,
-      //     domainBRole,
-      //     domainACode: source,
-      //     domainBCode: target,
-      //     businessCode: "",
-      //   };
-      // }),
+      relationshipList: edges.map((node: any) => {
+        const { source, target, data = {} } = node;
+        const { domainRelation, domainARole, domainBRole } = data;
+        return {
+          relationship: domainRelation,
+          roleA: {
+            domain: {
+              domainCode: source,
+            },
+            role: domainARole,
+          },
+          roleB: {
+            domain: {
+              domainCode: target,
+            },
+            role: domainBRole,
+          },
+          // domainRelation,
+          // domainARole,
+          // domainBRole,
+          // domainACode: source,
+          // domainBCode: target,
+        };
+      }),
     };
     axios
       .post("/business/strategy/design/save", params)
       .then((res) => {
-        //
+        message.success("保存成功!");
       })
       .catch((error) => {
-        //
+        message.success(error);
       });
   };
 
@@ -472,61 +506,125 @@ const AddNodeOnEdgeDrop = () => {
             fitViewOptions={fitViewOptions}
           >
             <div className="updatenode__controls">
-              <Form form={form}>
-                <Form.Item label="节点文案" name="domainName">
-                  <Input
-                    style={{ marginLeft: 10 }}
-                    value={nodeName}
-                    onChange={(evt) => setNodeName(evt.target.value)}
-                  />
-                </Form.Item>
-                <Form.Item label="节点背景色" name="nodeBg">
-                  <Input
-                    style={{ marginLeft: 10 }}
-                    value={nodeBg}
-                    onChange={(evt) => setNodeBg(evt.target.value)}
-                  />
-                </Form.Item>
-                {/* <Form.Item label="上下游关系" name="domainRelation">
-                  <Select
-                    options={relationOptions}
-                    style={{ marginLeft: 10 }}
-                    // onChange={(evt) => setNodeBg(evt.target.value)}
-                  />
-                </Form.Item> */}
-                <Form.Item label="关系A" name="domainRelationA">
-                  <Select
-                    style={{ marginLeft: 10 }}
-                    options={relationOptions}
-                    onChange={(value) => setNodeStartLabel(value)}
-                  />
-                </Form.Item>
-                <Form.Item label="关系B" name="domainRelation">
-                  <Select
-                    style={{ marginLeft: 10 }}
-                    options={relationOptions}
-                    onChange={(value) => setNodeCenterLabel(value)}
-                  />
-                </Form.Item>
-                <Form.Item label="关系C" name="domainRelationB">
-                  <Select
-                    style={{ marginLeft: 10 }}
-                    options={relationOptions}
-                    onChange={(value) => setNodeEndLabel(value)}
-                  />
-                </Form.Item>
-                <Form.Item>
-                  <Button type="primary" onClick={onSave}>
-                    保存
-                  </Button>
-                </Form.Item>
-              </Form>
+              <div style={{ display: "flex" }}>
+                <Form form={form}>
+                  <Form.Item
+                    label="领域名称"
+                    name="domainName"
+                    rules={[{ required: true }]}
+                  >
+                    <Input
+                      size="small"
+                      style={{ width: 130 }}
+                      value={domainName}
+                      onChange={(evt) => setDomainName(evt.target.value)}
+                      placeholder="请输入领域名称"
+                      allowClear
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[{ required: true }]}
+                    label="领域别名"
+                    name="domainAlias"
+                  >
+                    <Input
+                      size="small"
+                      style={{ width: 130 }}
+                      value={domainName}
+                      onChange={(evt) => setDomainAlias(evt.target.value)}
+                      placeholder="请输入领域别名"
+                      allowClear
+                    />
+                  </Form.Item>
+                  <Form.Item label="节点背景色" name="nodeBg">
+                    <Input
+                      style={{ width: 130 }}
+                      value={nodeBg}
+                      size="small"
+                      onChange={(evt) => setNodeBg(evt.target.value)}
+                      placeholder="请输入节点背景色"
+                      allowClear
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[{ required: true }]}
+                    label="领域类型"
+                    name="domainType"
+                  >
+                    <Select
+                      style={{ width: 130 }}
+                      onChange={(evt) => setDomainType(evt)}
+                      options={domainTypeOptions}
+                      size="small"
+                      placeholder="请输入领域类型"
+                      allowClear
+                    />
+                  </Form.Item>
+                  <Form.Item
+                    rules={[{ required: true }]}
+                    label="领域等级"
+                    name="domainLevel"
+                  >
+                    <Select
+                      style={{ width: 130 }}
+                      options={domainLevelOptions}
+                      size="small"
+                      onChange={(evt) => setDomainLevel(evt)}
+                      placeholder="请输入领域等级"
+                      allowClear
+                    />
+                  </Form.Item>
+                  <Form.Item>
+                    <Button type="primary" htmlType="submit" onClick={onSave}>
+                      保存
+                    </Button>
+                  </Form.Item>
+                </Form>
+                <Form style={{ marginLeft: 10 }}>
+                  <Form.Item
+                    rules={[{ required: true }]}
+                    label="领域关系"
+                    name="domainRelation"
+                  >
+                    <Select
+                      size="small"
+                      style={{ width: 130 }}
+                      options={relationDefaultOptions}
+                      onChange={(value) => {
+                        setRoleAOptions(relationRoleMap[value].options);
+                        setRoleBOptions(relationRoleMap[value].options);
+                        setNodeCenterLabel(value);
+                      }}
+                      placeholder="请选择领域关系"
+                    />
+                  </Form.Item>
+                  <Form.Item label="领域角色A" name="domainRelationA">
+                    <Select
+                      size="small"
+                      style={{ width: 130 }}
+                      options={roleAOptions}
+                      onChange={(value) => setNodeStartLabel(value)}
+                      allowClear
+                    />
+                  </Form.Item>
+                  <Form.Item label="领域角色B" name="domainRelationB">
+                    <Select
+                      size="small"
+                      style={{ width: 130 }}
+                      options={roleBOptions}
+                      onChange={(value) => setNodeEndLabel(value)}
+                      allowClear
+                    />
+                  </Form.Item>
+                </Form>
+              </div>
+
               {/* <div>
                 <label>节点文案:</label>
                 <input
                   style={{ marginLeft: 10 }}
-                  value={nodeName}
-                  onChange={(evt) => setNodeName(evt.target.value)}
+                  value={domainName}
+                  onChange={(evt) => setDomainName(evt.target.value)}
                 />
               </div> */}
               {/* <div>
