@@ -108,10 +108,12 @@ public class DomainServiceImpl implements DomainService {
                                                                        List<BusinessDomain> domainList)
             throws BizException {
         List<BusinessDomain> allDomains = domainRepository.selectByBusinessCode(businessCode);
-        Map<String, BusinessDomain> allDomainMapByAlias = allDomains.stream().collect(
-                Collectors.toMap(e -> e.getDomainAlias(), e -> e));
-        Map<Integer, BusinessDomain> allDomainMapByCode = allDomains.stream().collect(
-                Collectors.toMap(e -> e.getDomainCode(), e -> e));
+        Map<String, BusinessDomain> allDomainMapByAlias = Objects.nonNull(allDomains) ?
+                allDomains.stream().collect(
+                Collectors.toMap(e -> e.getDomainAlias(), e -> e)) : new HashMap<>();
+        Map<Integer, BusinessDomain> allDomainMapByCode = Objects.nonNull(allDomains) ?
+                allDomains.stream().collect(
+                Collectors.toMap(e -> e.getDomainCode(), e -> e)) : new HashMap<>();
 
         List<BusinessDomain> insertedDomains = new ArrayList<>();
         List<BusinessDomain> updatedDomains = new ArrayList<>();
