@@ -218,10 +218,9 @@ const AddNodeOnEdgeDrop = () => {
   useEffect(() => {
     axios
       .get("/business/detail", {
-        params: { business_code: 101, include_all: true },
+        params: { business_code: 102, include_all: true },
       })
       .then((res) => {
-        return;
         const { businessDomainList = [], businessDomainRelationList = [] } =
           res?.data?.business;
         if (businessDomainList?.length && businessDomainRelationList?.length) {
@@ -239,6 +238,10 @@ const AddNodeOnEdgeDrop = () => {
               id: String(domainCode),
               data: {
                 label: domainName,
+                domainName,
+                domainAlias,
+                domainType,
+                ...extMap
               },
               position: JSON.parse(domainPosition),
               // extInfo: {
@@ -412,10 +415,16 @@ const AddNodeOnEdgeDrop = () => {
     [project]
   );
 
+  const onNodeClick = (event: React.MouseEvent, node)=> {
+  form.resetFields()
+  form.setFieldsValue({...node.data, label: node.data.domainName})
+    console.log(node, 'node')
+  }
+
   const onSave = () => {
     const params = {
       business: {
-        businessCode: 101,
+        businessCode: 102,
       },
       domainList: nodes.map((node: any) => {
         const { id, data, position, extInfo = {} } = node;
@@ -511,6 +520,7 @@ const AddNodeOnEdgeDrop = () => {
             onConnect={onConnect}
             onConnectStart={onConnectStart}
             onConnectEnd={onConnectEnd}
+            onNodeClick={onNodeClick}
             fitViewOptions={fitViewOptions}
           >
             <div className="updatenode__controls">
