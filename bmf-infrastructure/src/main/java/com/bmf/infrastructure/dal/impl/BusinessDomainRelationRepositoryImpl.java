@@ -60,6 +60,6 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
 
     @Override
     public boolean deleteByBusinessCode(Integer businessCode) {
-        return businessDomainRelationMapper.deleteByBusinessCode(businessCode) > 0;
+        return businessDomainRelationMapper.deleteByBusinessCode(businessCode) >= 0;
     }
 }

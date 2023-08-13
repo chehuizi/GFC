@@ -86,17 +86,25 @@ public class BusinessServiceImpl implements BusinessService {
     public boolean handleStrategyDesign(Business business,
                                         Map<CmdTypeEnum, List<BusinessDomain>> domainResult,
                                         List<BusinessDomainRelationship> relationshipList) {
-        boolean result = businessRelDomainRepository.batchInsert(convert(business, domainResult,
-                CmdTypeEnum.INSERT));
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_INSERTED_FAILED);
+        boolean result;
+        if (Objects.nonNull(convert(business, domainResult, CmdTypeEnum.INSERT))) {
+            result = businessRelDomainRepository.batchInsert(convert(business, domainResult,
+                    CmdTypeEnum.INSERT));
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_INSERTED_FAILED);
 
-        result = businessRelDomainRepository.batchUpdate(convert(business, domainResult,
-                CmdTypeEnum.UPDATE));
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_UPDATED_FAILED);
+        }
 
-        result = businessRelDomainRepository.batchDelete(convert(business, domainResult,
-                CmdTypeEnum.DELETE));
-        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_DELETED_FAILED);
+        if (Objects.nonNull(convert(business, domainResult, CmdTypeEnum.UPDATE))) {
+            result = businessRelDomainRepository.batchUpdate(convert(business, domainResult,
+                    CmdTypeEnum.UPDATE));
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_UPDATED_FAILED);
+        }
+
+        if (Objects.nonNull(convert(business, domainResult, CmdTypeEnum.DELETE))) {
+            result = businessRelDomainRepository.batchDelete(convert(business, domainResult,
+                    CmdTypeEnum.DELETE));
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_DELETED_FAILED);
+        }
 
         result = businessDomainRelationRepository.deleteByBusinessCode(business.getBusinessCode());
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_RELATION_DELETED_FAILED);
