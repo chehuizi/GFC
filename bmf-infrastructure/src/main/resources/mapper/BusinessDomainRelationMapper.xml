@@ -101,4 +101,9 @@
             </if>
         </trim>
     </delete>
+
+    <delete id="deleteByBusinessCode" parameterType="java.lang.Integer">
+        delete from bmf_business_domain_relation
+        where business_code = #{businessCode}
+    </delete>
 </mapper>
