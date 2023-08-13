@@ -45,7 +45,7 @@ const relationRoleMap = {
     options: [
       {
         label: "合作伙伴",
-        value: "PARTNER",
+        value: "partner",
       },
     ],
   },
@@ -53,20 +53,28 @@ const relationRoleMap = {
     options: [
       {
         label: "合作伙伴",
-        value: "PARTNER",
+        value: "partner",
       },
     ],
   },
   "upstream-downstream": {
     options: [
       {
-        label: "发布语言/开放主机",
-        value: "PL/OHS",
+        label: "发布语言",
+        value: "PL",
       },
+           {
+              label: "开放主机",
+              value: "OHS",
+            },
       {
-        label: "防腐层/遵从者",
-        value: "ACL/CF",
+        label: "防腐层",
+        value: "ACL",
       },
+         {
+              label: "遵从者",
+              value: "CF",
+            },
     ],
   },
   "customer-supplier": {
@@ -121,7 +129,7 @@ const relationRoleOptions = [
   },
   {
     label: "合作伙伴",
-    value: "partne",
+    value: "partner",
   },
   {
     label: "被包含",
