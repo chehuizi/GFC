@@ -95,8 +95,9 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
      */
     private boolean snapshotService(Business business) {
         // step1 查询
-        List<BusinessDomain> domainList = domainService.queryDomainByBusinessCode(business.getBusinessCode());
         List<BusinessRelDomain> businessRelDomainList = businessService.queryBusinessRelDomain(business);
+        List<BusinessDomain> domainList = domainService.queryDomainByCode(businessRelDomainList.stream().
+                map(BusinessRelDomain::getDomainCode).collect(Collectors.toList()));
         List<BusinessDomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(business);
         DomainStrategyDesignSnapshot snapshot = DomainStrategyDesignSnapshot.builder()
                 .domainList(domainList)
@@ -114,7 +115,6 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     @Validator(beanName = "businessCmdReqDTOValidator", method = "v4SaveStrategyDesign")
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public Result<Boolean> saveStrategyDesignV2(BusinessCmdReqDTO businessCmdReqDTO) {
-        // step3 删除
         return ResultUtil.success(Boolean.TRUE);
     }
 
