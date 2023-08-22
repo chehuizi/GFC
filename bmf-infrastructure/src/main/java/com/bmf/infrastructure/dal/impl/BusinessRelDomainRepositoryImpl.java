@@ -24,8 +24,7 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
 
     @Override
     public List<BusinessRelDomain> selectList(BusinessRelDomain req) {
-        BusinessRelDomainPO businessRelDomainPO = POUtils.convert(req, BusinessRelDomainPO.class);
-        return POUtils.convert(businessRelDomainMapper.selectList(businessRelDomainPO), BusinessRelDomain.class);
+        return POUtils.convert(businessRelDomainMapper.selectByBusinessCode(req.getBusinessCode()), BusinessRelDomain.class);
     }
 
     @Override

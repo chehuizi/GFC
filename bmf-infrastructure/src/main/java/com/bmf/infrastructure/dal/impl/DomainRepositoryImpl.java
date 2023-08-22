@@ -2,19 +2,24 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.BusinessDomain;
 import com.bmf.infrastructure.dal.DomainRepository;
+import com.bmf.infrastructure.dal.mapper.BusinessRelDomainMapper;
 import com.bmf.infrastructure.dal.mapper.DomainMapper;
+import com.bmf.infrastructure.dal.po.BusinessRelDomainPO;
 import com.bmf.infrastructure.dal.po.DomainPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class DomainRepositoryImpl implements DomainRepository {
 
     @Autowired
     private DomainMapper domainMapper;
+    @Autowired
+    private BusinessRelDomainMapper businessRelDomainMapper;
 
     @Override
     public BusinessDomain selectOne(BusinessDomain req) {
@@ -29,7 +34,10 @@ public class DomainRepositoryImpl implements DomainRepository {
 
     @Override
     public List<BusinessDomain> selectByBusinessCode(Integer businessCode) {
-        return POUtils.convert(domainMapper.selectByBusinessCode(businessCode), BusinessDomain.class);
+        List<BusinessRelDomainPO> businessRelDomainPOList = businessRelDomainMapper.selectByBusinessCode(businessCode);
+        return POUtils.convert(domainMapper.selectByDomainCode(businessRelDomainPOList.stream().
+                        map(BusinessRelDomainPO::getDomainCode).collect(Collectors.toList())),
+                BusinessDomain.class);
     }
 
     @Override

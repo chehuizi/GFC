@@ -24,7 +24,7 @@
         limit 1
     </select>
 
-    <select id="selectList" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+    <select id="selectByBusinessCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_rel_domain

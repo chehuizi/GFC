@@ -8,7 +8,7 @@ public interface BusinessRelDomainMapper {
 
     BusinessRelDomainPO selectOne(BusinessRelDomainPO businessRelDomainPO);
 
-    List<BusinessRelDomainPO> selectList(BusinessRelDomainPO businessRelDomainPO);
+    List<BusinessRelDomainPO> selectByBusinessCode(Integer businessCode);
 
     int insert(BusinessRelDomainPO businessRelDomainPO);
 
