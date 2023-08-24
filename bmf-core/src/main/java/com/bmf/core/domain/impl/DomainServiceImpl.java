@@ -116,8 +116,8 @@ public class DomainServiceImpl implements DomainService {
                 Collectors.toMap(e -> e.getDomainCode(), e -> e)) : Collections.EMPTY_MAP;
 
         // 根据当前的领域和传入参数的比较，得出增删改的领域
-        List<BusinessDomain> insertedDomains = Arrays.asList();
-        List<BusinessDomain> updatedDomains = Arrays.asList();
+        List<BusinessDomain> insertedDomains = new ArrayList<>();
+        List<BusinessDomain> updatedDomains = new ArrayList<>();
         for (BusinessDomain domain : domainList) {
             if (Objects.isNull(existedDomainMapByAlias.get(domain.getDomainAlias()))
                 && Objects.isNull(existedDomainMapByCode.get(domain.getDomainCode()))) {
