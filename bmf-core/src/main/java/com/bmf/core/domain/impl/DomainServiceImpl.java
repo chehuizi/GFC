@@ -107,28 +107,29 @@ public class DomainServiceImpl implements DomainService {
     public Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode,
                                                                        List<BusinessDomain> domainList)
             throws BizException {
-        List<BusinessDomain> allDomains = domainRepository.selectByBusinessCode(businessCode);
-        Map<String, BusinessDomain> allDomainMapByAlias = Objects.nonNull(allDomains) ?
-                allDomains.stream().collect(
-                Collectors.toMap(e -> e.getDomainAlias(), e -> e)) : new HashMap<>();
-        Map<Integer, BusinessDomain> allDomainMapByCode = Objects.nonNull(allDomains) ?
-                allDomains.stream().collect(
-                Collectors.toMap(e -> e.getDomainCode(), e -> e)) : new HashMap<>();
+        List<BusinessDomain> existedDomains = domainRepository.selectByBusinessCode(businessCode);
+        Map<String, BusinessDomain> existedDomainMapByAlias = Objects.nonNull(existedDomains) ?
+                existedDomains.stream().collect(
+                Collectors.toMap(e -> e.getDomainAlias(), e -> e)) : Collections.EMPTY_MAP;
+        Map<Integer, BusinessDomain> existedDomainMapByCode = Objects.nonNull(existedDomains) ?
+                existedDomains.stream().collect(
+                Collectors.toMap(e -> e.getDomainCode(), e -> e)) : Collections.EMPTY_MAP;
 
-        List<BusinessDomain> insertedDomains = new ArrayList<>();
-        List<BusinessDomain> updatedDomains = new ArrayList<>();
+        // 根据当前的领域和传入参数的比较，得出增删改的领域
+        List<BusinessDomain> insertedDomains = Arrays.asList();
+        List<BusinessDomain> updatedDomains = Arrays.asList();
         for (BusinessDomain domain : domainList) {
-            if (Objects.isNull(allDomainMapByAlias.get(domain.getDomainAlias()))
-                && Objects.isNull(allDomainMapByCode.get(domain.getDomainCode()))) {
+            if (Objects.isNull(existedDomainMapByAlias.get(domain.getDomainAlias()))
+                && Objects.isNull(existedDomainMapByCode.get(domain.getDomainCode()))) {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
                 insertedDomains.add(domain);
             } else {
                 BusinessCheckUtil.checkNull(domain.getDomainCode(), BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_IS_NULL);
                 updatedDomains.add(domain);
-                allDomainMapByCode.remove(domain.getDomainCode());
+                existedDomainMapByCode.remove(domain.getDomainCode());
             }
         }
-        List<BusinessDomain> deletedDomains = new ArrayList<>(allDomainMapByCode.values());
+        List<BusinessDomain> deletedDomains = new ArrayList<>(existedDomainMapByCode.values());
 
         boolean result;
         if (!insertedDomains.isEmpty()) {
