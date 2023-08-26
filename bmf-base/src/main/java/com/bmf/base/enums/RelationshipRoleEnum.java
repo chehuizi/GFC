@@ -20,9 +20,6 @@ public enum RelationshipRoleEnum {
     CUSTOMER("CUSTOMER", "客户"),
 
     PARTNER("partner", "合作伙伴"),
-
-    KERNEL("KERNEL", "被包含"),
-    SHELL("SHELL", "包含"),
     ;
 
     /**
