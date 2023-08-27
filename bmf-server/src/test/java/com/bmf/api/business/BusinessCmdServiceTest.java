@@ -14,6 +14,7 @@ import com.bmf.base.strategy.asymmetric.UpstreamDownstreamRelationship;
 import com.bmf.base.strategy.role.downstream.ConformistRole;
 import com.bmf.base.strategy.role.partner.PartnerRole;
 import com.bmf.base.strategy.role.upstream.OpenHostServiceRole;
+import com.bmf.base.strategy.symmetric.Partnership;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -150,7 +151,7 @@ public class BusinessCmdServiceTest {
         businessDomainList.add(domain2);
         businessCmdReqDTO.setDomainList(businessDomainList);
         List<BusinessDomainRelationship> relationshipList = new ArrayList<>();
-        BusinessDomainRelationship relationship1 = new BusinessDomainRelationship();
+        BusinessDomainRelationship relationship1 = new Partnership();
         relationship1.setRelationship(RelationshipEnum.PS.getType());
         relationship1.setRoleA(new PartnerRole(domain1));
         relationship1.setRoleB(new PartnerRole(domain2));

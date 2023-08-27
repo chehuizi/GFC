@@ -37,4 +37,7 @@ public class BusinessDomainRelationship<T extends RelationshipRole, R extends Re
                 "\"roleB\": \"" + roleB.getRole() + "\"" +
                 '}';
     }
+
+    protected BusinessDomainRelationship() {
+    }
 }
