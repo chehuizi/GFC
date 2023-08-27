@@ -115,7 +115,7 @@ public class BusinessCmdServiceTest {
         businessDomainList.add(domain2);
         businessCmdReqDTO.setDomainList(businessDomainList);
         List<BusinessDomainRelationship> relationshipList = new ArrayList<>();
-        BusinessDomainRelationship relationship1 = new UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole>();
+        BusinessDomainRelationship relationship1 = new UpstreamDownstreamRelationship();
         relationship1.setRoleA(new OpenHostServiceRole(domain1));
         relationship1.setRoleB(new ConformistRole(domain2));
         relationshipList.add(relationship1);
@@ -167,8 +167,7 @@ public class BusinessCmdServiceTest {
         Business business = new Business();
         business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
-        UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship =
-                new UpstreamDownstreamRelationship();
+        UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
         upstreamDownstreamRelationship.setBusinessCode(101);
         OpenHostServiceRole ohs = new OpenHostServiceRole();
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
@@ -194,8 +193,7 @@ public class BusinessCmdServiceTest {
         Business business = new Business();
         business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
-        UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship
-                = new UpstreamDownstreamRelationship<>();
+        UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
         upstreamDownstreamRelationship.setBusinessCode(101);
         OpenHostServiceRole roleA = new OpenHostServiceRole();
         roleA.setDomain(new BusinessDomain(102));

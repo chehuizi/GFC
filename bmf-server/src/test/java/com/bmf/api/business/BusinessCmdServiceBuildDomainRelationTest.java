@@ -33,7 +33,7 @@ public class BusinessCmdServiceBuildDomainRelationTest {
         Business business = new Business();
         business.setBusinessCode(10);
         businessCmdReqDTO.setBusiness(business);
-        UpstreamDownstreamRelationship<OpenHostServiceRole, ConformistRole> upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
+        UpstreamDownstreamRelationship upstreamDownstreamRelationship = new UpstreamDownstreamRelationship();
         upstreamDownstreamRelationship.setBusinessCode(10);
         OpenHostServiceRole ohs = new OpenHostServiceRole();
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
