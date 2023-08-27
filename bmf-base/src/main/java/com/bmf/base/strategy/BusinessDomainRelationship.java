@@ -33,6 +33,8 @@ public class BusinessDomainRelationship<T extends RelationshipRole, R extends Re
         return "{" +
                 "\"businessCode\": \"" + businessCode + "\"" +
                 "\"relationship\": \"" + relationship + "\"" +
+                "\"roleA\": \"" + roleA.getRole() + "\"" +
+                "\"roleB\": \"" + roleB.getRole() + "\"" +
                 '}';
     }
 }
