@@ -95,7 +95,7 @@
     <update id="batchUpdate" parameterType="java.util.List">
         update bmf_domain
         <trim prefix="set" suffixOverrides=",">
-            <trim prefix="domain_name = case id" suffix="end">
+            <trim prefix="domain_name = case domain_code" suffix="end">
                 <foreach collection="list" item="item">
                     when #{item.domainCode} then #{item.domainName}
                 </foreach>
@@ -117,10 +117,9 @@
 
     <delete id="batchDelete" parameterType="java.util.List">
         delete from bmf_domain
-        where id in (
+        where domain_code in
         <foreach collection="list" item="item" index="index" open="(" separator="," close=")">
-            #{item.id}
+            #{item.domainCode}
         </foreach>
-        )
     </delete>
 </mapper>

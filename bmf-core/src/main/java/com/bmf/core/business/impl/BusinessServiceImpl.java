@@ -20,10 +20,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.Objects;
+import java.util.*;
 
 @Service
 public class BusinessServiceImpl implements BusinessService {
@@ -87,23 +84,20 @@ public class BusinessServiceImpl implements BusinessService {
                                         Map<CmdTypeEnum, List<BusinessDomain>> domainResult,
                                         List<BusinessDomainRelationship> relationshipList) {
         boolean result;
-        if (Objects.nonNull(convert(business, domainResult, CmdTypeEnum.INSERT))) {
-            result = businessRelDomainRepository.batchInsert(convert(business, domainResult,
-                    CmdTypeEnum.INSERT));
+
+        result = businessRelDomainRepository.deleteByBusinessCode(business.getBusinessCode());
+        BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_DELETED_FAILED);
+
+        List<BusinessRelDomain> insertedBusinessRelDomainList = convert(business, domainResult, CmdTypeEnum.INSERT);
+        if (Objects.nonNull(insertedBusinessRelDomainList) && !insertedBusinessRelDomainList.isEmpty()) {
+            result = businessRelDomainRepository.batchInsert(insertedBusinessRelDomainList);
             BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_INSERTED_FAILED);
-
         }
 
-        if (Objects.nonNull(convert(business, domainResult, CmdTypeEnum.UPDATE))) {
-            result = businessRelDomainRepository.batchUpdate(convert(business, domainResult,
-                    CmdTypeEnum.UPDATE));
-            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_UPDATED_FAILED);
-        }
-
-        if (Objects.nonNull(convert(business, domainResult, CmdTypeEnum.DELETE))) {
-            result = businessRelDomainRepository.batchDelete(convert(business, domainResult,
-                    CmdTypeEnum.DELETE));
-            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_DELETED_FAILED);
+        List<BusinessRelDomain> updatedBusinessRelDomainList = convert(business, domainResult, CmdTypeEnum.UPDATE);
+        if (Objects.nonNull(updatedBusinessRelDomainList) && !updatedBusinessRelDomainList.isEmpty()) {
+            result = businessRelDomainRepository.batchInsert(updatedBusinessRelDomainList);
+            BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_BUSINESS_REL_DOMAIN_INSERTED_FAILED);
         }
 
         result = businessDomainRelationRepository.deleteByBusinessCode(business.getBusinessCode());
