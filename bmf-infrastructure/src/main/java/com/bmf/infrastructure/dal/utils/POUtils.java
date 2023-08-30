@@ -2,6 +2,8 @@ package com.bmf.infrastructure.dal.utils;
 
 import com.bmf.base.BaseModel;
 import com.bmf.infrastructure.dal.po.*;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
 
 import java.util.ArrayList;
@@ -12,6 +14,8 @@ import java.util.Objects;
  * PO工具类
  */
 public class POUtils {
+
+    private static final Logger logger = LoggerFactory.getLogger(POUtils.class);
 
     /**
      * 模型对象转持久化对象
@@ -30,7 +34,7 @@ public class POUtils {
             BeanUtils.copyProperties(src, dst);
             return dst;
         } catch (Exception ex) {
-
+            logger.error("PO Util convert failed, ex={}", ex);
         }
         return null;
     }
@@ -52,7 +56,7 @@ public class POUtils {
             BeanUtils.copyProperties(src, dst);
             return dst;
         } catch (Exception ex) {
-
+            logger.error("PO Util convert failed, ex={}", ex);
         }
         return null;
     }
@@ -79,7 +83,7 @@ public class POUtils {
 
             return dstList;
         } catch (Exception ex) {
-
+            logger.error("PO Util convert failed, ex={}", ex);
         }
         return null;
     }
@@ -106,7 +110,7 @@ public class POUtils {
 
             return dstList;
         } catch (Exception ex) {
-
+            logger.error("PO Util convert failed, ex={}", ex);
         }
         return null;
     }

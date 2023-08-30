@@ -23,8 +23,8 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     }
 
     @Override
-    public List<BusinessRelDomain> selectList(BusinessRelDomain req) {
-        return POUtils.convert(businessRelDomainMapper.selectByBusinessCode(req.getBusinessCode()), BusinessRelDomain.class);
+    public List<BusinessRelDomain> selectByBusinessCode(Integer businessCode) {
+        return POUtils.convert(businessRelDomainMapper.selectByBusinessCode(businessCode), BusinessRelDomain.class);
     }
 
     @Override
@@ -56,13 +56,6 @@ public class BusinessRelDomainRepositoryImpl implements BusinessRelDomainReposit
     public boolean delete(BusinessRelDomain req) {
         BusinessRelDomainPO businessRelDomainPO = POUtils.convert(req, BusinessRelDomainPO.class);
         return businessRelDomainMapper.delete(businessRelDomainPO) == 1;
-    }
-
-    @Override
-    public boolean batchDelete(List<BusinessRelDomain> businessRelDomainList) {
-        List<BusinessRelDomainPO> businessRelDomainPOList = POUtils.convertModel2PO(businessRelDomainList,
-                BusinessRelDomainPO.class);
-        return businessRelDomainMapper.batchDelete(businessRelDomainPOList) == businessRelDomainList.size();
     }
 
     @Override

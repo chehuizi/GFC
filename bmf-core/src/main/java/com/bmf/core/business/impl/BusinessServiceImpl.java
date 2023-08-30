@@ -56,8 +56,7 @@ public class BusinessServiceImpl implements BusinessService {
 
     @Override
     public List<BusinessRelDomain> queryBusinessRelDomain(Business business) {
-        BusinessRelDomain businessRelDomain = BusinessUtil.convert(business);
-        return businessRelDomainRepository.selectList(businessRelDomain);
+        return businessRelDomainRepository.selectByBusinessCode(business.getBusinessCode());
     }
 
     @Override

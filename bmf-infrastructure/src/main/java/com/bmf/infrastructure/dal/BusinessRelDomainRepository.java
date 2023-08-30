@@ -8,10 +8,10 @@ public interface BusinessRelDomainRepository extends BaseRepository<BusinessRelD
 
     /**
      * 查询业务下的领域列表
-     * @param req
+     * @param businessCode
      * @return
      */
-    List<BusinessRelDomain> selectList(BusinessRelDomain req);
+    List<BusinessRelDomain> selectByBusinessCode(Integer businessCode);
 
     /**
      * 批量插入业务领域关系
@@ -26,13 +26,6 @@ public interface BusinessRelDomainRepository extends BaseRepository<BusinessRelD
      * @return
      */
     boolean batchUpdate(List<BusinessRelDomain> businessRelDomainList);
-
-    /**
-     * 批量删除业务领域关系
-     * @param businessRelDomainList
-     * @return
-     */
-    boolean batchDelete(List<BusinessRelDomain> businessRelDomainList);
 
     /**
      * 按照业务编码删除
