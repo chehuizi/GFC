@@ -14,10 +14,6 @@ public class SnapshotPO extends BasePO {
      */
     private String objType;
     /**
-     * 快照版本
-     */
-    private Integer snapshotVersion;
-    /**
      * 快照内容
      */
     private String snapshotContent;
