@@ -22,9 +22,8 @@ public class BusinessDomainRelationRepositoryImpl implements BusinessDomainRelat
     }
 
     @Override
-    public List<BusinessDomainRelation> selectList(BusinessDomainRelation req) {
-        BusinessDomainRelationPO businessDomainRelationPO = POUtils.convert(req, BusinessDomainRelationPO.class);
-        return POUtils.convert(businessDomainRelationMapper.selectList(businessDomainRelationPO), BusinessDomainRelation.class);
+    public List<BusinessDomainRelation> selectByBusinessCode(Integer businessCode) {
+        return POUtils.convert(businessDomainRelationMapper.selectByBusinessCode(businessCode), BusinessDomainRelation.class);
     }
 
     @Override

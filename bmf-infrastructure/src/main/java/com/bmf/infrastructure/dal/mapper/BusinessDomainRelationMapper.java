@@ -8,7 +8,7 @@ public interface BusinessDomainRelationMapper {
 
     BusinessDomainRelationPO selectOne(BusinessDomainRelationPO businessDomainRelationPO);
 
-    List<BusinessDomainRelationPO> selectList(BusinessDomainRelationPO businessDomainRelationPO);
+    List<BusinessDomainRelationPO> selectByBusinessCode(Integer businessCode);
 
     List<BusinessDomainRelationPO> selectByDomain(BusinessDomainRelationPO businessDomainRelationPO);
 
