@@ -13,6 +13,7 @@ import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.DslBaseRepository;
 import com.bmf.infrastructure.dal.DslExtRepository;
 import com.bmf.infrastructure.generator.CodeSeqGenerator;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -124,7 +125,8 @@ public class DomainServiceImpl implements DomainService {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
                 insertedDomains.add(domain);
             } else {
-                BusinessCheckUtil.checkNull(domain.getDomainCode(), BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_IS_NULL);
+                BusinessCheckUtil.checkTrue(Objects.nonNull(domain.getDomainCode()) || StringUtils.isNotBlank(domain.getDomainAlias()),
+                        BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_AND_ALIAS_ARE_BLANK);
                 updatedDomains.add(domain);
                 existedDomainMapByCode.remove(domain.getDomainCode());
             }
