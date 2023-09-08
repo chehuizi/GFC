@@ -127,6 +127,9 @@ public class DomainServiceImpl implements DomainService {
             } else {
                 BusinessCheckUtil.checkTrue(Objects.nonNull(domain.getDomainCode()) || StringUtils.isNotBlank(domain.getDomainAlias()),
                         BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_AND_ALIAS_ARE_BLANK);
+                if (Objects.isNull(domain.getDomainCode())) {
+                    domain.setDomainCode(existedDomainMapByAlias.get(domain.getDomainAlias()).getDomainCode());
+                }
                 updatedDomains.add(domain);
                 existedDomainMapByCode.remove(domain.getDomainCode());
             }
