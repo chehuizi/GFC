@@ -81,42 +81,14 @@ public class BusinessCmdStrategyDesignServiceTest {
         relationship3.setRoleA(new OpenHostServiceRole(domain1));
         relationship3.setRoleB(new ConformistRole(domain4));
         relationshipList.add(relationship3);
-        businessCmdReqDTO.setRelationshipList(relationshipList);
-        Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
-        System.out.println(result);
-        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
-    }
-
-    @Test
-    public void test_business_save_strategy_design_2() {
-        BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
-        Business business = new Business();
-        business.setBusinessCode(101);
-        businessCmdReqDTO.setBusiness(business);
-        List<BusinessDomain> businessDomainList = new ArrayList<>();
-        BusinessDomain domain1 = new BusinessDomain();
-        domain1.setDomainCode(104);
-        domain1.setDomainAlias("ofc");
-        domain1.setDomainName("履约域");
-        domain1.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        domain1.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
-        domain1.setDomainPosition("{\"x\": 500, \"y\": 100}");
-        businessDomainList.add(domain1);
-        BusinessDomain domain2 = new BusinessDomain();
-        domain2.setDomainCode(103);
-        domain2.setDomainAlias("tms");
-        domain2.setDomainName("物流域");
-        domain2.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        domain2.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
-        domain2.setDomainPosition("{\"x\": 500, \"y\": 200}");
-        businessDomainList.add(domain2);
-        businessCmdReqDTO.setDomainList(businessDomainList);
-        List<BusinessDomainRelationship> relationshipList = new ArrayList<>();
-        BusinessDomainRelationship relationship1 = new Partnership();
-        relationship1.setRelationship(RelationshipEnum.PS.getType());
-        relationship1.setRoleA(new PartnerRole(domain1));
-        relationship1.setRoleB(new PartnerRole(domain2));
-        relationshipList.add(relationship1);
+        BusinessDomainRelationship relationship4 = new Partnership();
+        relationship4.setRoleA(new PartnerRole(domain2));
+        relationship4.setRoleB(new PartnerRole(domain3));
+        relationshipList.add(relationship4);
+        BusinessDomainRelationship relationship5 = new Partnership();
+        relationship5.setRoleA(new PartnerRole(domain2));
+        relationship5.setRoleB(new PartnerRole(domain4));
+        relationshipList.add(relationship5);
         businessCmdReqDTO.setRelationshipList(relationshipList);
         Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
         System.out.println(result);
