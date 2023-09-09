@@ -34,7 +34,7 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainName("履约域");
         businessDomain.setDomainAlias("ofc");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
@@ -252,7 +252,7 @@ public class DomainCmdServiceTest {
         businessDomain.setDomainCode(14);
         businessDomain.setDomainName("test");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);

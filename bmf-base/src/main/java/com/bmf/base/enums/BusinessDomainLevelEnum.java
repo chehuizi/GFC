@@ -11,7 +11,7 @@ public enum BusinessDomainLevelEnum {
 
     ONE(1, "一级域"),
     TWO(2, "二级域"),
-    Three(3, "三级域")
+    THREE(3, "三级域")
     ;
 
     private int value;

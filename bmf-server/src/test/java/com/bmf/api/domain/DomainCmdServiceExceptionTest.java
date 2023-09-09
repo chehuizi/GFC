@@ -44,7 +44,7 @@ public class DomainCmdServiceExceptionTest {
         businessDomain.setDomainName("");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("wms");
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
@@ -59,7 +59,7 @@ public class DomainCmdServiceExceptionTest {
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(null);
         businessDomain.setDomainAlias("wms");
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
@@ -74,7 +74,7 @@ public class DomainCmdServiceExceptionTest {
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("");
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
@@ -89,7 +89,7 @@ public class DomainCmdServiceExceptionTest {
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("wms");
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         businessDomain.setDomainType("");
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
@@ -104,7 +104,7 @@ public class DomainCmdServiceExceptionTest {
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainCode(10);
         businessDomain.setDomainAlias("wms");
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         businessDomain.setDomainType("test");
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
@@ -135,7 +135,7 @@ public class DomainCmdServiceExceptionTest {
         businessDomain.setDomainName("仓库管理系统");
         businessDomain.setDomainAlias("wms");
         businessDomain.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(BusinessDomainLevelEnum.Three.getValue());
+        businessDomain.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         domainCmdReqDTO.setBusinessDomain(businessDomain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
