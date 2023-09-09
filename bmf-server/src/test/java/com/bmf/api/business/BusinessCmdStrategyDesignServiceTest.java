@@ -60,6 +60,13 @@ public class BusinessCmdStrategyDesignServiceTest {
         domain3.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
         domain3.setDomainPosition("{\"x\": 500, \"y\": 300}");
         businessDomainList.add(domain3);
+        BusinessDomain domain4 = new BusinessDomain();
+        domain4.setDomainAlias("wms");
+        domain4.setDomainName("仓储域");
+        domain4.setDomainType(BusinessDomainTypeEnum.CORE.getType());
+        domain4.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
+        domain4.setDomainPosition("{\"x\": 500, \"y\": 400}");
+        businessDomainList.add(domain4);
         businessCmdReqDTO.setDomainList(businessDomainList);
         List<BusinessDomainRelationship> relationshipList = new ArrayList<>();
         BusinessDomainRelationship relationship1 = new UpstreamDownstreamRelationship();
@@ -70,6 +77,10 @@ public class BusinessCmdStrategyDesignServiceTest {
         relationship2.setRoleA(new OpenHostServiceRole(domain1));
         relationship2.setRoleB(new ConformistRole(domain3));
         relationshipList.add(relationship2);
+        BusinessDomainRelationship relationship3 = new UpstreamDownstreamRelationship();
+        relationship3.setRoleA(new OpenHostServiceRole(domain1));
+        relationship3.setRoleB(new ConformistRole(domain4));
+        relationshipList.add(relationship3);
         businessCmdReqDTO.setRelationshipList(relationshipList);
         Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
         System.out.println(result);
