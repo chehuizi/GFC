@@ -13,10 +13,10 @@ public enum RelationshipRoleEnum {
 
     PL("PL", "发布语言"),
     OHS("OHS", "开放主机服务"),
-    SUPPLIER("SUPPLIER", "供应商"),
-    
     ACL("ACL", "防腐层"),
     CF("CF", "遵从者"),
+
+    SUPPLIER("SUPPLIER", "供应商"),
     CUSTOMER("CUSTOMER", "客户"),
 
     PARTNER("partner", "合作伙伴"),
