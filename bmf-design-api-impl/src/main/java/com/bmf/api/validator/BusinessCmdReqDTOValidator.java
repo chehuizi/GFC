@@ -59,9 +59,11 @@ public class BusinessCmdReqDTOValidator {
             ParamCheckUtil.checkBlank(domain.getDomainType(), "domain type is blank");
             ParamCheckUtil.checkNull(BusinessDomainTypeEnum.getByType(domain.getDomainType()), "domain type is not enum");
             ParamCheckUtil.checkBlank(domain.getDomainPosition(), "domain position is blank");
+            /*
             DomainPosition domainPosition = JSON.parseObject(domain.getDomainPosition(), DomainPosition.class);
-//            ParamCheckUtil.checkTrue(domainPosition.getX() > 0, "domain position X is not positive integer");
-//            ParamCheckUtil.checkTrue(domainPosition.getY() > 0, "domain position Y is not positive integer");
+            ParamCheckUtil.checkTrue(domainPosition.getX() > 0, "domain position X is not positive integer");
+            ParamCheckUtil.checkTrue(domainPosition.getY() > 0, "domain position Y is not positive integer");
+            */
         }
         for (BusinessDomainRelationship relationship : businessCmdReqDTO.getRelationshipList()) {
             ParamCheckUtil.checkBlank(relationship.getRelationship(), "relationship is blank");
