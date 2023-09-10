@@ -36,7 +36,7 @@ public class BusinessCmdStrategyDesignServiceTest {
     public void test_business_save_strategy_design_1() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(101);
+        business.setBusinessCode(102);
         businessCmdReqDTO.setBusiness(business);
         List<BusinessDomain> businessDomainList = new ArrayList<>();
         BusinessDomain domain1 = new BusinessDomain();
@@ -96,4 +96,3 @@ public class BusinessCmdStrategyDesignServiceTest {
     }
 
 }
-
