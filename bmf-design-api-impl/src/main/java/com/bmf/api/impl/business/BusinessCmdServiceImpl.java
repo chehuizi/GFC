@@ -81,7 +81,10 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         Map<CmdTypeEnum, List<BusinessDomain>> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
                 businessCmdReqDTO.getDomainList());
 
-        // step3：处理业务和领域关系
+        // step3：处理前端组件ID和领域
+        handleViewAndDomain(domainResult, businessCmdReqDTO.getRelationshipList());
+
+        // step4：处理业务和领域关系
         result = businessService.handleStrategyDesign(business, domainResult,
                 businessCmdReqDTO.getRelationshipList());
 
@@ -109,6 +112,33 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
 
         // step2 备份
         return snapshotService.snapshot(snapshot);
+    }
+
+    /**
+     * 处理
+     * @param domainResult
+     * @param relationshipList
+     */
+    private void handleViewAndDomain(Map<CmdTypeEnum, List<BusinessDomain>> domainResult,
+                                     List<BusinessDomainRelationship> relationshipList) {
+        List<BusinessDomain> insertedDomains = domainResult.get(CmdTypeEnum.INSERT);
+        Map<String, BusinessDomain> insertedDomainMapByAlias = Objects.nonNull(insertedDomains) ?
+                insertedDomains.stream().collect(
+                        Collectors.toMap(e -> e.getDomainAlias(), e -> e)) : Collections.EMPTY_MAP;
+        for (BusinessDomainRelationship relationship : relationshipList) {
+            String domainAlias = relationship.getRoleA().getDomain().getDomainAlias();
+            Integer domainCode = relationship.getRoleA().getDomain().getDomainCode();
+            if (Objects.nonNull(insertedDomainMapByAlias.get(domainAlias)) &&
+                    !insertedDomainMapByAlias.get(domainAlias).getDomainCode().equals(domainCode)) {
+                relationship.getRoleA().getDomain().setDomainCode(insertedDomainMapByAlias.get(domainAlias).getDomainCode());
+            }
+            domainAlias = relationship.getRoleB().getDomain().getDomainAlias();
+            domainCode = relationship.getRoleB().getDomain().getDomainCode();
+            if (Objects.nonNull(insertedDomainMapByAlias.get(domainAlias)) &&
+                    !insertedDomainMapByAlias.get(domainAlias).getDomainCode().equals(domainCode)) {
+                relationship.getRoleB().getDomain().setDomainCode(insertedDomainMapByAlias.get(domainAlias).getDomainCode());
+            }
+        }
     }
 
     @Override

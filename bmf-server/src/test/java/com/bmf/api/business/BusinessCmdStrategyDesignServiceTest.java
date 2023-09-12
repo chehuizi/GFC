@@ -1,5 +1,6 @@
 package com.bmf.api.business;
 
+import com.alibaba.fastjson.JSON;
 import com.bmf.api.Result;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.api.domain.qry.DomainQryService;
@@ -95,4 +96,12 @@ public class BusinessCmdStrategyDesignServiceTest {
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
+    @Test
+    public void test_business_save_strategy_design_2() {
+        String str = "{\"business\":{\"businessCode\":102},\"domainList\":[{\"domainCode\":\"111\",\"domainName\":\"库存域\",\"domainAlias\":\"ims\",\"domainType\":\"core\",\"domainTypeDesc\":\"核心域\",\"domainPosition\":\"{\\\"x\\\":254,\\\"y\\\":38}\"},{\"domainCode\":\"112\",\"domainName\":\"履约域1\",\"domainAlias\":\"ofc\",\"domainType\":\"core\",\"domainTypeDesc\":\"核心域\",\"domainPosition\":\"{\\\"x\\\":586,\\\"y\\\":152}\"},{\"domainCode\":\"113\",\"domainName\":\"物流域\",\"domainAlias\":\"tms\",\"domainType\":\"core\",\"domainTypeDesc\":\"核心域\",\"domainPosition\":\"{\\\"x\\\":153,\\\"y\\\":261}\"},{\"domainCode\":\"114\",\"domainName\":\"仓储域\",\"domainAlias\":\"wms\",\"domainType\":\"core\",\"domainTypeDesc\":\"核心域\",\"domainPosition\":\"{\\\"x\\\":402,\\\"y\\\":348}\"},{\"domainCode\":\"1\",\"domainName\":\"供应商\",\"domainAlias\":\"supplier\",\"domainType\":\"core\",\"domainPosition\":\"{\\\"x\\\":584,\\\"y\\\":385}\"}],\"relationshipList\":[{\"relationship\":\"upstream-downstream\",\"roleA\":{\"domain\":{\"domainCode\":\"111\"},\"role\":\"OHS\"},\"roleB\":{\"domain\":{\"domainCode\":\"112\"},\"role\":\"CF\"}},{\"relationship\":\"upstream-downstream\",\"roleA\":{\"domain\":{\"domainCode\":\"111\"},\"role\":\"OHS\"},\"roleB\":{\"domain\":{\"domainCode\":\"113\"},\"role\":\"CF\"}},{\"relationship\":\"upstream-downstream\",\"roleA\":{\"domain\":{\"domainCode\":\"111\"},\"role\":\"OHS\"},\"roleB\":{\"domain\":{\"domainCode\":\"114\"},\"role\":\"CF\"}},{\"relationship\":\"partnership\",\"roleA\":{\"domain\":{\"domainCode\":\"112\"},\"role\":\"partner\"},\"roleB\":{\"domain\":{\"domainCode\":\"113\"},\"role\":\"partner\"}},{\"relationship\":\"partnership\",\"roleA\":{\"domain\":{\"domainCode\":\"112\"},\"role\":\"partner\"},\"roleB\":{\"domain\":{\"domainCode\":\"114\"},\"role\":\"partner\"}},{\"relationship\":\"partnership\",\"roleA\":{\"domain\":{\"domainCode\":\"114\"},\"role\":\"partner\"},\"roleB\":{\"domain\":{\"domainCode\":\"1\", \"domainAlias\":\"supplier\"},\"role\":\"partner\"}}]}";
+        BusinessCmdReqDTO businessCmdReqDTO = JSON.parseObject(str, BusinessCmdReqDTO.class);
+        Result<Boolean> result = businessCmdService.saveStrategyDesign(businessCmdReqDTO);
+        System.out.println(result);
+        Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
+    }
 }
