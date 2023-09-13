@@ -21,14 +21,6 @@ public interface DomainRepository extends BaseRepository<BusinessDomain> {
     List<BusinessDomain> selectByBusinessCode(Integer businessCode);
 
     /**
-     * 根据领域别名查询
-     * @param businessCode
-     * @param domainAliasList
-     * @return
-     */
-    List<BusinessDomain> selectByDomainAlias(Integer businessCode, List<String> domainAliasList);
-
-    /**
      * 批量插入领域
      * @param businessDomainList
      * @return

@@ -41,11 +41,6 @@ public class DomainRepositoryImpl implements DomainRepository {
     }
 
     @Override
-    public List<BusinessDomain> selectByDomainAlias(Integer businessCode, List<String> domainAliasList) {
-        return POUtils.convert(domainMapper.selectByDomainAlias(businessCode, domainAliasList), BusinessDomain.class);
-    }
-
-    @Override
     public boolean insert(BusinessDomain req) {
         DomainPO domainPO = POUtils.convert(req, DomainPO.class);
         return domainMapper.insert(domainPO) == 1;

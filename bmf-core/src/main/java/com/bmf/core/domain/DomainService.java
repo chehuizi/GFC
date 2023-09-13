@@ -36,14 +36,6 @@ public interface DomainService {
     List<BusinessDomain> queryDomainByCode(List<Integer> domainCodeList);
 
     /**
-     * 根据领域别名查询
-     * @param businessCode
-     * @param domainAliasList
-     * @return
-     */
-    List<BusinessDomain> queryDomainByAlias(Integer businessCode, List<String> domainAliasList);
-
-    /**
      * 创建领域
      * @param businessDomain
      * @return
