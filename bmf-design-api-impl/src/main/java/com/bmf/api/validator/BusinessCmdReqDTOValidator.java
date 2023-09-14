@@ -52,32 +52,55 @@ public class BusinessCmdReqDTOValidator {
         ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness(), "business is null");
         ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
         ParamCheckUtil.checkTrue(Objects.nonNull(businessCmdReqDTO.getDomainList())
-                && businessCmdReqDTO.getDomainList().size() > 0, "domain list is empty");
+                && !businessCmdReqDTO.getDomainList().isEmpty(), "domain list is empty");
         for (BusinessDomain domain : businessCmdReqDTO.getDomainList()) {
-            ParamCheckUtil.checkBlank(domain.getDomainAlias(), "domain alias is blank");
-            ParamCheckUtil.checkBlank(domain.getDomainName(), "domain name is blank");
-            ParamCheckUtil.checkBlank(domain.getDomainType(), "domain type is blank");
-            ParamCheckUtil.checkNull(BusinessDomainTypeEnum.getByType(domain.getDomainType()), "domain type is not enum");
-            ParamCheckUtil.checkBlank(domain.getDomainPosition(), "domain position is blank");
-            /*
-            DomainPosition domainPosition = JSON.parseObject(domain.getDomainPosition(), DomainPosition.class);
-            ParamCheckUtil.checkTrue(domainPosition.getX() > 0, "domain position X is not positive integer");
-            ParamCheckUtil.checkTrue(domainPosition.getY() > 0, "domain position Y is not positive integer");
-            */
+            checkDomain(domain);
         }
         for (BusinessDomainRelationship relationship : businessCmdReqDTO.getRelationshipList()) {
-            ParamCheckUtil.checkBlank(relationship.getRelationship(), "relationship is blank");
-            ParamCheckUtil.checkNull(RelationshipEnum.getByType(relationship.getRelationship()), "relationship is not enum");
-            ParamCheckUtil.checkNull(relationship.getRoleA(), "relationship role A is null");
-            ParamCheckUtil.checkNull(relationship.getRoleB(), "relationship role B is null");
-            ParamCheckUtil.checkBlank(relationship.getRoleA().getRole(), "relationship role A is blank");
-            ParamCheckUtil.checkBlank(relationship.getRoleB().getRole(), "relationship role B is blank");
-            ParamCheckUtil.checkNull(RelationshipRoleEnum.getByRole(relationship.getRoleA().getRole()),
-                    "relationship role A is not enum");
-            ParamCheckUtil.checkNull(RelationshipRoleEnum.getByRole(relationship.getRoleB().getRole()),
-                    "relationship role B is not enum");
+            checkRelationship(relationship);
         }
         return true;
+    }
+
+    /**
+     * 校验领域
+     * @param domain
+     */
+    private void checkDomain(BusinessDomain domain) {
+        ParamCheckUtil.checkNull(domain.getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkBlank(domain.getDomainAlias(), "domain alias is blank");
+        ParamCheckUtil.checkBlank(domain.getDomainName(), "domain name is blank");
+        ParamCheckUtil.checkBlank(domain.getDomainType(), "domain type is blank");
+        ParamCheckUtil.checkNull(BusinessDomainTypeEnum.getByType(domain.getDomainType()), "domain type is not enum");
+        ParamCheckUtil.checkBlank(domain.getDomainPosition(), "domain position is blank");
+        /*
+        DomainPosition domainPosition = JSON.parseObject(domain.getDomainPosition(), DomainPosition.class);
+        ParamCheckUtil.checkTrue(domainPosition.getX() > 0, "domain position X is not positive integer");
+        ParamCheckUtil.checkTrue(domainPosition.getY() > 0, "domain position Y is not positive integer");
+        */
+    }
+
+    /**
+     * 校验领域关系
+     * @param relationship
+     */
+    private void checkRelationship(BusinessDomainRelationship relationship) {
+        ParamCheckUtil.checkBlank(relationship.getRelationship(), "relationship is blank");
+        ParamCheckUtil.checkNull(RelationshipEnum.getByType(relationship.getRelationship()), "relationship is not enum");
+
+        ParamCheckUtil.checkNull(relationship.getRoleA(), "relationship role A is null");
+        ParamCheckUtil.checkNull(relationship.getRoleA().getDomain(), "relationship role A domain is null");
+        ParamCheckUtil.checkNull(relationship.getRoleA().getDomain().getDomainCode(), "relationship role A domain code is null");
+//        ParamCheckUtil.checkBlank(relationship.getRoleA().getDomain().getDomainAlias(), "relationship role A domain alias is blank");
+        ParamCheckUtil.checkBlank(relationship.getRoleA().getRole(), "relationship role A is blank");
+        ParamCheckUtil.checkNull(RelationshipRoleEnum.getByRole(relationship.getRoleA().getRole()), "relationship role A is not enum");
+
+        ParamCheckUtil.checkNull(relationship.getRoleB(), "relationship role B is null");
+        ParamCheckUtil.checkNull(relationship.getRoleB().getDomain(), "relationship role B domain is null");
+        ParamCheckUtil.checkNull(relationship.getRoleB().getDomain().getDomainCode(), "relationship role B domain code is null");
+//        ParamCheckUtil.checkBlank(relationship.getRoleB().getDomain().getDomainAlias(), "relationship role B domain alias is blank");
+        ParamCheckUtil.checkBlank(relationship.getRoleB().getRole(), "relationship role B is blank");
+        ParamCheckUtil.checkNull(RelationshipRoleEnum.getByRole(relationship.getRoleB().getRole()), "relationship role B is not enum");
     }
 
     /**

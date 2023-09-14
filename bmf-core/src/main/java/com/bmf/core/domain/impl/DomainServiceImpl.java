@@ -104,9 +104,6 @@ public class DomainServiceImpl implements DomainService {
                                                                        List<BusinessDomain> domainList)
             throws BizException {
         List<BusinessDomain> existedDomains = domainRepository.selectByBusinessCode(businessCode);
-        Map<String, BusinessDomain> existedDomainMapByAlias = Objects.nonNull(existedDomains) ?
-                existedDomains.stream().collect(
-                Collectors.toMap(e -> e.getDomainAlias(), e -> e)) : Collections.EMPTY_MAP;
         Map<Integer, BusinessDomain> existedDomainMapByCode = Objects.nonNull(existedDomains) ?
                 existedDomains.stream().collect(
                 Collectors.toMap(e -> e.getDomainCode(), e -> e)) : Collections.EMPTY_MAP;
@@ -115,16 +112,10 @@ public class DomainServiceImpl implements DomainService {
         List<BusinessDomain> insertedDomains = new ArrayList<>();
         List<BusinessDomain> updatedDomains = new ArrayList<>();
         for (BusinessDomain domain : domainList) {
-            if (Objects.isNull(existedDomainMapByAlias.get(domain.getDomainAlias()))
-                && Objects.isNull(existedDomainMapByCode.get(domain.getDomainCode()))) {
+            if (Objects.isNull(existedDomainMapByCode.get(domain.getDomainCode()))) {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
                 insertedDomains.add(domain);
             } else {
-                BusinessCheckUtil.checkTrue(Objects.nonNull(domain.getDomainCode()) || StringUtils.isNotBlank(domain.getDomainAlias()),
-                        BizCodeEnum.STRATEGY_DESIGN_DOMAIN_CODE_AND_ALIAS_ARE_BLANK);
-                if (Objects.isNull(domain.getDomainCode()) || Objects.isNull(existedDomainMapByCode.get(domain.getDomainCode()))) {
-                    domain.setDomainCode(existedDomainMapByAlias.get(domain.getDomainAlias()).getDomainCode());
-                }
                 updatedDomains.add(domain);
                 existedDomainMapByCode.remove(domain.getDomainCode());
             }

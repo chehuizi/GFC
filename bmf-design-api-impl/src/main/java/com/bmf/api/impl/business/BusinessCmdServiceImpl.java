@@ -132,6 +132,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
                     !insertedDomainMapByAlias.get(domainAlias).getDomainCode().equals(domainCode)) {
                 relationship.getRoleA().getDomain().setDomainCode(insertedDomainMapByAlias.get(domainAlias).getDomainCode());
             }
+
             domainAlias = relationship.getRoleB().getDomain().getDomainAlias();
             domainCode = relationship.getRoleB().getDomain().getDomainCode();
             if (Objects.nonNull(insertedDomainMapByAlias.get(domainAlias)) &&

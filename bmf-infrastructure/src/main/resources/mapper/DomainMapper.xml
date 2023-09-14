@@ -73,9 +73,14 @@
     <update id="batchUpdate" parameterType="java.util.List">
         update bmf_domain
         <trim prefix="set" suffixOverrides=",">
-            <trim prefix="domain_name = case domain_code" suffix="end">
+            <trim prefix="domain_name = case domain_code" suffix="end,">
                 <foreach collection="list" item="item">
                     when #{item.domainCode} then #{item.domainName}
+                </foreach>
+            </trim>
+            <trim prefix="domain_alias = case domain_code" suffix="end,">
+                <foreach collection="list" item="item">
+                    when #{item.domainCode} then #{item.domainAlias}
                 </foreach>
             </trim>
         </trim>
