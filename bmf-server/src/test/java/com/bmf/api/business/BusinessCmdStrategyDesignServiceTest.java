@@ -37,10 +37,11 @@ public class BusinessCmdStrategyDesignServiceTest {
     public void test_business_save_strategy_design_1() {
         BusinessCmdReqDTO businessCmdReqDTO = new BusinessCmdReqDTO();
         Business business = new Business();
-        business.setBusinessCode(102);
+        business.setBusinessCode(101);
         businessCmdReqDTO.setBusiness(business);
         List<BusinessDomain> businessDomainList = new ArrayList<>();
         BusinessDomain domain1 = new BusinessDomain();
+        domain1.setDomainCode(101);
         domain1.setDomainAlias("ims");
         domain1.setDomainName("库存域");
         domain1.setDomainType(BusinessDomainTypeEnum.CORE.getType());
@@ -48,6 +49,7 @@ public class BusinessCmdStrategyDesignServiceTest {
         domain1.setDomainPosition("{\"x\": 500, \"y\": 100}");
         businessDomainList.add(domain1);
         BusinessDomain domain2 = new BusinessDomain();
+        domain2.setDomainCode(104);
         domain2.setDomainAlias("ofc");
         domain2.setDomainName("履约域");
         domain2.setDomainType(BusinessDomainTypeEnum.CORE.getType());
@@ -55,6 +57,7 @@ public class BusinessCmdStrategyDesignServiceTest {
         domain2.setDomainPosition("{\"x\": 500, \"y\": 200}");
         businessDomainList.add(domain2);
         BusinessDomain domain3 = new BusinessDomain();
+        domain3.setDomainCode(109);
         domain3.setDomainAlias("tms");
         domain3.setDomainName("物流域");
         domain3.setDomainType(BusinessDomainTypeEnum.CORE.getType());
@@ -62,6 +65,7 @@ public class BusinessCmdStrategyDesignServiceTest {
         domain3.setDomainPosition("{\"x\": 500, \"y\": 300}");
         businessDomainList.add(domain3);
         BusinessDomain domain4 = new BusinessDomain();
+        domain4.setDomainCode(110);
         domain4.setDomainAlias("wms");
         domain4.setDomainName("仓储域");
         domain4.setDomainType(BusinessDomainTypeEnum.CORE.getType());
