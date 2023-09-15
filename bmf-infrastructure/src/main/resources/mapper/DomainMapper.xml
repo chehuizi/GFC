@@ -83,6 +83,16 @@
                     when #{item.domainCode} then #{item.domainAlias}
                 </foreach>
             </trim>
+            <trim prefix="domain_type = case domain_code" suffix="end,">
+                <foreach collection="list" item="item">
+                    when #{item.domainCode} then #{item.domainType}
+                </foreach>
+            </trim>
+            <trim prefix="domain_level = case domain_code" suffix="end,">
+                <foreach collection="list" item="item">
+                    when #{item.domainCode} then #{item.domainLevel}
+                </foreach>
+            </trim>
         </trim>
         <where>
             domain_code in (
