@@ -43,9 +43,9 @@ public class BusinessCmdStrategyDesignServiceTest {
         BusinessDomain domain1 = new BusinessDomain();
         domain1.setDomainCode(101);
         domain1.setDomainAlias("ims");
-        domain1.setDomainName("库存域");
+        domain1.setDomainName("库存域_车慧子");
         domain1.setDomainType(BusinessDomainTypeEnum.CORE.getType());
-        domain1.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
+        domain1.setDomainLevel(BusinessDomainLevelEnum.TWO.getValue());
         domain1.setDomainPosition("{\"x\": 500, \"y\": 100}");
         businessDomainList.add(domain1);
         BusinessDomain domain2 = new BusinessDomain();
@@ -54,7 +54,7 @@ public class BusinessCmdStrategyDesignServiceTest {
         domain2.setDomainName("履约域");
         domain2.setDomainType(BusinessDomainTypeEnum.CORE.getType());
         domain2.setDomainLevel(BusinessDomainLevelEnum.THREE.getValue());
-        domain2.setDomainPosition("{\"x\": 500, \"y\": 200}");
+        domain2.setDomainPosition("{\"x\": 1000, \"y\": 200}");
         businessDomainList.add(domain2);
         BusinessDomain domain3 = new BusinessDomain();
         domain3.setDomainCode(109);
