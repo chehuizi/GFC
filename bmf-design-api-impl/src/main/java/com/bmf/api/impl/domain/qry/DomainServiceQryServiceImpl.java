@@ -4,7 +4,7 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.dto.DomainServiceQryReqDTO;
 import com.bmf.api.domain.dto.DomainServiceRespDTO;
 import com.bmf.api.domain.qry.DomainServiceQryService;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
 import com.bmf.common.utils.ResultUtil;
@@ -25,7 +25,7 @@ public class DomainServiceQryServiceImpl implements DomainServiceQryService {
     @Override
     @Validator(beanName = "domainServiceReqDTOValidator", method = "v4QueryOne")
     public Result<DomainServiceRespDTO> queryOne(DomainServiceQryReqDTO req) {
-        BusinessDomain domain = domainService.queryDomain(new BusinessDomain(req.getDomainService().getDomainCode()));
+        Domain domain = domainService.queryDomain(new Domain(req.getDomainService().getDomainCode()));
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         com.bmf.base.tactics.service.DomainService service = domainServiceService.queryDomainService(req.getDomainService());
         BusinessCheckUtil.checkNull(service, BizCodeEnum.DOMAIN_SERVICE_NOT_EXIST);

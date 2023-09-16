@@ -1,11 +1,11 @@
 package com.bmf.api.validator;
 
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.enums.DomainTypeEnum;
 import com.bmf.base.enums.RelationshipEnum;
 import com.bmf.base.enums.RelationshipRoleEnum;
-import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.strategy.DomainRelationship;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -51,10 +51,10 @@ public class BusinessCmdReqDTOValidator {
         ParamCheckUtil.checkNull(businessCmdReqDTO.getBusiness().getBusinessCode(), "business code is null");
         ParamCheckUtil.checkTrue(Objects.nonNull(businessCmdReqDTO.getDomainList())
                 && !businessCmdReqDTO.getDomainList().isEmpty(), "domain list is empty");
-        for (BusinessDomain domain : businessCmdReqDTO.getDomainList()) {
+        for (Domain domain : businessCmdReqDTO.getDomainList()) {
             checkDomain(domain);
         }
-        for (BusinessDomainRelationship relationship : businessCmdReqDTO.getRelationshipList()) {
+        for (DomainRelationship relationship : businessCmdReqDTO.getRelationshipList()) {
             checkRelationship(relationship);
         }
         return true;
@@ -64,7 +64,7 @@ public class BusinessCmdReqDTOValidator {
      * 校验领域
      * @param domain
      */
-    private void checkDomain(BusinessDomain domain) {
+    private void checkDomain(Domain domain) {
         ParamCheckUtil.checkNull(domain.getDomainCode(), "domain code is null");
         ParamCheckUtil.checkBlank(domain.getDomainAlias(), "domain alias is blank");
         ParamCheckUtil.checkBlank(domain.getDomainName(), "domain name is blank");
@@ -82,7 +82,7 @@ public class BusinessCmdReqDTOValidator {
      * 校验领域关系
      * @param relationship
      */
-    private void checkRelationship(BusinessDomainRelationship relationship) {
+    private void checkRelationship(DomainRelationship relationship) {
         ParamCheckUtil.checkBlank(relationship.getRelationship(), "relationship is blank");
         ParamCheckUtil.checkNull(RelationshipEnum.getByType(relationship.getRelationship()), "relationship is not enum");
 
@@ -168,7 +168,7 @@ public class BusinessCmdReqDTOValidator {
      * 校验BusinessDomainRelationship参数
      * @param relationship
      */
-    private void checkDomainRelation(BusinessDomainRelationship relationship) {
+    private void checkDomainRelation(DomainRelationship relationship) {
         ParamCheckUtil.checkNull(relationship, "relationship is null");
         ParamCheckUtil.checkNull(relationship.getBusinessCode(), "business code is null");
         ParamCheckUtil.checkBlank(relationship.getRelationship(), "relationship is blank");

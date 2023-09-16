@@ -2,12 +2,7 @@ package com.bmf.api.domain.dto;
 
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.aggregate.DomainAggregate;
-import com.bmf.base.tactics.entity.DomainEntity;
-import com.bmf.base.tactics.event.DomainEvent;
-import com.bmf.base.tactics.service.DomainService;
-import com.bmf.base.tactics.valueobject.DomainValueObject;
+import com.bmf.base.Domain;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -27,7 +22,7 @@ public class DomainQryReqDTO extends ReqDTO implements Serializable {
     /**
      * 业务领域
      */
-    private BusinessDomain businessDomain;
+    private Domain domain;
     /**
      * 包括领域实体
      */

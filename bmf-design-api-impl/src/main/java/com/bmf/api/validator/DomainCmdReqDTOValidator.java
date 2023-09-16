@@ -19,12 +19,12 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4Create(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkBlank(domainCmdReqDTO.getBusinessDomain().getDomainName(), "domain name is blank");
-        ParamCheckUtil.checkBlank(domainCmdReqDTO.getBusinessDomain().getDomainAlias(), "domain alias is blank");
-        ParamCheckUtil.checkBlank(domainCmdReqDTO.getBusinessDomain().getDomainType(), "domain type is blank");
-        ParamCheckUtil.checkTrue(DomainTypeEnum.contain(domainCmdReqDTO.getBusinessDomain().getDomainType()), "domain type is illegal");
-        ParamCheckUtil.checkTrue(DomainLevelEnum.contain(domainCmdReqDTO.getBusinessDomain().getDomainLevel()), "domain level is illegal");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomain().getDomainName(), "domain name is blank");
+        ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomain().getDomainAlias(), "domain alias is blank");
+        ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomain().getDomainType(), "domain type is blank");
+        ParamCheckUtil.checkTrue(DomainTypeEnum.contain(domainCmdReqDTO.getDomain().getDomainType()), "domain type is illegal");
+        ParamCheckUtil.checkTrue(DomainLevelEnum.contain(domainCmdReqDTO.getDomain().getDomainLevel()), "domain level is illegal");
         return true;
     }
 
@@ -35,9 +35,9 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4Update(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkTrue(Objects.nonNull(domainCmdReqDTO.getBusinessDomain().getDomainCode()) ||
-                StringUtils.isNotBlank(domainCmdReqDTO.getBusinessDomain().getDomainAlias()),
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkTrue(Objects.nonNull(domainCmdReqDTO.getDomain().getDomainCode()) ||
+                StringUtils.isNotBlank(domainCmdReqDTO.getDomain().getDomainAlias()),
                 "domain code is null && domain alias is blank");
         return true;
     }
@@ -49,9 +49,9 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4Delete(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
-        ParamCheckUtil.checkBlank(domainCmdReqDTO.getBusinessDomain().getDomainAlias(), "domain alias is blank");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomain().getDomainAlias(), "domain alias is blank");
         return true;
     }
 
@@ -62,10 +62,10 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4AddEntity(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity(), "domain entity is null");
-        ParamCheckUtil.checkTrue(domainCmdReqDTO.getBusinessDomain().getDomainCode().equals(
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
                 domainCmdReqDTO.getDomainEntity().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainEntity().getEntityIdAlias(), "domain entity id alias is blank");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainEntity().getEntityIdName(), "domain entity id name is blank");
@@ -94,10 +94,10 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4AddService(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainService(), "domain service is null");
-        ParamCheckUtil.checkTrue(domainCmdReqDTO.getBusinessDomain().getDomainCode().equals(
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
                 domainCmdReqDTO.getDomainService().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainService().getServiceAlias(), "domain service alias is blank");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainService().getServiceName(), "domain service name is blank");
@@ -125,10 +125,10 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4AddValueObject(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject(), "domain value object is null");
-        ParamCheckUtil.checkTrue(domainCmdReqDTO.getBusinessDomain().getDomainCode().equals(
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
                 domainCmdReqDTO.getDomainValueObject().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainValueObject().getVoAlias(), "domain value object alias is blank");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainValueObject().getVoName(), "domain value object name is blank");
@@ -156,10 +156,10 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4AddDomainEvent(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain(), "domain is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getBusinessDomain().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEvent(), "domain event is null");
-        ParamCheckUtil.checkTrue(domainCmdReqDTO.getBusinessDomain().getDomainCode().equals(
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
                 domainCmdReqDTO.getDomainEvent().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainEvent().getEventAlias(), "domain event alias is blank");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getDomainEvent().getEventName(), "domain event name is blank");

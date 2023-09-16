@@ -34,14 +34,14 @@ public class Business extends BaseModel {
     private String businessDesc;
     /**
      * 业务域列表
-     * @see BusinessDomain
+     * @see Domain
      */
-    private List<BusinessDomain> businessDomainList;
+    private List<Domain> domainList;
     /**
      * 业务域关系列表
-     * @see BusinessDomainRelation
+     * @see DomainRelation
      */
-    private List<BusinessDomainRelation> businessDomainRelationList;
+    private List<DomainRelation> domainRelationList;
 
     public Business() {
         this.setBusinessPrefix(BusinessPrefixEnum.B.getPrefix());

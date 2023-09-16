@@ -7,7 +7,7 @@ import com.bmf.api.domain.dto.DomainCmdReqDTO;
 import com.bmf.api.domain.qry.DomainQryService;
 import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,9 +28,9 @@ public class DomainController {
     public String detail(@RequestParam("domain_code") Integer domainCode,
                          @RequestParam("include_all") Boolean includeAll) {
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(domainCode);
-        domainQryReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(domainCode);
+        domainQryReqDTO.setDomain(domain);
         domainQryReqDTO.setIncludeEntity(includeAll);
         domainQryReqDTO.setIncludeService(includeAll);
         domainQryReqDTO.setIncludeEvent(includeAll);

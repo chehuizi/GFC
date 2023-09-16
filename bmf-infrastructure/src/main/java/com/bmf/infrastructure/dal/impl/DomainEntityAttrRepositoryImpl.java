@@ -2,8 +2,8 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.infrastructure.dal.DomainEntityAttrRepository;
-import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityAttrMapper;
-import com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO;
+import com.bmf.infrastructure.dal.mapper.DomainEntityAttrMapper;
+import com.bmf.infrastructure.dal.po.DomainEntityAttrPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,23 +14,23 @@ import java.util.List;
 public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepository {
 
     @Autowired
-    private BusinessDomainEntityAttrMapper businessDomainEntityAttrMapper;
+    private DomainEntityAttrMapper domainEntityAttrMapper;
 
     @Override
     public DomainEntityAttr selectOne(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, BusinessDomainEntityAttrPO.class);
-        return POUtils.convert(businessDomainEntityAttrMapper.selectOne(domainEntityAttrPO), DomainEntityAttr.class);
+        DomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, DomainEntityAttrPO.class);
+        return POUtils.convert(domainEntityAttrMapper.selectOne(domainEntityAttrPO), DomainEntityAttr.class);
     }
 
     @Override
     public List<DomainEntityAttr> selectByEntityIdCode(Integer entityIdCode) {
-        return POUtils.convert(businessDomainEntityAttrMapper.selectByEntityIdCode(entityIdCode), DomainEntityAttr.class);
+        return POUtils.convert(domainEntityAttrMapper.selectByEntityIdCode(entityIdCode), DomainEntityAttr.class);
     }
 
     @Override
     public boolean insert(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, BusinessDomainEntityAttrPO.class);
-        return businessDomainEntityAttrMapper.insert(domainEntityAttrPO) == 1;
+        DomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, DomainEntityAttrPO.class);
+        return domainEntityAttrMapper.insert(domainEntityAttrPO) == 1;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DomainEntityAttrRepositoryImpl implements DomainEntityAttrRepositor
 
     @Override
     public boolean delete(DomainEntityAttr req) {
-        BusinessDomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, BusinessDomainEntityAttrPO.class);
-        return businessDomainEntityAttrMapper.delete(domainEntityAttrPO) == 1;
+        DomainEntityAttrPO domainEntityAttrPO = POUtils.convert(req, DomainEntityAttrPO.class);
+        return domainEntityAttrMapper.delete(domainEntityAttrPO) == 1;
     }
 }

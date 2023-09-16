@@ -1,14 +1,11 @@
 package com.bmf.api.domain.dto;
 
 import com.bmf.api.RespDTO;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.tactics.entity.DomainEntity;
-import com.bmf.base.tactics.valueobject.DomainValueObject;
+import com.bmf.base.Domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
-import java.util.List;
 
 /**
  * 领域返回对象
@@ -22,10 +19,10 @@ public class DomainRespDTO extends RespDTO implements Serializable {
     /**
      * 业务领域
      */
-    private BusinessDomain businessDomain;
+    private Domain domain;
 
-    public DomainRespDTO(BusinessDomain businessDomain) {
-        this.businessDomain = businessDomain;
+    public DomainRespDTO(Domain domain) {
+        this.domain = domain;
     }
 
 }

@@ -2,8 +2,8 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.infrastructure.dal.DomainEventRepository;
-import com.bmf.infrastructure.dal.mapper.BusinessDomainEventMapper;
-import com.bmf.infrastructure.dal.po.BusinessDomainEventPO;
+import com.bmf.infrastructure.dal.mapper.DomainEventMapper;
+import com.bmf.infrastructure.dal.po.DomainEventPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +14,11 @@ import java.util.List;
 public class DomainEventRepositoryImpl implements DomainEventRepository {
 
     @Autowired
-    private BusinessDomainEventMapper domainEventMapper;
+    private DomainEventMapper domainEventMapper;
 
     @Override
     public DomainEvent selectOne(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = POUtils.convert(req, BusinessDomainEventPO.class);
+        DomainEventPO domainEventPO = POUtils.convert(req, DomainEventPO.class);
         return POUtils.convert(domainEventMapper.selectOne(domainEventPO), DomainEvent.class);
     }
 
@@ -29,7 +29,7 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
 
     @Override
     public boolean insert(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = POUtils.convert(req, BusinessDomainEventPO.class);
+        DomainEventPO domainEventPO = POUtils.convert(req, DomainEventPO.class);
         return domainEventMapper.insert(domainEventPO) == 1;
     }
 
@@ -40,7 +40,7 @@ public class DomainEventRepositoryImpl implements DomainEventRepository {
 
     @Override
     public boolean delete(DomainEvent req) {
-        BusinessDomainEventPO domainEventPO = POUtils.convert(req, BusinessDomainEventPO.class);
+        DomainEventPO domainEventPO = POUtils.convert(req, DomainEventPO.class);
         return domainEventMapper.delete(domainEventPO) == 1;
     }
 }

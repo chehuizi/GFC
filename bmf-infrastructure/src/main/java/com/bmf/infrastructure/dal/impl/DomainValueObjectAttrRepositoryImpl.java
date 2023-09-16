@@ -2,8 +2,8 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.valueobject.DomainValueObjectAttr;
 import com.bmf.infrastructure.dal.DomainValueObjectAttrRepository;
-import com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectAttrMapper;
-import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectAttrPO;
+import com.bmf.infrastructure.dal.mapper.DomainValueObjectAttrMapper;
+import com.bmf.infrastructure.dal.po.DomainValueObjectAttrPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 public class DomainValueObjectAttrRepositoryImpl implements DomainValueObjectAttrRepository {
 
     @Autowired
-    private BusinessDomainValueObjectAttrMapper businessDomainValueObjectAttrMapper;
+    private DomainValueObjectAttrMapper domainValueObjectAttrMapper;
 
     @Override
     public DomainValueObjectAttr selectOne(DomainValueObjectAttr req) {
@@ -21,8 +21,8 @@ public class DomainValueObjectAttrRepositoryImpl implements DomainValueObjectAtt
 
     @Override
     public boolean insert(DomainValueObjectAttr req) {
-        BusinessDomainValueObjectAttrPO valueObjectAttrPO = POUtils.convert(req, BusinessDomainValueObjectAttrPO.class);
-        return businessDomainValueObjectAttrMapper.insert(valueObjectAttrPO) == 1;
+        DomainValueObjectAttrPO valueObjectAttrPO = POUtils.convert(req, DomainValueObjectAttrPO.class);
+        return domainValueObjectAttrMapper.insert(valueObjectAttrPO) == 1;
     }
 
     @Override
@@ -32,7 +32,7 @@ public class DomainValueObjectAttrRepositoryImpl implements DomainValueObjectAtt
 
     @Override
     public boolean delete(DomainValueObjectAttr req) {
-        BusinessDomainValueObjectAttrPO valueObjectAttrPO = POUtils.convert(req, BusinessDomainValueObjectAttrPO.class);
-        return businessDomainValueObjectAttrMapper.delete(valueObjectAttrPO) == 1;
+        DomainValueObjectAttrPO valueObjectAttrPO = POUtils.convert(req, DomainValueObjectAttrPO.class);
+        return domainValueObjectAttrMapper.delete(valueObjectAttrPO) == 1;
     }
 }

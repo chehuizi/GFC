@@ -3,7 +3,7 @@ package com.bmf.api.domain;
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainCmdService;
 import com.bmf.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.enums.AttrTypeEnum;
 import com.bmf.base.enums.DomainLevelEnum;
@@ -30,12 +30,12 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_create() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainName("履约域");
-        businessDomain.setDomainAlias("ofc");
-        businessDomain.setDomainType(DomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(DomainLevelEnum.THREE.getValue());
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainName("履约域");
+        domain.setDomainAlias("ofc");
+        domain.setDomainType(DomainTypeEnum.CORE.getType());
+        domain.setDomainLevel(DomainLevelEnum.THREE.getValue());
+        domainCmdReqDTO.setDomain(domain);
         Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
@@ -44,10 +44,10 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_update() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(104);
-        businessDomain.setDomainName("库存域");
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(104);
+        domain.setDomainName("库存域");
+        domainCmdReqDTO.setDomain(domain);
         Result<Boolean> result = domainCmdService.update(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
@@ -56,9 +56,9 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_delete() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(10);
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(10);
+        domainCmdReqDTO.setDomain(domain);
         Result<Boolean> result = domainCmdService.delete(domainCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
@@ -67,9 +67,9 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_add_dsl() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(103);
+        domainCmdReqDTO.setDomain(domain);
         BusinessDslBase businessDslBase = new BusinessDslBase();
         businessDslBase.setDomainCode(103);
         businessDslBase.setDslName("批次管理");
@@ -84,9 +84,9 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_del_dsl() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(101);
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(101);
+        domainCmdReqDTO.setDomain(domain);
         BusinessDslBase businessDslBase = new BusinessDslBase();
         businessDslBase.setDomainCode(101);
         businessDslBase.setDslCode(1000008);
@@ -99,9 +99,9 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_add_entity() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(103);
+        domainCmdReqDTO.setDomain(domain);
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setDomainCode(103);
         domainEntity.setEntityIdAlias("whSn");
@@ -129,9 +129,9 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_add_service() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(103);
+        domainCmdReqDTO.setDomain(domain);
         DomainService domainService = new DomainService();
         domainService.setDomainCode(103);
         domainService.setServiceAlias("apply_inbound_service");
@@ -158,9 +158,9 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_add_vo() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(103);
+        domainCmdReqDTO.setDomain(domain);
         DomainValueObject valueObject = new DomainValueObject();
         valueObject.setDomainCode(103);
         valueObject.setVoAlias("zone");
@@ -187,9 +187,9 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_add_event() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(103);
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(103);
+        domainCmdReqDTO.setDomain(domain);
         DomainEvent domainEvent = new DomainEvent();
         domainEvent.setDomainCode(103);
         domainEvent.setEventAlias("outbound_success_event");
@@ -248,12 +248,12 @@ public class DomainCmdServiceTest {
     @Test
     public void test_domain_add_aggregate() {
         DomainCmdReqDTO domainCmdReqDTO = new DomainCmdReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        businessDomain.setDomainCode(14);
-        businessDomain.setDomainName("test");
-        businessDomain.setDomainType(DomainTypeEnum.CORE.getType());
-        businessDomain.setDomainLevel(DomainLevelEnum.THREE.getValue());
-        domainCmdReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domain.setDomainCode(14);
+        domain.setDomainName("test");
+        domain.setDomainType(DomainTypeEnum.CORE.getType());
+        domain.setDomainLevel(DomainLevelEnum.THREE.getValue());
+        domainCmdReqDTO.setDomain(domain);
         DomainEntity domainEntity = new DomainEntity();
         domainEntity.setEntityIdCode(1011);
         domainEntity.setEntityIdName("test");

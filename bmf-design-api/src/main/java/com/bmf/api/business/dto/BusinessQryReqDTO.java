@@ -2,8 +2,6 @@ package com.bmf.api.business.dto;
 
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.strategy.BusinessDomainRelationship;
 import lombok.Data;
 
 import java.io.Serializable;

@@ -2,7 +2,7 @@ package com.bmf.core.application.impl;
 
 import com.bmf.base.application.DomainApi;
 import com.bmf.core.application.BusinessApiService;
-import com.bmf.infrastructure.dal.BusinessApiRepository;
+import com.bmf.infrastructure.dal.DomainApiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,10 +12,10 @@ import java.util.List;
 public class BusinessApiServiceImpl implements BusinessApiService {
 
     @Autowired
-    private BusinessApiRepository businessApiRepository;
+    private DomainApiRepository domainApiRepository;
 
     @Override
     public boolean createBusinessApi(List<DomainApi> domainApiList) {
-        return businessApiRepository.batchInsert(domainApiList);
+        return domainApiRepository.batchInsert(domainApiList);
     }
 }

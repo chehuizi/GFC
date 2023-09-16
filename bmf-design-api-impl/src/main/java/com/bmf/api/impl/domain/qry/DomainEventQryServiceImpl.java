@@ -4,7 +4,7 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.dto.DomainEventQryReqDTO;
 import com.bmf.api.domain.dto.DomainEventRespDTO;
 import com.bmf.api.domain.qry.DomainEventQryService;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.common.utils.BusinessCheckUtil;
@@ -26,7 +26,7 @@ public class DomainEventQryServiceImpl implements DomainEventQryService {
     @Override
     @Validator(beanName = "domainEventReqDTOValidator", method = "v4QueryOne")
     public Result<DomainEventRespDTO> queryOne(DomainEventQryReqDTO req) {
-        BusinessDomain domain = domainService.queryDomain(new BusinessDomain(req.getDomainEvent().getDomainCode()));
+        Domain domain = domainService.queryDomain(new Domain(req.getDomainEvent().getDomainCode()));
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         DomainEvent domainEvent = domainEventService.queryDomainEvent(req.getDomainEvent());
         BusinessCheckUtil.checkNull(domainEvent, BizCodeEnum.DOMAIN_EVENT_NOT_EXIST);

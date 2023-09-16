@@ -1,6 +1,6 @@
 package com.bmf.core.design.impl;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.tactics.entity.EntityRelVO;
 import com.bmf.base.tactics.aggregate.DomainAggregate;
 import com.bmf.base.tactics.entity.DomainEntity;
@@ -30,7 +30,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
 
     @Override
     @Transactional
-    public boolean addEntity(BusinessDomain domain, DomainEntity entity) {
+    public boolean addEntity(Domain domain, DomainEntity entity) {
         return domainEntityRepository.insert(entity);
     }
 
@@ -40,7 +40,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
-    public boolean addService(BusinessDomain domain, DomainService service) {
+    public boolean addService(Domain domain, DomainService service) {
         return domainServiceRepository.insert(service);
     }
 
@@ -50,7 +50,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
-    public boolean addValueObject(BusinessDomain domain, DomainValueObject valueObject) {
+    public boolean addValueObject(Domain domain, DomainValueObject valueObject) {
         return domainValueObjectRepository.insert(valueObject);
     }
 
@@ -60,7 +60,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
-    public boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent) {
+    public boolean addDomainEvent(Domain domain, DomainEvent domainEvent) {
         return domainEventRepository.insert(domainEvent);
     }
 
@@ -82,7 +82,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     }
 
     @Override
-    public boolean addAggregate(BusinessDomain domain, DomainAggregate aggregate) {
+    public boolean addAggregate(Domain domain, DomainAggregate aggregate) {
         return false;
     }
 

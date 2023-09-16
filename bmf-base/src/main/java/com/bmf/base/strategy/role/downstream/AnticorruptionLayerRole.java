@@ -1,6 +1,6 @@
 package com.bmf.base.strategy.role.downstream;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.enums.RelationshipRoleEnum;
 
 /**
@@ -12,7 +12,7 @@ public class AnticorruptionLayerRole extends DownstreamRole {
         super.setRole(RelationshipRoleEnum.ACL.getRole());
     }
 
-    public AnticorruptionLayerRole(BusinessDomain domain) {
+    public AnticorruptionLayerRole(Domain domain) {
         super.setDomain(domain);
         super.setRole(RelationshipRoleEnum.ACL.getRole());
     }

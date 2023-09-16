@@ -1,7 +1,7 @@
 package com.bmf.core.design;
 
 import com.bmf.base.Business;
-import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.strategy.DomainRelationship;
 
 import java.util.List;
 
@@ -15,7 +15,7 @@ public interface BusinessDomainDesign4Strategy {
      * @param relationship
      * @return
      */
-    boolean buildBusinessDomainRelationship(BusinessDomainRelationship relationship);
+    boolean buildBusinessDomainRelationship(DomainRelationship relationship);
 
     /**
      * 批量构建领域关系
@@ -23,12 +23,12 @@ public interface BusinessDomainDesign4Strategy {
      * @param relationshipList
      * @return
      */
-    boolean batchBuildBusinessDomainRelationship(Business business, List<BusinessDomainRelationship> relationshipList);
+    boolean batchBuildBusinessDomainRelationship(Business business, List<DomainRelationship> relationshipList);
 
     /**
      * 移除领域关系
      * @param relationship
      * @return
      */
-    boolean removeBusinessDomainRelationship(BusinessDomainRelationship relationship);
+    boolean removeBusinessDomainRelationship(DomainRelationship relationship);
 }

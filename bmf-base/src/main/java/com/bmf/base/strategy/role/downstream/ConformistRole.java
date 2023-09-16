@@ -1,6 +1,6 @@
 package com.bmf.base.strategy.role.downstream;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.enums.RelationshipRoleEnum;
 
 /**
@@ -12,7 +12,7 @@ public class ConformistRole extends DownstreamRole {
         super.setRole(RelationshipRoleEnum.CF.getRole());
     }
 
-    public ConformistRole(BusinessDomain domain) {
+    public ConformistRole(Domain domain) {
         super.setDomain(domain);
         super.setRole(RelationshipRoleEnum.CF.getRole());
     }

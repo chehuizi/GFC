@@ -2,8 +2,8 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.entity.EntityRelVO;
 import com.bmf.infrastructure.dal.DomainEntityRelVORepository;
-import com.bmf.infrastructure.dal.mapper.BusinessDomainEntityRelVOMapper;
-import com.bmf.infrastructure.dal.po.BusinessDomainEntityRelVOPO;
+import com.bmf.infrastructure.dal.mapper.DomainEntityRelVOMapper;
+import com.bmf.infrastructure.dal.po.DomainEntityRelVOPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,11 +14,11 @@ import java.util.List;
 public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVORepository {
 
     @Autowired
-    private BusinessDomainEntityRelVOMapper domainEntityRelVOMapper;
+    private DomainEntityRelVOMapper domainEntityRelVOMapper;
 
     @Override
     public EntityRelVO selectOne(EntityRelVO req) {
-        BusinessDomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, BusinessDomainEntityRelVOPO.class);
+        DomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, DomainEntityRelVOPO.class);
         return POUtils.convert(domainEntityRelVOMapper.selectOne(entityRelVOPO), EntityRelVO.class);
     }
 
@@ -29,7 +29,7 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
 
     @Override
     public boolean insert(EntityRelVO req) {
-        BusinessDomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, BusinessDomainEntityRelVOPO.class);
+        DomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, DomainEntityRelVOPO.class);
         return domainEntityRelVOMapper.insert(entityRelVOPO) == 1;
     }
 
@@ -40,7 +40,7 @@ public class DomainEntityRelVORepositoryImpl implements DomainEntityRelVOReposit
 
     @Override
     public boolean delete(EntityRelVO req) {
-        BusinessDomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, BusinessDomainEntityRelVOPO.class);
+        DomainEntityRelVOPO entityRelVOPO = POUtils.convert(req, DomainEntityRelVOPO.class);
         return domainEntityRelVOMapper.delete(entityRelVOPO) == 1;
     }
 }

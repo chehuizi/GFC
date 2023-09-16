@@ -1,10 +1,10 @@
 package com.bmf.core.utils;
 
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.Domain;
+import com.bmf.base.DomainRelation;
 import com.bmf.base.BusinessRelDomain;
-import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.strategy.DomainRelationship;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,7 +29,7 @@ public class BusinessUtil {
      * @param domain
      * @return
      */
-    public static BusinessRelDomain convert(Business business, BusinessDomain domain) {
+    public static BusinessRelDomain convert(Business business, Domain domain) {
         BusinessRelDomain businessRelDomain = new BusinessRelDomain();
         businessRelDomain.setBusinessCode(business.getBusinessCode());
         businessRelDomain.setDomainCode(domain.getDomainCode());
@@ -41,10 +41,10 @@ public class BusinessUtil {
      * @param business
      * @return
      */
-    public static BusinessDomainRelation convertDR(Business business) {
-        BusinessDomainRelation businessDomainRelation = new BusinessDomainRelation();
-        businessDomainRelation.setBusinessCode(business.getBusinessCode());
-        return businessDomainRelation;
+    public static DomainRelation convertDR(Business business) {
+        DomainRelation domainRelation = new DomainRelation();
+        domainRelation.setBusinessCode(business.getBusinessCode());
+        return domainRelation;
     }
 
     /**
@@ -53,33 +53,33 @@ public class BusinessUtil {
      * @param domain
      * @return
      */
-    public static BusinessDomainRelation convertDR(Business business, BusinessDomain domain) {
-        BusinessDomainRelation businessDomainRelation = new BusinessDomainRelation();
-        businessDomainRelation.setBusinessCode(business.getBusinessCode());
-        businessDomainRelation.setDomainACode(domain.getDomainCode());
-        businessDomainRelation.setDomainBCode(domain.getDomainCode());
-        return businessDomainRelation;
+    public static DomainRelation convertDR(Business business, Domain domain) {
+        DomainRelation domainRelation = new DomainRelation();
+        domainRelation.setBusinessCode(business.getBusinessCode());
+        domainRelation.setDomainACode(domain.getDomainCode());
+        domainRelation.setDomainBCode(domain.getDomainCode());
+        return domainRelation;
     }
 
     /**
      * 转换对象
      * @param business
-     * @param businessDomainRelationship
+     * @param domainRelationship
      * @return
      */
-    public static BusinessDomainRelation convert(Business business, BusinessDomainRelationship businessDomainRelationship) {
-        if (Objects.isNull(businessDomainRelationship)) {
+    public static DomainRelation convert(Business business, DomainRelationship domainRelationship) {
+        if (Objects.isNull(domainRelationship)) {
             return null;
         }
-        BusinessDomainRelation businessDomainRelation = new BusinessDomainRelation();
-        businessDomainRelation.setBusinessCode(Objects.nonNull(business) ? business.getBusinessCode()
-                : businessDomainRelationship.getBusinessCode());
-        businessDomainRelation.setDomainRelation(businessDomainRelationship.getRelationship());
-        businessDomainRelation.setDomainACode(businessDomainRelationship.getRoleA().getDomain().getDomainCode());
-        businessDomainRelation.setDomainARole(businessDomainRelationship.getRoleA().getRole());
-        businessDomainRelation.setDomainBCode(businessDomainRelationship.getRoleB().getDomain().getDomainCode());
-        businessDomainRelation.setDomainBRole(businessDomainRelationship.getRoleB().getRole());
-        return businessDomainRelation;
+        DomainRelation domainRelation = new DomainRelation();
+        domainRelation.setBusinessCode(Objects.nonNull(business) ? business.getBusinessCode()
+                : domainRelationship.getBusinessCode());
+        domainRelation.setDomainRelation(domainRelationship.getRelationship());
+        domainRelation.setDomainACode(domainRelationship.getRoleA().getDomain().getDomainCode());
+        domainRelation.setDomainARole(domainRelationship.getRoleA().getRole());
+        domainRelation.setDomainBCode(domainRelationship.getRoleB().getDomain().getDomainCode());
+        domainRelation.setDomainBRole(domainRelationship.getRoleB().getRole());
+        return domainRelation;
     }
 
     /**
@@ -88,14 +88,14 @@ public class BusinessUtil {
      * @param relationshipList
      * @return
      */
-    public static List<BusinessDomainRelation> convert(Business business, List<BusinessDomainRelationship> relationshipList) {
+    public static List<DomainRelation> convert(Business business, List<DomainRelationship> relationshipList) {
         if (relationshipList.isEmpty()) {
             return null;
         }
-        List<BusinessDomainRelation> businessDomainRelationList = new ArrayList<>();
-        for (BusinessDomainRelationship item : relationshipList) {
-            businessDomainRelationList.add(convert(business, item));
+        List<DomainRelation> domainRelationList = new ArrayList<>();
+        for (DomainRelationship item : relationshipList) {
+            domainRelationList.add(convert(business, item));
         }
-        return businessDomainRelationList;
+        return domainRelationList;
     }
 }

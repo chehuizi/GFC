@@ -2,7 +2,7 @@ package com.bmf.api.domain.dto;
 
 import com.bmf.api.ReqDTO;
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.tactics.aggregate.DomainAggregate;
 import com.bmf.base.tactics.entity.DomainEntity;
@@ -28,7 +28,7 @@ public class DomainCmdReqDTO extends ReqDTO implements Serializable {
     /**
      * 业务域
      */
-    private BusinessDomain businessDomain;
+    private Domain domain;
     /**
      * 业务实体
      */

@@ -2,8 +2,8 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.service.DomainService;
 import com.bmf.infrastructure.dal.DomainServiceRepository;
-import com.bmf.infrastructure.dal.mapper.BusinessDomainServiceMapper;
-import com.bmf.infrastructure.dal.po.BusinessDomainServicePO;
+import com.bmf.infrastructure.dal.mapper.DomainServiceMapper;
+import com.bmf.infrastructure.dal.po.DomainServicePO;
 import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,23 +14,23 @@ import java.util.List;
 public class DomainServiceRepositoryImpl implements DomainServiceRepository {
 
     @Autowired
-    private BusinessDomainServiceMapper businessDomainServiceMapper;
+    private DomainServiceMapper domainServiceMapper;
 
     @Override
     public DomainService selectOne(DomainService req) {
-        BusinessDomainServicePO domainServicePO = POUtils.convert(req, BusinessDomainServicePO.class);
-        return POUtils.convert(businessDomainServiceMapper.selectOne(domainServicePO), DomainService.class);
+        DomainServicePO domainServicePO = POUtils.convert(req, DomainServicePO.class);
+        return POUtils.convert(domainServiceMapper.selectOne(domainServicePO), DomainService.class);
     }
 
     @Override
     public List<DomainService> selectByDomainCode(Integer domainCode) {
-        return POUtils.convert(businessDomainServiceMapper.selectByDomainCode(domainCode), DomainService.class);
+        return POUtils.convert(domainServiceMapper.selectByDomainCode(domainCode), DomainService.class);
     }
 
     @Override
     public boolean insert(DomainService req) {
-        BusinessDomainServicePO domainServicePO = POUtils.convert(req, BusinessDomainServicePO.class);
-        return businessDomainServiceMapper.insert(domainServicePO) == 1;
+        DomainServicePO domainServicePO = POUtils.convert(req, DomainServicePO.class);
+        return domainServiceMapper.insert(domainServicePO) == 1;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DomainServiceRepositoryImpl implements DomainServiceRepository {
 
     @Override
     public boolean delete(DomainService req) {
-        BusinessDomainServicePO domainServicePO = POUtils.convert(req, BusinessDomainServicePO.class);
-        return businessDomainServiceMapper.delete(domainServicePO) == 1;
+        DomainServicePO domainServicePO = POUtils.convert(req, DomainServicePO.class);
+        return domainServiceMapper.delete(domainServicePO) == 1;
     }
 }

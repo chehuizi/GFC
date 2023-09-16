@@ -2,8 +2,8 @@ package com.bmf.infrastructure.dal.impl;
 
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.infrastructure.dal.DomainValueObjectRepository;
-import com.bmf.infrastructure.dal.mapper.BusinessDomainValueObjectMapper;
-import com.bmf.infrastructure.dal.po.BusinessDomainValueObjectPO;
+import com.bmf.infrastructure.dal.mapper.DomainValueObjectMapper;
+import com.bmf.infrastructure.dal.po.DomainValueObjectPO;
 import com.bmf.infrastructure.dal.utils.POUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,23 +14,23 @@ import java.util.List;
 public class DomainValueObjectRepositoryImpl implements DomainValueObjectRepository {
 
     @Autowired
-    private BusinessDomainValueObjectMapper businessDomainValueObjectMapper;
+    private DomainValueObjectMapper domainValueObjectMapper;
 
     @Override
     public DomainValueObject selectOne(DomainValueObject req) {
-        BusinessDomainValueObjectPO domainValueObjectPO = POUtils.convert(req, BusinessDomainValueObjectPO.class);
-        return POUtils.convert(businessDomainValueObjectMapper.selectOne(domainValueObjectPO), DomainValueObject.class);
+        DomainValueObjectPO domainValueObjectPO = POUtils.convert(req, DomainValueObjectPO.class);
+        return POUtils.convert(domainValueObjectMapper.selectOne(domainValueObjectPO), DomainValueObject.class);
     }
 
     @Override
     public List<DomainValueObject> selectByVoCode(List<Integer> voCodeList) {
-        return POUtils.convert(businessDomainValueObjectMapper.selectByVoCode(voCodeList), DomainValueObject.class);
+        return POUtils.convert(domainValueObjectMapper.selectByVoCode(voCodeList), DomainValueObject.class);
     }
 
     @Override
     public boolean insert(DomainValueObject req) {
-        BusinessDomainValueObjectPO domainValueObjectPO = POUtils.convert(req, BusinessDomainValueObjectPO.class);
-        return businessDomainValueObjectMapper.insert(domainValueObjectPO) == 1;
+        DomainValueObjectPO domainValueObjectPO = POUtils.convert(req, DomainValueObjectPO.class);
+        return domainValueObjectMapper.insert(domainValueObjectPO) == 1;
     }
 
     @Override
@@ -40,7 +40,7 @@ public class DomainValueObjectRepositoryImpl implements DomainValueObjectReposit
 
     @Override
     public boolean delete(DomainValueObject req) {
-        BusinessDomainValueObjectPO domainValueObjectPO = POUtils.convert(req, BusinessDomainValueObjectPO.class);
-        return businessDomainValueObjectMapper.delete(domainValueObjectPO) == 1;
+        DomainValueObjectPO domainValueObjectPO = POUtils.convert(req, DomainValueObjectPO.class);
+        return domainValueObjectMapper.delete(domainValueObjectPO) == 1;
     }
 }

@@ -1,10 +1,9 @@
 package com.bmf.api.business;
 
 import com.bmf.api.Result;
-import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.common.enums.BizCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -101,7 +100,7 @@ public class BusinessCmdServiceExceptionTest {
         Business business = new Business();
         business.setBusinessCode(11);
         businessCmdReqDTO.setBusiness(business);
-        BusinessDomain domain = new BusinessDomain();
+        Domain domain = new Domain();
         domain.setDomainCode(10);
         businessCmdReqDTO.setDomain(domain);
         Result<Boolean> result = businessCmdService.addDomain(businessCmdReqDTO);

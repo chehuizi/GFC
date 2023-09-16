@@ -1,6 +1,6 @@
 package com.bmf.core.design;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.tactics.aggregate.DomainAggregate;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
@@ -18,7 +18,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param entity
      * @return
      */
-    boolean addEntity(BusinessDomain domain, DomainEntity entity);
+    boolean addEntity(Domain domain, DomainEntity entity);
 
     /**
      * 删除领域实体
@@ -33,7 +33,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param service
      * @return
      */
-    boolean addService(BusinessDomain domain, DomainService service);
+    boolean addService(Domain domain, DomainService service);
 
     /**
      * 删除领域服务
@@ -48,7 +48,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param valueObject
      * @return
      */
-    boolean addValueObject(BusinessDomain domain, DomainValueObject valueObject);
+    boolean addValueObject(Domain domain, DomainValueObject valueObject);
 
     /**
      * 删除值对象
@@ -63,7 +63,7 @@ public interface BusinessDomainDesign4Tactics {
      * @param domainEvent
      * @return
      */
-    boolean addDomainEvent(BusinessDomain domain, DomainEvent domainEvent);
+    boolean addDomainEvent(Domain domain, DomainEvent domainEvent);
 
     /**
      * 删除领域事件
@@ -94,6 +94,6 @@ public interface BusinessDomainDesign4Tactics {
      * @param aggregate
      * @return
      */
-    boolean addAggregate(BusinessDomain domain, DomainAggregate aggregate);
+    boolean addAggregate(Domain domain, DomainAggregate aggregate);
 
 }

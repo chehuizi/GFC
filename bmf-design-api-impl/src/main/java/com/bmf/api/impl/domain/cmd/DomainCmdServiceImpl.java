@@ -3,7 +3,7 @@ package com.bmf.api.impl.domain.cmd;
 import com.bmf.api.Result;
 import com.bmf.api.domain.cmd.DomainCmdService;
 import com.bmf.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.base.tactics.entity.EntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
@@ -37,8 +37,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(DomainCmdReqDTO req) {
-        BusinessDomain domain = req.getBusinessDomain();
-        BusinessDomain queryResult = domainService.queryDomain(domain);
+        Domain domain = req.getDomain();
+        Domain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNonNull(queryResult, BizCodeEnum.DOMAIN_IS_EXISTED);
         domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
         return ResultUtil.success(domainService.createDomain(domain));
@@ -47,8 +47,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Update")
     public Result<Boolean> update(DomainCmdReqDTO req) {
-        BusinessDomain domain = req.getBusinessDomain();
-        BusinessDomain queryResult = domainService.queryDomain(domain);
+        Domain domain = req.getDomain();
+        Domain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNull(queryResult, BizCodeEnum.DOMAIN_NOT_EXIST);
         return ResultUtil.success(domainService.updateDomain(domain));
     }
@@ -56,16 +56,16 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4Delete")
     public Result<Boolean> delete(DomainCmdReqDTO req) {
-        BusinessDomain domain = req.getBusinessDomain();
-        BusinessDomain queryResult = domainService.queryDomain(domain);
+        Domain domain = req.getDomain();
+        Domain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNull(queryResult, BizCodeEnum.DOMAIN_NOT_EXIST);
         return ResultUtil.success(domainService.deleteDomain(domain));
     }
 
     @Override
     public Result<Boolean> addDsl(DomainCmdReqDTO domainCmdReqDTO) {
-        BusinessDomain domain = domainCmdReqDTO.getBusinessDomain();
-        BusinessDomain queryResult = domainService.queryDomain(domain);
+        Domain domain = domainCmdReqDTO.getDomain();
+        Domain queryResult = domainService.queryDomain(domain);
         BusinessCheckUtil.checkNull(queryResult, BizCodeEnum.DOMAIN_NOT_EXIST);
         domainCmdReqDTO.getDslBase().setDslCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DSL.getKey()));
         return ResultUtil.success(domainService.addDsl(domainCmdReqDTO.getDslBase()));
@@ -79,12 +79,12 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddEntity")
     public Result<Boolean> addEntity(DomainCmdReqDTO domainCmdReqDTO) {
-        BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
+        Domain domain = domainService.queryDomain(domainCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         DomainEntity domainEntity = domainEntityService.queryDomainEntity(domainCmdReqDTO.getDomainEntity());
         BusinessCheckUtil.checkNonNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_IS_EXISTED);
         domainCmdReqDTO.getDomainEntity().setEntityIdCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_ENTITY.getKey()));
-        return ResultUtil.success(businessDomainDesign4Tactics.addEntity(domainCmdReqDTO.getBusinessDomain(), domainCmdReqDTO.getDomainEntity()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addEntity(domainCmdReqDTO.getDomain(), domainCmdReqDTO.getDomainEntity()));
     }
 
     @Override
@@ -96,10 +96,10 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddService")
     public Result<Boolean> addService(DomainCmdReqDTO domainCmdReqDTO) {
-        BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
+        Domain domain = domainService.queryDomain(domainCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         domainCmdReqDTO.getDomainService().setServiceCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_SERVICE.getKey()));
-        return ResultUtil.success(businessDomainDesign4Tactics.addService(domainCmdReqDTO.getBusinessDomain(), domainCmdReqDTO.getDomainService()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addService(domainCmdReqDTO.getDomain(), domainCmdReqDTO.getDomainService()));
     }
 
     @Override
@@ -111,10 +111,10 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddValueObject")
     public Result<Boolean> addValueObject(DomainCmdReqDTO domainCmdReqDTO) {
-        BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
+        Domain domain = domainService.queryDomain(domainCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         domainCmdReqDTO.getDomainValueObject().setVoCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_VALUE_OBJECT.getKey()));
-        return ResultUtil.success(businessDomainDesign4Tactics.addValueObject(domainCmdReqDTO.getBusinessDomain(), domainCmdReqDTO.getDomainValueObject()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addValueObject(domainCmdReqDTO.getDomain(), domainCmdReqDTO.getDomainValueObject()));
     }
 
     @Override
@@ -126,10 +126,10 @@ public class DomainCmdServiceImpl implements DomainCmdService {
     @Override
     @Validator(beanName = "domainCmdReqDTOValidator", method = "v4AddDomainEvent")
     public Result<Boolean> addEvent(DomainCmdReqDTO domainCmdReqDTO) {
-        BusinessDomain domain = domainService.queryDomain(domainCmdReqDTO.getBusinessDomain());
+        Domain domain = domainService.queryDomain(domainCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         domainCmdReqDTO.getDomainEvent().setEventCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_EVENT.getKey()));
-        return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainCmdReqDTO.getBusinessDomain(), domainCmdReqDTO.getDomainEvent()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addDomainEvent(domainCmdReqDTO.getDomain(), domainCmdReqDTO.getDomainEvent()));
     }
 
     @Override
@@ -162,7 +162,7 @@ public class DomainCmdServiceImpl implements DomainCmdService {
 
     @Override
     public Result<Boolean> addAggregate(DomainCmdReqDTO domainCmdReqDTO) {
-        return ResultUtil.success(businessDomainDesign4Tactics.addAggregate(domainCmdReqDTO.getBusinessDomain(), domainCmdReqDTO.getDomainAggregate()));
+        return ResultUtil.success(businessDomainDesign4Tactics.addAggregate(domainCmdReqDTO.getDomain(), domainCmdReqDTO.getDomainAggregate()));
     }
 
 }

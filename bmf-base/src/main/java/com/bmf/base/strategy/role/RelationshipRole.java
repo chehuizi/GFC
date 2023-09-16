@@ -1,6 +1,6 @@
 package com.bmf.base.strategy.role;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,7 +14,7 @@ public class RelationshipRole {
     /**
      * 角色关联的业务域
      */
-    private BusinessDomain domain;
+    private Domain domain;
 
     /**
      * 角色

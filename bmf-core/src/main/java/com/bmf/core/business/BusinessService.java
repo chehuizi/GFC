@@ -1,12 +1,12 @@
 package com.bmf.core.business;
 
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.Domain;
+import com.bmf.base.DomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.flow.BusinessRole;
-import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.strategy.DomainRelationship;
 
 import java.util.List;
 import java.util.Map;
@@ -50,7 +50,7 @@ public interface BusinessService {
      * @param domain
      * @return
      */
-    BusinessRelDomain queryBusinessRelDomain(Business business, BusinessDomain domain);
+    BusinessRelDomain queryBusinessRelDomain(Business business, Domain domain);
 
     /**
      * 查询业务关联领域
@@ -64,7 +64,7 @@ public interface BusinessService {
      * @param business
      * @return
      */
-    List<BusinessDomainRelation> queryBusinessDomainRelation(Business business);
+    List<DomainRelation> queryBusinessDomainRelation(Business business);
 
     /**
      * 查询业务关联领域关系
@@ -72,7 +72,7 @@ public interface BusinessService {
      * @param domain
      * @return
      */
-    List<BusinessDomainRelation> queryBusinessDomainRelation(Business business, BusinessDomain domain);
+    List<DomainRelation> queryBusinessDomainRelation(Business business, Domain domain);
 
     /**
      * 处理战略设计
@@ -82,8 +82,8 @@ public interface BusinessService {
      * @return
      */
     boolean handleStrategyDesign(Business business,
-                                 Map<CmdTypeEnum, List<BusinessDomain>> domainResult,
-                                 List<BusinessDomainRelationship> relationshipList);
+                                 Map<CmdTypeEnum, List<Domain>> domainResult,
+                                 List<DomainRelationship> relationshipList);
 
     /**
      * 添加领域
@@ -91,7 +91,7 @@ public interface BusinessService {
      * @param domain
      * @return
      */
-    boolean addDomain(Business business, BusinessDomain domain);
+    boolean addDomain(Business business, Domain domain);
 
     /**
      * 添加领域列表
@@ -99,7 +99,7 @@ public interface BusinessService {
      * @param domainList
      * @return
      */
-    boolean addDomainList(Business business, List<BusinessDomain> domainList);
+    boolean addDomainList(Business business, List<Domain> domainList);
 
     /**
      * 删除领域
@@ -107,7 +107,7 @@ public interface BusinessService {
      * @param domain
      * @return
      */
-    boolean delDomain(Business business, BusinessDomain domain);
+    boolean delDomain(Business business, Domain domain);
 
     /**
      * 添加角色

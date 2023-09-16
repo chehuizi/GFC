@@ -5,8 +5,8 @@ import com.bmf.api.business.BusinessQryService;
 import com.bmf.api.business.dto.BusinessQryReqDTO;
 import com.bmf.api.business.dto.BusinessRespDTO;
 import com.bmf.base.Business;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.Domain;
+import com.bmf.base.DomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import com.bmf.common.utils.ResultUtil;
 import com.bmf.common.validator.Validator;
@@ -41,17 +41,17 @@ public class BusinessQryServiceImpl implements BusinessQryService {
             Map<Integer, BusinessRelDomain> businessRelDomainMap = businessRelDomainList.stream().
                     collect(Collectors.toMap(e -> e.getDomainCode(), e -> e));
             if (Objects.nonNull(businessRelDomainList) && businessRelDomainList.size() > 0) {
-                List<BusinessDomain> businessDomainList = domainService.queryDomainByCode(
+                List<Domain> domainList = domainService.queryDomainByCode(
                         businessRelDomainList.stream().map(BusinessRelDomain::getDomainCode).
                                 collect(Collectors.toList()));
-                businessDomainList.forEach(item ->
+                domainList.forEach(item ->
                         item.setDomainPosition(businessRelDomainMap.get(item.getDomainCode()).getDomainPosition()));
-                business.setBusinessDomainList(businessDomainList);
+                business.setDomainList(domainList);
             }
         }
         if (req.isIncludeDomainRelation()) {
-            List<BusinessDomainRelation> businessDomainRelationList = businessService.queryBusinessDomainRelation(business);
-            business.setBusinessDomainRelationList(businessDomainRelationList);
+            List<DomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(business);
+            business.setDomainRelationList(domainRelationList);
         }
 
         return ResultUtil.success(new BusinessRespDTO(business));

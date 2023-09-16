@@ -3,14 +3,14 @@ package com.bmf.api.impl.business;
 import com.bmf.api.Result;
 import com.bmf.api.business.BusinessCmdService;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.Domain;
+import com.bmf.base.DomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import com.bmf.base.enums.CmdTypeEnum;
 import com.bmf.base.enums.CodeKeyEnum;
 import com.bmf.base.enums.SnapshotObjTypeEnum;
 import com.bmf.base.snapshot.DomainStrategyDesignSnapshot;
-import com.bmf.base.strategy.BusinessDomainRelationship;
+import com.bmf.base.strategy.DomainRelationship;
 import com.bmf.common.enums.BizCodeEnum;
 import com.bmf.base.Business;
 import com.bmf.common.utils.BusinessCheckUtil;
@@ -78,7 +78,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
         BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_SNAPSHOT_FAILED);
 
         // step2：处理领域
-        Map<CmdTypeEnum, List<BusinessDomain>> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
+        Map<CmdTypeEnum, List<Domain>> domainResult = domainService.handleStrategyDesign(business.getBusinessCode(),
                 businessCmdReqDTO.getDomainList());
 
         // step3：处理前端组件ID和领域
@@ -99,9 +99,9 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     private boolean snapshotService(Business business) {
         // step1 查询
         List<BusinessRelDomain> businessRelDomainList = businessService.queryBusinessRelDomain(business);
-        List<BusinessDomain> domainList = domainService.queryDomainByCode(businessRelDomainList.stream().
+        List<Domain> domainList = domainService.queryDomainByCode(businessRelDomainList.stream().
                 map(BusinessRelDomain::getDomainCode).collect(Collectors.toList()));
-        List<BusinessDomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(business);
+        List<DomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(business);
         DomainStrategyDesignSnapshot snapshot = DomainStrategyDesignSnapshot.builder()
                 .domainList(domainList)
                 .businessRelDomainList(businessRelDomainList)
@@ -119,13 +119,13 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
      * @param domainResult
      * @param relationshipList
      */
-    private void handleViewAndDomain(Map<CmdTypeEnum, List<BusinessDomain>> domainResult,
-                                     List<BusinessDomainRelationship> relationshipList) {
-        List<BusinessDomain> insertedDomains = domainResult.get(CmdTypeEnum.INSERT);
-        Map<String, BusinessDomain> insertedDomainMapByAlias = Objects.nonNull(insertedDomains) ?
+    private void handleViewAndDomain(Map<CmdTypeEnum, List<Domain>> domainResult,
+                                     List<DomainRelationship> relationshipList) {
+        List<Domain> insertedDomains = domainResult.get(CmdTypeEnum.INSERT);
+        Map<String, Domain> insertedDomainMapByAlias = Objects.nonNull(insertedDomains) ?
                 insertedDomains.stream().collect(
                         Collectors.toMap(e -> e.getDomainAlias(), e -> e)) : Collections.EMPTY_MAP;
-        for (BusinessDomainRelationship relationship : relationshipList) {
+        for (DomainRelationship relationship : relationshipList) {
             String domainAlias = relationship.getRoleA().getDomain().getDomainAlias();
             Integer domainCode = relationship.getRoleA().getDomain().getDomainCode();
             if (Objects.nonNull(insertedDomainMapByAlias.get(domainAlias)) &&
@@ -159,12 +159,12 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
      * @param domainList
      * @param relationshipList
      */
-    private void fillRelationship(List<BusinessDomain> domainList, List<BusinessDomainRelationship> relationshipList) {
-        Map<String, BusinessDomain> domainMap = domainList.stream().collect(
+    private void fillRelationship(List<Domain> domainList, List<DomainRelationship> relationshipList) {
+        Map<String, Domain> domainMap = domainList.stream().collect(
                 Collectors.toMap(e -> e.getDomainAlias(), e -> e));
-        for (BusinessDomainRelationship relationship : relationshipList) {
-            BusinessDomain domainA = relationship.getRoleA().getDomain();
-            BusinessDomain domainB = relationship.getRoleB().getDomain();
+        for (DomainRelationship relationship : relationshipList) {
+            Domain domainA = relationship.getRoleA().getDomain();
+            Domain domainB = relationship.getRoleB().getDomain();
             if (Objects.isNull(domainA.getDomainCode())) {
                 domainA.setDomainCode(domainMap.get(domainA.getDomainAlias()).getDomainCode());
             }
@@ -179,7 +179,7 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> addDomain(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domain = domainService.queryDomain(businessCmdReqDTO.getDomain());
+        Domain domain = domainService.queryDomain(businessCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
         return ResultUtil.success(businessService.addDomain(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getDomain()));
     }
@@ -189,10 +189,10 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> delDomain(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domain = domainService.queryDomain(businessCmdReqDTO.getDomain());
+        Domain domain = domainService.queryDomain(businessCmdReqDTO.getDomain());
         BusinessCheckUtil.checkNull(domain, BizCodeEnum.DOMAIN_NOT_EXIST);
-        List<BusinessDomainRelation> businessDomainRelationList = businessService.queryBusinessDomainRelation(business, domain);
-        BusinessCheckUtil.checkNonNull(businessDomainRelationList, BizCodeEnum.DOMAIN_HAS_RELATION);
+        List<DomainRelation> domainRelationList = businessService.queryBusinessDomainRelation(business, domain);
+        BusinessCheckUtil.checkNonNull(domainRelationList, BizCodeEnum.DOMAIN_HAS_RELATION);
         return ResultUtil.success(businessService.delDomain(businessCmdReqDTO.getBusiness(), businessCmdReqDTO.getDomain()));
     }
 
@@ -201,9 +201,9 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> buildDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domainA = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleA().getDomain());
+        Domain domainA = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleA().getDomain());
         BusinessCheckUtil.checkNull(domainA, BizCodeEnum.DOMAIN_NOT_EXIST);
-        BusinessDomain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
+        Domain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
         BusinessCheckUtil.checkNull(domainB, BizCodeEnum.DOMAIN_NOT_EXIST);
         BusinessRelDomain businessRelDomain = businessService.queryBusinessRelDomain(business, domainA);
         BusinessCheckUtil.checkNull(businessRelDomain, BizCodeEnum.BUSINESS_REL_DOMAIN_NOT_EXIST);
@@ -217,9 +217,9 @@ public class BusinessCmdServiceImpl implements BusinessCmdService {
     public Result<Boolean> removeDomainRelation(BusinessCmdReqDTO businessCmdReqDTO) {
         Business business = businessService.queryBusiness(businessCmdReqDTO.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
-        BusinessDomain domainA = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleA().getDomain());
+        Domain domainA = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleA().getDomain());
         BusinessCheckUtil.checkNull(domainA, BizCodeEnum.DOMAIN_NOT_EXIST);
-        BusinessDomain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
+        Domain domainB = domainService.queryDomain(businessCmdReqDTO.getRelationship().getRoleB().getDomain());
         BusinessCheckUtil.checkNull(domainB, BizCodeEnum.DOMAIN_NOT_EXIST);
         return ResultUtil.success(businessDomainDesign4Strategy.removeBusinessDomainRelationship(businessCmdReqDTO.getRelationship()));
     }

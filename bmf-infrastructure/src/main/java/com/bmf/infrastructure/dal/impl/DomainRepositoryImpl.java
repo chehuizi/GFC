@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessRelDomainMapper;
 import com.bmf.infrastructure.dal.mapper.DomainMapper;
@@ -22,57 +22,57 @@ public class DomainRepositoryImpl implements DomainRepository {
     private BusinessRelDomainMapper businessRelDomainMapper;
 
     @Override
-    public BusinessDomain selectOne(BusinessDomain req) {
+    public Domain selectOne(Domain req) {
         DomainPO domainPO = POUtils.convert(req, DomainPO.class);
-        return POUtils.convert(domainMapper.selectOne(domainPO), BusinessDomain.class);
+        return POUtils.convert(domainMapper.selectOne(domainPO), Domain.class);
     }
 
     @Override
-    public List<BusinessDomain> selectByDomainCode(List<Integer> domainCodeList) {
-        return POUtils.convert(domainMapper.selectByDomainCode(domainCodeList), BusinessDomain.class);
+    public List<Domain> selectByDomainCode(List<Integer> domainCodeList) {
+        return POUtils.convert(domainMapper.selectByDomainCode(domainCodeList), Domain.class);
     }
 
     @Override
-    public List<BusinessDomain> selectByBusinessCode(Integer businessCode) {
+    public List<Domain> selectByBusinessCode(Integer businessCode) {
         List<BusinessRelDomainPO> businessRelDomainPOList = businessRelDomainMapper.selectByBusinessCode(businessCode);
         return POUtils.convert(domainMapper.selectByDomainCode(businessRelDomainPOList.stream().
                         map(BusinessRelDomainPO::getDomainCode).collect(Collectors.toList())),
-                BusinessDomain.class);
+                Domain.class);
     }
 
     @Override
-    public boolean insert(BusinessDomain req) {
+    public boolean insert(Domain req) {
         DomainPO domainPO = POUtils.convert(req, DomainPO.class);
         return domainMapper.insert(domainPO) == 1;
     }
 
     @Override
-    public boolean batchInsert(List<BusinessDomain> businessDomainList) {
-        List<DomainPO> domainPOList = POUtils.convertModel2PO(businessDomainList, DomainPO.class);
-        return domainMapper.batchInsert(domainPOList) == businessDomainList.size();
+    public boolean batchInsert(List<Domain> domainList) {
+        List<DomainPO> domainPOList = POUtils.convertModel2PO(domainList, DomainPO.class);
+        return domainMapper.batchInsert(domainPOList) == domainList.size();
     }
 
     @Override
-    public boolean update(BusinessDomain req) {
+    public boolean update(Domain req) {
         DomainPO domainPO = POUtils.convert(req, DomainPO.class);
         return domainMapper.update(domainPO) == 1;
     }
 
     @Override
-    public boolean batchUpdate(List<BusinessDomain> businessDomainList) {
-        List<DomainPO> domainPOList = POUtils.convertModel2PO(businessDomainList, DomainPO.class);
-        return domainMapper.batchUpdate(domainPOList) == businessDomainList.size();
+    public boolean batchUpdate(List<Domain> domainList) {
+        List<DomainPO> domainPOList = POUtils.convertModel2PO(domainList, DomainPO.class);
+        return domainMapper.batchUpdate(domainPOList) == domainList.size();
     }
 
     @Override
-    public boolean delete(BusinessDomain req) {
+    public boolean delete(Domain req) {
         DomainPO domainPO = POUtils.convert(req, DomainPO.class);
         return domainMapper.delete(domainPO) == 1;
     }
 
     @Override
-    public boolean batchDelete(List<BusinessDomain> businessDomainList) {
-        List<DomainPO> domainPOList = POUtils.convertModel2PO(businessDomainList, DomainPO.class);
+    public boolean batchDelete(List<Domain> domainList) {
+        List<DomainPO> domainPOList = POUtils.convertModel2PO(domainList, DomainPO.class);
         return domainMapper.batchDelete(domainPOList) == domainPOList.size();
     }
 }

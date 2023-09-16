@@ -1,6 +1,6 @@
 package com.bmf.core.domain.impl;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
 import com.bmf.base.enums.CmdTypeEnum;
@@ -13,7 +13,6 @@ import com.bmf.infrastructure.dal.DomainRepository;
 import com.bmf.infrastructure.dal.DslBaseRepository;
 import com.bmf.infrastructure.dal.DslExtRepository;
 import com.bmf.infrastructure.generator.CodeSeqGenerator;
-import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -35,38 +34,38 @@ public class DomainServiceImpl implements DomainService {
     private CodeSeqGenerator codeSeqGenerator;
 
     @Override
-    public BusinessDomain queryDomain(BusinessDomain businessDomain) {
-        return domainRepository.selectOne(businessDomain);
+    public Domain queryDomain(Domain domain) {
+        return domainRepository.selectOne(domain);
     }
 
     @Override
-    public List<BusinessDomain> queryDomainByBusinessCode(Integer businessCode) {
+    public List<Domain> queryDomainByBusinessCode(Integer businessCode) {
         return domainRepository.selectByBusinessCode(businessCode);
     }
 
     @Override
-    public List<BusinessDomain> queryDomainByCode(List<Integer> domainCodeList) {
+    public List<Domain> queryDomainByCode(List<Integer> domainCodeList) {
         return domainRepository.selectByDomainCode(domainCodeList);
     }
 
     @Override
-    public boolean createDomain(BusinessDomain businessDomain) {
-        return domainRepository.insert(businessDomain);
+    public boolean createDomain(Domain domain) {
+        return domainRepository.insert(domain);
     }
 
     @Override
-    public boolean batchCreateDomain(List<BusinessDomain> businessDomainList) {
-        return domainRepository.batchInsert(businessDomainList);
+    public boolean batchCreateDomain(List<Domain> domainList) {
+        return domainRepository.batchInsert(domainList);
     }
 
     @Override
-    public boolean updateDomain(BusinessDomain businessDomain) {
-        return domainRepository.update(businessDomain);
+    public boolean updateDomain(Domain domain) {
+        return domainRepository.update(domain);
     }
 
     @Override
-    public boolean deleteDomain(BusinessDomain businessDomain) {
-        return domainRepository.delete(businessDomain);
+    public boolean deleteDomain(Domain domain) {
+        return domainRepository.delete(domain);
     }
 
     @Override
@@ -100,18 +99,18 @@ public class DomainServiceImpl implements DomainService {
 
     @Override
     @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
-    public Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode,
-                                                                       List<BusinessDomain> domainList)
+    public Map<CmdTypeEnum, List<Domain>> handleStrategyDesign(Integer businessCode,
+                                                               List<Domain> domainList)
             throws BizException {
-        List<BusinessDomain> existedDomains = domainRepository.selectByBusinessCode(businessCode);
-        Map<Integer, BusinessDomain> existedDomainMapByCode = Objects.nonNull(existedDomains) ?
+        List<Domain> existedDomains = domainRepository.selectByBusinessCode(businessCode);
+        Map<Integer, Domain> existedDomainMapByCode = Objects.nonNull(existedDomains) ?
                 existedDomains.stream().collect(
                 Collectors.toMap(e -> e.getDomainCode(), e -> e)) : Collections.EMPTY_MAP;
 
         // 根据当前的领域和传入参数的比较，得出增删改的领域
-        List<BusinessDomain> insertedDomains = new ArrayList<>();
-        List<BusinessDomain> updatedDomains = new ArrayList<>();
-        for (BusinessDomain domain : domainList) {
+        List<Domain> insertedDomains = new ArrayList<>();
+        List<Domain> updatedDomains = new ArrayList<>();
+        for (Domain domain : domainList) {
             if (Objects.isNull(existedDomainMapByCode.get(domain.getDomainCode()))) {
                 domain.setDomainCode(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_DOMAIN.getKey()));
                 insertedDomains.add(domain);
@@ -120,7 +119,7 @@ public class DomainServiceImpl implements DomainService {
                 existedDomainMapByCode.remove(domain.getDomainCode());
             }
         }
-        List<BusinessDomain> deletedDomains = new ArrayList<>(existedDomainMapByCode.values());
+        List<Domain> deletedDomains = new ArrayList<>(existedDomainMapByCode.values());
 
         boolean result;
         if (!insertedDomains.isEmpty()) {
@@ -138,7 +137,7 @@ public class DomainServiceImpl implements DomainService {
             BusinessCheckUtil.checkTrue(result, BizCodeEnum.STRATEGY_DESIGN_DOMAIN_DELETED_FAILED);
         }
 
-        Map<CmdTypeEnum, List<BusinessDomain>> data = new HashMap<>();
+        Map<CmdTypeEnum, List<Domain>> data = new HashMap<>();
         data.put(CmdTypeEnum.INSERT, insertedDomains);
         data.put(CmdTypeEnum.UPDATE, updatedDomains);
         data.put(CmdTypeEnum.DELETE, deletedDomains);

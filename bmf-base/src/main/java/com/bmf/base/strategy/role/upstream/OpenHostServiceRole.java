@@ -1,6 +1,6 @@
 package com.bmf.base.strategy.role.upstream;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.enums.RelationshipRoleEnum;
 
 /**
@@ -12,7 +12,7 @@ public class OpenHostServiceRole extends UpstreamRole {
         super.setRole(RelationshipRoleEnum.OHS.getRole());
     }
 
-    public OpenHostServiceRole(BusinessDomain domain) {
+    public OpenHostServiceRole(Domain domain) {
         super.setDomain(domain);
         super.setRole(RelationshipRoleEnum.OHS.getRole());
     }

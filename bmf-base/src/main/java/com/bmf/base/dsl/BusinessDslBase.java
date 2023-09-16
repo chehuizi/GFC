@@ -1,6 +1,7 @@
 package com.bmf.base.dsl;
 
 import com.bmf.base.BaseModel;
+import com.bmf.base.Domain;
 import lombok.Data;
 
 import java.util.List;
@@ -13,7 +14,7 @@ public class BusinessDslBase extends BaseModel {
 
     /**
      * 领域编码
-     * @see com.bmf.base.BusinessDomain
+     * @see Domain
      */
     private Integer domainCode;
     /**

@@ -1,6 +1,6 @@
 package com.bmf.core.domain;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.dsl.BusinessDslBase;
 import com.bmf.base.dsl.BusinessDslExt;
 import com.bmf.base.enums.CmdTypeEnum;
@@ -16,52 +16,52 @@ public interface DomainService {
 
     /**
      * 查询领域
-     * @param businessDomain
+     * @param domain
      * @return
      */
-    BusinessDomain queryDomain(BusinessDomain businessDomain);
+    Domain queryDomain(Domain domain);
 
     /**
      * 根据业务编码查询领域
      * @param businessCode
      * @return
      */
-    List<BusinessDomain> queryDomainByBusinessCode(Integer businessCode);
+    List<Domain> queryDomainByBusinessCode(Integer businessCode);
 
     /**
      * 查询领域列表
      * @param domainCodeList
      * @return
      */
-    List<BusinessDomain> queryDomainByCode(List<Integer> domainCodeList);
+    List<Domain> queryDomainByCode(List<Integer> domainCodeList);
 
     /**
      * 创建领域
-     * @param businessDomain
+     * @param domain
      * @return
      */
-    boolean createDomain(BusinessDomain businessDomain);
+    boolean createDomain(Domain domain);
 
     /**
      * 批量创建领域
-     * @param businessDomainList
+     * @param domainList
      * @return
      */
-    boolean batchCreateDomain(List<BusinessDomain> businessDomainList);
+    boolean batchCreateDomain(List<Domain> domainList);
 
     /**
      * 更新领域
-     * @param businessDomain
+     * @param domain
      * @return
      */
-    boolean updateDomain(BusinessDomain businessDomain);
+    boolean updateDomain(Domain domain);
 
     /**
      * 删除领域
-     * @param businessDomain
+     * @param domain
      * @return
      */
-    boolean deleteDomain(BusinessDomain businessDomain);
+    boolean deleteDomain(Domain domain);
 
     /**
      * 添加领域术语
@@ -97,7 +97,7 @@ public interface DomainService {
      * @param domainList
      * @return
      */
-    Map<CmdTypeEnum, List<BusinessDomain>> handleStrategyDesign(Integer businessCode,
-                                                                List<BusinessDomain> domainList)
+    Map<CmdTypeEnum, List<Domain>> handleStrategyDesign(Integer businessCode,
+                                                        List<Domain> domainList)
             throws BizException;
 }

@@ -4,7 +4,7 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.qry.DomainQryService;
 import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.common.enums.BizCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -30,7 +30,7 @@ public class DomainQryServiceExceptionTest {
     @Test
     public void test_domain_query_one_exp_80001_2() {
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
-        domainQryReqDTO.setBusinessDomain(null);
+        domainQryReqDTO.setDomain(null);
         Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());
@@ -39,8 +39,8 @@ public class DomainQryServiceExceptionTest {
     @Test
     public void test_domain_query_one_exp_80001_3() {
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
-        BusinessDomain businessDomain = new BusinessDomain();
-        domainQryReqDTO.setBusinessDomain(businessDomain);
+        Domain domain = new Domain();
+        domainQryReqDTO.setDomain(domain);
         Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
         System.out.println(result);
         Assert.assertTrue(BizCodeEnum.PARAM_ERROR.getCode() == result.getCode());

@@ -4,7 +4,7 @@ import com.bmf.api.Result;
 import com.bmf.api.domain.qry.DomainQryService;
 import com.bmf.api.domain.dto.DomainQryReqDTO;
 import com.bmf.api.domain.dto.DomainRespDTO;
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.common.utils.ResultUtil;
@@ -34,7 +34,7 @@ public class DomainQryServiceImpl implements DomainQryService {
     @Override
     @Validator(beanName = "domainQryReqDTOValidator", method = "v4QueryOne")
     public Result<DomainRespDTO> queryOne(DomainQryReqDTO req) {
-        BusinessDomain domain = domainService.queryDomain(req.getBusinessDomain());
+        Domain domain = domainService.queryDomain(req.getDomain());
         if (Objects.isNull(domain)) {
             return ResultUtil.success(null);
         }

@@ -1,8 +1,8 @@
 package com.bmf.base.snapshot;
 
 import com.alibaba.fastjson.JSONObject;
-import com.bmf.base.BusinessDomain;
-import com.bmf.base.BusinessDomainRelation;
+import com.bmf.base.Domain;
+import com.bmf.base.DomainRelation;
 import com.bmf.base.BusinessRelDomain;
 import lombok.Builder;
 import lombok.Data;
@@ -20,7 +20,7 @@ public class DomainStrategyDesignSnapshot extends BaseSnapshot {
     /**
      * 领域列表
      */
-    private List<BusinessDomain> domainList;
+    private List<Domain> domainList;
     /**
      * 业务领域关系列表
      */
@@ -28,7 +28,7 @@ public class DomainStrategyDesignSnapshot extends BaseSnapshot {
     /**
      * 领域关系列表
      */
-    private List<BusinessDomainRelation> domainRelationList;
+    private List<DomainRelation> domainRelationList;
 
     @Override
     public String getSnapshotContent() {

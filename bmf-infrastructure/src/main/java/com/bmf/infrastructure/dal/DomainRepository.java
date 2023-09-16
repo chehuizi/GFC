@@ -1,33 +1,33 @@
 package com.bmf.infrastructure.dal;
 
-import com.bmf.base.BusinessDomain;
+import com.bmf.base.Domain;
 
 import java.util.List;
 
-public interface DomainRepository extends BaseRepository<BusinessDomain> {
+public interface DomainRepository extends BaseRepository<Domain> {
 
     /**
      * 查询领域编码查询
      * @param domainCodeList
      * @return
      */
-    List<BusinessDomain> selectByDomainCode(List<Integer> domainCodeList);
+    List<Domain> selectByDomainCode(List<Integer> domainCodeList);
 
     /**
      * 根据业务编码查询领域列表
      * @param businessCode
      * @return
      */
-    List<BusinessDomain> selectByBusinessCode(Integer businessCode);
+    List<Domain> selectByBusinessCode(Integer businessCode);
 
     /**
      * 批量插入领域
-     * @param businessDomainList
+     * @param domainList
      * @return
      */
-    boolean batchInsert(List<BusinessDomain> businessDomainList);
+    boolean batchInsert(List<Domain> domainList);
 
-    boolean batchUpdate(List<BusinessDomain> businessDomainList);
+    boolean batchUpdate(List<Domain> domainList);
 
-    boolean batchDelete(List<BusinessDomain> businessDomainList);
+    boolean batchDelete(List<Domain> domainList);
 }
