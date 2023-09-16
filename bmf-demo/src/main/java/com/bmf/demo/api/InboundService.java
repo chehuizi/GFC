@@ -1,6 +1,6 @@
 package com.bmf.demo.api;
 
-import com.bmf.base.annotations.BusinessApi;
+import com.bmf.base.annotations.DomainApi;
 import com.bmf.base.annotations.DomainService;
 
 /**
@@ -13,7 +13,7 @@ public interface InboundService {
      * 创建入库单
      * @return
      */
-    @BusinessApi(serviceCode = 10002, serviceAlias = "inbound_create_order_service")
+    @DomainApi(serviceCode = 10002, serviceAlias = "inbound_create_order_service")
     String createInboundOrder();
 
     /**

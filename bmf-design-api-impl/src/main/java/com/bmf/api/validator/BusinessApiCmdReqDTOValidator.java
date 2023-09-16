@@ -14,7 +14,7 @@ public class BusinessApiCmdReqDTOValidator {
      */
     public boolean v4Create(BusinessApiCmdReqDTO businessApiCmdReqDTO) {
         ParamCheckUtil.checkNull(businessApiCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(businessApiCmdReqDTO.getBusinessApiList(), "business api list is null");
+        ParamCheckUtil.checkNull(businessApiCmdReqDTO.getDomainApiList(), "business api list is null");
         return true;
     }
 }

@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.TYPE)
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface BusinessApplication {
+public @interface DomainApp {
 
     /**
      * 领域编码

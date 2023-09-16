@@ -1,6 +1,7 @@
 package com.bmf.base;
 
-import com.bmf.base.enums.BusinessDomainTypeEnum;
+import com.bmf.base.enums.DomainTypeEnum;
+import com.bmf.base.enums.DomainLevelEnum;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
 import com.bmf.base.tactics.service.DomainService;
@@ -33,13 +34,13 @@ public class BusinessDomain extends BaseModel {
 
     /**
      * 领域类型
-     * @see com.bmf.base.enums.BusinessDomainTypeEnum
+     * @see DomainTypeEnum
      */
     private String domainType;
 
     /**
      * 领域等级
-     * @see com.bmf.base.enums.BusinessDomainLevelEnum
+     * @see DomainLevelEnum
      */
     private int domainLevel;
 
@@ -102,7 +103,7 @@ public class BusinessDomain extends BaseModel {
      */
     public Map<String, Object> getExtMap() {
         Map<String, Object> extMap = new HashMap<>();
-        extMap.put("domainTypeDesc", BusinessDomainTypeEnum.getDescByType(domainType));
+        extMap.put("domainTypeDesc", DomainTypeEnum.getDescByType(domainType));
         return extMap;
     }
 }

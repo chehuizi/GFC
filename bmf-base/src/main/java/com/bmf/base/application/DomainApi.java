@@ -7,7 +7,7 @@ import lombok.Data;
  * 业务API
  */
 @Data
-public class BusinessApi extends BaseModel {
+public class DomainApi extends BaseModel {
 
     /**
      * API名称

@@ -20,7 +20,7 @@ import java.util.List;
 public class HttpUtil {
 
     public static int post(BusinessApiCmdReqDTO businessApiCmdReqDTO) {
-        String url = "http://localhost:8080/business/api/create";
+        String url = "http://120.46.150.249:8080/business/api/create";
         HttpPost httpPost = new HttpPost(url);
         // 构建对象
         HttpEntity httpEntity = new StringEntity(JSON.toJSONString(businessApiCmdReqDTO));

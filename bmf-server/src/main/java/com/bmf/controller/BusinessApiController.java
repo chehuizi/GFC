@@ -1,5 +1,6 @@
 package com.bmf.controller;
 
+import com.alibaba.fastjson2.JSON;
 import com.bmf.api.Result;
 import com.bmf.api.application.BusinessApiCmdService;
 import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
@@ -19,6 +20,7 @@ public class BusinessApiController {
 
     @PostMapping("create")
     public Boolean create(@RequestBody BusinessApiCmdReqDTO businessApiCmdReqDTO) {
+        logger.info("req: {}", JSON.toJSON(businessApiCmdReqDTO));
         Result<Boolean> result = businessApiCmdService.create(businessApiCmdReqDTO);
         return result.getData();
     }

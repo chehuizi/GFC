@@ -1,7 +1,7 @@
 package com.bmf.api.application.dto;
 
 import com.bmf.api.ReqDTO;
-import com.bmf.base.application.BusinessApi;
+import com.bmf.base.application.DomainApi;
 import lombok.Data;
 
 import java.io.Serializable;
@@ -18,5 +18,5 @@ public class BusinessApiCmdReqDTO extends ReqDTO implements Serializable {
     /**
      * API列表
      */
-    private List<BusinessApi> businessApiList;
+    private List<DomainApi> domainApiList;
 }

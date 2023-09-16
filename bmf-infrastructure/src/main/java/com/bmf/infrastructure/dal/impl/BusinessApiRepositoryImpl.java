@@ -1,6 +1,6 @@
 package com.bmf.infrastructure.dal.impl;
 
-import com.bmf.base.application.BusinessApi;
+import com.bmf.base.application.DomainApi;
 import com.bmf.infrastructure.dal.BusinessApiRepository;
 import com.bmf.infrastructure.dal.mapper.BusinessApiMapper;
 import com.bmf.infrastructure.dal.po.BusinessApiPO;
@@ -17,28 +17,28 @@ public class BusinessApiRepositoryImpl implements BusinessApiRepository {
     private BusinessApiMapper businessApiMapper;
 
     @Override
-    public BusinessApi selectOne(BusinessApi req) {
+    public DomainApi selectOne(DomainApi req) {
         return null;
     }
 
     @Override
-    public boolean insert(BusinessApi req) {
+    public boolean insert(DomainApi req) {
         return false;
     }
 
     @Override
-    public boolean batchInsert(List<BusinessApi> req) {
+    public boolean batchInsert(List<DomainApi> req) {
         List<BusinessApiPO> businessApiPOList = POUtils.convertModel2PO(req, BusinessApiPO.class);
         return businessApiMapper.batchInsert(businessApiPOList) == req.size();
     }
 
     @Override
-    public boolean update(BusinessApi req) {
+    public boolean update(DomainApi req) {
         return false;
     }
 
     @Override
-    public boolean delete(BusinessApi req) {
+    public boolean delete(DomainApi req) {
         return false;
     }
 }

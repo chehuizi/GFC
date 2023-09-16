@@ -10,7 +10,7 @@ import java.util.Objects;
  * 目前只支持三种业务域类型
  */
 @Getter
-public enum BusinessDomainTypeEnum {
+public enum DomainTypeEnum {
 
     CORE("core", "核心域"),
     GENERIC("generic", "通用域"),
@@ -26,7 +26,7 @@ public enum BusinessDomainTypeEnum {
      */
     private String desc;
 
-    BusinessDomainTypeEnum(String type, String desc) {
+    DomainTypeEnum(String type, String desc) {
         this.type = type;
         this.desc = desc;
     }
@@ -37,7 +37,7 @@ public enum BusinessDomainTypeEnum {
      * @return
      */
     public static boolean contain(String type) {
-        for (BusinessDomainTypeEnum item : BusinessDomainTypeEnum.values()) {
+        for (DomainTypeEnum item : DomainTypeEnum.values()) {
             if (item.getType().equalsIgnoreCase(type)) {
                 return true;
             }
@@ -50,12 +50,12 @@ public enum BusinessDomainTypeEnum {
      * @param type
      * @return
      */
-    public static BusinessDomainTypeEnum getByType(String type) {
+    public static DomainTypeEnum getByType(String type) {
         if (StringUtils.isBlank(type)) {
             return null;
         }
 
-        for (BusinessDomainTypeEnum item : BusinessDomainTypeEnum.values()) {
+        for (DomainTypeEnum item : DomainTypeEnum.values()) {
             if (item.getType().equals(type)) {
                 return item;
             }
@@ -70,7 +70,7 @@ public enum BusinessDomainTypeEnum {
      * @return
      */
     public static String getDescByType(String type) {
-        BusinessDomainTypeEnum domainTypeEnum = getByType(type);
+        DomainTypeEnum domainTypeEnum = getByType(type);
         if (Objects.nonNull(domainTypeEnum)) {
             return domainTypeEnum.getDesc();
         }

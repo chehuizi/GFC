@@ -2,7 +2,7 @@ package com.bmf.agent.client.registrar;
 
 import com.bmf.agent.client.utils.HttpUtil;
 import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
-import com.bmf.base.annotations.BusinessApi;
+import com.bmf.base.annotations.DomainApi;
 import com.bmf.base.annotations.DomainService;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
@@ -64,25 +64,25 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         // 获取指定扫描的包
         Set<String> basePackages = getBasePackages(importingClassMetadata);
 
-        List<com.bmf.base.application.BusinessApi> businessApiList = new ArrayList<>();
+        List<com.bmf.base.application.DomainApi> domainApiList = new ArrayList<>();
         for (String basePackage : basePackages) {
             Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents(basePackage);
             for (BeanDefinition candidateComponent : candidateComponents) {
                 if (candidateComponent instanceof AnnotatedBeanDefinition) {
                     AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;
                     AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
-                    Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(BusinessApi.class.getCanonicalName());
+                    Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(DomainApi.class.getCanonicalName());
                     for (MethodMetadata methodMetadata : methodMetadataSet) {
-                        com.bmf.base.application.BusinessApi businessApi = buildBusinessApi(methodMetadata);
-                        businessApiList.add(businessApi);
+                        com.bmf.base.application.DomainApi domainApi = buildBusinessApi(methodMetadata);
+                        domainApiList.add(domainApi);
                     }
                 }
             }
         }
 
-        if (businessApiList.size() > 0) {
+        if (domainApiList.size() > 0) {
             BusinessApiCmdReqDTO businessApiCmdReqDTO = new BusinessApiCmdReqDTO();
-            businessApiCmdReqDTO.setBusinessApiList(businessApiList);
+            businessApiCmdReqDTO.setDomainApiList(domainApiList);
             HttpUtil.post(businessApiCmdReqDTO);
         }
     }
@@ -130,14 +130,14 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
      * @param methodMetadata
      * @return
      */
-    private com.bmf.base.application.BusinessApi buildBusinessApi(MethodMetadata methodMetadata) {
-        Map<String, Object> methodAttrMap = methodMetadata.getAnnotationAttributes(BusinessApi.class.getCanonicalName());
-        com.bmf.base.application.BusinessApi businessApi = new com.bmf.base.application.BusinessApi();
-        businessApi.setApiPath(methodMetadata.getDeclaringClassName());
-        businessApi.setApiName(methodMetadata.getMethodName());
-        businessApi.setApiDesc("test");
-        businessApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
-        businessApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
-        return businessApi;
+    private com.bmf.base.application.DomainApi buildBusinessApi(MethodMetadata methodMetadata) {
+        Map<String, Object> methodAttrMap = methodMetadata.getAnnotationAttributes(DomainApi.class.getCanonicalName());
+        com.bmf.base.application.DomainApi domainApi = new com.bmf.base.application.DomainApi();
+        domainApi.setApiPath(methodMetadata.getDeclaringClassName());
+        domainApi.setApiName(methodMetadata.getMethodName());
+        domainApi.setApiDesc("test");
+        domainApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
+        domainApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
+        return domainApi;
     }
 }

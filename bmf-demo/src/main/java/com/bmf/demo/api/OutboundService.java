@@ -1,6 +1,6 @@
 package com.bmf.demo.api;
 
-import com.bmf.base.annotations.BusinessApi;
+import com.bmf.base.annotations.DomainApi;
 import com.bmf.base.annotations.DomainService;
 
 /**
@@ -13,7 +13,7 @@ public interface OutboundService {
      * 创建出库单
      * @return
      */
-    @BusinessApi(serviceCode = 10001, serviceAlias = "outbound_create_order_service")
+    @DomainApi(serviceCode = 10001, serviceAlias = "outbound_create_order_service")
     String createOutboundOrder();
 
     /**

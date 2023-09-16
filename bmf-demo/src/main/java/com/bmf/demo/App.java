@@ -1,7 +1,7 @@
 package com.bmf.demo;
 
 import com.bmf.agent.client.registrar.EnableBMFScan;
-import com.bmf.base.annotations.BusinessApplication;
+import com.bmf.base.annotations.DomainApp;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.bmf.demo"})
 @EnableBMFScan(basePackages = {"com.bmf.demo.api"})
-@BusinessApplication(domainCode = 101, domainAlias = "wms")
+@DomainApp(domainCode = 101, domainAlias = "wms")
 public class App {
 
     public static void main(String args[]) {

@@ -5,7 +5,7 @@ import java.lang.annotation.*;
 @Documented
 @Target(ElementType.METHOD)
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface BusinessApi {
+public @interface DomainApi {
 
     /**
      * 服务编码

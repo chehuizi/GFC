@@ -7,7 +7,7 @@ import lombok.Data;
  * 业务应用
  */
 @Data
-public class BusinessApplication extends BaseModel {
+public class DomainApp extends BaseModel {
 
     /**
      * 应用ID

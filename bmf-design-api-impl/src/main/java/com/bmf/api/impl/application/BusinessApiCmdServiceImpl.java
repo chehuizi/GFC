@@ -19,7 +19,7 @@ public class BusinessApiCmdServiceImpl implements BusinessApiCmdService {
     @Override
     @Validator(beanName = "businessApiCmdReqDTOValidator", method = "v4Create")
     public Result<Boolean> create(BusinessApiCmdReqDTO req) {
-        return ResultUtil.success(businessApiService.createBusinessApi(req.getBusinessApiList()));
+        return ResultUtil.success(businessApiService.createBusinessApi(req.getDomainApiList()));
     }
 
     @Override

@@ -7,7 +7,7 @@ import lombok.Getter;
  * 目前只支持三级业务域
  */
 @Getter
-public enum BusinessDomainLevelEnum {
+public enum DomainLevelEnum {
 
     ONE(1, "一级域"),
     TWO(2, "二级域"),
@@ -17,7 +17,7 @@ public enum BusinessDomainLevelEnum {
     private int value;
     private String desc;
 
-    BusinessDomainLevelEnum(int value, String desc) {
+    DomainLevelEnum(int value, String desc) {
         this.value = value;
         this.desc = desc;
     }
@@ -28,7 +28,7 @@ public enum BusinessDomainLevelEnum {
      * @return
      */
     public static boolean contain(int level) {
-        for (BusinessDomainLevelEnum item : BusinessDomainLevelEnum.values()) {
+        for (DomainLevelEnum item : DomainLevelEnum.values()) {
             if (item.getValue() == level) {
                 return true;
             }

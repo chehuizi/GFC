@@ -1,13 +1,11 @@
 package com.bmf.api.validator;
 
-import com.alibaba.fastjson.JSON;
 import com.bmf.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.base.BusinessDomain;
-import com.bmf.base.enums.BusinessDomainTypeEnum;
+import com.bmf.base.enums.DomainTypeEnum;
 import com.bmf.base.enums.RelationshipEnum;
 import com.bmf.base.enums.RelationshipRoleEnum;
 import com.bmf.base.strategy.BusinessDomainRelationship;
-import com.bmf.base.view.DomainPosition;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -71,7 +69,7 @@ public class BusinessCmdReqDTOValidator {
         ParamCheckUtil.checkBlank(domain.getDomainAlias(), "domain alias is blank");
         ParamCheckUtil.checkBlank(domain.getDomainName(), "domain name is blank");
         ParamCheckUtil.checkBlank(domain.getDomainType(), "domain type is blank");
-        ParamCheckUtil.checkNull(BusinessDomainTypeEnum.getByType(domain.getDomainType()), "domain type is not enum");
+        ParamCheckUtil.checkNull(DomainTypeEnum.getByType(domain.getDomainType()), "domain type is not enum");
         ParamCheckUtil.checkBlank(domain.getDomainPosition(), "domain position is blank");
         /*
         DomainPosition domainPosition = JSON.parseObject(domain.getDomainPosition(), DomainPosition.class);

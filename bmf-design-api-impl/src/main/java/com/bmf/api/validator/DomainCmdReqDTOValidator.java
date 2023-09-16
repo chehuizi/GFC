@@ -1,8 +1,8 @@
 package com.bmf.api.validator;
 
 import com.bmf.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.base.enums.BusinessDomainLevelEnum;
-import com.bmf.base.enums.BusinessDomainTypeEnum;
+import com.bmf.base.enums.DomainLevelEnum;
+import com.bmf.base.enums.DomainTypeEnum;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
@@ -23,8 +23,8 @@ public class DomainCmdReqDTOValidator {
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getBusinessDomain().getDomainName(), "domain name is blank");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getBusinessDomain().getDomainAlias(), "domain alias is blank");
         ParamCheckUtil.checkBlank(domainCmdReqDTO.getBusinessDomain().getDomainType(), "domain type is blank");
-        ParamCheckUtil.checkTrue(BusinessDomainTypeEnum.contain(domainCmdReqDTO.getBusinessDomain().getDomainType()), "domain type is illegal");
-        ParamCheckUtil.checkTrue(BusinessDomainLevelEnum.contain(domainCmdReqDTO.getBusinessDomain().getDomainLevel()), "domain level is illegal");
+        ParamCheckUtil.checkTrue(DomainTypeEnum.contain(domainCmdReqDTO.getBusinessDomain().getDomainType()), "domain type is illegal");
+        ParamCheckUtil.checkTrue(DomainLevelEnum.contain(domainCmdReqDTO.getBusinessDomain().getDomainLevel()), "domain level is illegal");
         return true;
     }
 

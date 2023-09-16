@@ -1,6 +1,6 @@
 package com.bmf.core.application;
 
-import com.bmf.base.application.BusinessApi;
+import com.bmf.base.application.DomainApi;
 
 import java.util.List;
 
@@ -11,8 +11,8 @@ public interface BusinessApiService {
 
     /**
      * 批量创建业务API
-     * @param businessApiList
+     * @param domainApiList
      * @return
      */
-    boolean createBusinessApi(List<BusinessApi> businessApiList);
+    boolean createBusinessApi(List<DomainApi> domainApiList);
 }
