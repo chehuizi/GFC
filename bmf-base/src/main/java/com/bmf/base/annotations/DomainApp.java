@@ -8,6 +8,24 @@ import java.lang.annotation.*;
 public @interface DomainApp {
 
     /**
+     * 应用ID
+     * @return
+     */
+    int appId();
+
+    /**
+     * 应用名称
+     * @return
+     */
+    String appName();
+
+    /**
+     * 应用描述
+     * @return
+     */
+    String appDesc();
+
+    /**
      * 领域编码
      */
     int domainCode();

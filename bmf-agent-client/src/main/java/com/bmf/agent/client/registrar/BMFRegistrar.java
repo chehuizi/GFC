@@ -4,6 +4,7 @@ import com.bmf.agent.client.utils.HttpUtil;
 import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
 import com.bmf.base.annotations.DomainApi;
 import com.bmf.base.annotations.DomainApiClass;
+import com.bmf.base.application.DomainApp;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -28,6 +29,8 @@ import java.util.*;
  */
 @Component
 public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, EnvironmentAware {
+
+    private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.base.annotations.DomainApp";
 
     /**
      * 资源加载器
@@ -55,6 +58,8 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
+        Map<String, Object> attrs = importingClassMetadata.getAnnotationAttributes(ANNOTATION_NAME_DOMAIN_APP);
+        DomainApp domainApp = buildDomainApp(attrs);
         // 创建scanner
         ClassPathScanningCandidateComponentProvider scanner = buildScanner();
         scanner.setResourceLoader(resourceLoader);
@@ -82,9 +87,26 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
         if (domainApiList.size() > 0) {
             BusinessApiCmdReqDTO businessApiCmdReqDTO = new BusinessApiCmdReqDTO();
+            businessApiCmdReqDTO.setDomainApp(domainApp);
             businessApiCmdReqDTO.setDomainApiList(domainApiList);
             HttpUtil.post(businessApiCmdReqDTO);
         }
+    }
+
+    /**
+     * 构建领域应用
+     * @param attrs
+     * @return
+     */
+    private DomainApp buildDomainApp(Map<String, Object> attrs) {
+        DomainApp domainApp = DomainApp.builder()
+                .appId((Integer) attrs.get("appId"))
+                .appName((String) attrs.get("appName"))
+                .appDesc((String) attrs.get("appDesc"))
+                .domainCode((Integer) attrs.get("domainCode"))
+                .domainAlias((String) attrs.get("domainAlias"))
+                .build();
+        return domainApp;
     }
 
     /**

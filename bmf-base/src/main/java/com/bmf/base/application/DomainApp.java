@@ -1,12 +1,14 @@
 package com.bmf.base.application;
 
 import com.bmf.base.BaseModel;
+import lombok.Builder;
 import lombok.Data;
 
 /**
  * 业务应用
  */
 @Data
+@Builder
 public class DomainApp extends BaseModel {
 
     /**
