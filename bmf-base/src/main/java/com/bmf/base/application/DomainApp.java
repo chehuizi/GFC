@@ -3,12 +3,12 @@ package com.bmf.base.application;
 import com.bmf.base.BaseModel;
 import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * 业务应用
  */
 @Data
-@Builder
 public class DomainApp extends BaseModel {
 
     /**
@@ -31,4 +31,5 @@ public class DomainApp extends BaseModel {
      * 领域别名（英文）
      */
     private String domainAlias;
+
 }

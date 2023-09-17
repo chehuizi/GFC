@@ -99,13 +99,12 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
      * @return
      */
     private DomainApp buildDomainApp(Map<String, Object> attrs) {
-        DomainApp domainApp = DomainApp.builder()
-                .appId((Integer) attrs.get("appId"))
-                .appName((String) attrs.get("appName"))
-                .appDesc((String) attrs.get("appDesc"))
-                .domainCode((Integer) attrs.get("domainCode"))
-                .domainAlias((String) attrs.get("domainAlias"))
-                .build();
+        DomainApp domainApp = new DomainApp();
+        domainApp.setAppId((Integer) attrs.get("appId"));
+        domainApp.setAppName((String) attrs.get("appName"));
+        domainApp.setAppDesc((String) attrs.get("appDesc"));
+        domainApp.setDomainCode((Integer) attrs.get("domainCode"));
+        domainApp.setDomainAlias((String) attrs.get("domainAlias"));
         return domainApp;
     }
 

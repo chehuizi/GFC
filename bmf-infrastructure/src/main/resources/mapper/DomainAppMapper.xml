@@ -31,11 +31,11 @@
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainAppPO">
         insert into bmf_domain_app (app_id, app_name, app_desc, domain_code, domain_alias)
         values (
-            #{item.appId,jdbcType=INTEGER},
-            #{item.appName,jdbcType=VARCHAR},
-            #{item.appDesc,jdbcType=VARCHAR},
-            #{item.domainCode,jdbcType=INTEGER},
-            #{item.domainAlias,jdbcType=VARCHAR}
+            #{appId,jdbcType=INTEGER},
+            #{appName,jdbcType=VARCHAR},
+            #{appDesc,jdbcType=VARCHAR},
+            #{domainCode,jdbcType=INTEGER},
+            #{domainAlias,jdbcType=VARCHAR}
         )
     </insert>
 </mapper>
