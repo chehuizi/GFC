@@ -160,7 +160,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         domainApi.setApiName(methodMetadata.getMethodName());
         domainApi.setApiDesc("test");
         domainApi.setDomainCode(domainApp.getDomainCode());
-        domainApi.setDomainAlias(domainApi.getDomainAlias());
+        domainApi.setDomainAlias(domainApp.getDomainAlias());
         domainApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
         domainApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
         return domainApi;

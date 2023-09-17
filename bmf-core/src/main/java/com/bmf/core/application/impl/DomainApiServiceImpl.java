@@ -7,6 +7,8 @@ import com.bmf.infrastructure.dal.DomainApiRepository;
 import com.bmf.infrastructure.dal.DomainAppRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,6 +21,7 @@ public class DomainApiServiceImpl implements DomainApiService {
     private DomainApiRepository domainApiRepository;
 
     @Override
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public boolean createApi(DomainApiCmdReqDTO req) {
         boolean result = domainAppRepository.insert(req.getDomainApp());
         if (result) {
