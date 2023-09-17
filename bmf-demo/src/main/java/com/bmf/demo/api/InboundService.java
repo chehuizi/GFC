@@ -1,12 +1,12 @@
 package com.bmf.demo.api;
 
 import com.bmf.base.annotations.DomainApi;
-import com.bmf.base.annotations.DomainService;
+import com.bmf.base.annotations.DomainApiClass;
 
 /**
  * 入库服务
  */
-@DomainService
+@DomainApiClass
 public interface InboundService {
 
     /**

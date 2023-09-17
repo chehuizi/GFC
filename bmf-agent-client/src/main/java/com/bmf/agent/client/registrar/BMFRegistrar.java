@@ -3,7 +3,7 @@ package com.bmf.agent.client.registrar;
 import com.bmf.agent.client.utils.HttpUtil;
 import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
 import com.bmf.base.annotations.DomainApi;
-import com.bmf.base.annotations.DomainService;
+import com.bmf.base.annotations.DomainApiClass;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -59,7 +59,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         ClassPathScanningCandidateComponentProvider scanner = buildScanner();
         scanner.setResourceLoader(resourceLoader);
         // 设置scanner的过滤条件
-        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainService.class);
+        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainApiClass.class);
         scanner.addIncludeFilter(annotationTypeFilter);
         // 获取指定扫描的包
         Set<String> basePackages = getBasePackages(importingClassMetadata);

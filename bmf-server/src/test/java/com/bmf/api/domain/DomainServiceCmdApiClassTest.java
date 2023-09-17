@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DomainServiceCmdServiceTest {
+public class DomainServiceCmdApiClassTest {
 
     @Autowired
     private DomainServiceCmdService domainServiceCmdService;

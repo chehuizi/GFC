@@ -5,5 +5,5 @@ import java.lang.annotation.*;
 @Documented
 @Retention(value = RetentionPolicy.RUNTIME)
 @Target(ElementType.TYPE)
-public @interface DomainService {
+public @interface DomainApiClass {
 }
