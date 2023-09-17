@@ -1,7 +1,7 @@
 package com.bmf.agent.client.utils;
 
 import com.alibaba.fastjson.JSON;
-import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
+import com.bmf.api.application.dto.DomainApiCmdReqDTO;
 import org.apache.hc.client5.http.classic.HttpClient;
 import org.apache.hc.client5.http.classic.methods.HttpPost;
 import org.apache.hc.client5.http.impl.classic.CloseableHttpClient;
@@ -19,11 +19,11 @@ import java.util.List;
  */
 public class HttpUtil {
 
-    public static int post(BusinessApiCmdReqDTO businessApiCmdReqDTO) {
-        String url = "http://120.46.150.249:8080/business/api/create";
+    public static int post(DomainApiCmdReqDTO domainApiCmdReqDTO) {
+        String url = "http://120.46.150.249:8080/domain/api/create";
         HttpPost httpPost = new HttpPost(url);
         // 构建对象
-        HttpEntity httpEntity = new StringEntity(JSON.toJSONString(businessApiCmdReqDTO));
+        HttpEntity httpEntity = new StringEntity(JSON.toJSONString(domainApiCmdReqDTO));
         httpPost.setEntity(httpEntity);
         HttpClient httpClient = buildHttpClient();
         try {

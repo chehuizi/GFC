@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainAppMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainAppPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="app_id" jdbcType="INTEGER" property="appId"/>
+        <result column="app_name" jdbcType="VARCHAR" property="appName"/>
+        <result column="app_desc" jdbcType="VARCHAR" property="appDesc"/>
+        <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
+        <result column="domain_alias" jdbcType="VARCHAR" property="domainAlias"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, app_id, app_name, app_desc, domain_code, domain_alias, gmt_create, gmt_modify, is_deleted
+    </sql>
+
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainAppPO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_domain_app
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="appId != null">and app_id = #{appId}</if>
+        </trim>
+        limit 1
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainAppPO">
+        insert into bmf_domain_app (app_id, app_name, app_desc, domain_code, domain_alias)
+        values (
+            #{item.appId,jdbcType=INTEGER},
+            #{item.appName,jdbcType=VARCHAR},
+            #{item.appDesc,jdbcType=VARCHAR},
+            #{item.domainCode,jdbcType=INTEGER},
+            #{item.domainAlias,jdbcType=VARCHAR}
+        )
+    </insert>
+</mapper>

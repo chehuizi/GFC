@@ -3,9 +3,13 @@
 <mapper namespace="com.bmf.infrastructure.dal.mapper.DomainApiMapper">
     <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainApiPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="app_id" jdbcType="INTEGER" property="appId"/>
+        <result column="app_name" jdbcType="VARCHAR" property="appName"/>
         <result column="api_name" jdbcType="VARCHAR" property="apiName"/>
         <result column="api_path" jdbcType="VARCHAR" property="apiPath"/>
         <result column="api_desc" jdbcType="VARCHAR" property="apiDesc"/>
+        <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
+        <result column="domain_alias" jdbcType="VARCHAR" property="domainAlias"/>
         <result column="service_code" jdbcType="INTEGER" property="serviceCode"/>
         <result column="service_alias" jdbcType="VARCHAR" property="serviceAlias"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
@@ -14,7 +18,9 @@
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, api_name, api_path, api_desc, service_code, service_alias, gmt_create, gmt_modify, is_deleted
+        id, app_id, app_name, api_name, api_path, api_desc,
+        domain_code, domain_alias, service_code, service_alias,
+        gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainApiPO">
@@ -28,14 +34,19 @@
         limit 1
     </select>
 
-    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.DomainApiPO">
-        insert into bmf_domain_api (api_name, api_path, api_desc, service_code, service_alias)
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into bmf_domain_api (app_id, app_name, api_name, api_path, api_desc,
+        domain_code, domain_alias, service_code, service_alias)
         values
         <foreach collection="list" item="item" index="index" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.appId,jdbcType=INTEGER},
+                #{item.appName,jdbcType=VARCHAR},
                 #{item.apiName,jdbcType=VARCHAR},
                 #{item.apiPath,jdbcType=VARCHAR},
                 #{item.apiDesc,jdbcType=VARCHAR},
+                #{item.domainCode,jdbcType=INTEGER},
+                #{item.domainAlias,jdbcType=VARCHAR},
                 #{item.serviceCode,jdbcType=INTEGER},
                 #{item.serviceAlias,jdbcType=VARCHAR}
             </trim>

@@ -12,7 +12,7 @@ import java.util.List;
  * 业务API CMD请求对象
  */
 @Data
-public class BusinessApiCmdReqDTO extends ReqDTO implements Serializable {
+public class DomainApiCmdReqDTO extends ReqDTO implements Serializable {
 
     private static final long serialVersionUID = -1577850349100928700L;
 

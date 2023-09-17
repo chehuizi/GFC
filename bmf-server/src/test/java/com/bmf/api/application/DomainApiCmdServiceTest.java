@@ -1,7 +1,7 @@
 package com.bmf.api.application;
 
 import com.bmf.api.Result;
-import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
+import com.bmf.api.application.dto.DomainApiCmdReqDTO;
 import com.bmf.base.application.DomainApi;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
@@ -19,11 +19,11 @@ import java.util.List;
 public class DomainApiCmdServiceTest {
 
     @Autowired
-    private BusinessApiCmdService businessApiCmdService;
+    private DomainApiCmdService domainApiCmdService;
 
     @Test
     public void test_business_api_create() {
-        BusinessApiCmdReqDTO businessApiCmdReqDTO = new BusinessApiCmdReqDTO();
+        DomainApiCmdReqDTO domainApiCmdReqDTO = new DomainApiCmdReqDTO();
         List<DomainApi> domainApiList = new ArrayList<>();
         DomainApi domainApi_1 = new DomainApi();
         domainApi_1.setApiName("createOutboundOrder");
@@ -39,8 +39,8 @@ public class DomainApiCmdServiceTest {
         domainApi_2.setServiceCode(10002);
         domainApi_2.setServiceAlias("inbound_create_order_service");
         domainApiList.add(domainApi_2);
-        businessApiCmdReqDTO.setDomainApiList(domainApiList);
-        Result<Boolean> result = businessApiCmdService.create(businessApiCmdReqDTO);
+        domainApiCmdReqDTO.setDomainApiList(domainApiList);
+        Result<Boolean> result = domainApiCmdService.create(domainApiCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }

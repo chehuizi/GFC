@@ -1,7 +1,7 @@
 package com.bmf.agent.client.registrar;
 
 import com.bmf.agent.client.utils.HttpUtil;
-import com.bmf.api.application.dto.BusinessApiCmdReqDTO;
+import com.bmf.api.application.dto.DomainApiCmdReqDTO;
 import com.bmf.base.annotations.DomainApi;
 import com.bmf.base.annotations.DomainApiClass;
 import com.bmf.base.application.DomainApp;
@@ -78,7 +78,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
                     AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
                     Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(DomainApi.class.getCanonicalName());
                     for (MethodMetadata methodMetadata : methodMetadataSet) {
-                        com.bmf.base.application.DomainApi domainApi = buildBusinessApi(methodMetadata);
+                        com.bmf.base.application.DomainApi domainApi = buildBusinessApi(domainApp, methodMetadata);
                         domainApiList.add(domainApi);
                     }
                 }
@@ -86,10 +86,10 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         }
 
         if (domainApiList.size() > 0) {
-            BusinessApiCmdReqDTO businessApiCmdReqDTO = new BusinessApiCmdReqDTO();
-            businessApiCmdReqDTO.setDomainApp(domainApp);
-            businessApiCmdReqDTO.setDomainApiList(domainApiList);
-            HttpUtil.post(businessApiCmdReqDTO);
+            DomainApiCmdReqDTO domainApiCmdReqDTO = new DomainApiCmdReqDTO();
+            domainApiCmdReqDTO.setDomainApp(domainApp);
+            domainApiCmdReqDTO.setDomainApiList(domainApiList);
+            HttpUtil.post(domainApiCmdReqDTO);
         }
     }
 
@@ -152,12 +152,16 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
      * @param methodMetadata
      * @return
      */
-    private com.bmf.base.application.DomainApi buildBusinessApi(MethodMetadata methodMetadata) {
+    private com.bmf.base.application.DomainApi buildBusinessApi(DomainApp domainApp, MethodMetadata methodMetadata) {
         Map<String, Object> methodAttrMap = methodMetadata.getAnnotationAttributes(DomainApi.class.getCanonicalName());
         com.bmf.base.application.DomainApi domainApi = new com.bmf.base.application.DomainApi();
+        domainApi.setAppId(domainApp.getAppId());
+        domainApi.setAppName(domainApp.getAppName());
         domainApi.setApiPath(methodMetadata.getDeclaringClassName());
         domainApi.setApiName(methodMetadata.getMethodName());
         domainApi.setApiDesc("test");
+        domainApi.setDomainCode(domainApp.getDomainCode());
+        domainApi.setDomainAlias(domainApi.getDomainAlias());
         domainApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
         domainApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
         return domainApi;
