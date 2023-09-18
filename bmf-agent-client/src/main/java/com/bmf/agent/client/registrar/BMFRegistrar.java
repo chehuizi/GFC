@@ -5,6 +5,8 @@ import com.bmf.api.application.dto.DomainApiCmdReqDTO;
 import com.bmf.base.annotations.DomainApi;
 import com.bmf.base.annotations.DomainApiClass;
 import com.bmf.base.application.DomainApp;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
 import org.springframework.beans.factory.config.BeanDefinition;
 import org.springframework.beans.factory.support.BeanDefinitionRegistry;
@@ -29,6 +31,8 @@ import java.util.*;
  */
 @Component
 public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoaderAware, EnvironmentAware {
+
+    private static final Logger logger = LoggerFactory.getLogger(BMFRegistrar.class);
 
     private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.base.annotations.DomainApp";
 
@@ -58,38 +62,21 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
     @Override
     public void registerBeanDefinitions(AnnotationMetadata importingClassMetadata, BeanDefinitionRegistry registry) {
-        Map<String, Object> attrs = importingClassMetadata.getAnnotationAttributes(ANNOTATION_NAME_DOMAIN_APP);
-        DomainApp domainApp = buildDomainApp(attrs);
-        // 创建scanner
-        ClassPathScanningCandidateComponentProvider scanner = buildScanner();
-        scanner.setResourceLoader(resourceLoader);
-        // 设置scanner的过滤条件
-        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainApiClass.class);
-        scanner.addIncludeFilter(annotationTypeFilter);
-        // 获取指定扫描的包
-        Set<String> basePackages = getBasePackages(importingClassMetadata);
-
-        List<com.bmf.base.application.DomainApi> domainApiList = new ArrayList<>();
-        for (String basePackage : basePackages) {
-            Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents(basePackage);
-            for (BeanDefinition candidateComponent : candidateComponents) {
-                if (candidateComponent instanceof AnnotatedBeanDefinition) {
-                    AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;
-                    AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
-                    Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(DomainApi.class.getCanonicalName());
-                    for (MethodMetadata methodMetadata : methodMetadataSet) {
-                        com.bmf.base.application.DomainApi domainApi = buildBusinessApi(domainApp, methodMetadata);
-                        domainApiList.add(domainApi);
-                    }
-                }
+        try {
+            Map<String, Object> attrs = importingClassMetadata.getAnnotationAttributes(ANNOTATION_NAME_DOMAIN_APP);
+            DomainApp domainApp = buildDomainApp(attrs);
+            // 创建scanner
+            ClassPathScanningCandidateComponentProvider scanner = buildScanner();
+            // 获取指定扫描的包
+            Set<String> basePackages = getBasePackages(importingClassMetadata);
+            // 获取领域API
+            List<com.bmf.base.application.DomainApi> domainApiList = scanDomainApi(scanner, basePackages, domainApp);
+            // 上报领域API
+            if (domainApiList.size() > 0) {
+                report(domainApp, domainApiList);
             }
-        }
-
-        if (domainApiList.size() > 0) {
-            DomainApiCmdReqDTO domainApiCmdReqDTO = new DomainApiCmdReqDTO();
-            domainApiCmdReqDTO.setDomainApp(domainApp);
-            domainApiCmdReqDTO.setDomainApiList(domainApiList);
-            HttpUtil.post(domainApiCmdReqDTO);
+        } catch (Exception ex) {
+            logger.error("bmf scan error!", ex);
         }
     }
 
@@ -113,17 +100,22 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
      * @return
      */
     private ClassPathScanningCandidateComponentProvider buildScanner() {
-        return new ClassPathScanningCandidateComponentProvider(false, environment) {
+        ClassPathScanningCandidateComponentProvider scanner = new ClassPathScanningCandidateComponentProvider(false, environment) {
             @Override
             protected boolean isCandidateComponent(AnnotatedBeanDefinition beanDefinition) {
                 boolean isCandidate = false;
                 if (beanDefinition.getMetadata().isIndependent() &&
-                    !beanDefinition.getMetadata().isAnnotation()) {
+                        !beanDefinition.getMetadata().isAnnotation()) {
                     isCandidate = true;
                 }
                 return isCandidate;
             }
         };
+        scanner.setResourceLoader(resourceLoader);
+        // 设置scanner的过滤条件
+        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainApiClass.class);
+        scanner.addIncludeFilter(annotationTypeFilter);
+        return scanner;
     }
 
     /**
@@ -147,6 +139,34 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
     }
 
     /**
+     * 扫描领域API
+     * @param scanner
+     * @param basePackages
+     * @param domainApp
+     * @return
+     */
+    private List<com.bmf.base.application.DomainApi> scanDomainApi(ClassPathScanningCandidateComponentProvider scanner,
+                                                                   Set<String> basePackages,
+                                                                   DomainApp domainApp) {
+        List<com.bmf.base.application.DomainApi> domainApiList = new ArrayList<>();
+        for (String basePackage : basePackages) {
+            Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents(basePackage);
+            for (BeanDefinition candidateComponent : candidateComponents) {
+                if (candidateComponent instanceof AnnotatedBeanDefinition) {
+                    AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;
+                    AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
+                    Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(DomainApi.class.getCanonicalName());
+                    for (MethodMetadata methodMetadata : methodMetadataSet) {
+                        com.bmf.base.application.DomainApi domainApi = buildBusinessApi(domainApp, methodMetadata);
+                        domainApiList.add(domainApi);
+                    }
+                }
+            }
+        }
+        return domainApiList;
+    }
+
+    /**
      * 构建业务API对象
      * @param methodMetadata
      * @return
@@ -164,5 +184,17 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         domainApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
         domainApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
         return domainApi;
+    }
+
+    /**
+     * 上报
+     * @param domainApp
+     * @param domainApiList
+     */
+    private void report(DomainApp domainApp, List<com.bmf.base.application.DomainApi> domainApiList) {
+        DomainApiCmdReqDTO domainApiCmdReqDTO = new DomainApiCmdReqDTO();
+        domainApiCmdReqDTO.setDomainApp(domainApp);
+        domainApiCmdReqDTO.setDomainApiList(domainApiList);
+        HttpUtil.post(domainApiCmdReqDTO);
     }
 }
