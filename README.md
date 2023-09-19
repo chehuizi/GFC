@@ -4,7 +4,7 @@ BMF: Business Management Framework，是一套业务软件管理框架，主要�
 
 # 术语
 + 业务
-+ 业务领域
++ 领域
 + 战略设计
 + 战术设计
 
