@@ -5,7 +5,7 @@ import com.bmf.api.domain.cmd.DomainCmdService;
 import com.bmf.api.domain.dto.DomainCmdReqDTO;
 import com.bmf.base.Domain;
 import com.bmf.base.enums.CodeKeyEnum;
-import com.bmf.base.tactics.entity.EntityRelVO;
+import com.bmf.base.tactics.entity.DomainEntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 import com.bmf.common.enums.BizCodeEnum;
@@ -145,8 +145,8 @@ public class DomainCmdServiceImpl implements DomainCmdService {
         BusinessCheckUtil.checkNull(domainEntity, BizCodeEnum.DOMAIN_ENTITY_NOT_EXIST);
         DomainValueObject domainValueObject = domainValueObjectService.queryDomainValueObject(domainCmdReqDTO.getDomainValueObject());
         BusinessCheckUtil.checkNull(domainValueObject, BizCodeEnum.DOMAIN_VALUE_OBJECT_NOT_EXIST);
-        EntityRelVO entityRelVO = domainEntityService.queryEntityRelVO(domainEntity.getEntityIdCode(), domainValueObject.getVoCode());
-        BusinessCheckUtil.checkNonNull(entityRelVO, BizCodeEnum.ENTITY_REL_VO_IS_EXISTED);
+        DomainEntityRelVO domainEntityRelVO = domainEntityService.queryEntityRelVO(domainEntity.getEntityIdCode(), domainValueObject.getVoCode());
+        BusinessCheckUtil.checkNonNull(domainEntityRelVO, BizCodeEnum.ENTITY_REL_VO_IS_EXISTED);
         return ResultUtil.success(businessDomainDesign4Tactics.addEntityRelVO(domainCmdReqDTO.getDomainEntity(), domainCmdReqDTO.getDomainValueObject()));
     }
 

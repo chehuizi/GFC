@@ -1,6 +1,6 @@
 package com.bmf.core.domain.impl;
 
-import com.bmf.base.tactics.entity.EntityRelVO;
+import com.bmf.base.tactics.entity.DomainEntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
@@ -45,23 +45,23 @@ public class DomainEntityServiceImpl implements DomainEntityService {
 
     @Override
     public List<DomainValueObject> queryEntityVO(Integer entityIdCode) {
-        List<EntityRelVO> entityRelVOList = domainEntityRelVORepository.selectByEntityIdCode(entityIdCode);
-        if (Objects.isNull(entityRelVOList) || entityRelVOList.size() <= 0) {
+        List<DomainEntityRelVO> domainEntityRelVOList = domainEntityRelVORepository.selectByEntityIdCode(entityIdCode);
+        if (Objects.isNull(domainEntityRelVOList) || domainEntityRelVOList.size() <= 0) {
             return null;
         }
         List<Integer> voCodeList = new ArrayList<>();
-        for (EntityRelVO entityRelVO : entityRelVOList) {
-            voCodeList.add(entityRelVO.getVoCode());
+        for (DomainEntityRelVO domainEntityRelVO : domainEntityRelVOList) {
+            voCodeList.add(domainEntityRelVO.getVoCode());
         }
         return domainValueObjectRepository.selectByVoCode(voCodeList);
     }
 
     @Override
-    public EntityRelVO queryEntityRelVO(Integer entityIdCode, Integer voCode) {
-        EntityRelVO entityRelVO = new EntityRelVO();
-        entityRelVO.setEntityIdCode(entityIdCode);
-        entityRelVO.setVoCode(voCode);
-        return domainEntityRelVORepository.selectOne(entityRelVO);
+    public DomainEntityRelVO queryEntityRelVO(Integer entityIdCode, Integer voCode) {
+        DomainEntityRelVO domainEntityRelVO = new DomainEntityRelVO();
+        domainEntityRelVO.setEntityIdCode(entityIdCode);
+        domainEntityRelVO.setVoCode(voCode);
+        return domainEntityRelVORepository.selectOne(domainEntityRelVO);
     }
 
     @Override

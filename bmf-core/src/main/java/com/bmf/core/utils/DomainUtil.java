@@ -1,6 +1,6 @@
 package com.bmf.core.utils;
 
-import com.bmf.base.tactics.entity.EntityRelVO;
+import com.bmf.base.tactics.entity.DomainEntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
 
@@ -9,11 +9,11 @@ import com.bmf.base.tactics.valueobject.DomainValueObject;
  */
 public class DomainUtil {
 
-    public static EntityRelVO build(DomainEntity entity, DomainValueObject valueObject) {
-        EntityRelVO entityRelVO = new EntityRelVO();
-        entityRelVO.setEntityIdCode(entity.getEntityIdCode());
-        entityRelVO.setVoCode(valueObject.getVoCode());
-        return entityRelVO;
+    public static DomainEntityRelVO build(DomainEntity entity, DomainValueObject valueObject) {
+        DomainEntityRelVO domainEntityRelVO = new DomainEntityRelVO();
+        domainEntityRelVO.setEntityIdCode(entity.getEntityIdCode());
+        domainEntityRelVO.setVoCode(valueObject.getVoCode());
+        return domainEntityRelVO;
     }
 
 }

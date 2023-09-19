@@ -1,15 +1,15 @@
 package com.bmf.infrastructure.dal;
 
-import com.bmf.base.tactics.entity.EntityRelVO;
+import com.bmf.base.tactics.entity.DomainEntityRelVO;
 
 import java.util.List;
 
-public interface DomainEntityRelVORepository extends BaseRepository<EntityRelVO> {
+public interface DomainEntityRelVORepository extends BaseRepository<DomainEntityRelVO> {
 
     /**
      * 根据实体ID查询VO
      * @param entityIdCode
      * @return
      */
-    List<EntityRelVO> selectByEntityIdCode(Integer entityIdCode);
+    List<DomainEntityRelVO> selectByEntityIdCode(Integer entityIdCode);
 }

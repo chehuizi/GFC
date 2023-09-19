@@ -1,6 +1,6 @@
 package com.bmf.core.domain;
 
-import com.bmf.base.tactics.entity.EntityRelVO;
+import com.bmf.base.tactics.entity.DomainEntityRelVO;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.entity.DomainEntityAttr;
 import com.bmf.base.tactics.valueobject.DomainValueObject;
@@ -46,7 +46,7 @@ public interface DomainEntityService {
      * @param voCode
      * @return
      */
-    EntityRelVO queryEntityRelVO(Integer entityIdCode, Integer voCode);
+    DomainEntityRelVO queryEntityRelVO(Integer entityIdCode, Integer voCode);
 
     /**
      * 添加实体属性

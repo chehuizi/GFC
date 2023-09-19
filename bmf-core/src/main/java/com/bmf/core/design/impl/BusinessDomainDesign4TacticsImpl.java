@@ -1,7 +1,7 @@
 package com.bmf.core.design.impl;
 
 import com.bmf.base.Domain;
-import com.bmf.base.tactics.entity.EntityRelVO;
+import com.bmf.base.tactics.entity.DomainEntityRelVO;
 import com.bmf.base.tactics.aggregate.DomainAggregate;
 import com.bmf.base.tactics.entity.DomainEntity;
 import com.bmf.base.tactics.event.DomainEvent;
@@ -71,14 +71,14 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
 
     @Override
     public boolean addEntityRelVO(DomainEntity entity, DomainValueObject valueObject) {
-        EntityRelVO entityRelVO = DomainUtil.build(entity, valueObject);
-        return domainEntityRelVORepository.insert(entityRelVO);
+        DomainEntityRelVO domainEntityRelVO = DomainUtil.build(entity, valueObject);
+        return domainEntityRelVORepository.insert(domainEntityRelVO);
     }
 
     @Override
     public boolean delEntityRelVO(DomainEntity entity, DomainValueObject valueObject) {
-        EntityRelVO entityRelVO = DomainUtil.build(entity, valueObject);
-        return domainEntityRelVORepository.delete(entityRelVO);
+        DomainEntityRelVO domainEntityRelVO = DomainUtil.build(entity, valueObject);
+        return domainEntityRelVORepository.delete(domainEntityRelVO);
     }
 
     @Override

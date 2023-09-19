@@ -4,7 +4,7 @@ import com.bmf.base.BaseModel;
 import lombok.Data;
 
 @Data
-public class EntityRelVO extends BaseModel {
+public class DomainEntityRelVO extends BaseModel {
 
     /**
      * 实体唯一ID编码
