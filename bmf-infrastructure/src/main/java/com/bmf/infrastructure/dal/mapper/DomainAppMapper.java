@@ -8,6 +8,8 @@ public interface DomainAppMapper {
 
     DomainAppPO selectOne(DomainAppPO domainAppPO);
 
+    DomainAppPO selectByDomainCode(Integer domainCode);
+
     int insert(DomainAppPO domainAppPO);
 
     int batchInsert(List<DomainAppPO> domainAppPOList);

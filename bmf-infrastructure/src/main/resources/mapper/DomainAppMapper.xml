@@ -28,6 +28,13 @@
         limit 1
     </select>
 
+    <select id="selectByDomainCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_domain_app
+        where domain_code = #{domainCode}
+    </select>
+
     <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainAppPO">
         insert into bmf_domain_app (app_id, app_name, app_desc, domain_code, domain_alias)
         values (

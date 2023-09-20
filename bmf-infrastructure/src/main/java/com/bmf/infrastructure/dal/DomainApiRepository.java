@@ -12,4 +12,11 @@ public interface DomainApiRepository extends BaseRepository<DomainApi> {
      * @return
      */
     boolean batchInsert(List<DomainApi> req);
+
+    /**
+     * 根据领域编码查询API
+     * @param domainCode
+     * @return
+     */
+    List<DomainApi> selectByDomainCode(Integer domainCode);
 }

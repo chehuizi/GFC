@@ -16,7 +16,13 @@ public class DomainAppRepositoryImpl implements DomainAppRepository {
 
     @Override
     public DomainApp selectOne(DomainApp req) {
-        return null;
+        DomainAppPO domainAppPO = POUtils.convert(req, DomainAppPO.class);
+        return POUtils.convert(domainAppMapper.selectOne(domainAppPO), DomainApp.class);
+    }
+
+    @Override
+    public DomainApp selectByDomainCode(Integer domainCode) {
+        return POUtils.convert(domainAppMapper.selectByDomainCode(domainCode), DomainApp.class);
     }
 
     @Override

@@ -5,7 +5,7 @@ import com.bmf.api.application.dto.DomainApiQryReqDTO;
 import com.bmf.api.application.dto.DomainApiRespDTO;
 
 /**
- * 业务API CMD服务
+ * 业务API QRY服务
  */
 public interface DomainApiQryService extends QryService<DomainApiQryReqDTO, DomainApiRespDTO> {
 

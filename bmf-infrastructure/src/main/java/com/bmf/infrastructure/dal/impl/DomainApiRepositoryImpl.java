@@ -22,6 +22,11 @@ public class DomainApiRepositoryImpl implements DomainApiRepository {
     }
 
     @Override
+    public List<DomainApi> selectByDomainCode(Integer domainCode) {
+        return POUtils.convert(domainApiMapper.selectByDomainCode(domainCode), DomainApi.class);
+    }
+
+    @Override
     public boolean insert(DomainApi req) {
         return false;
     }

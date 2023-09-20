@@ -8,6 +8,8 @@ public interface DomainApiMapper {
 
     DomainApiPO selectOne(DomainApiPO domainApiPO);
 
+    List<DomainApiPO> selectByDomainCode(Integer domainCode);
+
     int insert(DomainApiPO domainApiPO);
 
     int batchInsert(List<DomainApiPO> domainApiPOList);
