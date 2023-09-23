@@ -22,7 +22,7 @@ public class DomainApiCmdServiceTest {
     private DomainApiCmdService domainApiCmdService;
 
     @Test
-    public void test_business_api_create() {
+    public void test_domain_api_create() {
         DomainApiCmdReqDTO domainApiCmdReqDTO = new DomainApiCmdReqDTO();
         List<DomainApi> domainApiList = new ArrayList<>();
         DomainApi domainApi_1 = new DomainApi();
