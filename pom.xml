@@ -20,6 +20,7 @@
         <module>bmf-data</module>
         <module>bmf-demo</module>
         <module>bmf-agent-client</module>
+        <module>bmf-agent-annotations</module>
     </modules>
 
     <name>bmf</name>
@@ -78,6 +79,11 @@
             <dependency>
                 <groupId>com.bmf</groupId>
                 <artifactId>bmf-infrastructure</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-agent-annotations</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <dependency>

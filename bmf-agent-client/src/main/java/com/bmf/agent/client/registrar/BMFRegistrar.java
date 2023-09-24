@@ -1,9 +1,9 @@
 package com.bmf.agent.client.registrar;
 
 import com.bmf.agent.client.utils.HttpUtil;
+import com.bmf.annotations.DomainService;
+import com.bmf.annotations.DomainServiceClass;
 import com.bmf.api.application.dto.DomainApiCmdReqDTO;
-import com.bmf.base.annotations.DomainService;
-import com.bmf.base.annotations.DomainServiceClass;
 import com.bmf.base.application.DomainApp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,7 +34,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
     private static final Logger logger = LoggerFactory.getLogger(BMFRegistrar.class);
 
-    private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.base.annotations.DomainApp";
+    private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.annotations.DomainApp";
 
     /**
      * 资源加载器

@@ -1,7 +1,7 @@
 package com.bmf.demo.api;
 
-import com.bmf.base.annotations.DomainService;
-import com.bmf.base.annotations.DomainServiceClass;
+import com.bmf.annotations.DomainService;
+import com.bmf.annotations.DomainServiceClass;
 
 /**
  * 盘点服务

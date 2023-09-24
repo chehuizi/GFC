@@ -1,4 +1,4 @@
-package com.bmf.base.annotations;
+package com.bmf.annotations;
 
 import java.lang.annotation.*;
 

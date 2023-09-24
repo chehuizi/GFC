@@ -30,6 +30,10 @@
     </dependency>
     <dependency>
       <groupId>com.bmf</groupId>
+      <artifactId>bmf-agent-annotations</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.bmf</groupId>
       <artifactId>bmf-design-api</artifactId>
     </dependency>
     <dependency>
