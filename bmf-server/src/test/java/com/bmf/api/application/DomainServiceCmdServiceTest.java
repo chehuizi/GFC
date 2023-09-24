@@ -16,7 +16,7 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DomainApiCmdServiceTest {
+public class DomainServiceCmdServiceTest {
 
     @Autowired
     private DomainApiCmdService domainApiCmdService;

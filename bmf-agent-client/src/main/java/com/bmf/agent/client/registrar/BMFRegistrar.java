@@ -2,8 +2,8 @@ package com.bmf.agent.client.registrar;
 
 import com.bmf.agent.client.utils.HttpUtil;
 import com.bmf.api.application.dto.DomainApiCmdReqDTO;
-import com.bmf.base.annotations.DomainApi;
-import com.bmf.base.annotations.DomainApiClass;
+import com.bmf.base.annotations.DomainService;
+import com.bmf.base.annotations.DomainServiceClass;
 import com.bmf.base.application.DomainApp;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -113,7 +113,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
         };
         scanner.setResourceLoader(resourceLoader);
         // 设置scanner的过滤条件
-        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainApiClass.class);
+        AnnotationTypeFilter annotationTypeFilter = new AnnotationTypeFilter(DomainServiceClass.class);
         scanner.addIncludeFilter(annotationTypeFilter);
         return scanner;
     }
@@ -155,7 +155,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
                 if (candidateComponent instanceof AnnotatedBeanDefinition) {
                     AnnotatedBeanDefinition beanDefinition = (AnnotatedBeanDefinition) candidateComponent;
                     AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
-                    Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(DomainApi.class.getCanonicalName());
+                    Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(DomainService.class.getCanonicalName());
                     for (MethodMetadata methodMetadata : methodMetadataSet) {
                         com.bmf.base.application.DomainApi domainApi = buildBusinessApi(domainApp, methodMetadata);
                         domainApiList.add(domainApi);
@@ -172,7 +172,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
      * @return
      */
     private com.bmf.base.application.DomainApi buildBusinessApi(DomainApp domainApp, MethodMetadata methodMetadata) {
-        Map<String, Object> methodAttrMap = methodMetadata.getAnnotationAttributes(DomainApi.class.getCanonicalName());
+        Map<String, Object> methodAttrMap = methodMetadata.getAnnotationAttributes(DomainService.class.getCanonicalName());
         com.bmf.base.application.DomainApi domainApi = new com.bmf.base.application.DomainApi();
         domainApi.setAppId(domainApp.getAppId());
         domainApi.setAppName(domainApp.getAppName());
