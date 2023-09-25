@@ -2,11 +2,11 @@ package com.bmf.controller;
 
 import com.alibaba.fastjson2.JSON;
 import com.bmf.api.Result;
-import com.bmf.api.application.DomainApiCmdService;
-import com.bmf.api.application.DomainApiQryService;
-import com.bmf.api.application.dto.DomainApiCmdReqDTO;
-import com.bmf.api.application.dto.DomainApiQryReqDTO;
-import com.bmf.api.application.dto.DomainApiRespDTO;
+import com.bmf.api.application.DomainAppCmdService;
+import com.bmf.api.application.DomainAppQryService;
+import com.bmf.api.application.dto.DomainAppCmdReqDTO;
+import com.bmf.api.application.dto.DomainAppQryReqDTO;
+import com.bmf.api.application.dto.DomainAppRespDTO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,21 +19,21 @@ public class DomainApiController {
     private static final Logger logger = LoggerFactory.getLogger(DomainApiController.class);
 
     @Autowired
-    private DomainApiCmdService domainApiCmdService;
+    private DomainAppCmdService domainAppCmdService;
     @Autowired
-    private DomainApiQryService domainApiQryService;
+    private DomainAppQryService domainAppQryService;
 
     @PostMapping("create")
-    public Boolean create(@RequestBody DomainApiCmdReqDTO domainApiCmdReqDTO) {
-        logger.info("req: {}", JSON.toJSON(domainApiCmdReqDTO));
-        Result<Boolean> result = domainApiCmdService.create(domainApiCmdReqDTO);
+    public Boolean create(@RequestBody DomainAppCmdReqDTO domainAppCmdReqDTO) {
+        logger.info("req: {}", JSON.toJSON(domainAppCmdReqDTO));
+        Result<Boolean> result = domainAppCmdService.create(domainAppCmdReqDTO);
         return result.getData();
     }
 
     @GetMapping("detail")
-    public Result<DomainApiRespDTO> detail(@RequestParam("domain_code") Integer domainCode) {
-        DomainApiQryReqDTO reqDTO = new DomainApiQryReqDTO();
+    public Result<DomainAppRespDTO> detail(@RequestParam("domain_code") Integer domainCode) {
+        DomainAppQryReqDTO reqDTO = new DomainAppQryReqDTO();
         reqDTO.setDomainCode(domainCode);
-        return domainApiQryService.queryOne(reqDTO);
+        return domainAppQryService.queryOne(reqDTO);
     }
 }

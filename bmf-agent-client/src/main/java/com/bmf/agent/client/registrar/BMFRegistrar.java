@@ -3,8 +3,9 @@ package com.bmf.agent.client.registrar;
 import com.bmf.agent.client.utils.HttpUtil;
 import com.bmf.annotations.DomainService;
 import com.bmf.annotations.DomainServiceClass;
-import com.bmf.api.application.dto.DomainApiCmdReqDTO;
+import com.bmf.api.application.dto.DomainAppCmdReqDTO;
 import com.bmf.base.application.DomainApp;
+import com.bmf.base.application.DomainAppApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;
@@ -34,7 +35,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
     private static final Logger logger = LoggerFactory.getLogger(BMFRegistrar.class);
 
-    private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.annotations.DomainApp";
+    private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.annotations.Domain";
 
     /**
      * 资源加载器
@@ -70,10 +71,10 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
             // 获取指定扫描的包
             Set<String> basePackages = getBasePackages(importingClassMetadata);
             // 获取领域API
-            List<com.bmf.base.application.DomainApi> domainApiList = scanDomainApi(scanner, basePackages, domainApp);
+            List<DomainAppApi> domainAppApiList = scanDomainApi(scanner, basePackages, domainApp);
             // 上报领域API
-            if (domainApiList.size() > 0) {
-                report(domainApp, domainApiList);
+            if (domainAppApiList.size() > 0) {
+                report(domainApp, domainAppApiList);
             }
         } catch (Exception ex) {
             logger.error("bmf scan error!", ex);
@@ -145,10 +146,10 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
      * @param domainApp
      * @return
      */
-    private List<com.bmf.base.application.DomainApi> scanDomainApi(ClassPathScanningCandidateComponentProvider scanner,
-                                                                   Set<String> basePackages,
-                                                                   DomainApp domainApp) {
-        List<com.bmf.base.application.DomainApi> domainApiList = new ArrayList<>();
+    private List<DomainAppApi> scanDomainApi(ClassPathScanningCandidateComponentProvider scanner,
+                                             Set<String> basePackages,
+                                             DomainApp domainApp) {
+        List<DomainAppApi> domainAppApiList = new ArrayList<>();
         for (String basePackage : basePackages) {
             Set<BeanDefinition> candidateComponents = scanner.findCandidateComponents(basePackage);
             for (BeanDefinition candidateComponent : candidateComponents) {
@@ -157,13 +158,13 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
                     AnnotationMetadata annotationMetadata = beanDefinition.getMetadata();
                     Set<MethodMetadata> methodMetadataSet = annotationMetadata.getAnnotatedMethods(DomainService.class.getCanonicalName());
                     for (MethodMetadata methodMetadata : methodMetadataSet) {
-                        com.bmf.base.application.DomainApi domainApi = buildBusinessApi(domainApp, methodMetadata);
-                        domainApiList.add(domainApi);
+                        DomainAppApi domainAppApi = buildBusinessApi(domainApp, methodMetadata);
+                        domainAppApiList.add(domainAppApi);
                     }
                 }
             }
         }
-        return domainApiList;
+        return domainAppApiList;
     }
 
     /**
@@ -171,30 +172,30 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
      * @param methodMetadata
      * @return
      */
-    private com.bmf.base.application.DomainApi buildBusinessApi(DomainApp domainApp, MethodMetadata methodMetadata) {
+    private DomainAppApi buildBusinessApi(DomainApp domainApp, MethodMetadata methodMetadata) {
         Map<String, Object> methodAttrMap = methodMetadata.getAnnotationAttributes(DomainService.class.getCanonicalName());
-        com.bmf.base.application.DomainApi domainApi = new com.bmf.base.application.DomainApi();
-        domainApi.setAppId(domainApp.getAppId());
-        domainApi.setAppName(domainApp.getAppName());
-        domainApi.setApiPath(methodMetadata.getDeclaringClassName());
-        domainApi.setApiName(methodMetadata.getMethodName());
-        domainApi.setApiDesc("test");
-        domainApi.setDomainCode(domainApp.getDomainCode());
-        domainApi.setDomainAlias(domainApp.getDomainAlias());
-        domainApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
-        domainApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
-        return domainApi;
+        DomainAppApi domainAppApi = new DomainAppApi();
+        domainAppApi.setAppId(domainApp.getAppId());
+        domainAppApi.setAppName(domainApp.getAppName());
+        domainAppApi.setApiPath(methodMetadata.getDeclaringClassName());
+        domainAppApi.setApiName(methodMetadata.getMethodName());
+        domainAppApi.setApiDesc("test");
+        domainAppApi.setDomainCode(domainApp.getDomainCode());
+        domainAppApi.setDomainAlias(domainApp.getDomainAlias());
+        domainAppApi.setServiceCode((Integer) methodAttrMap.get("serviceCode"));
+        domainAppApi.setServiceAlias(methodAttrMap.get("serviceAlias").toString());
+        return domainAppApi;
     }
 
     /**
      * 上报
      * @param domainApp
-     * @param domainApiList
+     * @param domainAppApiList
      */
-    private void report(DomainApp domainApp, List<com.bmf.base.application.DomainApi> domainApiList) {
-        DomainApiCmdReqDTO domainApiCmdReqDTO = new DomainApiCmdReqDTO();
-        domainApiCmdReqDTO.setDomainApp(domainApp);
-        domainApiCmdReqDTO.setDomainApiList(domainApiList);
-        HttpUtil.post(domainApiCmdReqDTO);
+    private void report(DomainApp domainApp, List<DomainAppApi> domainAppApiList) {
+        DomainAppCmdReqDTO domainAppCmdReqDTO = new DomainAppCmdReqDTO();
+        domainAppCmdReqDTO.setDomainApp(domainApp);
+        domainAppCmdReqDTO.setDomainAppApiList(domainAppApiList);
+        HttpUtil.post(domainAppCmdReqDTO);
     }
 }

@@ -7,7 +7,7 @@ import lombok.Data;
  * 业务API
  */
 @Data
-public class DomainApi extends BaseModel {
+public class DomainAppApi extends BaseModel {
 
     /**
      * 应用ID

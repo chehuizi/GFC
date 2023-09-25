@@ -1,33 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainApiMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainApiPO">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainAppApiMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainAppApiPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
+        <result column="domain_alias" jdbcType="VARCHAR" property="domainAlias"/>
+        <result column="service_code" jdbcType="INTEGER" property="serviceCode"/>
+        <result column="service_alias" jdbcType="VARCHAR" property="serviceAlias"/>
         <result column="app_id" jdbcType="INTEGER" property="appId"/>
         <result column="app_name" jdbcType="VARCHAR" property="appName"/>
         <result column="api_name" jdbcType="VARCHAR" property="apiName"/>
         <result column="api_path" jdbcType="VARCHAR" property="apiPath"/>
         <result column="api_desc" jdbcType="VARCHAR" property="apiDesc"/>
-        <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
-        <result column="domain_alias" jdbcType="VARCHAR" property="domainAlias"/>
-        <result column="service_code" jdbcType="INTEGER" property="serviceCode"/>
-        <result column="service_alias" jdbcType="VARCHAR" property="serviceAlias"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, app_id, app_name, api_name, api_path, api_desc,
-        domain_code, domain_alias, service_code, service_alias,
+        id, domain_code, domain_alias, service_code, service_alias,
+        app_id, app_name, api_name, api_path, api_desc,
         gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainApiPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainAppApiPO">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM bmf_domain_api
+        FROM bmf_domain_app_api
         <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
             <if test="serviceCode != null">and service_code = #{serviceCode}</if>
             <if test="apiPath != null">and api_path = #{apiPath}</if>
         </trim>
@@ -37,25 +38,27 @@
     <select id="selectByDomainCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="Base_Column_List"/>
-        FROM bmf_domain_api
+        FROM bmf_domain_app_api
         where domain_code = #{domainCode}
     </select>
 
     <insert id="batchInsert" parameterType="java.util.List">
-        insert into bmf_domain_api (app_id, app_name, api_name, api_path, api_desc,
-        domain_code, domain_alias, service_code, service_alias)
+        insert into bmf_domain_app_api (
+            domain_code, domain_alias, service_code, service_alias,
+            app_id, app_name, api_name, api_path, api_desc
+        )
         values
         <foreach collection="list" item="item" index="index" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.domainCode,jdbcType=INTEGER},
+                #{item.domainAlias,jdbcType=VARCHAR},
+                #{item.serviceCode,jdbcType=INTEGER},
+                #{item.serviceAlias,jdbcType=VARCHAR},
                 #{item.appId,jdbcType=INTEGER},
                 #{item.appName,jdbcType=VARCHAR},
                 #{item.apiName,jdbcType=VARCHAR},
                 #{item.apiPath,jdbcType=VARCHAR},
-                #{item.apiDesc,jdbcType=VARCHAR},
-                #{item.domainCode,jdbcType=INTEGER},
-                #{item.domainAlias,jdbcType=VARCHAR},
-                #{item.serviceCode,jdbcType=INTEGER},
-                #{item.serviceAlias,jdbcType=VARCHAR}
+                #{item.apiDesc,jdbcType=VARCHAR}
             </trim>
         </foreach>
     </insert>

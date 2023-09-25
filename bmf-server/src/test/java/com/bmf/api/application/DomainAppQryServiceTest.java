@@ -1,8 +1,8 @@
 package com.bmf.api.application;
 
 import com.bmf.api.Result;
-import com.bmf.api.application.dto.DomainApiQryReqDTO;
-import com.bmf.api.application.dto.DomainApiRespDTO;
+import com.bmf.api.application.dto.DomainAppQryReqDTO;
+import com.bmf.api.application.dto.DomainAppRespDTO;
 import com.bmf.common.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
@@ -13,16 +13,16 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class DomainServiceQryServiceTest {
+public class DomainAppQryServiceTest {
 
     @Autowired
-    private DomainApiQryService domainApiQryService;
+    private DomainAppQryService domainAppQryService;
 
     @Test
-    public void test_domain_api_query() {
-        DomainApiQryReqDTO reqDTO = new DomainApiQryReqDTO();
+    public void test_domain_app_api_query() {
+        DomainAppQryReqDTO reqDTO = new DomainAppQryReqDTO();
         reqDTO.setDomainCode(101);
-        Result<DomainApiRespDTO> result = domainApiQryService.queryOne(reqDTO);
+        Result<DomainAppRespDTO> result = domainAppQryService.queryOne(reqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }

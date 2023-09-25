@@ -3,7 +3,7 @@ package com.bmf.infrastructure.dal.po;
 import lombok.Data;
 
 @Data
-public class DomainApiPO extends BasePO {
+public class DomainAppApiPO extends BasePO {
 
     /**
      * 应用ID

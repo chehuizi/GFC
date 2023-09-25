@@ -1,6 +1,6 @@
 package com.bmf.api.validator;
 
-import com.bmf.api.application.dto.DomainApiCmdReqDTO;
+import com.bmf.api.application.dto.DomainAppCmdReqDTO;
 import com.bmf.common.utils.ParamCheckUtil;
 import org.springframework.stereotype.Service;
 
@@ -9,12 +9,12 @@ public class DomainApiCmdReqDTOValidator {
 
     /**
      * 校验create方法
-     * @param domainApiCmdReqDTO
+     * @param domainAppCmdReqDTO
      * @return
      */
-    public boolean v4Create(DomainApiCmdReqDTO domainApiCmdReqDTO) {
-        ParamCheckUtil.checkNull(domainApiCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(domainApiCmdReqDTO.getDomainApiList(), "business api list is null");
+    public boolean v4Create(DomainAppCmdReqDTO domainAppCmdReqDTO) {
+        ParamCheckUtil.checkNull(domainAppCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainAppCmdReqDTO.getDomainAppApiList(), "business api list is null");
         return true;
     }
 }
