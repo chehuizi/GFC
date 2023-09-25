@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-demo</artifactId>
+  <artifactId>bmf-agent-demo</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>bmf-demo</name>
