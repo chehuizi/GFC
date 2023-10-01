@@ -2,7 +2,6 @@ package com.bmf.design.infrastructure.dal.utils;
 
 import com.bmf.design.base.BaseModel;
 import com.bmf.design.infrastructure.dal.po.BasePO;
-import com.bmf.infrastructure.dal.po.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.BeanUtils;
