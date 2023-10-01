@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessRoleMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessRolePO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.BusinessRoleMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.BusinessRolePO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
         <result column="role_id" jdbcType="INTEGER" property="roleId"/>
@@ -18,7 +18,7 @@
         id, business_code, role_id, role_type, role_name, role_alias, role_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessRolePO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.BusinessRolePO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_role
@@ -29,7 +29,7 @@
         limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRolePO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessRolePO">
         insert into bmf_business_role (business_code, role_id, role_type, role_name, role_alias, role_desc)
         values (
             #{businessCode,jdbcType=INTEGER},

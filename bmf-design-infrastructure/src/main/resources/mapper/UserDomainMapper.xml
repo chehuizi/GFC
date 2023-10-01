@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.UserDomainMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.UserDomainPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.UserDomainMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.UserDomainPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="user_id" jdbcType="INTEGER" property="userId"/>
         <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
@@ -25,7 +25,7 @@
         limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.UserDomainPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.UserDomainPO">
         insert into bmf_user_domain (user_id, domain_code)
         values (
             #{userId,jdbcType=INTEGER},

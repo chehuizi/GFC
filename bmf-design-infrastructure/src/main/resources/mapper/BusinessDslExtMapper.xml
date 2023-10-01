@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDslExtMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.BusinessDslExtMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.BusinessDslExtPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="dsl_code" jdbcType="INTEGER" property="dslCode"/>
         <result column="dsl_ext_type" jdbcType="VARCHAR" property="dslExtType"/>
@@ -34,7 +34,7 @@
         where dsl_code = #{dslCode}
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessDslExtPO">
         insert into bmf_business_dsl_ext (dsl_code, dsl_ext_type, dsl_ext_key, dsl_ext_val)
         values (
             #{dslCode,jdbcType=INTEGER},
@@ -44,7 +44,7 @@
         )
     </insert>
 
-    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+    <insert id="batchInsert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessDslExtPO">
         insert into bmf_business_dsl_ext (dsl_code, dsl_ext_type, dsl_ext_key, dsl_ext_val)
         values
         <foreach collection="list" item="item" index="index" separator=",">
@@ -57,7 +57,7 @@
         </foreach>
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDslExtPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.BusinessDslExtPO">
         delete from bmf_business_dsl_ext
         where dsl_code = #{dslCode,jdbcType=INTEGER}
         and dsl_ext_key = #{dslExtKey,jdbcType=VARCHAR}

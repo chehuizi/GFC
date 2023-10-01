@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainEntityAttrMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainEntityAttrPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainEntityAttrMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainEntityAttrPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="entity_id_code" jdbcType="INTEGER" property="entityIdCode"/>
         <result column="attr_name" jdbcType="VARCHAR" property="attrName"/>
@@ -23,7 +23,7 @@
         where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
     </select>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainEntityAttrPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.DomainEntityAttrPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain_entity_attr
@@ -32,7 +32,7 @@
         limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainEntityAttrPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainEntityAttrPO">
         insert into bmf_domain_entity_attr (entity_id_code, attr_name, attr_type, attr_desc)
         values (
             #{entityIdCode,jdbcType=INTEGER},
@@ -42,7 +42,7 @@
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.DomainEntityAttrPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.DomainEntityAttrPO">
         delete from bmf_domain_entity_attr
         where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
         and attr_name = #{attrName,jdbcType=VARCHAR}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainEntityRelVOMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainEntityRelVOPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainEntityRelVOMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainEntityRelVOPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="entity_id_code" jdbcType="INTEGER" property="entityIdCode"/>
         <result column="vo_code" jdbcType="INTEGER" property="voCode"/>
@@ -32,7 +32,7 @@
         where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainEntityRelVOPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainEntityRelVOPO">
         insert into bmf_domain_entity_vo (entity_id_code, vo_code)
         values (
             #{entityIdCode,jdbcType=INTEGER},
@@ -40,7 +40,7 @@
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.DomainEntityRelVOPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.DomainEntityRelVOPO">
         delete from bmf_domain_entity_vo
         where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
         and vo_code = #{voCode,jdbcType=INTEGER}

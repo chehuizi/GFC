@@ -1,11 +1,11 @@
 package com.bmf.api.domain;
 
-import com.bmf.api.Result;
-import com.bmf.api.domain.qry.DomainQryService;
-import com.bmf.api.domain.dto.DomainQryReqDTO;
-import com.bmf.api.domain.dto.DomainRespDTO;
-import com.bmf.base.Domain;
-import com.bmf.common.enums.BizCodeEnum;
+import com.bmf.design.api.Result;
+import com.bmf.design.api.domain.qry.DomainQryService;
+import com.bmf.design.api.domain.dto.DomainQryReqDTO;
+import com.bmf.design.api.domain.dto.DomainRespDTO;
+import com.bmf.design.base.Domain;
+import com.bmf.design.common.enums.BizCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

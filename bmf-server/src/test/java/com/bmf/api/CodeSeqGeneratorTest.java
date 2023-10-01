@@ -1,7 +1,7 @@
 package com.bmf.api;
 
-import com.bmf.base.enums.CodeKeyEnum;
-import com.bmf.infrastructure.generator.CodeSeqGenerator;
+import com.bmf.design.base.enums.CodeKeyEnum;
+import com.bmf.design.infrastructure.generator.CodeSeqGenerator;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainServiceAttrMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainServiceAttrPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainServiceAttrMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainServiceAttrPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="service_code" jdbcType="INTEGER" property="serviceCode"/>
         <result column="attr_name" jdbcType="VARCHAR" property="attrName"/>
@@ -16,7 +16,7 @@
         id, service_code, attr_name, attr_type, attr_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainServiceAttrPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.DomainServiceAttrPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain_service_attr
@@ -32,7 +32,7 @@
         where service_code = #{serviceCode,jdbcType=INTEGER}
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainServiceAttrPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainServiceAttrPO">
         insert into bmf_domain_service_attr (service_code, attr_name, attr_type, attr_desc)
         values (
             #{serviceCode,jdbcType=INTEGER},
@@ -42,7 +42,7 @@
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.DomainServiceAttrPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.DomainServiceAttrPO">
         delete from bmf_domain_service_attr
         where service_code = #{serviceCode,jdbcType=INTEGER}
         and attr_name = #{attrName,jdbcType=VARCHAR}

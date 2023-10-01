@@ -1,9 +1,10 @@
 package com.bmf.api.user;
 
-import com.bmf.api.Result;
-import com.bmf.api.user.dto.UserBusinessCmdReqDTO;
-import com.bmf.base.user.UserBusiness;
-import com.bmf.common.enums.ResultCodeEnum;
+import com.bmf.design.api.Result;
+import com.bmf.design.api.user.UserBusinessCmdService;
+import com.bmf.design.api.user.dto.UserBusinessCmdReqDTO;
+import com.bmf.design.base.user.UserBusiness;
+import com.bmf.design.common.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

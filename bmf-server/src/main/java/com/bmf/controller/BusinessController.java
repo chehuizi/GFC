@@ -1,11 +1,11 @@
 package com.bmf.controller;
 
-import com.bmf.api.Result;
-import com.bmf.api.business.BusinessCmdService;
-import com.bmf.api.business.BusinessQryService;
-import com.bmf.api.business.dto.BusinessCmdReqDTO;
-import com.bmf.api.business.dto.BusinessQryReqDTO;
-import com.bmf.base.Business;
+import com.bmf.design.api.Result;
+import com.bmf.design.api.business.BusinessCmdService;
+import com.bmf.design.api.business.BusinessQryService;
+import com.bmf.design.api.business.dto.BusinessCmdReqDTO;
+import com.bmf.design.api.business.dto.BusinessQryReqDTO;
+import com.bmf.design.base.Business;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainValueObjectAttrMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainValueObjectAttrPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainValueObjectAttrMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainValueObjectAttrPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="vo_code" jdbcType="INTEGER" property="voCode"/>
         <result column="attr_name" jdbcType="VARCHAR" property="attrName"/>
@@ -23,7 +23,7 @@
         limit 1
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainValueObjectAttrPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainValueObjectAttrPO">
         insert into bmf_domain_vo_attr (vo_code, attr_name, attr_type, attr_desc)
         values (
             #{voCode,jdbcType=INTEGER},
@@ -33,7 +33,7 @@
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.DomainValueObjectAttrPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.DomainValueObjectAttrPO">
         delete from bmf_domain_vo_attr
         where vo_code = #{voCode,jdbcType=INTEGER}
         and attr_name = #{attrName,jdbcType=VARCHAR}

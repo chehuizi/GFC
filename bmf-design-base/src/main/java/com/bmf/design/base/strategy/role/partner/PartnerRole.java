@@ -1,0 +1,17 @@
+package com.bmf.design.base.strategy.role.partner;
+
+import com.bmf.design.base.Domain;
+import com.bmf.design.base.enums.RelationshipRoleEnum;
+import com.bmf.design.base.strategy.role.RelationshipRole;
+
+public class PartnerRole extends RelationshipRole {
+
+    public PartnerRole() {
+        super.setRole(RelationshipRoleEnum.PARTNER.getRole());
+    }
+
+    public PartnerRole(Domain domain) {
+        super.setDomain(domain);
+        super.setRole(RelationshipRoleEnum.PARTNER.getRole());
+    }
+}

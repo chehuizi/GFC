@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.BusinessMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.BusinessPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="business_prefix" jdbcType="VARCHAR" property="businessPrefix"/>
         <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
@@ -17,7 +17,7 @@
         id, business_prefix, business_code, business_name, business_alias, business_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.BusinessPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business
@@ -40,7 +40,7 @@
         and is_deleted = 0
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessPO">
         insert into bmf_business (business_prefix, business_code, business_name, business_alias, business_desc)
         values (
             #{businessPrefix,jdbcType=VARCHAR},

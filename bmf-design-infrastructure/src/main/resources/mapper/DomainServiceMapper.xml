@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainServiceMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainServicePO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainServiceMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainServicePO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
         <result column="service_code" jdbcType="INTEGER" property="serviceCode"/>
@@ -36,7 +36,7 @@
         where domain_code = #{domainCode}
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainServicePO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainServicePO">
         insert into bmf_domain_service (domain_code, service_code, service_alias, service_name, service_desc)
         values (
             #{domainCode,jdbcType=INTEGER},
@@ -47,7 +47,7 @@
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.DomainServicePO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.DomainServicePO">
         delete from bmf_domain_service
         where domain_code = #{domainCode,jdbcType=INTEGER}
         and service_code = #{serviceCode,jdbcType=INTEGER}

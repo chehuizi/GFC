@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainRelationMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainRelationPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainRelationMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainRelationPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
         <result column="domain_relation" jdbcType="VARCHAR" property="domainRelation"/>
@@ -33,7 +33,7 @@
         and is_deleted = 0
     </select>
 
-    <select id="selectByDomain" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainRelationPO">
+    <select id="selectByDomain" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.DomainRelationPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain_relation
@@ -46,7 +46,7 @@
         and is_deleted = 0
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainRelationPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainRelationPO">
         insert into bmf_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
         values (
             #{businessCode,jdbcType=INTEGER},
@@ -58,7 +58,7 @@
         )
     </insert>
 
-    <insert id="batchInsert" parameterType="com.bmf.infrastructure.dal.po.DomainRelationPO">
+    <insert id="batchInsert" parameterType="com.bmf.design.infrastructure.dal.po.DomainRelationPO">
         insert into bmf_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
         values
         <foreach collection="list" item="item" index="index" separator=",">
@@ -78,7 +78,7 @@
         gmt_modify = now()
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.BusinessRelDomainPO">
         delete from bmf_domain_relation
         <trim prefix="where" prefixOverrides="and | or">
             <if test="businessCode != null">

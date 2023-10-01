@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessRelDomainMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.BusinessRelDomainMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.BusinessRelDomainPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
         <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
@@ -15,7 +15,7 @@
         id, business_code, domain_code, domain_position
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.BusinessRelDomainPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_rel_domain
@@ -31,7 +31,7 @@
         where business_code = #{businessCode,jdbcType=INTEGER}
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessRelDomainPO">
         insert into bmf_business_rel_domain (business_code, domain_code, domain_position)
         values (
             #{businessCode,jdbcType=INTEGER},
@@ -78,7 +78,7 @@
         </where>
     </update>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessRelDomainPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.BusinessRelDomainPO">
         delete from bmf_business_rel_domain
         where business_code = #{businessCode,jdbcType=INTEGER}
         and domain_code = #{domainCode,jdbcType=INTEGER}

@@ -1,10 +1,11 @@
 package com.bmf.api.application;
 
-import com.bmf.api.Result;
-import com.bmf.api.application.dto.DomainAppCmdReqDTO;
-import com.bmf.base.application.DomainApp;
-import com.bmf.base.application.DomainAppApi;
-import com.bmf.common.enums.ResultCodeEnum;
+import com.bmf.design.api.Result;
+import com.bmf.design.api.application.DomainAppCmdService;
+import com.bmf.design.api.application.dto.DomainAppCmdReqDTO;
+import com.bmf.design.base.application.DomainApp;
+import com.bmf.design.base.application.DomainAppApi;
+import com.bmf.design.common.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

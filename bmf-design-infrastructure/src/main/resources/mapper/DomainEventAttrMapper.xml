@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainEventAttrMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainEventAttrPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainEventAttrMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainEventAttrPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="event_code" jdbcType="INTEGER" property="eventCode"/>
         <result column="attr_name" jdbcType="VARCHAR" property="attrName"/>
@@ -16,7 +16,7 @@
         id, event_code, attr_name, attr_type, attr_desc, gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainEventAttrPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.DomainEventAttrPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain_event_attr
@@ -32,7 +32,7 @@
         where event_code = #{eventCode,jdbcType=INTEGER}
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainEventAttrPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainEventAttrPO">
         insert into bmf_domain_event_attr (event_code, attr_name, attr_type, attr_desc)
         values (
             #{eventCode,jdbcType=INTEGER},
@@ -42,7 +42,7 @@
         )
     </insert>
 
-    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.DomainEventAttrPO">
+    <delete id="delete" parameterType="com.bmf.design.infrastructure.dal.po.DomainEventAttrPO">
         delete from bmf_domain_event_attr
         where event_code = #{eventCode,jdbcType=INTEGER}
         and attr_name = #{attrName,jdbcType=VARCHAR}

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainAppApiMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainAppApiPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainAppApiMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainAppApiPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="domain_code" jdbcType="INTEGER" property="domainCode"/>
         <result column="domain_alias" jdbcType="VARCHAR" property="domainAlias"/>
@@ -23,7 +23,7 @@
         gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainAppApiPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.DomainAppApiPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain_app_api

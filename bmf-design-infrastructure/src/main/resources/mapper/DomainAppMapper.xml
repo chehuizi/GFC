@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainAppMapper">
-    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainAppPO">
+<mapper namespace="com.bmf.design.infrastructure.dal.mapper.DomainAppMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.design.infrastructure.dal.po.DomainAppPO">
         <id column="id" jdbcType="BIGINT" property="id"/>
         <result column="app_id" jdbcType="INTEGER" property="appId"/>
         <result column="app_name" jdbcType="VARCHAR" property="appName"/>
@@ -17,7 +17,7 @@
         id, app_id, app_name, app_desc, domain_code, domain_alias, gmt_create, gmt_modify, is_deleted
     </sql>
 
-    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.DomainAppPO">
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.DomainAppPO">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_domain_app
@@ -35,7 +35,7 @@
         where domain_code = #{domainCode}
     </select>
 
-    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainAppPO">
+    <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.DomainAppPO">
         insert into bmf_domain_app (app_id, app_name, app_desc, domain_code, domain_alias)
         values (
             #{appId,jdbcType=INTEGER},
