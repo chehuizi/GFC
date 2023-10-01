@@ -26,7 +26,7 @@
   <dependencies>
     <dependency>
       <groupId>com.bmf</groupId>
-      <artifactId>bmf-base</artifactId>
+      <artifactId>bmf-design-base</artifactId>
     </dependency>
   </dependencies>
 

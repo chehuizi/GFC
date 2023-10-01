@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-base</artifactId>
+  <artifactId>bmf-design-core</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-base</name>
+  <name>bmf-core</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -25,20 +25,16 @@
 
   <dependencies>
     <dependency>
-      <groupId>org.projectlombok</groupId>
-      <artifactId>lombok</artifactId>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-design-base</artifactId>
     </dependency>
     <dependency>
-      <groupId>org.apache.commons</groupId>
-      <artifactId>commons-lang3</artifactId>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-design-common</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.alibaba</groupId>
-      <artifactId>fastjson</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-design-infrastructure</artifactId>
     </dependency>
   </dependencies>
 

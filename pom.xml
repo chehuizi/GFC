@@ -9,18 +9,18 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>bmf-base</module>
-        <module>bmf-core</module>
-        <module>bmf-common</module>
-        <module>bmf-infrastructure</module>
+        <module>bmf-design-base</module>
+        <module>bmf-design-core</module>
+        <module>bmf-design-common</module>
+        <module>bmf-design-infrastructure</module>
         <module>bmf-design-api</module>
         <module>bmf-design-api-impl</module>
         <module>bmf-server</module>
-        <module>bmf-flow-engine</module>
+        <module>bmf-design-flow-engine</module>
         <module>bmf-data</module>
-        <module>bmf-agent-demo</module>
-        <module>bmf-agent-client</module>
-        <module>bmf-agent-annotations</module>
+        <module>bmf-dev-demo</module>
+        <module>bmf-dev-client</module>
+        <module>bmf-dev-annotations</module>
     </modules>
 
     <name>bmf</name>

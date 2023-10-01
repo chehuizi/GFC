@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-infrastructure</artifactId>
+  <artifactId>bmf-design-infrastructure</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>bmf-infrastructure</name>
@@ -26,7 +26,7 @@
   <dependencies>
     <dependency>
       <groupId>com.bmf</groupId>
-      <artifactId>bmf-base</artifactId>
+      <artifactId>bmf-design-base</artifactId>
     </dependency>
     <!-- spring jdbc -->
     <dependency>

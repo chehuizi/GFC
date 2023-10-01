@@ -10,10 +10,10 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-agent-demo</artifactId>
+  <artifactId>bmf-design-flow-engine</artifactId>
   <version>1.0-SNAPSHOT</version>
 
-  <name>bmf-demo</name>
+  <name>bmf-flow-engine</name>
   <!-- FIXME change it to the project's website -->
   <url>http://www.example.com</url>
 
@@ -26,19 +26,7 @@
   <dependencies>
     <dependency>
       <groupId>com.bmf</groupId>
-      <artifactId>bmf-agent-client</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework</groupId>
-      <artifactId>spring-context</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-web</artifactId>
-    </dependency>
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-test</artifactId>
+      <artifactId>bmf-design-base</artifactId>
     </dependency>
     <dependency>
       <groupId>junit</groupId>
