@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
  *
  */
 @SpringBootApplication
-@MapperScan("com.design.bmf.infrastructure.dal.mapper")
+@MapperScan("com.bmf.design.infrastructure.dal.mapper")
 public class App {
 
     public static void main(String[] args) {
