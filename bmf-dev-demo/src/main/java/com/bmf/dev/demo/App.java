@@ -10,8 +10,8 @@ import org.springframework.context.annotation.ComponentScan;
  * 启动类
  */
 @SpringBootApplication
-@ComponentScan(basePackages = {"com.bmf.demo"})
-@EnableBMFScan(basePackages = {"com.bmf.demo.api"})
+@ComponentScan(basePackages = {"com.bmf.dev.demo"})
+@EnableBMFScan(basePackages = {"com.bmf.dev.demo.api"})
 @Domain(appId = 5001, appName = "app_wms", appDesc = "wms应用",
         domainCode = 101, domainAlias = "wms")
 public class App {

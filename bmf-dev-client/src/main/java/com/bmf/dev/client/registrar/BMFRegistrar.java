@@ -35,7 +35,7 @@ public class BMFRegistrar implements ImportBeanDefinitionRegistrar, ResourceLoad
 
     private static final Logger logger = LoggerFactory.getLogger(BMFRegistrar.class);
 
-    private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.dev.annotations.annotations.Domain";
+    private static final String ANNOTATION_NAME_DOMAIN_APP = "com.bmf.dev.annotations.Domain";
 
     /**
      * 资源加载器
