@@ -13,12 +13,13 @@ public interface InboundService {
      * 创建入库单
      * @return
      */
-    @DomainService(serviceCode = 10002, serviceAlias = "inbound_create_order_service")
+    @DomainService(serviceCode = 100020, serviceAlias = "inbound_create_order_service")
     String createInboundOrder();
 
     /**
      * 取消入库单
      * @return
      */
+    @DomainService(serviceCode = 100021, serviceAlias = "inbound_cancel_order_service")
     boolean cancelInboundOrder();
 }

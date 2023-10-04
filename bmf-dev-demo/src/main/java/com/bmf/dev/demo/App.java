@@ -12,8 +12,7 @@ import org.springframework.context.annotation.ComponentScan;
 @SpringBootApplication
 @ComponentScan(basePackages = {"com.bmf.dev.demo"})
 @EnableBMFScan(basePackages = {"com.bmf.dev.demo.api"})
-@Domain(appId = 5001, appName = "app_wms", appDesc = "wms应用",
-        domainCode = 101, domainAlias = "wms")
+@Domain(domainCode = 101, domainAlias = "wms", appId = 5001, appName = "app_wms", appDesc = "wms应用")
 public class App {
 
     public static void main(String args[]) {

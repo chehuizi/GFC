@@ -13,12 +13,13 @@ public interface InventoryService {
      * 创建盘点单
      * @return
      */
-    @DomainService(serviceCode = 10003, serviceAlias = "inventory_create_order_service")
+    @DomainService(serviceCode = 100030, serviceAlias = "inventory_create_order_service")
     String createInventoryOrder();
 
     /**
      * 取消盘点单
      * @return
      */
+    @DomainService(serviceCode = 100031, serviceAlias = "inventory_cancel_order_service")
     boolean cancelInventoryOrder();
 }
