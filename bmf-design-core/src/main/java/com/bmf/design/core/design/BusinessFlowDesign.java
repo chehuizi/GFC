@@ -6,7 +6,7 @@ import com.bmf.design.base.flow.BusinessFlowNode;
 import java.util.List;
 
 /**
- * 业务设计
+ * 业务流程设计
  */
 public interface BusinessFlowDesign {
 
