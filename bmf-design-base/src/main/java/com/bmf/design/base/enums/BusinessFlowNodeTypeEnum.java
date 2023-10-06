@@ -8,7 +8,7 @@ import lombok.Getter;
 @Getter
 public enum BusinessFlowNodeTypeEnum {
 
-    START("start", "起始节点"),
+    START("start", "开始节点"),
     DOMAIN("domain", "领域节点"),
     PLAIN("plain", "普通节点"),
     END("end", "结束节点"),

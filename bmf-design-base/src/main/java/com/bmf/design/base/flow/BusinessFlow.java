@@ -1,7 +1,11 @@
 package com.bmf.design.base.flow;
 
 import com.bmf.design.base.BaseModel;
+import com.bmf.design.base.flow.node.EndFlowNode;
+import com.bmf.design.base.flow.node.StartFlowNode;
 import lombok.Data;
+
+import java.util.List;
 
 /**
  * 业务流程
@@ -26,7 +30,20 @@ public class BusinessFlow extends BaseModel {
      */
     private String flowAlias;
     /**
-     * 角色ID
+     * 开始节点
      */
-    private Integer roleId;
+    private StartFlowNode startNode;
+    /**
+     * 中间节点列表
+     */
+    private List<BusinessFlowNode> midNodeList;
+    /**
+     * 结束节点
+     */
+    private EndFlowNode endNode;
+    /**
+     * 流程线列表
+     */
+    private List<BusinessFlowLine> flowLineList;
+
 }

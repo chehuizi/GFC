@@ -2,7 +2,6 @@ package com.bmf.design.base.flow;
 
 import com.bmf.design.base.BaseModel;
 import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
-import com.bmf.design.base.enums.DomainElementEnum;
 import lombok.Data;
 
 /**
@@ -32,21 +31,4 @@ public class BusinessFlowNode extends BaseModel {
      * @see BusinessFlowNodeTypeEnum
      */
     private String nodeType;
-    /**
-     * 领域元素
-     * @see DomainElementEnum
-     */
-    private String domainElement;
-    /**
-     * 领域元素ID
-     */
-    private Integer elementId;
-    /**
-     * 前节点ID列表
-     */
-    private Integer[] preNodes;
-    /**
-     * 角色ID
-     */
-    private Integer roleId;
 }
