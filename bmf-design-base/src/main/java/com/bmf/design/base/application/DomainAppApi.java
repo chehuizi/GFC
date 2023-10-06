@@ -10,6 +10,27 @@ import lombok.Data;
 public class DomainAppApi extends BaseModel {
 
     /**
+     * 领域编码
+     */
+    private Integer domainCode;
+    /**
+     * 领域别名（英文）
+     */
+    private String domainAlias;
+    /**
+     * 领域元素类型
+     * @see com.bmf.design.base.enums.DomainElementEnum
+     */
+    private String domainElementType;
+    /**
+     * 领域元素编码
+     */
+    private Integer elementCode;
+    /**
+     * 领域元素别名（英文）
+     */
+    private String elementAlias;
+    /**
      * 应用ID
      */
     private Integer appId;
@@ -22,6 +43,10 @@ public class DomainAppApi extends BaseModel {
      */
     private String appDesc;
     /**
+     * API类型
+     */
+    private String apiType;
+    /**
      * API名称
      */
     private String apiName;
@@ -33,20 +58,5 @@ public class DomainAppApi extends BaseModel {
      * API描述
      */
     private String apiDesc;
-    /**
-     * 领域编码
-     */
-    private Integer domainCode;
-    /**
-     * 领域别名（英文）
-     */
-    private String domainAlias;
-    /**
-     * 领域服务编码
-     */
-    private Integer serviceCode;
-    /**
-     * 领域服务别名（英文）
-     */
-    private String serviceAlias;
+
 }

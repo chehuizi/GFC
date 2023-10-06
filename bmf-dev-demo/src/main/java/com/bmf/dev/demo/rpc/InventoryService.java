@@ -1,4 +1,4 @@
-package com.bmf.dev.demo.api;
+package com.bmf.dev.demo.rpc;
 
 import com.bmf.dev.annotations.DomainService;
 import com.bmf.dev.annotations.DomainServiceClass;

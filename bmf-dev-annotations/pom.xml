@@ -10,7 +10,7 @@
     <artifactId>bmf-dev-annotations</artifactId>
     <packaging>jar</packaging>
 
-    <name>bmf-annotations</name>
+    <name>bmf-dev-annotations</name>
     <url>http://maven.apache.org</url>
 
     <properties>

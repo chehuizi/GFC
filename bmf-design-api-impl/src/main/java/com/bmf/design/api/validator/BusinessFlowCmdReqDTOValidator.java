@@ -18,7 +18,6 @@ public class BusinessFlowCmdReqDTOValidator {
         ParamCheckUtil.checkNull(businessFlowCmdReqDTO.getBusinessFlow().getBusinessCode(), "business code is null");
         ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlow().getFlowName(), "business flow name is blank");
         ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlow().getFlowAlias(), "business flow alias is blank");
-        ParamCheckUtil.checkNull(businessFlowCmdReqDTO.getBusinessFlow().getRoleId(), "role id is null");
         return true;
     }
 
@@ -34,8 +33,6 @@ public class BusinessFlowCmdReqDTOValidator {
         ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getNodeName(), "flow node name is blank");
         ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getNodeAlias(), "flow node alias is blank");
         ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getNodeType(), "flow node type is blank");
-        ParamCheckUtil.checkBlank(businessFlowCmdReqDTO.getBusinessFlowNode().getDomainElement(), "domain element is blank");
-        ParamCheckUtil.checkNull(businessFlowCmdReqDTO.getBusinessFlowNode().getElementId(), "domain element id is null");
         return true;
     }
 }

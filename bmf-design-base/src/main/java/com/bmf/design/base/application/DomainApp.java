@@ -10,6 +10,14 @@ import lombok.Data;
 public class DomainApp extends BaseModel {
 
     /**
+     * 领域编码
+     */
+    private Integer domainCode;
+    /**
+     * 领域别名（英文）
+     */
+    private String domainAlias;
+    /**
      * 应用ID
      */
     private Integer appId;
@@ -21,13 +29,5 @@ public class DomainApp extends BaseModel {
      * 应用描述
      */
     private String appDesc;
-    /**
-     * 领域编码
-     */
-    private Integer domainCode;
-    /**
-     * 领域别名（英文）
-     */
-    private String domainAlias;
 
 }

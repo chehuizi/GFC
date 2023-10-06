@@ -3,19 +3,19 @@ package com.bmf.dev.annotations;
 import java.lang.annotation.*;
 
 @Documented
-@Target(ElementType.METHOD)
 @Retention(value = RetentionPolicy.RUNTIME)
-public @interface DomainService {
+@Target(ElementType.TYPE)
+public @interface DomainEvent {
 
     /**
-     * 领域服务编码
+     * 领域事件编码
      * @return
      */
-    int serviceCode();
+    int eventCode();
 
     /**
-     * 领域服务别名（英文）
+     * 领域事件别名（英文）
      * @return
      */
-    String serviceAlias();
+    String eventAlias();
 }
