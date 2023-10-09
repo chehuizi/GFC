@@ -5,7 +5,9 @@ import com.bmf.design.base.flow.node.EndFlowNode;
 import com.bmf.design.base.flow.node.StartFlowNode;
 import lombok.Data;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * 业务流程
@@ -46,4 +48,37 @@ public class BusinessFlow extends BaseModel {
      */
     private List<BusinessFlowLine> flowLineList;
 
+    public BusinessFlow() {
+        startNode = new StartFlowNode();
+    }
+
+    /**
+     * 添加中间节点
+     * @param flowNode
+     */
+    public void addMidNode(BusinessFlowNode flowNode) {
+        if (Objects.isNull(midNodeList)) {
+            midNodeList = new ArrayList<>();
+        }
+        midNodeList.add(flowNode);
+    }
+
+    /**
+     * 添加结束节点
+     * @param endFlowNode
+     */
+    public void addEndNode(EndFlowNode endFlowNode) {
+        this.setEndNode(endFlowNode);
+    }
+
+    /**
+     * 添加流程线
+     * @param flowLine
+     */
+    public void addFlowLine(BusinessFlowLine flowLine) {
+        if (Objects.isNull(flowLineList)) {
+            flowLineList = new ArrayList<>();
+        }
+        flowLineList.add(flowLine);
+    }
 }
