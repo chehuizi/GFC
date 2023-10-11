@@ -43,10 +43,6 @@ public class BusinessFlow extends BaseModel {
      * 结束节点
      */
     private EndFlowNode endNode;
-    /**
-     * 流程线列表
-     */
-    private List<BusinessFlowLine> flowLineList;
 
     public BusinessFlow() {
         startNode = new StartFlowNode();
@@ -71,14 +67,4 @@ public class BusinessFlow extends BaseModel {
         this.setEndNode(endFlowNode);
     }
 
-    /**
-     * 添加流程线
-     * @param flowLine
-     */
-    public void addFlowLine(BusinessFlowLine flowLine) {
-        if (Objects.isNull(flowLineList)) {
-            flowLineList = new ArrayList<>();
-        }
-        flowLineList.add(flowLine);
-    }
 }
