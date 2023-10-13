@@ -4,6 +4,8 @@ import com.bmf.design.base.BaseModel;
 import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
 import lombok.Data;
 
+import java.util.List;
+
 /**
  * 业务流程节点
  */
@@ -31,4 +33,8 @@ public class BusinessFlowNode extends BaseModel {
      * @see BusinessFlowNodeTypeEnum
      */
     private String nodeType;
+    /**
+     * 后续节点
+     */
+    private List<Integer> nextNodes;
 }
