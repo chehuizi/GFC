@@ -29,7 +29,7 @@ public class BusinessFlowNode extends BaseModel {
      */
     private String nodeAlias;
     /**
-     * 节点
+     * 节点类型
      * @see BusinessFlowNodeTypeEnum
      */
     private String nodeType;
