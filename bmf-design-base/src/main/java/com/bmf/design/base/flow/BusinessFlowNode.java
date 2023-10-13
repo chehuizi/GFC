@@ -37,4 +37,8 @@ public class BusinessFlowNode extends BaseModel {
      * 后续节点
      */
     private List<Integer> nextNodes;
+    /**
+     * 节点执行条件
+     */
+    private String condition;
 }
