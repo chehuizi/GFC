@@ -9,6 +9,14 @@ import lombok.Data;
 public class BusinessScene {
 
     /**
+     * 业务编码
+     */
+    private Integer businessCode;
+    /**
+     * 场景ID
+     */
+    private Integer sceneId;
+    /**
      * 场景名称（中文）
      */
     private String sceneName;
@@ -16,4 +24,8 @@ public class BusinessScene {
      * 场景别名（英文）
      */
     private String sceneAlias;
+    /**
+     * 场景描述
+     */
+    private String sceneDesc;
 }
