@@ -20,14 +20,4 @@ public class BusinessFlowCmdReqDTOValidator {
         ParamCheckUtil.checkBlank(businessFlowConfigCmdReqDTO.getBusinessFlow().getFlowAlias(), "business flow alias is blank");
         return true;
     }
-
-    /**
-     * 校验addFlowNode方法
-     * @param businessFlowConfigCmdReqDTO
-     * @return
-     */
-    public boolean v4AddFlowNode(BusinessFlowConfigCmdReqDTO businessFlowConfigCmdReqDTO) {
-        ParamCheckUtil.checkNull(businessFlowConfigCmdReqDTO, "param is null");
-        return true;
-    }
 }
