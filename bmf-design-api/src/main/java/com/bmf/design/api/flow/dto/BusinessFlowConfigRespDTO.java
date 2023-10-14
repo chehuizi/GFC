@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.List;
 
 @Data
-public class BusinessFlowRespDTO extends RespDTO implements Serializable {
+public class BusinessFlowConfigRespDTO extends RespDTO implements Serializable {
 
     /**
      * 业务流程

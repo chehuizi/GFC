@@ -1,11 +1,10 @@
 package com.bmf.api.flow;
 
 import com.bmf.design.api.Result;
-import com.bmf.design.api.flow.BusinessFlowCmdService;
-import com.bmf.design.api.flow.dto.BusinessFlowCmdReqDTO;
+import com.bmf.design.api.flow.BusinessFlowConfigCmdService;
+import com.bmf.design.api.flow.dto.BusinessFlowConfigCmdReqDTO;
 import com.bmf.design.base.Business;
 import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
-import com.bmf.design.base.enums.DomainElementEnum;
 import com.bmf.design.base.flow.BusinessFlow;
 import com.bmf.design.base.flow.BusinessFlowNode;
 import com.bmf.design.common.enums.ResultCodeEnum;
@@ -18,45 +17,41 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class BusinessFlowCmdServiceTest {
+public class BusinessFlowConfigCmdServiceTest {
 
     @Autowired
-    private BusinessFlowCmdService businessFlowCmdService;
+    private BusinessFlowConfigCmdService businessFlowCmdService;
 
     @Test
     public void test_business_flow_create() {
-        BusinessFlowCmdReqDTO businessFlowCmdReqDTO = new BusinessFlowCmdReqDTO();
+        BusinessFlowConfigCmdReqDTO businessFlowConfigCmdReqDTO = new BusinessFlowConfigCmdReqDTO();
         Business business = new Business();
         business.setBusinessCode(102);
-        businessFlowCmdReqDTO.setBusiness(business);
+        businessFlowConfigCmdReqDTO.setBusiness(business);
         BusinessFlow businessFlow = new BusinessFlow();
         businessFlow.setBusinessCode(102);
         businessFlow.setFlowName("入库流程");
         businessFlow.setFlowAlias("inbound_flow");
-        businessFlow.setRoleId(10002);
-        businessFlowCmdReqDTO.setBusinessFlow(businessFlow);
-        Result<Boolean> result = businessFlowCmdService.create(businessFlowCmdReqDTO);
+        businessFlowConfigCmdReqDTO.setBusinessFlow(businessFlow);
+        Result<Boolean> result = businessFlowCmdService.create(businessFlowConfigCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }
 
     @Test
     public void test_business_flow_add_node() {
-        BusinessFlowCmdReqDTO businessFlowCmdReqDTO = new BusinessFlowCmdReqDTO();
+        BusinessFlowConfigCmdReqDTO businessFlowConfigCmdReqDTO = new BusinessFlowConfigCmdReqDTO();
         BusinessFlow businessFlow = new BusinessFlow();
         businessFlow.setBusinessCode(102);
         businessFlow.setFlowId(1001);
-        businessFlowCmdReqDTO.setBusinessFlow(businessFlow);
+        businessFlowConfigCmdReqDTO.setBusinessFlow(businessFlow);
         BusinessFlowNode flowNode = new BusinessFlowNode();
         flowNode.setFlowId(1001);
         flowNode.setNodeName("预约入库");
         flowNode.setNodeAlias("apply_inbound");
         flowNode.setNodeType(BusinessFlowNodeTypeEnum.DOMAIN.getType());
-        flowNode.setDomainElement(DomainElementEnum.DOMAIN_SERVICE.getElement());
-        flowNode.setElementId(10004);
-        flowNode.setPreNodes(new Integer[]{1, 2, 3});
-        businessFlowCmdReqDTO.setBusinessFlowNode(flowNode);
-        Result<Boolean> result = businessFlowCmdService.addFlowNode(businessFlowCmdReqDTO);
+        businessFlowConfigCmdReqDTO.setBusinessFlowNode(flowNode);
+        Result<Boolean> result = businessFlowCmdService.addFlowNode(businessFlowConfigCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(result.getData());
     }

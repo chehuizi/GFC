@@ -11,7 +11,7 @@ import lombok.Data;
 import java.io.Serializable;
 
 @Data
-public class BusinessFlowCmdReqDTO extends ReqDTO implements Serializable {
+public class BusinessFlowConfigCmdReqDTO extends ReqDTO implements Serializable {
 
     private static final long serialVersionUID = -2692178052647653883L;
 
