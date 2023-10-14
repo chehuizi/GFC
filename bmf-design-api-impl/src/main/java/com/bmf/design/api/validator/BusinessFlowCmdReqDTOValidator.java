@@ -28,11 +28,6 @@ public class BusinessFlowCmdReqDTOValidator {
      */
     public boolean v4AddFlowNode(BusinessFlowConfigCmdReqDTO businessFlowConfigCmdReqDTO) {
         ParamCheckUtil.checkNull(businessFlowConfigCmdReqDTO, "param is null");
-        ParamCheckUtil.checkNull(businessFlowConfigCmdReqDTO.getBusinessFlowNode(), "business flow node is null");
-        ParamCheckUtil.checkNull(businessFlowConfigCmdReqDTO.getBusinessFlowNode().getFlowId(), "flow id is null");
-        ParamCheckUtil.checkBlank(businessFlowConfigCmdReqDTO.getBusinessFlowNode().getNodeName(), "flow node name is blank");
-        ParamCheckUtil.checkBlank(businessFlowConfigCmdReqDTO.getBusinessFlowNode().getNodeAlias(), "flow node alias is blank");
-        ParamCheckUtil.checkBlank(businessFlowConfigCmdReqDTO.getBusinessFlowNode().getNodeType(), "flow node type is blank");
         return true;
     }
 }

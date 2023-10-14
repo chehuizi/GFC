@@ -32,10 +32,8 @@ public class BusinessFlowConfigCmdServiceImpl implements BusinessFlowConfigCmdSe
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
         req.getBusinessFlow().setFlowId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_FLOW.getKey()));
-        req.initStartNode();
-        req.getBusinessFlowNode().setNodeId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_NODE.getKey()));
         return ResultUtil.success(businessFlowDesign.addFlow(req.getBusinessFlow(),
-                req.getBusinessFlowNode()));
+                null));
     }
 
     @Override
@@ -46,14 +44,5 @@ public class BusinessFlowConfigCmdServiceImpl implements BusinessFlowConfigCmdSe
     @Override
     public Result<Boolean> delete(BusinessFlowConfigCmdReqDTO req) {
         return ResultUtil.fail(BizCodeEnum.FUNCTION_NOT_SUPPORT);
-    }
-
-    @Override
-    @Validator(beanName = "businessFlowCmdReqDTOValidator", method = "v4AddFlowNode")
-    public Result<Boolean> addFlowNode(BusinessFlowConfigCmdReqDTO businessFlowConfigCmdReqDTO) {
-        BusinessFlow businessFlow = businessFlowDesign.queryFlow(businessFlowConfigCmdReqDTO.getBusinessFlow());
-        BusinessCheckUtil.checkNull(businessFlow, BizCodeEnum.BUSINESS_FLOW_NOT_EXIST);
-        businessFlowConfigCmdReqDTO.getBusinessFlowNode().setNodeId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_NODE.getKey()));
-        return ResultUtil.success(businessFlowDesign.addFlowNode(businessFlowConfigCmdReqDTO.getBusinessFlowNode()));
     }
 }
