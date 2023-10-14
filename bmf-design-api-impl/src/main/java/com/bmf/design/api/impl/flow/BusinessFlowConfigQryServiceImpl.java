@@ -5,7 +5,6 @@ import com.bmf.design.api.flow.BusinessFlowConfigQryService;
 import com.bmf.design.api.flow.dto.BusinessFlowConfigQryReqDTO;
 import com.bmf.design.api.flow.dto.BusinessFlowConfigRespDTO;
 import com.bmf.design.base.flow.BusinessFlow;
-import com.bmf.design.base.flow.BusinessFlowNode;
 import com.bmf.design.common.utils.ResultUtil;
 import com.bmf.design.core.design.BusinessFlowDesign;
 import org.springframework.beans.factory.annotation.Autowired;
