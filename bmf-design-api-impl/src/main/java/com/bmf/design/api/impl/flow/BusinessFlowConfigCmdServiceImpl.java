@@ -5,6 +5,7 @@ import com.bmf.design.api.flow.BusinessFlowConfigCmdService;
 import com.bmf.design.api.flow.dto.BusinessFlowConfigCmdReqDTO;
 import com.bmf.design.base.Business;
 import com.bmf.design.base.enums.CodeKeyEnum;
+import com.bmf.design.base.flow.BusinessFlow;
 import com.bmf.design.common.enums.BizCodeEnum;
 import com.bmf.design.common.utils.BusinessCheckUtil;
 import com.bmf.design.common.utils.ResultUtil;
@@ -14,6 +15,8 @@ import com.bmf.design.core.design.BusinessFlowDesign;
 import com.bmf.design.infrastructure.generator.CodeSeqGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class BusinessFlowConfigCmdServiceImpl implements BusinessFlowConfigCmdService {
@@ -30,9 +33,12 @@ public class BusinessFlowConfigCmdServiceImpl implements BusinessFlowConfigCmdSe
     public Result<Boolean> create(BusinessFlowConfigCmdReqDTO req) {
         Business business = businessService.queryBusiness(req.getBusiness());
         BusinessCheckUtil.checkNull(business, BizCodeEnum.BUSINESS_NOT_EXIST);
+        BusinessFlow businessFlow = businessFlowDesign.queryFlow(req.getBusinessFlow());
+        if (Objects.nonNull(businessFlow)) {
+            return ResultUtil.success(businessFlowDesign.updateFlow(businessFlow));
+        }
         req.getBusinessFlow().setFlowId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_FLOW.getKey()));
-        return ResultUtil.success(businessFlowDesign.addFlow(req.getBusinessFlow(),
-                null));
+        return ResultUtil.success(businessFlowDesign.addFlow(req.getBusinessFlow()));
     }
 
     @Override

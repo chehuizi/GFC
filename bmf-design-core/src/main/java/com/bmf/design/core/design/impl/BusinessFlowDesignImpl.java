@@ -1,15 +1,12 @@
 package com.bmf.design.core.design.impl;
 
 import com.bmf.design.base.flow.BusinessFlow;
-import com.bmf.design.base.flow.BusinessFlowNode;
 import com.bmf.design.core.design.BusinessFlowDesign;
 import com.bmf.design.infrastructure.dal.BusinessFlowNodeRepository;
 import com.bmf.design.infrastructure.dal.BusinessFlowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import java.util.List;
 
 @Service
 public class BusinessFlowDesignImpl implements BusinessFlowDesign {
@@ -21,26 +18,18 @@ public class BusinessFlowDesignImpl implements BusinessFlowDesign {
 
     @Override
     @Transactional
-    public boolean addFlow(BusinessFlow businessFlow, BusinessFlowNode businessFlowNode) {
+    public boolean addFlow(BusinessFlow businessFlow) {
         boolean insertFlow = businessFlowRepository.insert(businessFlow);
-        if (insertFlow) {
-            return businessFlowNodeRepository.insert(businessFlowNode);
-        }
-        return false;
+        return insertFlow;
     }
 
     @Override
-    public boolean addFlowNode(BusinessFlowNode businessFlowNode) {
-        return businessFlowNodeRepository.insert(businessFlowNode);
+    public boolean updateFlow(BusinessFlow businessFlow) {
+        return false;
     }
 
     @Override
     public BusinessFlow queryFlow(BusinessFlow businessFlow) {
         return businessFlowRepository.selectOne(businessFlow);
-    }
-
-    @Override
-    public List<BusinessFlowNode> queryFlowNode(BusinessFlow businessFlow) {
-        return businessFlowNodeRepository.selectNodeList(businessFlow.getFlowId());
     }
 }

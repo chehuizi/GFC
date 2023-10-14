@@ -22,10 +22,8 @@ public class BusinessFlowConfigQryServiceImpl implements BusinessFlowConfigQrySe
     @Override
     public Result<BusinessFlowConfigRespDTO> queryOne(BusinessFlowConfigQryReqDTO req) {
         BusinessFlow businessFlow = businessFlowDesign.queryFlow(req.getBusinessFlow());
-        List<BusinessFlowNode> flowNodeList = businessFlowDesign.queryFlowNode(req.getBusinessFlow());
         BusinessFlowConfigRespDTO respDTO = new BusinessFlowConfigRespDTO();
         respDTO.setBusinessFlow(businessFlow);
-        respDTO.setFlowNodeList(flowNodeList);
         return ResultUtil.success(respDTO);
     }
 }
