@@ -28,6 +28,7 @@ public class BusinessFlowConfigCmdServiceTest {
         businessFlowConfigCmdReqDTO.setBusiness(business);
         BusinessFlow businessFlow = new BusinessFlow();
         businessFlow.setBusinessCode(102);
+        businessFlow.setSceneId(100);
         businessFlow.setFlowName("入库流程");
         businessFlow.setFlowAlias("inbound_flow");
         businessFlowConfigCmdReqDTO.setBusinessFlow(businessFlow);

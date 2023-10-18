@@ -22,7 +22,7 @@ public class BusinessFlow extends BaseModel {
     /**
      * 场景ID
      */
-    private String sceneId;
+    private Integer sceneId;
     /**
      * 流程ID
      */

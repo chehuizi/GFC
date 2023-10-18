@@ -11,6 +11,10 @@ public class BusinessFlowPO extends BasePO {
      */
     private Integer businessCode;
     /**
+     * 场景ID
+     */
+    private Integer sceneId;
+    /**
      * 流程ID
      */
     private Integer flowId;
@@ -22,8 +26,4 @@ public class BusinessFlowPO extends BasePO {
      * 流程别名（英文）
      */
     private String flowAlias;
-    /**
-     * 角色ID
-     */
-    private Integer roleId;
 }
