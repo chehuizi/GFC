@@ -10,7 +10,7 @@
     <version>1.0-SNAPSHOT</version>
   </parent>
 
-  <artifactId>bmf-data</artifactId>
+  <artifactId>bmf-data-model</artifactId>
   <version>1.0-SNAPSHOT</version>
 
   <name>bmf-data</name>

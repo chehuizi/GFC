@@ -48,8 +48,8 @@ public class BusinessFlow extends BaseModel {
      */
     private EndFlowNode endNode;
 
-    public BusinessFlow() {
-        startNode = new StartFlowNode();
+    public void addStartNode(StartFlowNode startFlowNode) {
+        this.setStartNode(startFlowNode);
     }
 
     /**

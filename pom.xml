@@ -17,7 +17,7 @@
         <module>bmf-design-api-impl</module>
         <module>bmf-server</module>
         <module>bmf-design-flow-engine</module>
-        <module>bmf-data</module>
+        <module>bmf-data-model</module>
         <module>bmf-dev-demo</module>
         <module>bmf-dev-client</module>
         <module>bmf-dev-annotations</module>
