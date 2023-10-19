@@ -1,17 +1,15 @@
 package com.bmf.design.base.flow;
 
 import com.bmf.design.base.BaseModel;
-import com.bmf.design.base.flow.node.EndFlowNode;
-import com.bmf.design.base.flow.node.StartFlowNode;
+import lombok.Builder;
 import lombok.Data;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * 业务流程
  */
+@Builder
 @Data
 public class BusinessFlow extends BaseModel {
 
@@ -36,39 +34,8 @@ public class BusinessFlow extends BaseModel {
      */
     private String flowAlias;
     /**
-     * 开始节点
-     */
-    private StartFlowNode startNode;
-    /**
      * 中间节点列表
      */
-    private List<BusinessFlowNode> midNodeList;
-    /**
-     * 结束节点
-     */
-    private EndFlowNode endNode;
-
-    public void addStartNode(StartFlowNode startFlowNode) {
-        this.setStartNode(startFlowNode);
-    }
-
-    /**
-     * 添加中间节点
-     * @param flowNode
-     */
-    public void addMidNode(BusinessFlowNode flowNode) {
-        if (Objects.isNull(midNodeList)) {
-            midNodeList = new ArrayList<>();
-        }
-        midNodeList.add(flowNode);
-    }
-
-    /**
-     * 添加结束节点
-     * @param endFlowNode
-     */
-    public void addEndNode(EndFlowNode endFlowNode) {
-        this.setEndNode(endFlowNode);
-    }
+    private List<BusinessFlowNode> nodeList;
 
 }

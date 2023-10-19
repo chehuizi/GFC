@@ -45,4 +45,8 @@ public class BusinessFlowNode extends BaseModel {
      * 节点执行条件
      */
     private String condition;
+    /**
+     * 节点内容
+     */
+    private String nodeContent;
 }
