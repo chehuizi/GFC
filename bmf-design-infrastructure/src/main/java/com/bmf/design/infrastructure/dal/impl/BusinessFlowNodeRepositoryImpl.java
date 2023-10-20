@@ -29,6 +29,12 @@ public class BusinessFlowNodeRepositoryImpl implements BusinessFlowNodeRepositor
     }
 
     @Override
+    public boolean batchInsert(List<BusinessFlowNode> nodeList) {
+        List<BusinessFlowNodePO> businessFlowNodePOList = POUtils.convertModel2PO(nodeList, BusinessFlowNodePO.class);
+        return businessFlowNodeMapper.batchInsert(businessFlowNodePOList) == nodeList.size();
+    }
+
+    @Override
     public boolean update(BusinessFlowNode req) {
         BusinessFlowNodePO businessFlowNodePO = POUtils.convert(req, BusinessFlowNodePO.class);
         return businessFlowNodeMapper.update(businessFlowNodePO) == 1;
@@ -41,8 +47,8 @@ public class BusinessFlowNodeRepositoryImpl implements BusinessFlowNodeRepositor
     }
 
     @Override
-    public List<BusinessFlowNode> selectNodeList(Integer flowId) {
-        return POUtils.convert(businessFlowNodeMapper.selectNodeList(flowId),
+    public List<BusinessFlowNode> selectList(Integer flowId) {
+        return POUtils.convert(businessFlowNodeMapper.selectList(flowId),
                 BusinessFlowNode.class);
     }
 }

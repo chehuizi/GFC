@@ -2,6 +2,7 @@ package com.bmf.design.base.flow;
 
 import com.bmf.design.base.BaseModel;
 import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
+import lombok.Builder;
 import lombok.Data;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
 /**
  * 业务流程节点
  */
+@Builder
 @Data
 public class BusinessFlowNode extends BaseModel {
 

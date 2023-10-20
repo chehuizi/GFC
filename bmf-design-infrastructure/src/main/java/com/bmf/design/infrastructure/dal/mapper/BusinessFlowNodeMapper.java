@@ -10,9 +10,11 @@ public interface BusinessFlowNodeMapper {
 
     int insert(BusinessFlowNodePO businessFlowNodePO);
 
+    int batchInsert(List<BusinessFlowNodePO> businessFlowNodePOList);
+
     int update(BusinessFlowNodePO businessFlowNodePO);
 
     int delete(BusinessFlowNodePO businessFlowNodePO);
 
-    List<BusinessFlowNodePO> selectNodeList(Integer flowId);
+    List<BusinessFlowNodePO> selectList(Integer flowId);
 }

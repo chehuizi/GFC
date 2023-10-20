@@ -11,5 +11,12 @@ public interface BusinessFlowNodeRepository extends BaseRepository<BusinessFlowN
      * @param flowId
      * @return
      */
-    List<BusinessFlowNode> selectNodeList(Integer flowId);
+    List<BusinessFlowNode> selectList(Integer flowId);
+
+    /**
+     * 批量插入
+     * @param nodeList
+     * @return
+     */
+    boolean batchInsert(List<BusinessFlowNode> nodeList);
 }

@@ -19,8 +19,11 @@ public class BusinessFlowDesignImpl implements BusinessFlowDesign {
     @Override
     @Transactional
     public boolean addFlow(BusinessFlow businessFlow) {
-        boolean insertFlow = businessFlowRepository.insert(businessFlow);
-        return insertFlow;
+        boolean insertRst = businessFlowRepository.insert(businessFlow);
+        if (insertRst) {
+            insertRst = businessFlowNodeRepository.batchInsert(businessFlow.getNodeList());
+        }
+        return insertRst;
     }
 
     @Override

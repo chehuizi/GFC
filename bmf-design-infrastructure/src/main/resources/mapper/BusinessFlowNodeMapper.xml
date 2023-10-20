@@ -8,19 +8,20 @@
         <result column="node_name" jdbcType="VARCHAR" property="nodeName"/>
         <result column="node_alias" jdbcType="VARCHAR" property="nodeAlias"/>
         <result column="node_type" jdbcType="VARCHAR" property="nodeType"/>
-        <result column="domain_element" jdbcType="VARCHAR" property="domainElement"/>
-        <result column="element_id" jdbcType="INTEGER" property="elementId"/>
         <result column="pre_nodes" jdbcType="VARCHAR" property="preNodes"
                 typeHandler="com.bmf.design.infrastructure.dal.typehandler.IntegerArrayTypeHandler"/>
-        <result column="role_id" jdbcType="INTEGER" property="roleId"/>
+        <result column="next_nodes" jdbcType="VARCHAR" property="nextNodes"
+                typeHandler="com.bmf.design.infrastructure.dal.typehandler.IntegerArrayTypeHandler"/>
+        <result column="condition" jdbcType="VARCHAR" property="condition"/>
+        <result column="node_content" jdbcType="VARCHAR" property="nodeContent"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
         <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
     </resultMap>
 
     <sql id="Base_Column_List">
-        id, flow_id, node_id, node_name, node_alias, node_type, domain_element, element_id,
-        pre_nodes, role_id, gmt_create, gmt_modify, is_deleted
+        id, flow_id, node_id, node_name, node_alias, node_type, pre_nodes, next_nodes,
+        condition, node_content, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.BusinessFlowNodePO">
@@ -34,7 +35,7 @@
         limit 1
     </select>
 
-    <select id="selectNodeList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    <select id="selectList" resultMap="BaseResultMap" parameterType="java.lang.Integer">
         SELECT
         <include refid="Base_Column_List"/>
         FROM bmf_business_flow_node
