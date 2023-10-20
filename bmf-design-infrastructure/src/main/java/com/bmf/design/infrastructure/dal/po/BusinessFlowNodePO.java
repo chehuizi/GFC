@@ -4,6 +4,8 @@ import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
 import com.bmf.design.base.enums.DomainElementEnum;
 import lombok.Data;
 
+import java.util.List;
+
 
 @Data
 public class BusinessFlowNodePO extends BasePO {
@@ -30,20 +32,19 @@ public class BusinessFlowNodePO extends BasePO {
      */
     private String nodeType;
     /**
-     * 领域元素
-     * @see DomainElementEnum
+     * 前置节点
      */
-    private String domainElement;
+    private List<Integer> preNodes;
     /**
-     * 领域元素ID
+     * 后置节点
      */
-    private Integer elementId;
+    private List<Integer> nextNodes;
     /**
-     * 前节点ID列表
+     * 节点执行条件
      */
-    private Integer[] preNodes;
+    private String condition;
     /**
-     * 角色ID
+     * 节点内容
      */
-    private Integer roleId;
+    private String nodeContent;
 }

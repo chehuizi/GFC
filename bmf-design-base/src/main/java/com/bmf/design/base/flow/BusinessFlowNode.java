@@ -34,11 +34,11 @@ public class BusinessFlowNode extends BaseModel {
      */
     private String nodeType;
     /**
-     * 后续节点
+     * 前置节点
      */
     private List<Integer> preNodes;
     /**
-     * 后续节点
+     * 后置节点
      */
     private List<Integer> nextNodes;
     /**
