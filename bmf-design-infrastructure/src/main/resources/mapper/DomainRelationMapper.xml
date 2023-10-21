@@ -58,7 +58,7 @@
         )
     </insert>
 
-    <insert id="batchInsert" parameterType="com.bmf.design.infrastructure.dal.po.DomainRelationPO">
+    <insert id="batchInsert" parameterType="java.util.List">
         insert into bmf_domain_relation (business_code, domain_relation, domain_a_code, domain_b_code, domain_a_role, domain_b_role)
         values
         <foreach collection="list" item="item" index="index" separator=",">

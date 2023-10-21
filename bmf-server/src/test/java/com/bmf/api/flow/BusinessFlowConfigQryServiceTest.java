@@ -23,9 +23,10 @@ public class BusinessFlowConfigQryServiceTest {
     @Test
     public void test_business_flow_query_one() {
         BusinessFlowConfigQryReqDTO qryReqDTO = new BusinessFlowConfigQryReqDTO();
-        BusinessFlow businessFlow = new BusinessFlow();
-        businessFlow.setBusinessCode(102);
-        businessFlow.setFlowId(1001);
+        BusinessFlow businessFlow = BusinessFlow.builder()
+                .businessCode(102)
+                .flowId(1001)
+                .build();
         qryReqDTO.setBusinessFlow(businessFlow);
         Result<BusinessFlowConfigRespDTO> result = businessFlowQryService.queryOne(qryReqDTO);
         System.out.println(result);

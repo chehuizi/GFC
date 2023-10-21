@@ -44,17 +44,37 @@
 
     <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessFlowNodePO">
         insert into bmf_business_flow_node (flow_id, node_id, node_name, node_alias, node_type,
-        domain_element, element_id, pre_nodes)
+        pre_nodes, next_nodes, condition, node_content)
         values (
             #{flowId,jdbcType=INTEGER},
             #{nodeId,jdbcType=INTEGER},
             #{nodeName,jdbcType=VARCHAR},
             #{nodeAlias,jdbcType=VARCHAR},
             #{nodeType,jdbcType=VARCHAR},
-            #{domainElement,jdbcType=VARCHAR},
-            <if test="elementId != null">#{elementId,jdbcType=INTEGER},</if><if test="elementId == null">0,</if>
-            <if test="preNodes != null">#{preNodes,jdbcType=VARCHAR}</if><if test="preNodes == null">''</if>
+            #{preNodes,jdbcType=VARCHAR},
+            #{nextNodes,jdbcType=VARCHAR},
+            #{condition,jdbcType=VARCHAR},
+            #{nodeContent,jdbcType=VARCHAR}
         )
+    </insert>
+
+    <insert id="batchInsert" parameterType="java.util.List">
+        insert into bmf_business_flow_node (flow_id, node_id, node_name, node_alias, node_type,
+        pre_nodes, next_nodes, condition, node_content)
+        values
+        <foreach collection="list" item="item" index="index" separator=",">
+            <trim prefix="(" suffix=")" suffixOverrides=",">
+                #{item.flowId,jdbcType=INTEGER},
+                #{item.nodeId,jdbcType=INTEGER},
+                #{item.nodeName,jdbcType=VARCHAR},
+                #{item.nodeAlias,jdbcType=VARCHAR},
+                #{item.nodeType,jdbcType=VARCHAR},
+                #{item.preNodes,jdbcType=VARCHAR},
+                #{item.nextNodes,jdbcType=VARCHAR},
+                #{item.condition,jdbcType=VARCHAR},
+                #{item.nodeContent,jdbcType=VARCHAR}
+            </trim>
+        </foreach>
     </insert>
 
     <delete id="delete">

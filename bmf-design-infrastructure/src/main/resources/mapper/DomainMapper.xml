@@ -48,7 +48,7 @@
         )
     </insert>
 
-    <insert id="batchInsert" parameterType="com.bmf.design.infrastructure.dal.po.DomainPO">
+    <insert id="batchInsert" parameterType="java.util.List">
         insert into bmf_domain (domain_code, domain_name, domain_alias, domain_type, domain_level)
         values
         <foreach collection="list" item="item" index="index" separator=",">

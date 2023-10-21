@@ -4,6 +4,7 @@ import com.bmf.design.api.Result;
 import com.bmf.design.api.flow.BusinessFlowConfigCmdService;
 import com.bmf.design.api.flow.dto.BusinessFlowConfigCmdReqDTO;
 import com.bmf.design.base.Business;
+import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
 import com.bmf.design.base.flow.BusinessFlow;
 import com.bmf.design.base.flow.BusinessFlowNode;
 import com.bmf.design.common.enums.ResultCodeEnum;
@@ -30,13 +31,20 @@ public class BusinessFlowConfigCmdServiceTest {
         business.setBusinessCode(102);
         businessFlowConfigCmdReqDTO.setBusiness(business);
         BusinessFlowNode flowNode = BusinessFlowNode.builder()
-                .nodeName("")
+                .nodeId(10)
+                .nodeName("创建出库单")
+                .nodeAlias("create_outbound_order")
+                .nodeType(BusinessFlowNodeTypeEnum.DOMAIN.getType())
+                .preNodes(Arrays.asList(11, 12))
+                .nextNodes(Arrays.asList(11, 13))
+                .condition("")
+                .nodeContent("{}")
                 .build();
         BusinessFlow businessFlow = BusinessFlow.builder()
                 .businessCode(102)
                 .sceneId(100)
-                .flowName("入库流程")
-                .flowAlias("inbound_flow")
+                .flowName("发货流程")
+                .flowAlias("delivery_goods_flow")
                 .nodeList(Arrays.asList(flowNode))
                 .build();
         businessFlowConfigCmdReqDTO.setBusinessFlow(businessFlow);

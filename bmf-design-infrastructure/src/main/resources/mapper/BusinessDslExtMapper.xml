@@ -44,7 +44,7 @@
         )
     </insert>
 
-    <insert id="batchInsert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessDslExtPO">
+    <insert id="batchInsert" parameterType="java.util.List">
         insert into bmf_business_dsl_ext (dsl_code, dsl_ext_type, dsl_ext_key, dsl_ext_val)
         values
         <foreach collection="list" item="item" index="index" separator=",">
