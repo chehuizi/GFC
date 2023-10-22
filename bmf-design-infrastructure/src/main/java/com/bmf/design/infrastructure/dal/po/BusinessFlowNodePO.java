@@ -34,15 +34,15 @@ public class BusinessFlowNodePO extends BasePO {
     /**
      * 前置节点
      */
-    private List<Integer> preNodes;
+    private Integer[] preNodes;
     /**
      * 后置节点
      */
-    private List<Integer> nextNodes;
+    private Integer[] nextNodes;
     /**
      * 节点执行条件
      */
-    private String condition;
+    private String nodeCondition;
     /**
      * 节点内容
      */

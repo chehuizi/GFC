@@ -31,13 +31,14 @@ public class BusinessFlowConfigCmdServiceTest {
         business.setBusinessCode(102);
         businessFlowConfigCmdReqDTO.setBusiness(business);
         BusinessFlowNode flowNode = BusinessFlowNode.builder()
+                .flowId(111)
                 .nodeId(10)
                 .nodeName("创建出库单")
                 .nodeAlias("create_outbound_order")
                 .nodeType(BusinessFlowNodeTypeEnum.DOMAIN.getType())
-                .preNodes(Arrays.asList(11, 12))
-                .nextNodes(Arrays.asList(11, 13))
-                .condition("")
+                .preNodes(new Integer[]{11, 12})
+                .nextNodes(new Integer[]{11, 13})
+                .nodeCondition("test")
                 .nodeContent("{}")
                 .build();
         BusinessFlow businessFlow = BusinessFlow.builder()

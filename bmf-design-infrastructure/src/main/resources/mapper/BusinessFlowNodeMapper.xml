@@ -12,7 +12,7 @@
                 typeHandler="com.bmf.design.infrastructure.dal.typehandler.IntegerArrayTypeHandler"/>
         <result column="next_nodes" jdbcType="VARCHAR" property="nextNodes"
                 typeHandler="com.bmf.design.infrastructure.dal.typehandler.IntegerArrayTypeHandler"/>
-        <result column="condition" jdbcType="VARCHAR" property="condition"/>
+        <result column="node_condition" jdbcType="VARCHAR" property="nodeCondition"/>
         <result column="node_content" jdbcType="VARCHAR" property="nodeContent"/>
         <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
         <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
@@ -21,7 +21,7 @@
 
     <sql id="Base_Column_List">
         id, flow_id, node_id, node_name, node_alias, node_type, pre_nodes, next_nodes,
-        condition, node_content, gmt_create, gmt_modify, is_deleted
+        node_condition, node_content, gmt_create, gmt_modify, is_deleted
     </sql>
 
     <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.design.infrastructure.dal.po.BusinessFlowNodePO">
@@ -44,7 +44,7 @@
 
     <insert id="insert" parameterType="com.bmf.design.infrastructure.dal.po.BusinessFlowNodePO">
         insert into bmf_business_flow_node (flow_id, node_id, node_name, node_alias, node_type,
-        pre_nodes, next_nodes, condition, node_content)
+        pre_nodes, next_nodes, node_condition, node_content)
         values (
             #{flowId,jdbcType=INTEGER},
             #{nodeId,jdbcType=INTEGER},
@@ -53,14 +53,14 @@
             #{nodeType,jdbcType=VARCHAR},
             #{preNodes,jdbcType=VARCHAR},
             #{nextNodes,jdbcType=VARCHAR},
-            #{condition,jdbcType=VARCHAR},
+            #{nodeCondition,jdbcType=VARCHAR},
             #{nodeContent,jdbcType=VARCHAR}
         )
     </insert>
 
     <insert id="batchInsert" parameterType="java.util.List">
         insert into bmf_business_flow_node (flow_id, node_id, node_name, node_alias, node_type,
-        pre_nodes, next_nodes, condition, node_content)
+        pre_nodes, next_nodes, node_condition, node_content)
         values
         <foreach collection="list" item="item" index="index" separator=",">
             <trim prefix="(" suffix=")" suffixOverrides=",">
@@ -71,7 +71,7 @@
                 #{item.nodeType,jdbcType=VARCHAR},
                 #{item.preNodes,jdbcType=VARCHAR},
                 #{item.nextNodes,jdbcType=VARCHAR},
-                #{item.condition,jdbcType=VARCHAR},
+                #{item.nodeCondition,jdbcType=VARCHAR},
                 #{item.nodeContent,jdbcType=VARCHAR}
             </trim>
         </foreach>
