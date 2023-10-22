@@ -7,7 +7,6 @@ import ReactFlow, {
   ReactFlowProvider,
   EdgeTypes,
   Node,
-  Edge,
 } from "reactflow";
 import { Button, Form, Input, Select, message } from "antd";
 import RelationEdge from "./relationEdge";
@@ -24,7 +23,7 @@ const relationDefaultOptions = [
   },
   {
     label: "共享内核",
-    value: "shared-Kernel",
+    value: "shared-kernel",
   },
   {
     label: "上下游",
@@ -49,7 +48,7 @@ const relationRoleMap = {
       },
     ],
   },
-  "shared-Kernel": {
+  "shared-kernel": {
     options: [
       {
         label: "合作伙伴",
@@ -63,18 +62,18 @@ const relationRoleMap = {
         label: "发布语言",
         value: "PL",
       },
-           {
-              label: "开放主机",
-              value: "OHS",
-            },
+      {
+        label: "开放主机",
+        value: "OHS",
+      },
       {
         label: "防腐层",
         value: "ACL",
       },
-         {
-              label: "遵从者",
-              value: "CF",
-            },
+      {
+        label: "遵从者",
+        value: "CF",
+      },
     ],
   },
   "customer-supplier": {
@@ -196,7 +195,9 @@ const AddNodeOnEdgeDrop = () => {
   const [edges, setEdges, onEdgesChange] = useEdgesState([]);
   const [domainName, setDomainName] = useState("");
   const [domainAlias, setDomainAlias] = useState("");
-  const [nodeBg, setNodeBg] = useState("#fff");
+  const [domainType, setDomainType] = useState<string>("");
+  const [domainLevel, setDomainLevel] = useState("");
+  const [backgroundColor, setBackgroundColor] = useState("#fff");
   const [nodeStartLabel, setNodeStartLabel] = useState("");
   const [nodeCenterLabel, setNodeCenterLabel] = useState("");
   const [nodeEndLabel, setNodeEndLabel] = useState("");
@@ -208,11 +209,6 @@ const AddNodeOnEdgeDrop = () => {
   // );
   const [roleAOptions, setRoleAOptions] = useState<any[]>([]);
   const [roleBOptions, setRoleBOptions] = useState<any[]>([]);
-
-  const [domainType, setDomainType] = useState<string>("");
-  const [domainLevel, setDomainLevel] = useState<number>();
-  const [selectedDomain, setSelectedDomain] = useState<boolean>(false);
-
   const { project } = useReactFlow();
 
   useEffect(() => {
@@ -228,21 +224,21 @@ const AddNodeOnEdgeDrop = () => {
             const {
               domainCode,
               domainName,
-              domainType,
-              domainAlias,
               domainPosition,
-              extMap,
+              extMap = {},
+              ...rest
             } = item;
+            const { style } = extMap;
             return {
               // type: "input",
               id: String(domainCode),
               data: {
                 label: domainName,
                 domainName,
-                domainAlias,
-                domainType,
-                ...extMap
+                ...rest,
+                ...extMap,
               },
+              style,
               position: JSON.parse(domainPosition),
               // extInfo: {
               //   domainType,
@@ -294,30 +290,70 @@ const AddNodeOnEdgeDrop = () => {
   useEffect(() => {
     setNodes((nds) => {
       return nds.map((node) => {
-        if (node.selected) {
+        if (node.selected && domainName) {
           node.data = {
             ...node.data,
+            domainName,
             label: domainName,
+          };
+        }
+        return node;
+      });
+    });
+  }, [domainName, setDomainName]);
+
+  useEffect(() => {
+    setNodes((nds) => {
+      return nds.map((node) => {
+        if (node.selected && domainAlias) {
+          node.data = {
+            ...node.data,
             domainAlias,
+          };
+        }
+        return node;
+      });
+    });
+  }, [domainAlias, setDomainAlias]);
+
+  useEffect(() => {
+    setNodes((nds) => {
+      return nds.map((node) => {
+        if (node.selected && domainType) {
+          node.data = {
+            ...node.data,
             domainType,
+          };
+        }
+        return node;
+      });
+    });
+  }, [domainType, setDomainType]);
+
+  useEffect(() => {
+    setNodes((nds) => {
+      return nds.map((node) => {
+        if (node.selected && domainLevel) {
+          node.data = {
+            ...node.data,
             domainLevel,
           };
         }
         return node;
       });
     });
-  }, [domainName, domainAlias, domainType, domainLevel, setNodes]);
+  }, [domainLevel, setDomainLevel]);
 
   useEffect(() => {
     setNodes((nds) =>
       nds.map((node) => {
-        if (node.selected) {
-          node.style = { ...node.style, backgroundColor: nodeBg };
+        if (node.selected && backgroundColor) {
+          node.style = { ...node.style, backgroundColor };
         }
         return node;
       })
     );
-  }, [nodeBg, setNodes]);
+  }, [backgroundColor, setBackgroundColor]);
 
   useEffect(() => {
     setEdges((edges) =>
@@ -368,14 +404,7 @@ const AddNodeOnEdgeDrop = () => {
         )
       )
     );
-  }, [
-    nodeStartLabel,
-    nodeCenterLabel,
-    nodeEndLabel,
-    // domainType,
-    // domainLevel,
-    setEdges,
-  ]);
+  }, [nodeStartLabel, nodeCenterLabel, nodeEndLabel, setEdges]);
 
   const onConnect = useCallback((params) => {
     return setEdges((eds) => addEdge(params, eds));
@@ -400,8 +429,8 @@ const AddNodeOnEdgeDrop = () => {
             y: event.clientY - top,
           }),
           data: { label: `Node ${id}` },
+          type: "relation",
         };
-
         setNodes((nds) => nds.concat(newNode));
         setEdges((eds) => {
           return eds.concat({
@@ -415,20 +444,35 @@ const AddNodeOnEdgeDrop = () => {
     [project]
   );
 
-  const onNodeClick = (event: React.MouseEvent, node)=> {
-  form.resetFields()
-  form.setFieldsValue({...node.data, label: node.data.domainName})
-    console.log(node, 'node')
-  }
+  const onNodeClick = (event: React.MouseEvent, node) => {
+    form.resetFields();
+    setDomainAlias("");
+    setDomainLevel("");
+    setBackgroundColor("");
+    setDomainName("");
+    setDomainType("");
+    form.setFieldsValue(JSON.parse(JSON.stringify(node.data)));
+  };
+
+  const onEdgeClick = (event: React.MouseEvent, node) => {
+    form.setFieldsValue({ ...node.data });
+    console.log(node, "node");
+  };
+
+  const getDomainAliasByCode = (code: string) => {
+    return nodes.find((item) => item.id === code)?.data?.domainAlias;
+  };
 
   const onSave = () => {
+    console.log(nodes, edges);
+
     const params = {
       business: {
         businessCode: 102,
       },
       domainList: nodes.map((node: any) => {
-        const { id, data, position, extInfo = {} } = node;
-        const { label: domainName, ...rest } = data;
+        const { id, data, style, position, extInfo = {} } = node;
+        const { label, ...rest } = data;
         if (position.x) {
           position.x = parseInt(position.x);
         }
@@ -437,9 +481,12 @@ const AddNodeOnEdgeDrop = () => {
         }
         return {
           domainCode: id,
-          domainName,
+          domainName: label,
           ...rest,
-          ...extInfo,
+          extInfo: {
+            ...extInfo,
+            style,
+          },
           domainPosition: JSON.stringify(position),
         };
       }),
@@ -451,12 +498,14 @@ const AddNodeOnEdgeDrop = () => {
           roleA: {
             domain: {
               domainCode: source,
+              domainAlias: getDomainAliasByCode(source),
             },
             role: domainARole,
           },
           roleB: {
             domain: {
               domainCode: target,
+              domainAlias: getDomainAliasByCode(target),
             },
             role: domainBRole,
           },
@@ -521,6 +570,7 @@ const AddNodeOnEdgeDrop = () => {
             onConnectStart={onConnectStart}
             onConnectEnd={onConnectEnd}
             onNodeClick={onNodeClick}
+            onEdgeClick={onEdgeClick}
             fitViewOptions={fitViewOptions}
           >
             <div className="updatenode__controls">
@@ -535,7 +585,9 @@ const AddNodeOnEdgeDrop = () => {
                       size="small"
                       style={{ width: 130 }}
                       value={domainName}
-                      onChange={(evt) => setDomainName(evt.target.value)}
+                      onChange={(evt) => {
+                        setDomainName(evt.target.value);
+                      }}
                       placeholder="请输入领域名称"
                       allowClear
                     />
@@ -549,17 +601,19 @@ const AddNodeOnEdgeDrop = () => {
                       size="small"
                       style={{ width: 130 }}
                       value={domainName}
-                      onChange={(evt) => setDomainAlias(evt.target.value)}
+                      onChange={(evt) => {
+                        setDomainAlias(evt.target.value);
+                      }}
                       placeholder="请输入领域别名"
                       allowClear
                     />
                   </Form.Item>
-                  <Form.Item label="节点背景色" name="nodeBg">
+                  <Form.Item label="节点背景色" name="backgroundColor">
                     <Input
                       style={{ width: 130 }}
-                      value={nodeBg}
+                      value={backgroundColor}
                       size="small"
-                      onChange={(evt) => setNodeBg(evt.target.value)}
+                      onChange={(evt) => setBackgroundColor(evt.target.value)}
                       placeholder="请输入节点背景色"
                       allowClear
                     />
@@ -571,7 +625,9 @@ const AddNodeOnEdgeDrop = () => {
                   >
                     <Select
                       style={{ width: 130 }}
-                      onChange={(evt) => setDomainType(evt)}
+                      onChange={(evt) => {
+                        setDomainType(evt);
+                      }}
                       options={domainTypeOptions}
                       size="small"
                       placeholder="请输入领域类型"
@@ -587,7 +643,9 @@ const AddNodeOnEdgeDrop = () => {
                       style={{ width: 130 }}
                       options={domainLevelOptions}
                       size="small"
-                      onChange={(evt) => setDomainLevel(evt)}
+                      onChange={(evt) => {
+                        setDomainLevel(evt);
+                      }}
                       placeholder="请输入领域等级"
                       allowClear
                     />
@@ -649,8 +707,8 @@ const AddNodeOnEdgeDrop = () => {
                 <label className="updatenode__bglabel">节点背景色:</label>
                 <input
                   style={{ marginLeft: 10 }}
-                  value={nodeBg}
-                  onChange={(evt) => setNodeBg(evt.target.value)}
+                  value={backgroundColor}
+                  onChange={(evt) => setBackgroundColor(evt.target.value)}
                 />
               </div>
               <div>

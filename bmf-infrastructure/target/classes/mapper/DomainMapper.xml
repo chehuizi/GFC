@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.DomainMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.DomainPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="domain_code" jdbcType="VARCHAR" property="domainCode"/>
+        <result column="domain_name" jdbcType="VARCHAR" property="domainName"/>
+        <result column="domain_alias" jdbcType="VARCHAR" property="domainAlias"/>
+        <result column="domain_type" jdbcType="VARCHAR" property="domainType"/>
+        <result column="domain_level" jdbcType="INTEGER" property="domainLevel"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, domain_code, domain_name, domain_alias, domain_type, domain_level
+    </sql>
+
+    <select id="selectOne" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        FROM bmf_domain
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="domainAlias != null">and domain_alias = #{domainAlias}</if>
+        </trim>
+        limit 1
+    </select>
+
+    <select id="selectList" resultMap="BaseResultMap" parameterType="java.util.List">
+        select
+        <include refid="Base_Column_List"/>
+        FROM bmf_domain
+        where domain_code in
+        <foreach collection="list" open="(" close=")" item="domainCode" separator=",">
+            #{domainCode}
+        </foreach>
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.DomainPO">
+        insert into bmf_domain (domain_code, domain_name, domain_alias, domain_type, domain_level)
+        values (
+            #{domainCode,jdbcType=INTEGER},
+            #{domainName,jdbcType=VARCHAR},
+            #{domainAlias,jdbcType=VARCHAR},
+            #{domainType,jdbcType=VARCHAR},
+            #{domainLevel,jdbcType=INTEGER}
+        )
+    </insert>
+
+    <update id="update">
+        update bmf_domain
+        <set>
+            <if test="domainName != null">domain_name = #{domainName},</if>
+        </set>
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="domainAlias != null">and domain_alias = #{domainAlias}</if>
+        </trim>
+    </update>
+
+    <delete id="delete">
+        delete from bmf_domain
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="domainCode != null">and domain_code = #{domainCode}</if>
+            <if test="domainAlias != null">and domain_alias = #{domainAlias}</if>
+        </trim>
+    </delete>
+</mapper>

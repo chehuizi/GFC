@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessDomainEntityAttrMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="entity_id_code" jdbcType="INTEGER" property="entityIdCode"/>
+        <result column="attr_name" jdbcType="VARCHAR" property="attrName"/>
+        <result column="attr_type" jdbcType="VARCHAR" property="attrType"/>
+        <result column="attr_desc" jdbcType="VARCHAR" property="attrDesc"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, entity_id_code, attr_name, attr_type, attr_desc, gmt_create, gmt_modify, is_deleted
+    </sql>
+
+    <select id="selectByEntityIdCode" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_entity_attr
+        where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
+    </select>
+
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business_domain_entity_attr
+        where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
+        and attr_name = #{attrName,jdbcType=VARCHAR}
+        limit 1
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO">
+        insert into bmf_business_domain_entity_attr (entity_id_code, attr_name, attr_type, attr_desc)
+        values (
+            #{entityIdCode,jdbcType=INTEGER},
+            #{attrName,jdbcType=VARCHAR},
+            #{attrType,jdbcType=VARCHAR},
+            #{attrDesc,jdbcType=VARCHAR}
+        )
+    </insert>
+
+    <delete id="delete" parameterType="com.bmf.infrastructure.dal.po.BusinessDomainEntityAttrPO">
+        delete from bmf_business_domain_entity_attr
+        where entity_id_code = #{entityIdCode,jdbcType=INTEGER}
+        and attr_name = #{attrName,jdbcType=VARCHAR}
+    </delete>
+</mapper>

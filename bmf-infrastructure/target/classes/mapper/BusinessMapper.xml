@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bmf.infrastructure.dal.mapper.BusinessMapper">
+    <resultMap id="BaseResultMap" type="com.bmf.infrastructure.dal.po.BusinessPO">
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="business_prefix" jdbcType="VARCHAR" property="businessPrefix"/>
+        <result column="business_code" jdbcType="INTEGER" property="businessCode"/>
+        <result column="business_name" jdbcType="VARCHAR" property="businessName"/>
+        <result column="business_alias" jdbcType="VARCHAR" property="businessAlias"/>
+        <result column="business_desc" jdbcType="VARCHAR" property="businessDesc"/>
+        <result column="gmt_create" jdbcType="TIMESTAMP" property="gmtCreate"/>
+        <result column="gmt_modify" jdbcType="TIMESTAMP" property="gmtModify"/>
+        <result column="is_deleted" jdbcType="TINYINT" property="isDeleted"/>
+    </resultMap>
+
+    <sql id="Base_Column_List">
+        id, business_prefix, business_code, business_name, business_alias, business_desc, gmt_create, gmt_modify, is_deleted
+    </sql>
+
+    <select id="selectOne" resultMap="BaseResultMap" parameterType="com.bmf.infrastructure.dal.po.BusinessPO">
+        SELECT
+        <include refid="Base_Column_List"/>
+        FROM bmf_business
+        <trim prefix="where" prefixOverrides="and|or">
+            <if test="businessCode != null">and business_code = #{businessCode}</if>
+            <if test="businessAlias != null">and business_alias = #{businessAlias}</if>
+        </trim>
+        limit 1
+    </select>
+
+    <insert id="insert" parameterType="com.bmf.infrastructure.dal.po.BusinessPO">
+        insert into bmf_business (business_prefix, business_code, business_name, business_alias, business_desc)
+        values (
+            #{businessPrefix,jdbcType=VARCHAR},
+            #{businessCode,jdbcType=INTEGER},
+            #{businessName,jdbcType=VARCHAR},
+            #{businessAlias,jdbcType=VARCHAR},
+            #{businessDesc,jdbcType=VARCHAR}
+        )
+    </insert>
+
+</mapper>
