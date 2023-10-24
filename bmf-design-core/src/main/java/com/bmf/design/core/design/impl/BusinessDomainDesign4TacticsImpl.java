@@ -12,6 +12,7 @@ import com.bmf.design.core.design.BusinessDomainDesign4Tactics;
 import com.bmf.design.infrastructure.dal.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -29,7 +30,7 @@ public class BusinessDomainDesign4TacticsImpl implements BusinessDomainDesign4Ta
     private DomainEntityRelVORepository domainEntityRelVORepository;
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public boolean addEntity(Domain domain, DomainEntity entity) {
         return domainEntityRepository.insert(entity);
     }

@@ -6,6 +6,7 @@ import com.bmf.design.infrastructure.dal.BusinessFlowNodeRepository;
 import com.bmf.design.infrastructure.dal.BusinessFlowRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
@@ -17,7 +18,7 @@ public class BusinessFlowDesignImpl implements BusinessFlowDesign {
     private BusinessFlowNodeRepository businessFlowNodeRepository;
 
     @Override
-    @Transactional
+    @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
     public boolean addFlow(BusinessFlow businessFlow) {
         boolean insertRst = businessFlowRepository.insert(businessFlow);
         if (insertRst) {
