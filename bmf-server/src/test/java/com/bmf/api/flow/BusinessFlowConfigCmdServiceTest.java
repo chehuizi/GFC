@@ -22,7 +22,7 @@ import java.util.Arrays;
 public class BusinessFlowConfigCmdServiceTest {
 
     @Autowired
-    private BusinessFlowConfigCmdService businessFlowCmdService;
+    private BusinessFlowConfigCmdService businessFlowConfigCmdService;
 
     @Test
     public void test_business_flow_create() {
@@ -31,7 +31,6 @@ public class BusinessFlowConfigCmdServiceTest {
         business.setBusinessCode(102);
         businessFlowConfigCmdReqDTO.setBusiness(business);
         BusinessFlowNode flowNode = BusinessFlowNode.builder()
-                .flowId(111)
                 .nodeId(10)
                 .nodeName("创建出库单")
                 .nodeAlias("create_outbound_order")
@@ -49,7 +48,7 @@ public class BusinessFlowConfigCmdServiceTest {
                 .nodeList(Arrays.asList(flowNode))
                 .build();
         businessFlowConfigCmdReqDTO.setBusinessFlow(businessFlow);
-        Result<Boolean> result = businessFlowCmdService.create(businessFlowConfigCmdReqDTO);
+        Result<Boolean> result = businessFlowConfigCmdService.create(businessFlowConfigCmdReqDTO);
         System.out.println(result);
         Assert.assertTrue(ResultCodeEnum.SUCCESS.getCode() == result.getCode());
     }

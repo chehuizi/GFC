@@ -6,6 +6,7 @@ import com.bmf.design.api.flow.dto.BusinessFlowConfigCmdReqDTO;
 import com.bmf.design.base.Business;
 import com.bmf.design.base.enums.CodeKeyEnum;
 import com.bmf.design.base.flow.BusinessFlow;
+import com.bmf.design.base.flow.BusinessFlowNode;
 import com.bmf.design.common.enums.BizCodeEnum;
 import com.bmf.design.common.utils.BusinessCheckUtil;
 import com.bmf.design.common.utils.ResultUtil;
@@ -37,7 +38,11 @@ public class BusinessFlowConfigCmdServiceImpl implements BusinessFlowConfigCmdSe
         if (Objects.nonNull(businessFlow)) {
             return ResultUtil.success(businessFlowDesign.updateFlow(businessFlow));
         }
-        req.getBusinessFlow().setFlowId(codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_FLOW.getKey()));
+        Integer flowId = codeSeqGenerator.genSeqByCodeKey(CodeKeyEnum.CODE_KEY_FLOW.getKey());
+        req.getBusinessFlow().setFlowId(flowId);
+        for (BusinessFlowNode node : req.getBusinessFlow().getNodeList()) {
+            node.setFlowId(flowId);
+        }
         return ResultUtil.success(businessFlowDesign.addFlow(req.getBusinessFlow()));
     }
 
