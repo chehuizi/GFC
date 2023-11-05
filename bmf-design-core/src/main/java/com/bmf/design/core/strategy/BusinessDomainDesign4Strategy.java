@@ -1,4 +1,4 @@
-package com.bmf.design.core.design;
+package com.bmf.design.core.strategy;
 
 import com.bmf.design.base.Business;
 import com.bmf.design.base.strategy.DomainRelationship;

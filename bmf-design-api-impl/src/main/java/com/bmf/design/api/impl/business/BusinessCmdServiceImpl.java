@@ -17,7 +17,7 @@ import com.bmf.design.common.utils.BusinessCheckUtil;
 import com.bmf.design.common.utils.ResultUtil;
 import com.bmf.design.common.validator.Validator;
 import com.bmf.design.core.business.BusinessService;
-import com.bmf.design.core.design.BusinessDomainDesign4Strategy;
+import com.bmf.design.core.strategy.BusinessDomainDesign4Strategy;
 import com.bmf.design.core.domain.DomainService;
 import com.bmf.design.core.snapshot.SnapshotService;
 import com.bmf.design.infrastructure.generator.CodeSeqGenerator;

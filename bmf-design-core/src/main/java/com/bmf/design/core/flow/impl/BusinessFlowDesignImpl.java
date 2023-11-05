@@ -1,7 +1,7 @@
-package com.bmf.design.core.design.impl;
+package com.bmf.design.core.flow.impl;
 
 import com.bmf.design.base.flow.BusinessFlow;
-import com.bmf.design.core.design.BusinessFlowDesign;
+import com.bmf.design.core.flow.BusinessFlowDesign;
 import com.bmf.design.infrastructure.dal.BusinessFlowNodeRepository;
 import com.bmf.design.infrastructure.dal.BusinessFlowRepository;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -12,7 +12,7 @@ import com.bmf.design.common.enums.BizCodeEnum;
 import com.bmf.design.common.utils.BusinessCheckUtil;
 import com.bmf.design.common.utils.ResultUtil;
 import com.bmf.design.common.validator.Validator;
-import com.bmf.design.core.design.BusinessDomainDesign4Tactics;
+import com.bmf.design.core.tactics.BusinessDomainDesign4Tactics;
 import com.bmf.design.core.domain.DomainEntityService;
 import com.bmf.design.core.domain.DomainService;
 import com.bmf.design.core.domain.DomainValueObjectService;

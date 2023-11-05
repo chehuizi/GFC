@@ -1,4 +1,4 @@
-package com.bmf.design.core.design;
+package com.bmf.design.core.tactics;
 
 import com.bmf.design.base.Domain;
 import com.bmf.design.base.tactics.aggregate.DomainAggregate;

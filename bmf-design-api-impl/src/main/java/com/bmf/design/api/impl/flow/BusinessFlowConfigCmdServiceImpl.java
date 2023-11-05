@@ -12,7 +12,7 @@ import com.bmf.design.common.utils.BusinessCheckUtil;
 import com.bmf.design.common.utils.ResultUtil;
 import com.bmf.design.common.validator.Validator;
 import com.bmf.design.core.business.BusinessService;
-import com.bmf.design.core.design.BusinessFlowDesign;
+import com.bmf.design.core.flow.BusinessFlowDesign;
 import com.bmf.design.infrastructure.generator.CodeSeqGenerator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

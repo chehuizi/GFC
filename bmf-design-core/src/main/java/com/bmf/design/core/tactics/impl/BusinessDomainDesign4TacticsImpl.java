@@ -1,4 +1,4 @@
-package com.bmf.design.core.design.impl;
+package com.bmf.design.core.tactics.impl;
 
 import com.bmf.design.base.Domain;
 import com.bmf.design.base.tactics.entity.DomainEntityRelVO;
@@ -8,7 +8,7 @@ import com.bmf.design.base.tactics.event.DomainEvent;
 import com.bmf.design.base.tactics.service.DomainService;
 import com.bmf.design.base.tactics.valueobject.DomainValueObject;
 import com.bmf.design.core.utils.DomainUtil;
-import com.bmf.design.core.design.BusinessDomainDesign4Tactics;
+import com.bmf.design.core.tactics.BusinessDomainDesign4Tactics;
 import com.bmf.design.infrastructure.dal.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

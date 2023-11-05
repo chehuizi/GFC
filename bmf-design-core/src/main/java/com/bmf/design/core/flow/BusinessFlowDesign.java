@@ -1,4 +1,4 @@
-package com.bmf.design.core.design;
+package com.bmf.design.core.flow;
 
 import com.bmf.design.base.flow.BusinessFlow;
 
