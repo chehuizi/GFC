@@ -15,7 +15,8 @@ import "reactflow/dist/style.css";
 
 import "./index.css";
 import { useForm } from "antd/es/form/Form";
-
+const defaultViewport = { x: 0, y: 0, zoom: 1 };
+const snapGrid = [20, 20];
 const relationDefaultOptions = [
   {
     label: "合作伙伴",
@@ -202,11 +203,12 @@ const AddNodeOnEdgeDrop = () => {
   const [nodeCenterLabel, setNodeCenterLabel] = useState("");
   const [nodeEndLabel, setNodeEndLabel] = useState("");
   const [hasStrategy, setHasStrategy] = useState(true);
+  const [domainFormVisible, setDomainFormVisible] = useState<boolean>(false);
+  const [domainRelationFormVisible, setDomainRelationFormVisible] =
+    useState<boolean>(false);
 
-  const [form] = useForm();
-  // const [relationOptions, setRelationOptions] = useState<any[]>(
-  //   relationDefaultOptions
-  // );
+  const [formDomain] = useForm();
+  const [formRelation] = useForm();
   const [roleAOptions, setRoleAOptions] = useState<any[]>([]);
   const [roleBOptions, setRoleBOptions] = useState<any[]>([]);
   const { project } = useReactFlow();
@@ -217,10 +219,10 @@ const AddNodeOnEdgeDrop = () => {
         params: { business_code: 102, include_all: true },
       })
       .then((res) => {
-        const { businessDomainList = [], businessDomainRelationList = [] } =
+        const { domainList = [], domainRelationList = [] } =
           res?.data?.business;
-        if (businessDomainList?.length && businessDomainRelationList?.length) {
-          const nodes = businessDomainList.map((item: any, index: number) => {
+        if (domainList?.length && domainRelationList?.length) {
+          const nodes = domainList.map((item: any, index: number) => {
             const {
               domainCode,
               domainName,
@@ -240,15 +242,15 @@ const AddNodeOnEdgeDrop = () => {
               },
               style,
               position: JSON.parse(domainPosition),
-              // extInfo: {
-              //   domainType,
-              //   domainAlias,
-              //   extMap,
-              // },
+              extInfo: {
+                domainType,
+                domainAlias,
+                extMap,
+              },
             };
           });
           setNodes(nodes);
-          const edges = businessDomainRelationList.map((item: any) => {
+          const edges = domainRelationList.map((item: any) => {
             const {
               domainARole,
               domainACode,
@@ -424,9 +426,13 @@ const AddNodeOnEdgeDrop = () => {
         const newNode = {
           id,
           // we are removing the half of the node width (75) to center the new node
+          // position: project({
+          //   x: event.clientX - left - 75,
+          //   y: event.clientY - top,
+          // }),
           position: project({
-            x: event.clientX - left - 75,
-            y: event.clientY - top,
+            x: event.clientX,
+            y: event.clientY,
           }),
           data: { label: `Node ${id}` },
           type: "relation",
@@ -445,18 +451,20 @@ const AddNodeOnEdgeDrop = () => {
   );
 
   const onNodeClick = (event: React.MouseEvent, node) => {
-    form.resetFields();
+    formDomain.resetFields();
     setDomainAlias("");
     setDomainLevel("");
     setBackgroundColor("");
     setDomainName("");
     setDomainType("");
-    form.setFieldsValue(JSON.parse(JSON.stringify(node.data)));
+    formDomain.setFieldsValue(JSON.parse(JSON.stringify(node.data)));
+    setDomainFormVisible(true);
   };
 
   const onEdgeClick = (event: React.MouseEvent, node) => {
-    form.setFieldsValue({ ...node.data });
-    console.log(node, "node");
+    console.log(node);
+    formRelation.setFieldsValue({ ...node.data });
+    setDomainRelationFormVisible(true);
   };
 
   const getDomainAliasByCode = (code: string) => {
@@ -465,7 +473,6 @@ const AddNodeOnEdgeDrop = () => {
 
   const onSave = () => {
     console.log(nodes, edges);
-
     const params = {
       business: {
         businessCode: 102,
@@ -473,12 +480,6 @@ const AddNodeOnEdgeDrop = () => {
       domainList: nodes.map((node: any) => {
         const { id, data, style, position, extInfo = {} } = node;
         const { label, ...rest } = data;
-        if (position.x) {
-          position.x = parseInt(position.x);
-        }
-        if (position.y) {
-          position.y = parseInt(position.y);
-        }
         return {
           domainCode: id,
           domainName: label,
@@ -519,7 +520,7 @@ const AddNodeOnEdgeDrop = () => {
     };
     axios
       .post("/business/strategy/design/save", params)
-      .then((res) => {
+      .then(() => {
         message.success("保存成功!");
       })
       .catch((error) => {
@@ -572,184 +573,136 @@ const AddNodeOnEdgeDrop = () => {
             onNodeClick={onNodeClick}
             onEdgeClick={onEdgeClick}
             fitViewOptions={fitViewOptions}
+            defaultViewport={defaultViewport}
           >
             <div className="updatenode__controls">
               <div style={{ display: "flex" }}>
-                <Form form={form}>
-                  <Form.Item
-                    label="领域名称"
-                    name="domainName"
-                    rules={[{ required: true }]}
-                  >
-                    <Input
-                      size="small"
-                      style={{ width: 130 }}
-                      value={domainName}
-                      onChange={(evt) => {
-                        setDomainName(evt.target.value);
-                      }}
-                      placeholder="请输入领域名称"
-                      allowClear
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    rules={[{ required: true }]}
-                    label="领域别名"
-                    name="domainAlias"
-                  >
-                    <Input
-                      size="small"
-                      style={{ width: 130 }}
-                      value={domainName}
-                      onChange={(evt) => {
-                        setDomainAlias(evt.target.value);
-                      }}
-                      placeholder="请输入领域别名"
-                      allowClear
-                    />
-                  </Form.Item>
-                  <Form.Item label="节点背景色" name="backgroundColor">
-                    <Input
-                      style={{ width: 130 }}
-                      value={backgroundColor}
-                      size="small"
-                      onChange={(evt) => setBackgroundColor(evt.target.value)}
-                      placeholder="请输入节点背景色"
-                      allowClear
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    rules={[{ required: true }]}
-                    label="领域类型"
-                    name="domainType"
-                  >
-                    <Select
-                      style={{ width: 130 }}
-                      onChange={(evt) => {
-                        setDomainType(evt);
-                      }}
-                      options={domainTypeOptions}
-                      size="small"
-                      placeholder="请输入领域类型"
-                      allowClear
-                    />
-                  </Form.Item>
-                  <Form.Item
-                    rules={[{ required: true }]}
-                    label="领域等级"
-                    name="domainLevel"
-                  >
-                    <Select
-                      style={{ width: 130 }}
-                      options={domainLevelOptions}
-                      size="small"
-                      onChange={(evt) => {
-                        setDomainLevel(evt);
-                      }}
-                      placeholder="请输入领域等级"
-                      allowClear
-                    />
-                  </Form.Item>
-                  <Form.Item>
-                    <Button type="primary" htmlType="submit" onClick={onSave}>
-                      保存
-                    </Button>
-                  </Form.Item>
-                </Form>
-                <Form style={{ marginLeft: 10 }}>
-                  <Form.Item
-                    rules={[{ required: true }]}
-                    label="领域关系"
-                    name="domainRelation"
-                  >
-                    <Select
-                      size="small"
-                      style={{ width: 130 }}
-                      options={relationDefaultOptions}
-                      onChange={(value) => {
-                        setRoleAOptions(relationRoleMap[value].options);
-                        setRoleBOptions(relationRoleMap[value].options);
-                        setNodeCenterLabel(value);
-                      }}
-                      placeholder="请选择领域关系"
-                    />
-                  </Form.Item>
-                  <Form.Item label="领域角色A" name="domainRelationA">
-                    <Select
-                      size="small"
-                      style={{ width: 130 }}
-                      options={roleAOptions}
-                      onChange={(value) => setNodeStartLabel(value)}
-                      allowClear
-                    />
-                  </Form.Item>
-                  <Form.Item label="领域角色B" name="domainRelationB">
-                    <Select
-                      size="small"
-                      style={{ width: 130 }}
-                      options={roleBOptions}
-                      onChange={(value) => setNodeEndLabel(value)}
-                      allowClear
-                    />
-                  </Form.Item>
-                </Form>
-              </div>
+                {domainFormVisible && (
+                  <Form form={formDomain}>
+                    <Form.Item
+                      label="领域名称"
+                      name="domainName"
+                      rules={[{ required: true }]}
+                    >
+                      <Input
+                        size="small"
+                        style={{ width: 130 }}
+                        value={domainName}
+                        onChange={(evt) => {
+                          setDomainName(evt.target.value);
+                        }}
+                        placeholder="请输入领域名称"
+                        allowClear
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      rules={[{ required: true }]}
+                      label="领域别名"
+                      name="domainAlias"
+                    >
+                      <Input
+                        size="small"
+                        style={{ width: 130 }}
+                        value={domainName}
+                        onChange={(evt) => {
+                          setDomainAlias(evt.target.value);
+                        }}
+                        placeholder="请输入领域别名"
+                        allowClear
+                      />
+                    </Form.Item>
+                    <Form.Item label="节点背景色" name="backgroundColor">
+                      <Input
+                        style={{ width: 130 }}
+                        value={backgroundColor}
+                        size="small"
+                        onChange={(evt) => setBackgroundColor(evt.target.value)}
+                        placeholder="请输入节点背景色"
+                        allowClear
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      rules={[{ required: true }]}
+                      label="领域类型"
+                      name="domainType"
+                    >
+                      <Select
+                        style={{ width: 130 }}
+                        onChange={(evt) => {
+                          setDomainType(evt);
+                        }}
+                        options={domainTypeOptions}
+                        size="small"
+                        placeholder="请输入领域类型"
+                        allowClear
+                      />
+                    </Form.Item>
+                    <Form.Item
+                      rules={[{ required: true }]}
+                      label="领域等级"
+                      name="domainLevel"
+                    >
+                      <Select
+                        style={{ width: 130 }}
+                        options={domainLevelOptions}
+                        size="small"
+                        onChange={(evt) => {
+                          setDomainLevel(evt);
+                        }}
+                        placeholder="请输入领域等级"
+                        allowClear
+                      />
+                    </Form.Item>
+                    <Form.Item>
+                      <Button type="primary" htmlType="submit" onClick={onSave}>
+                        保存
+                      </Button>
+                    </Form.Item>
+                  </Form>
+                )}
 
-              {/* <div>
-                <label>节点文案:</label>
-                <input
-                  style={{ marginLeft: 10 }}
-                  value={domainName}
-                  onChange={(evt) => setDomainName(evt.target.value)}
-                />
-              </div> */}
-              {/* <div>
-                <label className="updatenode__bglabel">节点背景色:</label>
-                <input
-                  style={{ marginLeft: 10 }}
-                  value={backgroundColor}
-                  onChange={(evt) => setBackgroundColor(evt.target.value)}
-                />
+                {domainRelationFormVisible && (
+                  <Form form={formRelation} style={{ marginLeft: 10 }}>
+                    <Form.Item
+                      rules={[{ required: true }]}
+                      label="领域关系"
+                      name="domainRelation"
+                    >
+                      <Select
+                        size="small"
+                        style={{ width: 130 }}
+                        options={relationDefaultOptions}
+                        onChange={(value) => {
+                          setRoleAOptions(relationRoleMap[value].options);
+                          setRoleBOptions(relationRoleMap[value].options);
+                          setNodeCenterLabel(value);
+                        }}
+                        placeholder="请选择领域关系"
+                      />
+                    </Form.Item>
+                    <Form.Item label="领域角色A" name="domainARole">
+                      <Select
+                        size="small"
+                        style={{ width: 130 }}
+                        options={roleAOptions}
+                        onChange={(value) => setNodeStartLabel(value)}
+                        allowClear
+                      />
+                    </Form.Item>
+                    <Form.Item label="领域角色B" name="domainBRole">
+                      <Select
+                        size="small"
+                        style={{ width: 130 }}
+                        options={roleBOptions}
+                        onChange={(value) => setNodeEndLabel(value)}
+                        allowClear
+                      />
+                    </Form.Item>
+                  </Form>
+                )}
               </div>
-              <div>
-                <label className="updatenode__bglabel">起始节点关系:</label>
-                <input
-                  style={{ marginLeft: 10 }}
-                  value={nodeStartLabel}
-                  onChange={(evt) => setNodeStartLabel(evt.target.value)}
-                />
-              </div>
-              <div>
-                <label className="updatenode__bglabel">中间节点关系:</label>
-                <input
-                  style={{ marginLeft: 10 }}
-                  value={nodeCenterLabel}
-                  onChange={(evt) => setNodeCenterLabel(evt.target.value)}
-                />
-              </div>
-              <div>
-                <label className="updatenode__bglabel">结尾节点关系:</label>
-                <input
-                  style={{ marginLeft: 10 }}
-                  value={nodeEndLabel}
-                  onChange={(evt) => setNodeEndLabel(evt.target.value)}
-                />
-              </div> */}
-              {/* <div className="updatenode__checkboxwrapper">
-            <label>hidden:</label>
-            <input
-              type="checkbox"
-              checked={nodeHidden}
-              onChange={(evt) => setNodeHidden(evt.target.checked)}
-            />
-          </div> */}
             </div>
           </ReactFlow>
-          {/* <div style={{ position: "fixed", bottom: 100, right: 100 }}>
-            <Button size="large" type="primary" onClick={() => onSave()}>
-              保存
-            </Button>
-          </div> */}
         </>
       )}
     </div>
