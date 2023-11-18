@@ -21,6 +21,7 @@
         <module>bmf-dev-demo</module>
         <module>bmf-dev-client</module>
         <module>bmf-dev-annotations</module>
+        <module>bmf-ops-annotations</module>
     </modules>
 
     <name>bmf</name>
