@@ -11,7 +11,6 @@
     <modules>
         <module>bmf-design-model</module>
         <module>bmf-design-core</module>
-        <module>bmf-design-common</module>
         <module>bmf-design-infrastructure</module>
         <module>bmf-design-api</module>
         <module>bmf-design-api-impl</module>
@@ -82,11 +81,6 @@
             <dependency>
                 <groupId>com.bmf</groupId>
                 <artifactId>bmf-design-api</artifactId>
-                <version>${bmf.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>com.bmf</groupId>
-                <artifactId>bmf-design-common</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <dependency>
