@@ -1,6 +1,6 @@
 package com.bmf.design.core.domain.impl;
 
-import com.bmf.design.base.dsl.BusinessDslExt;
+import com.bmf.design.model.dsl.BusinessDslExt;
 import com.bmf.design.core.domain.DslService;
 import com.bmf.design.infrastructure.dal.DslExtRepository;
 import org.springframework.beans.factory.annotation.Autowired;

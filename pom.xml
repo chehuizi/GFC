@@ -9,19 +9,26 @@
     <packaging>pom</packaging>
     <version>1.0-SNAPSHOT</version>
     <modules>
-        <module>bmf-design-base</module>
+        <module>bmf-design-model</module>
         <module>bmf-design-core</module>
         <module>bmf-design-common</module>
         <module>bmf-design-infrastructure</module>
         <module>bmf-design-api</module>
         <module>bmf-design-api-impl</module>
         <module>bmf-server</module>
-        <module>bmf-design-flow-engine</module>
-        <module>bmf-data-model</module>
+        <module>bmf-common-flow-engine</module>
+        <module>bmf-analyze-model</module>
         <module>bmf-dev-demo</module>
         <module>bmf-dev-client</module>
-        <module>bmf-dev-annotations</module>
+        <module>bmf-dev-model</module>
         <module>bmf-ops-annotations</module>
+        <module>bmf-dev-api</module>
+        <module>bmf-common-api</module>
+        <module>bmf-dev-core</module>
+        <module>bmf-dev-api-impl</module>
+        <module>bmf-dev-annotations</module>
+        <module>bmf-common-model</module>
+        <module>bmf-common-utils</module>
     </modules>
 
     <name>bmf</name>
@@ -54,7 +61,22 @@
         <dependencies>
             <dependency>
                 <groupId>com.bmf</groupId>
-                <artifactId>bmf-design-base</artifactId>
+                <artifactId>bmf-common-api</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-common-model</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-common-utils</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-design-model</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <dependency>
@@ -84,7 +106,27 @@
             </dependency>
             <dependency>
                 <groupId>com.bmf</groupId>
+                <artifactId>bmf-dev-api</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-dev-api-impl</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-dev-model</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
                 <artifactId>bmf-dev-annotations</artifactId>
+                <version>${bmf.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>com.bmf</groupId>
+                <artifactId>bmf-dev-core</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <dependency>

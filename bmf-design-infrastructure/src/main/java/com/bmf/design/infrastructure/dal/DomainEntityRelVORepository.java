@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.tactics.entity.DomainEntityRelVO;
+import com.bmf.design.model.tactics.entity.DomainEntityRelVO;
 
 import java.util.List;
 

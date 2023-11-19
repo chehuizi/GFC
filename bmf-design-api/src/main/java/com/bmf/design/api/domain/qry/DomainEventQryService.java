@@ -1,6 +1,6 @@
 package com.bmf.design.api.domain.qry;
 
-import com.bmf.design.api.QryService;
+import com.bmf.common.api.QryService;
 import com.bmf.design.api.domain.dto.DomainEventQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainEventRespDTO;
 

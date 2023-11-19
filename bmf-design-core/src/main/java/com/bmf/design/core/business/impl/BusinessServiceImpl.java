@@ -1,14 +1,14 @@
 package com.bmf.design.core.business.impl;
 
-import com.bmf.design.base.DomainRelation;
-import com.bmf.design.base.enums.CmdTypeEnum;
-import com.bmf.design.base.flow.BusinessRole;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.BusinessRelDomain;
-import com.bmf.design.base.strategy.DomainRelationship;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.BusinessCheckUtil;
+import com.bmf.common.utils.checker.BusinessCheckUtil;
+import com.bmf.design.model.DomainRelation;
+import com.bmf.design.model.enums.CmdTypeEnum;
+import com.bmf.design.model.flow.BusinessRole;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.BusinessRelDomain;
+import com.bmf.design.model.strategy.DomainRelationship;
+import com.bmf.common.api.enums.BizCodeEnum;
 import com.bmf.design.core.business.BusinessService;
 import com.bmf.design.core.utils.BusinessUtil;
 import com.bmf.design.infrastructure.dal.DomainRelationRepository;

@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.dsl.BusinessDslExt;
+import com.bmf.design.model.dsl.BusinessDslExt;
 import com.bmf.design.infrastructure.dal.mapper.BusinessDslExtMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.DslExtRepository;

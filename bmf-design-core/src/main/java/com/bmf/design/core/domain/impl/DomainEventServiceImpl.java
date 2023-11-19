@@ -1,7 +1,7 @@
 package com.bmf.design.core.domain.impl;
 
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.base.tactics.event.DomainEventAttr;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.event.DomainEventAttr;
 import com.bmf.design.core.domain.DomainEventService;
 import com.bmf.design.infrastructure.dal.DomainEventAttrRepository;
 import com.bmf.design.infrastructure.dal.DomainEventRepository;

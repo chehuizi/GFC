@@ -1,12 +1,12 @@
 package com.bmf.design.core.tactics.impl;
 
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.tactics.entity.DomainEntityRelVO;
-import com.bmf.design.base.tactics.aggregate.DomainAggregate;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.base.tactics.service.DomainService;
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.tactics.entity.DomainEntityRelVO;
+import com.bmf.design.model.tactics.aggregate.DomainAggregate;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.service.DomainService;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
 import com.bmf.design.core.utils.DomainUtil;
 import com.bmf.design.core.tactics.BusinessDomainDesign4Tactics;
 import com.bmf.design.infrastructure.dal.*;

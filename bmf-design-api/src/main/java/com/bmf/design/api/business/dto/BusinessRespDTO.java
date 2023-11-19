@@ -1,7 +1,7 @@
 package com.bmf.design.api.business.dto;
 
-import com.bmf.design.api.RespDTO;
-import com.bmf.design.base.Business;
+import com.bmf.common.api.RespDTO;
+import com.bmf.design.model.Business;
 import lombok.Data;
 
 import java.io.Serializable;

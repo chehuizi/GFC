@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.flow.BusinessRole;
+import com.bmf.design.model.flow.BusinessRole;
 import com.bmf.design.infrastructure.dal.mapper.BusinessRoleMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.BusinessRoleRepository;

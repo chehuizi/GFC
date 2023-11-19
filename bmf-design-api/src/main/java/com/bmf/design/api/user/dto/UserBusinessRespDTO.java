@@ -1,8 +1,8 @@
 package com.bmf.design.api.user.dto;
 
-import com.bmf.design.api.RespDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.user.UserBusiness;
+import com.bmf.common.api.RespDTO;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.user.UserBusiness;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

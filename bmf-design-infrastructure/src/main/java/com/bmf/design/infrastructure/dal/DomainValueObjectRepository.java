@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;

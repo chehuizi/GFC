@@ -1,9 +1,9 @@
 package com.bmf.design.core.domain.impl;
 
-import com.bmf.design.base.tactics.entity.DomainEntityRelVO;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.entity.DomainEntityAttr;
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
+import com.bmf.design.model.tactics.entity.DomainEntityRelVO;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.entity.DomainEntityAttr;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
 import com.bmf.design.core.domain.DomainEntityService;
 import com.bmf.design.infrastructure.dal.DomainEntityAttrRepository;
 import com.bmf.design.infrastructure.dal.DomainEntityRelVORepository;

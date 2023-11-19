@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.BusinessRelDomain;
+import com.bmf.design.model.BusinessRelDomain;
 
 import java.util.List;
 

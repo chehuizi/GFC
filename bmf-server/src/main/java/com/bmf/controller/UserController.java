@@ -1,11 +1,11 @@
 package com.bmf.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.user.UserBusinessQryService;
 import com.bmf.design.api.user.dto.UserBusinessQryReqDTO;
 import com.bmf.design.api.user.dto.UserBusinessRespDTO;
-import com.bmf.design.base.user.UserBusiness;
+import com.bmf.design.model.user.UserBusiness;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,10 +1,10 @@
 package com.bmf.design.api.business.dto;
 
-import com.bmf.design.api.ReqDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.flow.BusinessRole;
-import com.bmf.design.base.strategy.DomainRelationship;
+import com.bmf.common.api.ReqDTO;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.flow.BusinessRole;
+import com.bmf.design.model.strategy.DomainRelationship;
 import lombok.Data;
 
 import java.io.Serializable;

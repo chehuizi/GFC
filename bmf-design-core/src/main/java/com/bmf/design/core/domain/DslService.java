@@ -1,6 +1,6 @@
 package com.bmf.design.core.domain;
 
-import com.bmf.design.base.dsl.BusinessDslExt;
+import com.bmf.design.model.dsl.BusinessDslExt;
 
 import java.util.List;
 

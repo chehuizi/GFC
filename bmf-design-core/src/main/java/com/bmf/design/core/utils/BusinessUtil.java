@@ -1,10 +1,10 @@
 package com.bmf.design.core.utils;
 
-import com.bmf.design.base.Business;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.DomainRelation;
-import com.bmf.design.base.BusinessRelDomain;
-import com.bmf.design.base.strategy.DomainRelationship;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.DomainRelation;
+import com.bmf.design.model.BusinessRelDomain;
+import com.bmf.design.model.strategy.DomainRelationship;
 
 import java.util.ArrayList;
 import java.util.List;

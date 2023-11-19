@@ -1,8 +1,8 @@
 package com.bmf.design.api.domain.dto;
 
-import com.bmf.design.api.RespDTO;
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.base.tactics.event.DomainEventAttr;
+import com.bmf.common.api.RespDTO;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.event.DomainEventAttr;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

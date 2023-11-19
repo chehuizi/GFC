@@ -1,6 +1,6 @@
 package com.bmf.design.core.user.impl;
 
-import com.bmf.design.base.user.UserBusiness;
+import com.bmf.design.model.user.UserBusiness;
 import com.bmf.design.core.user.UserBusinessService;
 import com.bmf.design.infrastructure.dal.UserBusinessRepository;
 import org.springframework.beans.factory.annotation.Autowired;

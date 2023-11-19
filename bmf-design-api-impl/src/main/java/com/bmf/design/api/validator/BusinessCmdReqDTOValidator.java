@@ -1,12 +1,12 @@
 package com.bmf.design.api.validator;
 
 import com.bmf.design.api.business.dto.BusinessCmdReqDTO;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.enums.DomainTypeEnum;
-import com.bmf.design.base.enums.RelationshipEnum;
-import com.bmf.design.base.enums.RelationshipRoleEnum;
-import com.bmf.design.base.strategy.DomainRelationship;
-import com.bmf.design.common.utils.ParamCheckUtil;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.enums.DomainTypeEnum;
+import com.bmf.design.model.enums.RelationshipEnum;
+import com.bmf.design.model.enums.RelationshipRoleEnum;
+import com.bmf.design.model.strategy.DomainRelationship;
+import com.bmf.common.utils.checker.ParamCheckUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

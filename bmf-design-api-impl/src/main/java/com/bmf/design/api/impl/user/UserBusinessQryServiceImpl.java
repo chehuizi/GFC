@@ -1,16 +1,16 @@
 package com.bmf.design.api.impl.user;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.user.UserBusinessQryService;
 import com.bmf.design.api.user.dto.UserBusinessQryReqDTO;
 import com.bmf.design.api.user.dto.UserBusinessRespDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.user.User;
-import com.bmf.design.base.user.UserBusiness;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.BusinessCheckUtil;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.user.User;
+import com.bmf.design.model.user.UserBusiness;
+import com.bmf.common.api.enums.BizCodeEnum;
+import com.bmf.common.utils.checker.BusinessCheckUtil;
+import com.bmf.common.api.utils.ResultUtil;
+import com.bmf.common.api.validator.Validator;
 import com.bmf.design.core.business.BusinessService;
 import com.bmf.design.core.user.UserBusinessService;
 import com.bmf.design.core.user.UserService;

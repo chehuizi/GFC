@@ -1,10 +1,10 @@
 package com.bmf.api.domain;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DslCmdService;
 import com.bmf.design.api.domain.dto.DslCmdReqDTO;
-import com.bmf.design.base.dsl.BusinessDslExt;
-import com.bmf.design.base.enums.AttrTypeEnum;
+import com.bmf.design.model.dsl.BusinessDslExt;
+import com.bmf.design.model.enums.AttrTypeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

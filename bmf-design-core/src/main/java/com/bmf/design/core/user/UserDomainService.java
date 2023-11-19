@@ -1,6 +1,6 @@
 package com.bmf.design.core.user;
 
-import com.bmf.design.base.user.UserDomain;
+import com.bmf.design.model.user.UserDomain;
 
 /**
  * 用户领域服务

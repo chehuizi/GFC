@@ -1,11 +1,11 @@
 package com.bmf.design.api.impl.domain.cmd;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainServiceCmdService;
 import com.bmf.design.api.domain.dto.DomainServiceCmdReqDTO;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.common.api.enums.BizCodeEnum;
+import com.bmf.common.api.utils.ResultUtil;
+import com.bmf.common.api.validator.Validator;
 import com.bmf.design.core.domain.DomainServiceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

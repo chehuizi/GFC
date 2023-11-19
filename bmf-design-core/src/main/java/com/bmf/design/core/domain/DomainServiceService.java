@@ -1,7 +1,7 @@
 package com.bmf.design.core.domain;
 
-import com.bmf.design.base.tactics.service.DomainServiceAttr;
-import com.bmf.design.base.tactics.service.DomainService;
+import com.bmf.design.model.tactics.service.DomainServiceAttr;
+import com.bmf.design.model.tactics.service.DomainService;
 
 import java.util.List;
 

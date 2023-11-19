@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.BaseModel;
+import com.bmf.common.model.BaseModel;
 
 /**
  * 仓储接口基类

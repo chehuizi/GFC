@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.entity.DomainEntity;
 
 import java.util.List;
 

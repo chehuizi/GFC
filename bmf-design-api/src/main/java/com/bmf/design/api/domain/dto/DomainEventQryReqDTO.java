@@ -1,7 +1,7 @@
 package com.bmf.design.api.domain.dto;
 
-import com.bmf.design.api.ReqDTO;
-import com.bmf.design.base.tactics.event.DomainEvent;
+import com.bmf.common.api.ReqDTO;
+import com.bmf.design.model.tactics.event.DomainEvent;
 import lombok.Data;
 
 import java.io.Serializable;

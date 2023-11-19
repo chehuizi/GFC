@@ -1,7 +1,7 @@
 package com.bmf.design.api.validator;
 
 import com.bmf.design.api.business.dto.BusinessQryReqDTO;
-import com.bmf.design.common.utils.ParamCheckUtil;
+import com.bmf.common.utils.checker.ParamCheckUtil;
 import org.springframework.stereotype.Service;
 
 @Service("businessQryReqDTOValidator")

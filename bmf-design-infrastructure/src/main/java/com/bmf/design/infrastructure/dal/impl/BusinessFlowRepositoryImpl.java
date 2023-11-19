@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.flow.BusinessFlow;
+import com.bmf.design.model.flow.BusinessFlow;
 import com.bmf.design.infrastructure.dal.mapper.BusinessFlowMapper;
 import com.bmf.design.infrastructure.dal.po.BusinessFlowPO;
 import com.bmf.design.infrastructure.dal.utils.POUtils;

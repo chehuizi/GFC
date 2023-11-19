@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.event.DomainEvent;
 
 import java.util.List;
 

@@ -1,7 +1,7 @@
 package com.bmf.design.core.domain.impl;
 
-import com.bmf.design.base.tactics.service.DomainService;
-import com.bmf.design.base.tactics.service.DomainServiceAttr;
+import com.bmf.design.model.tactics.service.DomainService;
+import com.bmf.design.model.tactics.service.DomainServiceAttr;
 import com.bmf.design.core.domain.DomainServiceService;
 import com.bmf.design.infrastructure.dal.DomainServiceAttrRepository;
 import com.bmf.design.infrastructure.dal.DomainServiceRepository;

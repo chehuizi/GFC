@@ -1,12 +1,12 @@
 package com.bmf.api.domain;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainCmdService;
 import com.bmf.design.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.enums.DomainLevelEnum;
-import com.bmf.design.base.enums.DomainTypeEnum;
-import com.bmf.design.common.enums.BizCodeEnum;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.enums.DomainLevelEnum;
+import com.bmf.design.model.enums.DomainTypeEnum;
+import com.bmf.common.api.enums.BizCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

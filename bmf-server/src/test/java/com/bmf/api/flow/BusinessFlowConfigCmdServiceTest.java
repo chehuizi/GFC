@@ -1,13 +1,13 @@
 package com.bmf.api.flow;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.flow.BusinessFlowConfigCmdService;
 import com.bmf.design.api.flow.dto.BusinessFlowConfigCmdReqDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
-import com.bmf.design.base.flow.BusinessFlow;
-import com.bmf.design.base.flow.BusinessFlowNode;
-import com.bmf.design.common.enums.ResultCodeEnum;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.enums.BusinessFlowNodeTypeEnum;
+import com.bmf.design.model.flow.BusinessFlow;
+import com.bmf.design.model.flow.BusinessFlowNode;
+import com.bmf.common.api.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

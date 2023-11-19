@@ -1,15 +1,15 @@
 package com.bmf.design.api.impl.domain.qry;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
+import com.bmf.common.api.validator.Validator;
+import com.bmf.common.utils.checker.BusinessCheckUtil;
 import com.bmf.design.api.domain.dto.DomainEventQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainEventRespDTO;
 import com.bmf.design.api.domain.qry.DomainEventQryService;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.BusinessCheckUtil;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.common.api.enums.BizCodeEnum;
+import com.bmf.common.api.utils.ResultUtil;
 import com.bmf.design.core.domain.DomainEventService;
 import com.bmf.design.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;

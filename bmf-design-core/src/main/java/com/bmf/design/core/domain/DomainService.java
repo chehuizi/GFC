@@ -1,10 +1,10 @@
 package com.bmf.design.core.domain;
 
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.dsl.BusinessDslBase;
-import com.bmf.design.base.dsl.BusinessDslExt;
-import com.bmf.design.base.enums.CmdTypeEnum;
-import com.bmf.design.common.exception.BizException;
+import com.bmf.common.utils.exception.BizException;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.dsl.BusinessDslBase;
+import com.bmf.design.model.dsl.BusinessDslExt;
+import com.bmf.design.model.enums.CmdTypeEnum;
 
 import java.util.List;
 import java.util.Map;

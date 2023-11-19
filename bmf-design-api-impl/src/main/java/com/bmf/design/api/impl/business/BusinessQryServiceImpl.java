@@ -1,15 +1,15 @@
 package com.bmf.design.api.impl.business;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.business.BusinessQryService;
 import com.bmf.design.api.business.dto.BusinessQryReqDTO;
 import com.bmf.design.api.business.dto.BusinessRespDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.DomainRelation;
-import com.bmf.design.base.BusinessRelDomain;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.DomainRelation;
+import com.bmf.design.model.BusinessRelDomain;
+import com.bmf.common.api.utils.ResultUtil;
+import com.bmf.common.api.validator.Validator;
 import com.bmf.design.core.business.BusinessService;
 import com.bmf.design.core.domain.DomainService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.bmf.api;
 
-import com.bmf.design.base.enums.CodeKeyEnum;
+import com.bmf.design.model.enums.CodeKeyEnum;
 import com.bmf.design.infrastructure.generator.CodeSeqGenerator;
 import org.junit.Assert;
 import org.junit.Test;

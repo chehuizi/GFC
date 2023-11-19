@@ -1,7 +1,7 @@
 package com.bmf.design.api.domain.qry;
 
-import com.bmf.design.api.QryService;
-import com.bmf.design.api.Result;
+import com.bmf.common.api.QryService;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.dto.DomainQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainRespDTO;
 

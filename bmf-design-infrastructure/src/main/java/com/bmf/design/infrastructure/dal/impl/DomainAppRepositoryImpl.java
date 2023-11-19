@@ -1,10 +1,10 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.application.DomainApp;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.DomainAppRepository;
 import com.bmf.design.infrastructure.dal.mapper.DomainAppMapper;
 import com.bmf.design.infrastructure.dal.po.DomainAppPO;
+import com.bmf.dev.model.application.DomainApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

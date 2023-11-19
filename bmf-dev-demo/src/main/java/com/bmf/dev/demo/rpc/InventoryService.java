@@ -1,5 +1,6 @@
 package com.bmf.dev.demo.rpc;
 
+
 import com.bmf.dev.annotations.DomainService;
 import com.bmf.dev.annotations.DomainServiceClass;
 

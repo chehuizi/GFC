@@ -1,10 +1,10 @@
 package com.bmf.design.api.impl.domain.cmd;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainEventCmdService;
 import com.bmf.design.api.domain.dto.DomainEventCmdReqDTO;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.common.api.utils.ResultUtil;
+import com.bmf.common.api.validator.Validator;
 import com.bmf.design.core.domain.DomainEventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

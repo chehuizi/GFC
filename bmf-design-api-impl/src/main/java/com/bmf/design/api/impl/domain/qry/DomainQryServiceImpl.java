@@ -1,14 +1,14 @@
 package com.bmf.design.api.impl.domain.qry;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.qry.DomainQryService;
 import com.bmf.design.api.domain.dto.DomainQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainRespDTO;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.common.api.utils.ResultUtil;
+import com.bmf.common.api.validator.Validator;
 import com.bmf.design.core.domain.DomainEntityService;
 import com.bmf.design.core.domain.DomainEventService;
 import com.bmf.design.core.domain.DomainService;
@@ -44,7 +44,7 @@ public class DomainQryServiceImpl implements DomainQryService {
             domain.setDomainEntityList(domainEntityList);
         }
         if (req.isIncludeService()) {
-            List<com.bmf.design.base.tactics.service.DomainService> domainServiceList = domainServiceService.queryByDomainCode(domain.getDomainCode());
+            List<com.bmf.design.model.tactics.service.DomainService> domainServiceList = domainServiceService.queryByDomainCode(domain.getDomainCode());
             domain.setDomainServiceList(domainServiceList);
         }
         if (req.isIncludeEvent()) {

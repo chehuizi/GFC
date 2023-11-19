@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.Business;
+import com.bmf.design.model.Business;
 
 import java.util.List;
 

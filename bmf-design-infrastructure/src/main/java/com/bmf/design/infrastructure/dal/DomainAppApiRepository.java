@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.application.DomainAppApi;
+import com.bmf.dev.model.application.DomainAppApi;
 
 import java.util.List;
 

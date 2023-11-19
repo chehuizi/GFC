@@ -1,7 +1,7 @@
 package com.bmf.design.core.snapshot.impl;
 
-import com.bmf.design.base.snapshot.BaseSnapshot;
-import com.bmf.design.base.snapshot.Snapshot;
+import com.bmf.design.model.snapshot.BaseSnapshot;
+import com.bmf.design.model.snapshot.Snapshot;
 import com.bmf.design.core.snapshot.SnapshotService;
 import com.bmf.design.infrastructure.dal.SnapshotRepository;
 import org.springframework.beans.factory.annotation.Autowired;

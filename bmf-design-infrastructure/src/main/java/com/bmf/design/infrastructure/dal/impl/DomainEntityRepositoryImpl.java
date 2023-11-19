@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.entity.DomainEntity;
 import com.bmf.design.infrastructure.dal.mapper.DomainEntityMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.DomainEntityRepository;

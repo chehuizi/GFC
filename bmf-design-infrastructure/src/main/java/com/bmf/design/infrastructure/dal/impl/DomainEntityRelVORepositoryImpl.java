@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.tactics.entity.DomainEntityRelVO;
+import com.bmf.design.model.tactics.entity.DomainEntityRelVO;
 import com.bmf.design.infrastructure.dal.mapper.DomainEntityRelVOMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.DomainEntityRelVORepository;

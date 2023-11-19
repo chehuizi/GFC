@@ -1,7 +1,7 @@
 package com.bmf.design.infrastructure.dal.po;
 
-import com.bmf.design.base.enums.BusinessFlowNodeTypeEnum;
-import com.bmf.design.base.enums.DomainElementEnum;
+import com.bmf.design.model.enums.BusinessFlowNodeTypeEnum;
+import com.bmf.design.model.enums.DomainElementEnum;
 import lombok.Data;
 
 import java.util.List;

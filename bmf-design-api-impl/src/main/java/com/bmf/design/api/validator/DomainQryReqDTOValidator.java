@@ -1,7 +1,7 @@
 package com.bmf.design.api.validator;
 
 import com.bmf.design.api.domain.dto.DomainQryReqDTO;
-import com.bmf.design.common.utils.ParamCheckUtil;
+import com.bmf.common.utils.checker.ParamCheckUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

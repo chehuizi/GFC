@@ -1,10 +1,10 @@
 package com.bmf.design.api.impl.user;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.user.UserDomainCmdService;
 import com.bmf.design.api.user.dto.UserDomainCmdReqDTO;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.ResultUtil;
+import com.bmf.common.api.enums.BizCodeEnum;
+import com.bmf.common.api.utils.ResultUtil;
 import com.bmf.design.core.user.UserDomainService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

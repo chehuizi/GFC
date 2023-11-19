@@ -1,14 +1,14 @@
 package com.bmf.design.api.domain.dto;
 
-import com.bmf.design.api.ReqDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.dsl.BusinessDslBase;
-import com.bmf.design.base.tactics.aggregate.DomainAggregate;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.base.tactics.service.DomainService;
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
+import com.bmf.common.api.ReqDTO;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.dsl.BusinessDslBase;
+import com.bmf.design.model.tactics.aggregate.DomainAggregate;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.service.DomainService;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
 import lombok.Data;
 
 import java.io.Serializable;

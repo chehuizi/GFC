@@ -1,6 +1,6 @@
 package com.bmf.design.core.flow;
 
-import com.bmf.design.base.flow.BusinessFlow;
+import com.bmf.design.model.flow.BusinessFlow;
 
 /**
  * 业务流程设计

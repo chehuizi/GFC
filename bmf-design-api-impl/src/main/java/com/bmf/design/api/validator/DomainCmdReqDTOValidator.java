@@ -1,9 +1,9 @@
 package com.bmf.design.api.validator;
 
 import com.bmf.design.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.design.base.enums.DomainLevelEnum;
-import com.bmf.design.base.enums.DomainTypeEnum;
-import com.bmf.design.common.utils.ParamCheckUtil;
+import com.bmf.design.model.enums.DomainLevelEnum;
+import com.bmf.design.model.enums.DomainTypeEnum;
+import com.bmf.common.utils.checker.ParamCheckUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 

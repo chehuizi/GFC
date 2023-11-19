@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.tactics.event.DomainEventAttr;
+import com.bmf.design.model.tactics.event.DomainEventAttr;
 import com.bmf.design.infrastructure.dal.mapper.DomainEventAttrMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.DomainEventAttrRepository;

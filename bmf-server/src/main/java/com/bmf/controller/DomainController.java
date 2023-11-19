@@ -1,13 +1,13 @@
 package com.bmf.controller;
 
 import com.alibaba.fastjson.JSON;
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainCmdService;
 import com.bmf.design.api.domain.dto.DomainCmdReqDTO;
 import com.bmf.design.api.domain.qry.DomainQryService;
 import com.bmf.design.api.domain.dto.DomainQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainRespDTO;
-import com.bmf.design.base.Domain;
+import com.bmf.design.model.Domain;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.flow.BusinessFlowNode;
+import com.bmf.design.model.flow.BusinessFlowNode;
 
 import java.util.List;
 

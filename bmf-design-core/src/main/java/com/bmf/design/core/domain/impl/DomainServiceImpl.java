@@ -1,13 +1,13 @@
 package com.bmf.design.core.domain.impl;
 
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.dsl.BusinessDslBase;
-import com.bmf.design.base.dsl.BusinessDslExt;
-import com.bmf.design.base.enums.CmdTypeEnum;
-import com.bmf.design.base.enums.CodeKeyEnum;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.exception.BizException;
-import com.bmf.design.common.utils.BusinessCheckUtil;
+import com.bmf.common.utils.checker.BusinessCheckUtil;
+import com.bmf.common.utils.exception.BizException;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.dsl.BusinessDslBase;
+import com.bmf.design.model.dsl.BusinessDslExt;
+import com.bmf.design.model.enums.CmdTypeEnum;
+import com.bmf.design.model.enums.CodeKeyEnum;
+import com.bmf.common.api.enums.BizCodeEnum;
 import com.bmf.design.core.domain.DomainService;
 import com.bmf.design.infrastructure.dal.DomainRepository;
 import com.bmf.design.infrastructure.dal.DslBaseRepository;

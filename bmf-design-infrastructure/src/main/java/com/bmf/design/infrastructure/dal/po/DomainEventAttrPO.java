@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.po;
 
-import com.bmf.design.base.enums.AttrTypeEnum;
+import com.bmf.design.model.enums.AttrTypeEnum;
 import lombok.Data;
 
 @Data

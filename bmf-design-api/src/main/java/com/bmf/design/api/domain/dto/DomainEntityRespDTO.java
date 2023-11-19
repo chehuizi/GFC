@@ -1,9 +1,9 @@
 package com.bmf.design.api.domain.dto;
 
-import com.bmf.design.api.RespDTO;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.entity.DomainEntityAttr;
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
+import com.bmf.common.api.RespDTO;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.entity.DomainEntityAttr;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

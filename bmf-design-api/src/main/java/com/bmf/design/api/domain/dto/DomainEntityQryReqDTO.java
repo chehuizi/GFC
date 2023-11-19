@@ -1,7 +1,7 @@
 package com.bmf.design.api.domain.dto;
 
-import com.bmf.design.api.ReqDTO;
-import com.bmf.design.base.tactics.entity.DomainEntity;
+import com.bmf.common.api.ReqDTO;
+import com.bmf.design.model.tactics.entity.DomainEntity;
 import lombok.Data;
 
 import java.io.Serializable;

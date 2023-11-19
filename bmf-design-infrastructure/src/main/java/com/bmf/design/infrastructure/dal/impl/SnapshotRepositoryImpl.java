@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.snapshot.Snapshot;
+import com.bmf.design.model.snapshot.Snapshot;
 import com.bmf.design.infrastructure.dal.SnapshotRepository;
 import com.bmf.design.infrastructure.dal.po.SnapshotPO;
 import com.bmf.design.infrastructure.dal.utils.POUtils;

@@ -1,18 +1,18 @@
 package com.bmf.api.business;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.business.BusinessCmdService;
 import com.bmf.design.api.business.dto.BusinessCmdReqDTO;
 import com.bmf.design.api.domain.qry.DomainQryService;
 import com.bmf.design.api.domain.dto.DomainQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainRespDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.strategy.asymmetric.UpstreamDownstreamRelationship;
-import com.bmf.design.base.strategy.role.downstream.ConformistRole;
-import com.bmf.design.base.strategy.role.partner.PartnerRole;
-import com.bmf.design.base.strategy.role.upstream.OpenHostServiceRole;
-import com.bmf.design.base.strategy.symmetric.Partnership;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.strategy.asymmetric.UpstreamDownstreamRelationship;
+import com.bmf.design.model.strategy.role.downstream.ConformistRole;
+import com.bmf.design.model.strategy.role.partner.PartnerRole;
+import com.bmf.design.model.strategy.role.upstream.OpenHostServiceRole;
+import com.bmf.design.model.strategy.symmetric.Partnership;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

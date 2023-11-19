@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.application.DomainApp;
+import com.bmf.dev.model.application.DomainApp;
 
 public interface DomainAppRepository extends BaseRepository<DomainApp> {
 

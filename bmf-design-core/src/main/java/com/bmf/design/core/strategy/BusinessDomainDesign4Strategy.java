@@ -1,7 +1,7 @@
 package com.bmf.design.core.strategy;
 
-import com.bmf.design.base.Business;
-import com.bmf.design.base.strategy.DomainRelationship;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.strategy.DomainRelationship;
 
 import java.util.List;
 

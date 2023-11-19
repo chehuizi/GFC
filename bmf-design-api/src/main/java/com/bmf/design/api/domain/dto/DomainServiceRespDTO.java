@@ -1,8 +1,8 @@
 package com.bmf.design.api.domain.dto;
 
-import com.bmf.design.api.RespDTO;
-import com.bmf.design.base.tactics.service.DomainService;
-import com.bmf.design.base.tactics.service.DomainServiceAttr;
+import com.bmf.common.api.RespDTO;
+import com.bmf.design.model.tactics.service.DomainService;
+import com.bmf.design.model.tactics.service.DomainServiceAttr;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

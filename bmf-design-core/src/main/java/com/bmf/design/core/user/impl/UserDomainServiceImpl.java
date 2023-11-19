@@ -1,6 +1,6 @@
 package com.bmf.design.core.user.impl;
 
-import com.bmf.design.base.user.UserDomain;
+import com.bmf.design.model.user.UserDomain;
 import com.bmf.design.core.user.UserDomainService;
 import com.bmf.design.infrastructure.dal.UserDomainRepository;
 import org.springframework.beans.factory.annotation.Autowired;

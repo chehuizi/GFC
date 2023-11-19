@@ -1,11 +1,11 @@
 package com.bmf.design.core.tactics;
 
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.tactics.aggregate.DomainAggregate;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.base.tactics.service.DomainService;
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.tactics.aggregate.DomainAggregate;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.service.DomainService;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
 
 /**
  * 业务设计

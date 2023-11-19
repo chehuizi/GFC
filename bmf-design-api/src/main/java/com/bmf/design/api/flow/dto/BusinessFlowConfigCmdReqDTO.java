@@ -1,8 +1,8 @@
 package com.bmf.design.api.flow.dto;
 
-import com.bmf.design.api.ReqDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.flow.BusinessFlow;
+import com.bmf.common.api.ReqDTO;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.flow.BusinessFlow;
 import lombok.Data;
 
 import java.io.Serializable;

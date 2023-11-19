@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.DomainRelation;
+import com.bmf.design.model.DomainRelation;
 
 import java.util.List;
 

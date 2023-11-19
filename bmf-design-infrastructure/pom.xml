@@ -26,7 +26,11 @@
   <dependencies>
     <dependency>
       <groupId>com.bmf</groupId>
-      <artifactId>bmf-design-base</artifactId>
+      <artifactId>bmf-design-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-dev-model</artifactId>
     </dependency>
     <!-- spring jdbc -->
     <dependency>

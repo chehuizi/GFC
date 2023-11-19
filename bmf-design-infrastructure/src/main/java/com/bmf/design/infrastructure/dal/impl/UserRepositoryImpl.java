@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.user.User;
+import com.bmf.design.model.user.User;
 import com.bmf.design.infrastructure.dal.mapper.UserMapper;
 import com.bmf.design.infrastructure.dal.po.UserPO;
 import com.bmf.design.infrastructure.dal.utils.POUtils;

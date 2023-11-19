@@ -1,7 +1,7 @@
 package com.bmf.design.api.domain.cmd;
 
-import com.bmf.design.api.CmdService;
-import com.bmf.design.api.Result;
+import com.bmf.common.api.CmdService;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.dto.DomainServiceCmdReqDTO;
 
 /**

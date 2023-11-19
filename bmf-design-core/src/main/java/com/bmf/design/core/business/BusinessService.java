@@ -1,12 +1,12 @@
 package com.bmf.design.core.business;
 
-import com.bmf.design.base.Business;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.DomainRelation;
-import com.bmf.design.base.BusinessRelDomain;
-import com.bmf.design.base.enums.CmdTypeEnum;
-import com.bmf.design.base.flow.BusinessRole;
-import com.bmf.design.base.strategy.DomainRelationship;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.DomainRelation;
+import com.bmf.design.model.BusinessRelDomain;
+import com.bmf.design.model.enums.CmdTypeEnum;
+import com.bmf.design.model.flow.BusinessRole;
+import com.bmf.design.model.strategy.DomainRelationship;
 
 import java.util.List;
 import java.util.Map;

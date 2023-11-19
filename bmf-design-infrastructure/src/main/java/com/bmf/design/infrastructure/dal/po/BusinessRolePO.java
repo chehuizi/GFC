@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.po;
 
-import com.bmf.design.base.enums.BusinessRoleTypeEnum;
+import com.bmf.design.model.enums.BusinessRoleTypeEnum;
 import lombok.Data;
 
 @Data

@@ -1,8 +1,8 @@
 package com.bmf.design.core.utils;
 
-import com.bmf.design.base.tactics.entity.DomainEntityRelVO;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
+import com.bmf.design.model.tactics.entity.DomainEntityRelVO;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
 
 /**
  * 领域工具类

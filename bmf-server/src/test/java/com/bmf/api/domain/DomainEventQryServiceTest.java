@@ -1,10 +1,10 @@
 package com.bmf.api.domain;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.dto.DomainEventQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainEventRespDTO;
 import com.bmf.design.api.domain.qry.DomainEventQryService;
-import com.bmf.design.base.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.event.DomainEvent;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

@@ -29,6 +29,10 @@
       <groupId>com.bmf</groupId>
       <artifactId>bmf-design-api-impl</artifactId>
     </dependency>
+    <dependency>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-dev-api-impl</artifactId>
+    </dependency>
     <!-- spring-boot -->
     <dependency>
       <groupId>org.springframework.boot</groupId>

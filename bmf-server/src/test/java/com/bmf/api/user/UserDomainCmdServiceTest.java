@@ -1,10 +1,10 @@
 package com.bmf.api.user;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.user.UserDomainCmdService;
 import com.bmf.design.api.user.dto.UserDomainCmdReqDTO;
-import com.bmf.design.base.user.UserDomain;
-import com.bmf.design.common.enums.ResultCodeEnum;
+import com.bmf.design.model.user.UserDomain;
+import com.bmf.common.api.enums.ResultCodeEnum;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

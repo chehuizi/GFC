@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.Business;
+import com.bmf.design.model.Business;
 import com.bmf.design.infrastructure.dal.mapper.BusinessMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.BusinessRepository;

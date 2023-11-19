@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.tactics.service.DomainService;
+import com.bmf.design.model.tactics.service.DomainService;
 import com.bmf.design.infrastructure.dal.mapper.DomainServiceMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.DomainServiceRepository;

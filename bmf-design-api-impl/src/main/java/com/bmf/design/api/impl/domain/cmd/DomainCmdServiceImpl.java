@@ -1,17 +1,17 @@
 package com.bmf.design.api.impl.domain.cmd;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainCmdService;
 import com.bmf.design.api.domain.dto.DomainCmdReqDTO;
-import com.bmf.design.base.Domain;
-import com.bmf.design.base.enums.CodeKeyEnum;
-import com.bmf.design.base.tactics.entity.DomainEntityRelVO;
-import com.bmf.design.base.tactics.entity.DomainEntity;
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.BusinessCheckUtil;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.design.model.Domain;
+import com.bmf.design.model.enums.CodeKeyEnum;
+import com.bmf.design.model.tactics.entity.DomainEntityRelVO;
+import com.bmf.design.model.tactics.entity.DomainEntity;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
+import com.bmf.common.api.enums.BizCodeEnum;
+import com.bmf.common.utils.checker.BusinessCheckUtil;
+import com.bmf.common.api.utils.ResultUtil;
+import com.bmf.common.api.validator.Validator;
 import com.bmf.design.core.tactics.BusinessDomainDesign4Tactics;
 import com.bmf.design.core.domain.DomainEntityService;
 import com.bmf.design.core.domain.DomainService;

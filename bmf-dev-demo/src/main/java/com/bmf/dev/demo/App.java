@@ -1,7 +1,7 @@
 package com.bmf.dev.demo;
 
-import com.bmf.dev.client.registrar.EnableBMFScan;
 import com.bmf.dev.annotations.Domain;
+import com.bmf.dev.client.registrar.EnableBMFScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;

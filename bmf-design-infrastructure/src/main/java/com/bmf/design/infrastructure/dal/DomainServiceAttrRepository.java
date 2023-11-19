@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal;
 
-import com.bmf.design.base.tactics.service.DomainServiceAttr;
+import com.bmf.design.model.tactics.service.DomainServiceAttr;
 
 import java.util.List;
 

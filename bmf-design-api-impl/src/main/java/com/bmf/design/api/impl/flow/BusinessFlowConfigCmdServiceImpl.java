@@ -1,16 +1,16 @@
 package com.bmf.design.api.impl.flow;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.flow.BusinessFlowConfigCmdService;
 import com.bmf.design.api.flow.dto.BusinessFlowConfigCmdReqDTO;
-import com.bmf.design.base.Business;
-import com.bmf.design.base.enums.CodeKeyEnum;
-import com.bmf.design.base.flow.BusinessFlow;
-import com.bmf.design.base.flow.BusinessFlowNode;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.BusinessCheckUtil;
-import com.bmf.design.common.utils.ResultUtil;
-import com.bmf.design.common.validator.Validator;
+import com.bmf.design.model.Business;
+import com.bmf.design.model.enums.CodeKeyEnum;
+import com.bmf.design.model.flow.BusinessFlow;
+import com.bmf.design.model.flow.BusinessFlowNode;
+import com.bmf.common.api.enums.BizCodeEnum;
+import com.bmf.common.utils.checker.BusinessCheckUtil;
+import com.bmf.common.api.utils.ResultUtil;
+import com.bmf.common.api.validator.Validator;
 import com.bmf.design.core.business.BusinessService;
 import com.bmf.design.core.flow.BusinessFlowDesign;
 import com.bmf.design.infrastructure.generator.CodeSeqGenerator;

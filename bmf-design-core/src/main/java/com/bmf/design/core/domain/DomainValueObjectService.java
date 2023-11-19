@@ -1,7 +1,7 @@
 package com.bmf.design.core.domain;
 
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
-import com.bmf.design.base.tactics.valueobject.DomainValueObjectAttr;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
+import com.bmf.design.model.tactics.valueobject.DomainValueObjectAttr;
 
 /**
  * 领域值对象服务

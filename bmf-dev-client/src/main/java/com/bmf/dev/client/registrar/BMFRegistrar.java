@@ -1,11 +1,11 @@
 package com.bmf.dev.client.registrar;
 
-import com.bmf.dev.client.utils.HttpUtil;
 import com.bmf.dev.annotations.DomainService;
 import com.bmf.dev.annotations.DomainServiceClass;
-import com.bmf.design.api.application.dto.DomainAppCmdReqDTO;
-import com.bmf.design.base.application.DomainApp;
-import com.bmf.design.base.application.DomainAppApi;
+import com.bmf.dev.api.application.dto.DomainAppCmdReqDTO;
+import com.bmf.dev.client.utils.HttpUtil;
+import com.bmf.dev.model.application.DomainApp;
+import com.bmf.dev.model.application.DomainAppApi;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.AnnotatedBeanDefinition;

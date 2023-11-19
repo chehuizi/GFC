@@ -2,7 +2,7 @@ package com.bmf.design.api.validator;
 
 import com.bmf.design.api.domain.dto.DomainServiceQryReqDTO;
 import com.bmf.design.api.domain.dto.DomainServiceCmdReqDTO;
-import com.bmf.design.common.utils.ParamCheckUtil;
+import com.bmf.common.utils.checker.ParamCheckUtil;
 import org.springframework.stereotype.Service;
 
 @Service("domainServiceReqDTOValidator")

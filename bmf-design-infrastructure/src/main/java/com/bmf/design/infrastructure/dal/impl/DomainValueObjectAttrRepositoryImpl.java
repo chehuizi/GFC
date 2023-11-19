@@ -1,6 +1,6 @@
 package com.bmf.design.infrastructure.dal.impl;
 
-import com.bmf.design.base.tactics.valueobject.DomainValueObjectAttr;
+import com.bmf.design.model.tactics.valueobject.DomainValueObjectAttr;
 import com.bmf.design.infrastructure.dal.mapper.DomainValueObjectAttrMapper;
 import com.bmf.design.infrastructure.dal.utils.POUtils;
 import com.bmf.design.infrastructure.dal.DomainValueObjectAttrRepository;

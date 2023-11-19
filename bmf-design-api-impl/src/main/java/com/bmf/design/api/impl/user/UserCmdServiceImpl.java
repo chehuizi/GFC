@@ -1,11 +1,11 @@
 package com.bmf.design.api.impl.user;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.user.UserCmdService;
 import com.bmf.design.api.user.dto.UserCmdReqDTO;
-import com.bmf.design.base.enums.CodeKeyEnum;
-import com.bmf.design.common.enums.BizCodeEnum;
-import com.bmf.design.common.utils.ResultUtil;
+import com.bmf.design.model.enums.CodeKeyEnum;
+import com.bmf.common.api.enums.BizCodeEnum;
+import com.bmf.common.api.utils.ResultUtil;
 import com.bmf.design.core.user.UserService;
 import com.bmf.design.infrastructure.generator.CodeSeqGenerator;
 import org.springframework.beans.factory.annotation.Autowired;

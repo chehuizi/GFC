@@ -1,6 +1,6 @@
 package com.bmf.design.api.user;
 
-import com.bmf.design.api.QryService;
+import com.bmf.common.api.QryService;
 import com.bmf.design.api.user.dto.UserBusinessQryReqDTO;
 import com.bmf.design.api.user.dto.UserBusinessRespDTO;
 

@@ -1,6 +1,6 @@
 package com.bmf.design.core.snapshot;
 
-import com.bmf.design.base.snapshot.BaseSnapshot;
+import com.bmf.design.model.snapshot.BaseSnapshot;
 
 /**
  * 快照服务

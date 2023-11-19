@@ -34,7 +34,11 @@
     </dependency>
     <dependency>
       <groupId>com.bmf</groupId>
-      <artifactId>bmf-design-api</artifactId>
+      <artifactId>bmf-dev-model</artifactId>
+    </dependency>
+    <dependency>
+      <groupId>com.bmf</groupId>
+      <artifactId>bmf-dev-api</artifactId>
     </dependency>
     <dependency>
       <groupId>org.apache.httpcomponents.client5</groupId>

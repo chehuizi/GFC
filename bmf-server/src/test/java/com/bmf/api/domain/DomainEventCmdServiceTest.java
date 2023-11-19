@@ -1,11 +1,11 @@
 package com.bmf.api.domain;
 
-import com.bmf.design.api.Result;
+import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainEventCmdService;
 import com.bmf.design.api.domain.dto.DomainEventCmdReqDTO;
-import com.bmf.design.base.enums.AttrTypeEnum;
-import com.bmf.design.base.tactics.event.DomainEvent;
-import com.bmf.design.base.tactics.event.DomainEventAttr;
+import com.bmf.design.model.enums.AttrTypeEnum;
+import com.bmf.design.model.tactics.event.DomainEvent;
+import com.bmf.design.model.tactics.event.DomainEventAttr;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;

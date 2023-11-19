@@ -1,7 +1,7 @@
 package com.bmf.design.core.domain.impl;
 
-import com.bmf.design.base.tactics.valueobject.DomainValueObject;
-import com.bmf.design.base.tactics.valueobject.DomainValueObjectAttr;
+import com.bmf.design.model.tactics.valueobject.DomainValueObject;
+import com.bmf.design.model.tactics.valueobject.DomainValueObjectAttr;
 import com.bmf.design.core.domain.DomainValueObjectService;
 import com.bmf.design.infrastructure.dal.DomainValueObjectAttrRepository;
 import com.bmf.design.infrastructure.dal.DomainValueObjectRepository;

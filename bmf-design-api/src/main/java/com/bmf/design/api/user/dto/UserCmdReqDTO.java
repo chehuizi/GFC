@@ -1,7 +1,7 @@
 package com.bmf.design.api.user.dto;
 
-import com.bmf.design.api.ReqDTO;
-import com.bmf.design.base.user.User;
+import com.bmf.common.api.ReqDTO;
+import com.bmf.design.model.user.User;
 import lombok.Data;
 
 import java.io.Serializable;
