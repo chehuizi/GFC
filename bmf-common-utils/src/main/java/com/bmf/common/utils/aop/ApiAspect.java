@@ -31,7 +31,7 @@ public class ApiAspect {
 
     private static final Logger logger = LoggerFactory.getLogger(ApiAspect.class);
 
-    @Pointcut(value = "execution(* com.bmf.api.impl..*.*(..))")
+    @Pointcut(value = "execution(* com.bmf.design.api.impl..*.*(..))")
     public void pointCut() {
 
     }
