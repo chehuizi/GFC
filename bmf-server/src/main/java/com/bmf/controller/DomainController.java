@@ -45,15 +45,13 @@ public class DomainController {
     }
 
     @PostMapping("entity/add")
-    public Boolean addEntity(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.addEntity(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> addEntity(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.addEntity(domainCmdReqDTO);
     }
 
     @PostMapping("entity/del")
-    public Boolean delEntity(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.delEntity(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> delEntity(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.delEntity(domainCmdReqDTO);
     }
 
     @PostMapping("vo/add")
