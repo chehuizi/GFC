@@ -34,7 +34,7 @@ public class BusinessFlow extends BaseModel {
      */
     private String flowAlias;
     /**
-     * 中间节点列表
+     * 流程节点列表
      */
     private List<BusinessFlowNode> nodeList;
 
