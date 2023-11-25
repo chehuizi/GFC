@@ -32,7 +32,7 @@
         </dependency>
         <dependency>
             <groupId>com.bmf</groupId>
-            <artifactId>bmf-design-infrastructure</artifactId>
+            <artifactId>bmf-infrastructure</artifactId>
         </dependency>
     </dependencies>
 </project>

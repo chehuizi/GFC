@@ -11,7 +11,7 @@
     <modules>
         <module>bmf-design-model</module>
         <module>bmf-design-core</module>
-        <module>bmf-design-infrastructure</module>
+        <module>bmf-infrastructure</module>
         <module>bmf-design-api</module>
         <module>bmf-design-api-impl</module>
         <module>bmf-server</module>
@@ -95,7 +95,7 @@
             </dependency>
             <dependency>
                 <groupId>com.bmf</groupId>
-                <artifactId>bmf-design-infrastructure</artifactId>
+                <artifactId>bmf-infrastructure</artifactId>
                 <version>${bmf.version}</version>
             </dependency>
             <dependency>
