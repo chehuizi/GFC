@@ -1,6 +1,5 @@
 package com.bmf.controller;
 
-import com.alibaba.fastjson.JSON;
 import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainCmdService;
 import com.bmf.design.api.domain.dto.DomainCmdReqDTO;
@@ -25,7 +24,7 @@ public class DomainController {
     private DomainCmdService domainCmdService;
 
     @GetMapping("detail")
-    public String detail(@RequestParam("domain_code") Integer domainCode,
+    public Result<DomainRespDTO> detail(@RequestParam("domain_code") Integer domainCode,
                          @RequestParam("include_all") Boolean includeAll) {
         DomainQryReqDTO domainQryReqDTO = new DomainQryReqDTO();
         Domain domain = new Domain();
@@ -34,14 +33,12 @@ public class DomainController {
         domainQryReqDTO.setIncludeEntity(includeAll);
         domainQryReqDTO.setIncludeService(includeAll);
         domainQryReqDTO.setIncludeEvent(includeAll);
-        Result<DomainRespDTO> result = domainQryService.queryOne(domainQryReqDTO);
-        return JSON.toJSONString(result);
+        return domainQryService.queryOne(domainQryReqDTO);
     }
 
     @PostMapping("create")
-    public Boolean create(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.create(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> create(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.create(domainCmdReqDTO);
     }
 
     @PostMapping("entity/add")
@@ -55,62 +52,52 @@ public class DomainController {
     }
 
     @PostMapping("vo/add")
-    public Boolean addValueObject(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.addValueObject(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> addValueObject(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.addValueObject(domainCmdReqDTO);
     }
 
     @PostMapping("vo/del")
-    public Boolean delValueObject(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.delValueObject(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> delValueObject(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.delValueObject(domainCmdReqDTO);
     }
 
     @PostMapping("entity/vo/add")
-    public Boolean addEntityRelVO(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.addEntityRelVO(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> addEntityRelVO(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.addEntityRelVO(domainCmdReqDTO);
     }
 
     @PostMapping("entity/vo/del")
-    public Boolean delEntityRelVO(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.delEntityRelVO(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> delEntityRelVO(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.delEntityRelVO(domainCmdReqDTO);
     }
 
     @PostMapping("service/add")
-    public Boolean addService(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.addService(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> addService(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.addService(domainCmdReqDTO);
     }
 
     @PostMapping("service/del")
-    public Boolean delService(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.delService(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> delService(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.delService(domainCmdReqDTO);
     }
 
     @PostMapping("event/add")
-    public Boolean addEvent(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.addEvent(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> addEvent(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.addEvent(domainCmdReqDTO);
     }
 
     @PostMapping("event/del")
-    public Boolean delEvent(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.delEvent(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> delEvent(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.delEvent(domainCmdReqDTO);
     }
 
     @PostMapping("dsl/add")
-    public Boolean addDsl(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.addDsl(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> addDsl(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.addDsl(domainCmdReqDTO);
     }
 
     @PostMapping("dsl/del")
-    public Boolean delDsl(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
-        Result<Boolean> result = domainCmdService.delDsl(domainCmdReqDTO);
-        return result.getData();
+    public Result<Boolean> delDsl(@RequestBody DomainCmdReqDTO domainCmdReqDTO) {
+        return domainCmdService.delDsl(domainCmdReqDTO);
     }
 }
