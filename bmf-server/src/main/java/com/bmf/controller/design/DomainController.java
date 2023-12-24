@@ -1,4 +1,4 @@
-package com.bmf.controller;
+package com.bmf.controller.design;
 
 import com.bmf.common.api.Result;
 import com.bmf.design.api.domain.cmd.DomainCmdService;
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "domain")
+@RequestMapping(path = "design/domain")
 public class DomainController {
 
     private static final Logger logger = LoggerFactory.getLogger(DomainController.class);

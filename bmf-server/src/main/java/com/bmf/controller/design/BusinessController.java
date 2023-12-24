@@ -1,4 +1,4 @@
-package com.bmf.controller;
+package com.bmf.controller.design;
 
 import com.bmf.common.api.Result;
 import com.bmf.design.api.business.BusinessCmdService;
@@ -12,7 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "business")
+@RequestMapping(path = "design/business")
 public class BusinessController {
 
     private static final Logger logger = LoggerFactory.getLogger(BusinessController.class);
@@ -39,7 +39,7 @@ public class BusinessController {
         return businessCmdService.create(businessCmdReqDTO);
     }
 
-    @PostMapping("strategy/design/save")
+    @PostMapping("strategy/save")
     public Result saveStrategyDesign(@RequestBody BusinessCmdReqDTO businessCmdReqDTO) {
         return businessCmdService.saveStrategyDesign(businessCmdReqDTO);
     }

@@ -1,4 +1,4 @@
-package com.bmf.controller;
+package com.bmf.controller.dev;
 
 import com.alibaba.fastjson2.JSON;
 import com.bmf.common.api.Result;
@@ -13,7 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "domain/api")
+@RequestMapping(path = "dev/domain/api")
 public class DomainApiController {
 
     private static final Logger logger = LoggerFactory.getLogger(DomainApiController.class);

@@ -1,4 +1,4 @@
-package com.bmf.controller;
+package com.bmf.controller.design;
 
 import com.alibaba.fastjson.JSON;
 import com.bmf.common.api.Result;
@@ -14,7 +14,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping(path = "domain/entity")
+@RequestMapping(path = "design/domain/entity")
 public class DomainEntityController {
 
     private static final Logger logger = LoggerFactory.getLogger(DomainEntityController.class);
