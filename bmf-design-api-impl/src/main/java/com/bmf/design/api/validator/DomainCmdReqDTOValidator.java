@@ -81,8 +81,11 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4DelEntity(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity(), "domain entity is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
+                domainCmdReqDTO.getDomainEntity().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity().getEntityIdCode(), "domain entity id code is null");
         return true;
     }
@@ -112,8 +115,11 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4DelService(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainService(), "domain service is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainService().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
+                domainCmdReqDTO.getDomainService().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainService().getServiceCode(), "domain service code is null");
         return true;
     }
@@ -143,8 +149,11 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4DelValueObject(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject(), "domain value object is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
+                domainCmdReqDTO.getDomainValueObject().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject().getVoCode(), "domain value object code is null");
         return true;
     }
@@ -174,8 +183,11 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4DelDomainEvent(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEvent(), "domain event is null");
-        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEvent().getDomainCode(), "domain code is null");
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
+                domainCmdReqDTO.getDomainEvent().getDomainCode()), "domain code is not equal");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEvent().getEventCode(), "domain event code is null");
         return true;
     }
@@ -187,11 +199,15 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4AddEntityRelVO(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity(), "domain entity is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity().getEntityIdCode(), "domain entity id code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject(), "domain value object is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject().getVoCode(), "domain value object code is null");
-        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomainEntity().getDomainCode().equals(
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
+                domainCmdReqDTO.getDomainEntity().getDomainCode()), "domain code is not equal");
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
                 domainCmdReqDTO.getDomainValueObject().getDomainCode()), "domain code is not equal");
         return true;
     }
@@ -203,11 +219,15 @@ public class DomainCmdReqDTOValidator {
      */
     public boolean v4DelEntityRelVO(DomainCmdReqDTO domainCmdReqDTO) {
         ParamCheckUtil.checkNull(domainCmdReqDTO, "param is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain(), "domain is null");
+        ParamCheckUtil.checkNull(domainCmdReqDTO.getDomain().getDomainCode(), "domain code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity(), "domain entity is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainEntity().getEntityIdCode(), "domain entity id code is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject(), "domain value object is null");
         ParamCheckUtil.checkNull(domainCmdReqDTO.getDomainValueObject().getVoCode(), "domain value object code is null");
-        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomainEntity().getDomainCode().equals(
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
+                domainCmdReqDTO.getDomainEntity().getDomainCode()), "domain code is not equal");
+        ParamCheckUtil.checkTrue(domainCmdReqDTO.getDomain().getDomainCode().equals(
                 domainCmdReqDTO.getDomainValueObject().getDomainCode()), "domain code is not equal");
         return true;
     }
