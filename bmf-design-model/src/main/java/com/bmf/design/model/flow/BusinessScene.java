@@ -1,12 +1,13 @@
 package com.bmf.design.model.flow;
 
+import com.bmf.common.model.BaseModel;
 import lombok.Data;
 
 /**
  * 业务场景
  */
 @Data
-public class BusinessScene {
+public class BusinessScene extends BaseModel {
 
     /**
      * 业务编码
