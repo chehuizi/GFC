@@ -5,6 +5,7 @@ import React from "react";
 import { AndroidOutlined, MailOutlined } from "@ant-design/icons";
 import { Tabs } from "antd";
 import Strategy from "./strategy";
+import Tactical from "./tactical";
 
 const Domain: React.FC = () => (
   <Tabs
@@ -16,6 +17,15 @@ const Domain: React.FC = () => (
         children: (
           <>
             <Strategy />
+          </>
+        ),
+      },
+      {
+        label: "战术设计",
+        key: "2",
+        children: (
+          <>
+            <Tactical />
           </>
         ),
       },

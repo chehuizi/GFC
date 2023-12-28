@@ -10,7 +10,7 @@ import ReactFlow, {
 } from "reactflow";
 import { Button, Form, Input, Select, message } from "antd";
 import RelationEdge from "./relationEdge";
-import axios from "../../../utils/axios";
+import axios from "../../../../utils/axios";
 import "reactflow/dist/style.css";
 
 import "./index.css";
@@ -426,14 +426,14 @@ const AddNodeOnEdgeDrop = () => {
         const newNode = {
           id,
           // we are removing the half of the node width (75) to center the new node
-          // position: project({
-          //   x: event.clientX - left - 75,
-          //   y: event.clientY - top,
-          // }),
           position: project({
-            x: event.clientX,
-            y: event.clientY,
+            x: event.clientX - left - 75,
+            y: event.clientY - top,
           }),
+          // position: project({
+          //   x: event.clientX,
+          //   y: event.clientY,
+          // }),
           data: { label: `Node ${id}` },
           type: "relation",
         };
