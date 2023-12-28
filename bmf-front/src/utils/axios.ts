@@ -2,9 +2,7 @@ import axios from "axios";
 
 const instance = axios.create({
   timeout: 10000,
-  baseURL: (import.meta.env.MODE = "development"
-    ? "/api"
-    : "http://120.46.150.249:8080"),
+  baseURL: (import.meta.env.MODE = "development" ? "/api" : "/"),
   // headers: {},
 });
 
